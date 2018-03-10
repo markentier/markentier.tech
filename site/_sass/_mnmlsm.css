@@ -1,0 +1,73 @@
+body {
+  color: #422312;
+  background: #cce9ec;
+  background: #cce9ec url(../assets/head.svg) center top no-repeat;
+  background-size: contain;
+}
+
+h1, h2, h3, h4, h5, h6, .description {
+  font-family: "Varela Round", Arial, sans-serif;
+  color: #124269;
+  margin-top: 1.5em;
+}
+
+pre {
+  margin: 0 0.5em; padding: 0.5em;
+  border: 3px solid rgba(42,222,255,0.1);
+  border-radius: 0.25em;
+  white-space: pre-wrap;
+}
+
+h1 a { text-decoration: none; }
+a, a:link, a:visited { color: #906; }
+h1 a, h1 a:link, h1 a:visited { color: #279; }
+a:hover, a:focus { color: #162; text-decoration: none; }
+
+blockquote {
+  margin-left: 0;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #def;
+}
+
+ul, ol {
+  padding-left: 1.25em;
+}
+
+figure {
+  margin: 0; padding: 0; border: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+#wrppr {
+  width: 42em; /* 20px * 42em = 840px */
+  margin: auto;
+}
+
+header {
+  margin: 1em 0 5em 0;
+}
+header h1 {
+  margin: 0; padding: 0; border: 0;
+  font-size:   3em;
+  line-height: 1.25em;
+}
+header h1 #big-m {
+  vertical-align: middle;
+  font-size:   6.4rem;
+  text-shadow: 0 0 0.75rem #234256;
+  margin-left: -0.45rem;
+}
+header .description {
+  font-size:   1.5em;
+  line-height: 1em;
+}
+
+footer {
+  margin: 5em 0 2em 0;
+  font-size: 0.8em; /* = 16px */
+  color: #66696c;
+  text-align: center;
+}

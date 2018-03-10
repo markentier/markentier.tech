@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  id="mountainsHeadBackground" version="1.1"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="2048" height="700">
+  <defs id="gradientDefs">
+    <linearGradient id="petrolGradient" x1="20.0" y1="-1200.0" x2="20.0" y2="250.0" gradientUnits="userSpaceOnUse">
+      <stop id="fullPetrolStop"   style="stop-color:#003070;stop-opacity:1" offset="0" />
+      <stop id="transPretrolStop" style="stop-color:#003070;stop-opacity:0" offset="1" />
+    </linearGradient>
+    <linearGradient id="whiteGradient" x1="10.0" y1="-900.0" x2="10.0" y2="350.0" gradientUnits="userSpaceOnUse">
+      <stop id="fullWhiteStop"  style="stop-color:#ffffff;stop-opacity:1" offset="0" />
+      <stop id="transWhiteStop" style="stop-color:#ffffff;stop-opacity:0" offset="1" />
+    </linearGradient>
+    <filter id="filterGaussianBlur" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur" stdDeviation="9.99" />
+    </filter>
+  </defs>
+
+  <metadata id="mountainsMeta">
+    <rdf:RDF>
+      <cc:Work rdf:about="mountainsHeadBackground">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>mountainsHeadBackground</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+  <g id="mountains">
+    <path
+       id="petrolMountain"
+       d="M -360.0,700.0 -360.0,360.0 345.0,160.0 525.0,50.0 650.0,135.0 730.0,90.0 880.0,235.0 1024.0,200.0 1240.0,40.0 l 50.0,60.0 100.0,-80.0 75.0,35.0 125.0,-30.0 150.0,140.0 140.0,0.0 230.0,140.0 75.0,60.0 75.0,700.0 z"
+       style="opacity:0.75;fill:url(#petrolGradient);fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    <path
+       id="whiteMountain"
+       d="M -360.0,700.0 -360.0,360.0 345.0,160.0 525.0,50.0 650.0,135.0 730.0,90.0 880.0,235.0 1024.0,200.0 1240.0,40.0 l 50.0,60.0 100.0,-80.0 75.0,35.0 125.0,-30.0 150.0,140.0 140.0,0.0 230.0,140.0 75.0,60.0 75.0,700.0 z"
+       style="opacity:0.12;fill:url(#whiteGradient);fill-opacity:1;fill-rule:nonzero;stroke:none;filter:url(#filterGaussianBlur)" />
+  </g>
+</svg>
