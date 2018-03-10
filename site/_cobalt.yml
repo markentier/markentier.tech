@@ -1,8 +1,0 @@
-destination: ../public
-
-site:
-  title: markentier.tech
-  description: About code and people
-  base_url: https://markentier.tech/
-posts:
-  rss: rss.xml
