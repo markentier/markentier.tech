@@ -1,8 +1,21 @@
+body::before {
+  content: "";
+  z-index: -1;
+  position: inherit;
+  left: inherit;
+  top: inherit;
+  width: inherit;
+  height: inherit;
+  background-image: inherit;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+}
 body {
   color: #422312;
   background: #cce9ec;
-  background: #cce9ec url(../assets/head.svg) center top no-repeat;
-  background-size: contain;
+  background-image: url(../assets/head.svg);
+  background-size: 0 0;
 }
 
 h1, h2, h3, h4, h5, h6, .description {
