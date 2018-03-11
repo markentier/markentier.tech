@@ -1,5 +1,5 @@
 {% for post in collections.posts.pages %}
 <article class="index_listing_post">
-  <a href="/{{ post.permalink }}"><h1>{{ post.title }}</h1>{{ post.excerpt }}</a>
+  <a href="/{{ post.permalink }}"><h2>{{ post.title }}</h2>{{ post.excerpt }}</a>
 </article>
 {% endfor %}

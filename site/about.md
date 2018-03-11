@@ -2,7 +2,7 @@ layout: default.liquid
 title: about
 published_date: 2018-03-11 15:15:00 +0000
 ---
-## author
+### author
 
 * name: christoph  
   calling me _chris_ is fine, _christopher_ not so much
