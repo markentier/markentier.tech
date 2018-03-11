@@ -19,3 +19,7 @@ It should look like the article image.
 
 This is just the second pretty useless post, but I think this is not so unusal for new blogs.
 Bear with me, actual content will follow. Hence this new site. ;-)
+
+-----
+
+_Crossposted to: [dev.to](https://dev.to/asaaki/push-rinse-repeat---16jo), [Medium](https://medium.com/markentier-tech/push-rinse-repeat-1e277fa35942)_
