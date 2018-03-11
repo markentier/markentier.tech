@@ -1,27 +1,31 @@
-body::before {
-  content: "";
-  z-index: -1;
-  position: inherit;
-  left: inherit;
-  top: inherit;
-  width: inherit;
-  height: inherit;
-  background-image: inherit;
-  background-size: contain;
-  background-repeat: no-repeat;
-  filter: blur(3px);
-}
 body {
   color: #422312;
   background: #cce9ec;
+  font-family: var(--font-stack);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+body {
   background-image: url(../assets/head.svg);
   background-size: 0 0;
   width: 100%;
   height: 100%;
   position: absolute;
-  font-family: var(--font-stack);
-  font-size: 20px;
-  line-height: 1.35;
+
+  &::before {
+    content: "";
+    z-index: -1;
+    position: inherit;
+    left: inherit;
+    top: inherit;
+    width: inherit;
+    height: inherit;
+    background-image: inherit;
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: blur(3px);
+  }
 }
 
 h1, h2, h3, h4, h5, h6, .description {
