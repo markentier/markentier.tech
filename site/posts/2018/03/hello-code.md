@@ -14,4 +14,6 @@ class MarkentierTech < Blog
     :unicorns!
   end
 end
+
+#=> 567890-abcdefghi-234567890-abcdefghi-234567890-abcdefghi-234567890-abcdef.80
 ```

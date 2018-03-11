@@ -4,6 +4,7 @@ COBALT_BIN = cobalt.rs/target/release/cobalt
 
 build: $(COBALT_BIN)
 	$(COBALT_BIN) build
+	cp site/_redirects public
 
 serve: $(COBALT_BIN)
 	$(COBALT_BIN) serve

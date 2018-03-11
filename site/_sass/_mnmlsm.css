@@ -11,13 +11,6 @@ h1, h2, h3, h4, h5, h6, .description {
   margin-top: 1.5em;
 }
 
-pre {
-  margin: 0 0.5em; padding: 0.5em;
-  border: 3px solid rgba(42,222,255,0.1);
-  border-radius: 0.25em;
-  white-space: pre-wrap;
-}
-
 h1 a, h2 a { text-decoration: none; }
 a, a:link, a:visited { color: #906; }
 h1 a, h1 a:link, h1 a:visited { color: #279; }
@@ -40,11 +33,6 @@ figure {
 
 img {
   max-width: 100%;
-}
-
-#wrppr {
-  width: 42em; /* 20px * 42em = 840px */
-  margin: auto;
 }
 
 header {
