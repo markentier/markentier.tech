@@ -1,8 +1,12 @@
 <article>
+  <h2 class="post_title">{{ page.title }}</h2>
+  <small class="published_at_line"><time datetime="{{page.published_date}}">{{page.published_date | date: "%Y-%m-%d"}}</time></small>
   {%- if page.data.has_image -%}
   {% comment %}NOT SUPPORTED: <figure>{{page.data.image_url | img_tag: page.data.image_alt}}</figure> {% endcomment %}
-  <figure><img src="{{page.data.image_url}}" alt="{{page.data.image_alt | escape}}" /></figure>
+  <figure class="post_hero">
+    <img src="{{page.data.image_url}}" alt="{{page.data.image_alt | escape}}" />
+    <figcaption>{{page.data.image_alt | escape}}</figcaption>
+  </figure>
   {%- endif %}
-  <h2>{{ page.title }}</h2>
   {{ page.content }}
 </article>

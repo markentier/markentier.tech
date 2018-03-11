@@ -50,3 +50,28 @@ pre {
   font-family: var(--font-code);
   font-size: 0.8em;
 }
+
+.post_title {
+  margin-bottom: 0em;
+}
+
+.post_hero {
+  display: block;
+  width: 100%; // 820px
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  figcaption {
+    display: none;
+    text-align: center;
+    font-size: 0.6em;
+  }
+}
+
+.published_at_line {
+  font-family: var(--font-code);
+  font-size: 0.6em;
+  color: rgba(66, 35, 18, 0.7);
+}
