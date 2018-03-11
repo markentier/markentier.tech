@@ -16,6 +16,12 @@ body {
   background-position: top center;
 }
 
+.site_description {
+  margin-top: -0.5em;
+  margin-left: 6.4rem;
+}
+
+
 @media only screen and (max-width: 900px) {
   body {
     font-size: 16px;
@@ -27,6 +33,10 @@ body {
       font-size: 5rem;
       vertical-align: baseline;
     }
+  }
+  .site_description {
+    margin-top: 0;
+    margin-left: 0;
   }
 }
 @media only screen and (min-width: 901px) {
@@ -84,6 +94,7 @@ pre {
   font-family: var(--font-code);
   font-size: 0.8em;
 }
+
 
 .post_title {
   margin-bottom: 0em;
