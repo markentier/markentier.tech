@@ -31,7 +31,9 @@ assets:
     style: Compressed
 
 pages:
-  default: {}
+  default:
+    data:
+      image_url: ''
 
 posts:
   title: ~
@@ -43,3 +45,5 @@ posts:
   jsonfeed: feed.json
   default:
     permalink: /{{parent}}/{{slug}}
+    data:
+      image_url: ''

@@ -4,10 +4,10 @@
 <meta name="keywords" content="{{site.data.keywords}}">
 <meta name="author" content="Christoph Grabo">
 <link rel="author" href="https://plus.google.com/116780993927713078767?rel=author">
-{% if page.collection == "posts" %}<link rel="canonical" href="{{site.base_url}}/{{page.permalink}}" />{% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{site.title}}" href="/{{collections.posts.rss}}" />
 <link rel="alternate" type="application/json" title="JSON Feed for {{site.title}}" href="/{{collections.posts.jsonfeed}}" />
 <link rel="stylesheet" href="/style/mtt.css?v=1">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="/assets/m-128.png" type="image/png" />
+{%- if page.collection == "posts" %}{% include 'head.posts.liquid' %}{% endif -%}
