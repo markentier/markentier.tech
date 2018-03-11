@@ -2,4 +2,6 @@
 ## https://play.netlify.com/headers
 
 /*
-  Server: mtt
+  x-github-user: https://github.com/asaaki
+  x-github-repo: https://github.com/markentier/markentier.tech
+  server: mtt
