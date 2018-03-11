@@ -1,0 +1,8 @@
+<article>
+  {%- if page.data.has_image -%}
+  {% comment %}NOT SUPPORTED: <figure>{{page.data.image_url | img_tag: page.data.image_alt}}</figure> {% endcomment %}
+  <figure><img src="{{page.data.image_url}}" alt="{{page.data.image_alt | escape}}" /></figure>
+  {%- endif %}
+  <h2>{{ page.title }}</h2>
+  {{ page.content }}
+</article>

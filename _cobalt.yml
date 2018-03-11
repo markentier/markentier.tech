@@ -33,6 +33,7 @@ assets:
 pages:
   default:
     data:
+      has_image: false
       image_url: https://markentier.tech/assets/m-twitter-card-default-image--512.png
       image_alt: 'markentier.tech'
 
@@ -47,5 +48,6 @@ posts:
   default:
     permalink: /{{parent}}/{{slug}}
     data:
+      has_image: false
       image_url: https://markentier.tech/assets/m-twitter-card-default-image--512.png
       image_alt: 'markentier.tech'

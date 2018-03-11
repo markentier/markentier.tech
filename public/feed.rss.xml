@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>markentier.tech</title><link>https://markentier.tech/</link><description>About code and people</description><item><title>Hello, code!</title><link>https://markentier.tech//posts/2018/03/hello-code</link><description>&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>markentier.tech</title><link>https://markentier.tech/</link><description>About code and people</description><item><title>Push, rinse, repeat, …</title><link>https://markentier.tech//posts/2018/03/push-rinse-repeat</link><description>&lt;p&gt;I haven&apos;t bootstrapped a blog or static site for quite some time.&lt;/p&gt;
+&lt;p&gt;With a service like netlify thise becomes kind of a bearable task.&lt;/p&gt;
+&lt;p&gt;And since this site hasn&apos;t seen much popularity yet—it just exists for less than 24 hours—I can even play this game live and in production.
+Like the good old PHP-FTP times.&lt;/p&gt;
+&lt;p&gt;For fun I added already some meta tags for social media consumption like Twitter.&lt;/p&gt;
+&lt;p&gt;It should look like the article image.&lt;/p&gt;
+&lt;p&gt;This is just the second pretty useless post, but I think this is not so unusal for new blogs.
+Bear with me, actual content will follow. Hence this new site. ;-)&lt;/p&gt;
+</description><guid>https://markentier.tech//posts/2018/03/push-rinse-repeat</guid><pubDate>Sun, 11 Mar 2018 18:00:00 +0000</pubDate></item><item><title>Hello, code!</title><link>https://markentier.tech//posts/2018/03/hello-code</link><description>&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;/p&gt;
 &lt;p&gt;This blog post has no deeper meaning.
 It exists for sole entertainment of systems, servers, build tools, and the author of this site.&lt;/p&gt;
 &lt;pre style=&quot;background-color:#ffffff&quot;&gt;

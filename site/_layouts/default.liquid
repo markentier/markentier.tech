@@ -16,10 +16,7 @@
       {% if page.title == "home" %}
         {{ page.content }}
       {% else %}
-        <article>
-          <h2>{{ page.title }}</h2>
-          {{ page.content }}
-        </article>
+        {%- include 'content.liquid' -%}
       {% endif %}
       </main>
       <footer>
