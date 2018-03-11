@@ -1,25 +1,3 @@
-body {
-  background-image: url(../assets/head.svg);
-  background-size: 0 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-
-  &::before {
-    content: "";
-    z-index: -1;
-    position: inherit;
-    left: inherit;
-    top: inherit;
-    width: inherit;
-    height: inherit;
-    background-image: inherit;
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: blur(3px);
-  }
-}
-
 h1, h2, h3, h4, h5, h6, .description {
   font-family: "Varela Round", Arial, sans-serif;
   color: #124269;
