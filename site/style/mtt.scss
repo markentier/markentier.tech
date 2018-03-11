@@ -22,7 +22,11 @@ body {
     line-height: 1.4;
   }
   header h1 {
-    font-size: 2.5em;
+    font-size: 2em;
+    #big-m {
+      font-size: 5rem;
+      vertical-align: baseline;
+    }
   }
 }
 @media only screen and (min-width: 901px) {
