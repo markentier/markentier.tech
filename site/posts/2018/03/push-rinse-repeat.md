@@ -4,7 +4,7 @@ published_date: 2018-03-11 18:00:00 +0000
 data:
   has_image: true
   image_url: https://markentier.tech/posts/2018/03/push-rinse-repeat.png
-  image_alt: Screenshot of my first Twitter card for the previous blog post "Hello, code!"
+  image_alt: Screenshot of my first Twitter card for the previous blog post »Hello, code!«
 ---
 I haven't bootstrapped a blog or static site for quite some time.
 
