@@ -39,8 +39,10 @@ body {
     margin-left: 0;
   }
 }
+
 @media only screen and (min-width: 901px) {
   body {
+    background-color: transparent;
     background-size: 0 0;
     width: 100%;
     height: 100%;
@@ -48,7 +50,7 @@ body {
 
     &::before {
       content: "";
-      // z-index: -1;
+      z-index: -1;
       position: inherit;
       left: inherit;
       top: inherit;
