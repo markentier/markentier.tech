@@ -16,6 +16,9 @@ body {
   background: #cce9ec;
   background-image: url(../assets/head.svg);
   background-size: 0 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 h1, h2, h3, h4, h5, h6, .description {
