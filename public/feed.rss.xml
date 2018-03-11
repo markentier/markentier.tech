@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>markentier.tech</title><link>https://markentier.tech/</link><description>About code and people</description><item><title>Push, rinse, repeat, …</title><link>https://markentier.tech//posts/2018/03/push-rinse-repeat</link><description>&lt;p&gt;I haven&apos;t bootstrapped a blog or static site for quite some time.&lt;/p&gt;
-&lt;p&gt;With a service like netlify thise becomes kind of a bearable task.&lt;/p&gt;
+&lt;p&gt;With a service like netlify this becomes kind of a bearable task.&lt;/p&gt;
 &lt;p&gt;And since this site hasn&apos;t seen much popularity yet—it just exists for less than 24 hours—I can even play this game live and in production.
 Like the good old PHP-FTP times.&lt;/p&gt;
 &lt;p&gt;For fun I added already some meta tags for social media consumption like Twitter.&lt;/p&gt;

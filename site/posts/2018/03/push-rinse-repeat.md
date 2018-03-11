@@ -8,7 +8,7 @@ data:
 ---
 I haven't bootstrapped a blog or static site for quite some time.
 
-With a service like netlify thise becomes kind of a bearable task.
+With a service like netlify this becomes kind of a bearable task.
 
 And since this site hasn't seen much popularity yet—it just exists for less than 24 hours—I can even play this game live and in production.
 Like the good old PHP-FTP times.
