@@ -1,6 +1,6 @@
 <article>
   <h2 class="post_title">{{ page.title }}</h2>
-  <small class="published_at_line"><time datetime="{{page.published_date}}">{{page.published_date | date: "%Y-%m-%d"}}</time></small>
+  {% include "published_at.liquid" %}
   {%- if page.data.has_image -%}
   {% comment %}NOT SUPPORTED: <figure>{{page.data.image_url | img_tag: page.data.image_alt}}</figure> {% endcomment %}
   <figure class="post_hero">

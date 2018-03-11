@@ -1,7 +1,7 @@
 {% for post in collections.posts.pages %}
 <article class="index_listing_post">
   <a href="/{{post.permalink}}"><h2 class="post_title">{{post.title}}</h2>
-  <small class="published_at_line"><time datetime="{{page.published_date}}">{{page.published_date | date: "%Y-%m-%d"}}</time></small>
+  {% include "published_at.liquid" %}
   {{post.excerpt}}</a>
 </article>
 {% endfor %}
