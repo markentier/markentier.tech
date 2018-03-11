@@ -1,0 +1,19 @@
+/* TEAM */
+Your title: Your name.
+Site: email, link to a contact form, etc.
+Twitter: your Twitter username.
+Location: City, Country.
+
+/* THANKS */
+Name: @PragTob <http://www.pragtob.info/>
+Name: @skade/@Argorak <https://github.com/skade>, <https://twitter.com/Argorak>
+Name: @ddfreyne <https://denis.ws/>
+Name: Dajana <https://about.me/DajanaGuenther>
+and many more …
+
+/* SITE */
+Last update: continuously updated; first 2018-03-10
+Standards: HTML5, CSS3
+Components: vanilla
+Software: vscode (editor), cobalt.rs (static site generator)
+Services: GitHub (repository), netlify (website hosting)
