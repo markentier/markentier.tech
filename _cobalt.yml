@@ -6,6 +6,7 @@ site:
   description: About code and people
   base_url: https://markentier.tech/
   data:
+    keywords: tech, IT, programming, Rust, code, social, humans, software, development, engineering, conduct, diversity, inclusion
     example: value
 
 # Page/Post options
