@@ -3,3 +3,18 @@
 @import "root";
 @import "base";
 @import "mnmlsm";
+
+.index_listing_post {
+  a { text-decoration: none; }
+  a:link, a:visited { color: inherit; }
+
+  &:hover {
+      h1, p { text-shadow: 2px 2px 2px hsla(50, 100%, 50%, 0.15); }
+  }
+
+  & + & {
+    border-top: 1px solid hsla(206, 55%, 30%, 0.25);
+
+    h1 { margin-top: 0.5em; }
+  }
+}

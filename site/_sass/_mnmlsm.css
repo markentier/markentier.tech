@@ -18,9 +18,10 @@ pre {
   white-space: pre-wrap;
 }
 
-h1 a { text-decoration: none; }
+h1 a, h2 a { text-decoration: none; }
 a, a:link, a:visited { color: #906; }
 h1 a, h1 a:link, h1 a:visited { color: #279; }
+/* h2 a, h2 a:link, h2 a:visited { color: #124269; } */
 a:hover, a:focus { color: #162; text-decoration: none; }
 
 blockquote {
