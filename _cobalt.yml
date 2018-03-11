@@ -12,6 +12,7 @@ site:
 
 default:
   excerpt_separator: "\n\n"
+  # excerpt_separator: ''
   is_draft: false
 
 syntax_highlight:
