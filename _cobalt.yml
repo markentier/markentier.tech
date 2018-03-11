@@ -33,7 +33,7 @@ assets:
 pages:
   default:
     data:
-      image_url: https://markentier.tech/assets/m-twitter-card-default-image--1024x512.png
+      image_url: https://markentier.tech/assets/m-twitter-card-default-image--512.png
       image_alt: 'markentier.tech'
 
 posts:
@@ -47,5 +47,5 @@ posts:
   default:
     permalink: /{{parent}}/{{slug}}
     data:
-      image_url: https://markentier.tech/assets/m-twitter-card-default-image--1024x512.png
+      image_url: https://markentier.tech/assets/m-twitter-card-default-image--512.png
       image_alt: 'markentier.tech'
