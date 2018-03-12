@@ -4,3 +4,16 @@
 {%- else -%}
 {%- assign is_post = false -%}
 {%- endif -%}
+{% comment %} keywords/tags {% endcomment %}
+{%- assign all_keywords = page.data.tags | concat: site.data.keywords -%}
+{%- capture filtered_keywords -%}{%- for kw in all_keywords limit: 10 -%}
+{{kw}}{%- if forloop.index != forloop.length -%}|{%- endif -%}
+{%- endfor -%}{%- endcapture -%}
+{%- assign keywords = filtered_keywords | strip | split: "|" | compact | join: "," -%}
+{% comment %} page hero image {% endcomment %}
+{%- if page.data.has_hero -%}
+{%- assign page_image_url = "/" | append: page.permalink | append: ".png" -%}
+{%- else -%}
+{%- assign page_image_url = "/" | append: page.data.image_url -%}
+{%- endif -%}
+{%- assign absolute_page_image_url = site.base_url | append: page_image_url -%}

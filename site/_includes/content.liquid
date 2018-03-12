@@ -2,9 +2,8 @@
   <h2 class="post_title">{{ page.title }}</h2>
   {%- if is_post -%}{% include "published_at.liquid" %}{%- endif -%}
   {%- if page.data.has_image -%}
-  {% comment %}NOT SUPPORTED: <figure>{{page.data.image_url | img_tag: page.data.image_alt}}</figure> {% endcomment %}
   <figure class="post_hero">
-    <img src="{{page.data.image_url}}" alt="{{page.data.image_alt | escape}}" />
+    <img src="{{page_image_url}}" alt="{{page.data.image_alt | escape}}" />
     <figcaption>{{page.data.image_alt | escape}}</figcaption>
   </figure>
   {%- endif %}
