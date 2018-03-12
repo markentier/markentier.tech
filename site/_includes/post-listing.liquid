@@ -1,7 +1,7 @@
-{% for post in collections.posts.pages %}
+{% for page in collections.posts.pages %}
 <article class="index_listing_post">
-  <a href="/{{post.permalink}}"><h2 class="post_title">{{post.title}}</h2>
+  <a href="/{{page.permalink}}"><h2 class="post_title">{{page.title}}</h2>
   {% include "published_at.liquid" %}
-  {{post.excerpt}}</a>
+  {{page.excerpt}}</a>
 </article>
 {% endfor %}
