@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>markentier.tech</title><link>https://markentier.tech/</link><description>About code and people</description><item><title>Push, rinse, repeat, …</title><link>https://markentier.tech//posts/2018/03/push-rinse-repeat</link><description>&lt;p&gt;I haven&apos;t bootstrapped a blog or static site for quite some time.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>markentier.tech</title><link>https://markentier.tech</link><description>About code and people</description><item><title>Push, rinse, repeat, …</title><link>https://markentier.tech/posts/2018/03/push-rinse-repeat</link><description>&lt;p&gt;I haven&apos;t bootstrapped a blog or static site for quite some time.&lt;/p&gt;
 &lt;p&gt;With a service like netlify this becomes kind of a bearable task.&lt;/p&gt;
 &lt;p&gt;And since this site hasn&apos;t seen much popularity yet—it just exists for less than 24 hours—I can even play this game live and in production.
 Like the good old PHP-FTP times.&lt;/p&gt;
@@ -8,7 +8,7 @@ Like the good old PHP-FTP times.&lt;/p&gt;
 Bear with me, actual content will follow. Hence this new site. ;-)&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;em&gt;Crossposted to: &lt;a href=&quot;https://dev.to/asaaki/push-rinse-repeat---16jo&quot;&gt;dev.to&lt;/a&gt;, &lt;a href=&quot;https://medium.com/markentier-tech/push-rinse-repeat-1e277fa35942&quot;&gt;Medium&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-</description><guid>https://markentier.tech//posts/2018/03/push-rinse-repeat</guid><pubDate>Sun, 11 Mar 2018 18:00:00 +0000</pubDate></item><item><title>Hello, code!</title><link>https://markentier.tech//posts/2018/03/hello-code</link><description>&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;/p&gt;
+</description><guid>https://markentier.tech/posts/2018/03/push-rinse-repeat</guid><pubDate>Sun, 11 Mar 2018 18:00:00 +0000</pubDate></item><item><title>Hello, code!</title><link>https://markentier.tech/posts/2018/03/hello-code</link><description>&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;/p&gt;
 &lt;p&gt;This blog post has no deeper meaning.
 It exists for sole entertainment of systems, servers, build tools, and the author of this site.&lt;/p&gt;
 &lt;pre style=&quot;background-color:#ffffff&quot;&gt;
@@ -20,4 +20,4 @@ It exists for sole entertainment of systems, servers, build tools, and the autho
 &lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;font-weight:bold;color:#a71d5d;&quot;&gt;end&lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;color:#323232;&quot;&gt;
 &lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;color:#323232;&quot;&gt;
 &lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;font-style:italic;color:#969896;&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;font-style:italic;color:#969896;&quot;&gt;=&amp;gt; 567890-abcdefghi-234567890-abcdefghi-234567890-abcdefghi-234567890-abcdef.80
-&lt;/span&gt;&lt;/pre&gt;</description><guid>https://markentier.tech//posts/2018/03/hello-code</guid><pubDate>Sat, 10 Mar 2018 23:42:00 +0000</pubDate></item></channel></rss>
+&lt;/span&gt;&lt;/pre&gt;</description><guid>https://markentier.tech/posts/2018/03/hello-code</guid><pubDate>Sat, 10 Mar 2018 23:42:00 +0000</pubDate></item></channel></rss>
