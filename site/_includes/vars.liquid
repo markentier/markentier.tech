@@ -1,1 +1,6 @@
 {%- capture canonical_url %}{{site.base_url}}/{{page.permalink}}{% endcapture -%}
+{%- if page.collection == "posts" -%}
+{%- assign is_post = true -%}
+{%- else -%}
+{%- assign is_post = false -%}
+{%- endif -%}
