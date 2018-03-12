@@ -1,6 +1,8 @@
 # markentier.tech
 
-COBALT_BIN = cobalt.rs/target/release/cobalt
+COBALT_GH = https://github.com/cobalt-org/cobalt.rs.git
+COBALT_DIR = cobalt.rs
+COBALT_BIN = $(COBALT_DIR)/target/release/cobalt
 
 build: $(COBALT_BIN)
 	$(COBALT_BIN) build
@@ -12,7 +14,10 @@ serve: $(COBALT_BIN)
 clean: $(COBALT_BIN)
 	$(COBALT_BIN) clean
 
-$(COBALT_BIN):
+$(COBALT_BIN): $(COBALT_DIR)
 	cd cobalt.rs && cargo build --release --features "syntax-highlight,sass"
 
 build-cobalt: $(COBALT_BIN)
+
+$(COBALT_DIR):
+	git clone $(COBALT_GH)
