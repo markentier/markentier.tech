@@ -1,5 +1,7 @@
-.vscode
 **/*.rs.bk
+.DS_Store
+.vscode
 /target/
 Cargo.lock
 cobalt.rs
+local-stuff
