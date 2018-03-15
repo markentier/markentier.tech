@@ -16,7 +16,8 @@
 {%- assign keywords = keywords_array | join: "," -%}
 {% comment %} page hero image {% endcomment %}
 {%- if page.data.has_hero -%}
-{%- assign page_image_url = "/" | append: page.permalink | append: ".png" -%}
+{%- assign link_size = page.permalink | size | minus: 0 -%}
+{%- assign page_image_url = "/" | append: page.permalink | slice: 0, link_size | append: ".png" -%}
 {%- else -%}
 {%- assign page_image_url = "/" | append: page.data.image_url -%}
 {%- endif -%}
