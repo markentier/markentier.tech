@@ -1,5 +1,8 @@
 source: site
 destination: public
+template_extensions:
+  - md
+  - liquid
 
 site:
   title: markentier.tech
@@ -16,6 +19,13 @@ site:
 default:
   excerpt_separator: "\n\n"
   is_draft: false
+  data:
+    page_type: page
+    tags: []
+    has_image: false
+    has_hero: false
+    image_url: assets/m-twitter-card-default-image--1024x512.png
+    image_alt: 'markentier.tech'
 
 syntax_highlight:
   # InspiredGitHub
@@ -34,11 +44,7 @@ assets:
 pages:
   default:
     data:
-      tags: []
-      has_image: false
-      has_hero: false
-      image_url: assets/m-twitter-card-default-image--1024x512.png
-      image_alt: 'markentier.tech'
+      page_type: page
 
 posts:
   title: ~
@@ -51,8 +57,4 @@ posts:
   default:
     permalink: /{{parent}}/{{slug}}
     data:
-      tags: []
-      has_image: false
-      has_hero: false
-      image_url: assets/m-twitter-card-default-image--1024x512.png
-      image_alt: 'markentier.tech'
+      page_type: article

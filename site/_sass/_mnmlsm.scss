@@ -70,6 +70,10 @@ header h1 #big-m {
     font-size: 6.4rem;
     text-shadow: 0 0 0.75rem #234256;
     margin-left: -0.45rem;
+
+    &::before {
+        content: "m";
+    }
 }
 
 header .description {

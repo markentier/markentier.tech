@@ -13,7 +13,7 @@
         {% include "nav.liquid" %}
       </nav>
       <main id="content">
-      {% if page.title == "home" %}
+      {% if page_type == "index" %}
         {{ page.content }}
       {% else %}
         {%- include 'content.liquid' -%}
