@@ -1,6 +1,8 @@
 layout: default.liquid
 title: Hello, code!
 published_date: 2018-03-10 23:42:00 +0000
+data:
+  tags: [hello, world, new, blog]
 ---
 Nothing but initialization of yet another tech blog.
 

@@ -1,7 +1,9 @@
 {% for page in collections.posts.pages %}
-<article class="index_listing_post">
+{%- assign pdate_iso = page.published_date | date: "%FT%T%z" -%}
+{%- assign pdate_date = page.published_date | date: "%F" -%}
+<article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
   <a href="/{{page.permalink}}"><h2 class="post_title">{{page.title}}</h2>
   {% include "published_at.liquid" %}
-  {{page.excerpt}}</a>
+  <p>{{page.excerpt | strip_html}}</p></a>
 </article>
 {% endfor %}

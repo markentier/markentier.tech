@@ -8,7 +8,7 @@ COBALT_BIN = $(COBALT_DIR)/target/release/cobalt
 build: $(COBALT_BIN)
 	$(COBALT_BIN) build
 	cp site/_redirects site/_headers public
-	find public -iname '*.html' -exec tidy -q -m -i -w 240 {} \;
+	find public -iname '*.html' -exec echo {} \; -exec tidy -q -m -i -w 240 {} \;
 
 serve: $(COBALT_BIN)
 	$(COBALT_BIN) serve

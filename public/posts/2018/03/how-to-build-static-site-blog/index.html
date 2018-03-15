@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Apple macOS version 5.6.0">
+  <meta charset="utf-8">
+  <title>How to build a static site/blog | markentier.tech</title>
+  <meta name="description" content="About code and people">
+  <meta name="keywords" content="static site,generator,netlify,cobalt.rs,ssl/tls,github,lets encrypt,blog,code,people">
+  <meta name="author" content="Christoph Grabo (@asaaki)">
+  <link rel="author" href="https://plus.google.com/116780993927713078767?rel=author">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for markentier.tech" href="/feed.rss.xml">
+  <link rel="alternate" type="application/json" title="JSON Feed for markentier.tech" href="/feed.json">
+  <link rel="stylesheet" href="/style/mtt.css?v=1">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/m-128.png" type="image/png">
+  <link rel="canonical" href="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog">
+  <meta name="twitter:title" content="How to build a static site/blog">
+  <meta name="twitter:description" content="A comment on my previous post »Push, rinse, repeat …« made me think about that you might want to know how this blog...">
+  <meta name="twitter:creator" content="@asaaki">
+  <meta name="twitter:image" content="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog.png">
+  <meta name="twitter:image:alt" content="About how to build a static site or blog">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog">
+  <meta property="og:title" content="How to build a static site/blog">
+  <meta property="og:description" content="A comment on my previous post »Push, rinse, repeat …« made me think about that you might want to know how this blog...">
+  <meta property="article:published_time" content="2018-03-15T00:23:42+0000">
+  <meta property="og:image" content="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog.png">
+  <meta property="og:site_name" content="markentier.tech">
+  <meta property="og:see_also" content="https://markentier.tech">
+  <meta property="article:author" content="Christoph Grabo">
+  <meta property="article:tag" content="static site">
+  <meta property="article:tag" content="generator">
+  <meta property="article:tag" content="netlify">
+  <meta property="article:tag" content="cobalt.rs">
+  <meta property="article:tag" content="ssl/tls">
+  <meta property="article:tag" content="github">
+  <meta property="article:tag" content="lets encrypt">
+  <meta property="article:tag" content="blog">
+  <meta property="article:tag" content="code">
+  <meta property="article:tag" content="people">
+</head>
+<body>
+  <div id="wrppr">
+    <header>
+      <h1><a href="/" rel="home" title="home"><span id="big-m">m</span> markentier.tech</a></h1>
+      <p class="site_description">About code and people</p>
+    </header>
+    <nav>
+      <a href="/">home</a> | <a href="/about">about</a> <!-- | … more links … -->
+    </nav>
+    <main id="content">
+      <article itemscope itemtype="http://schema.org/Article">
+        <h2 itemprop="headline" class="post_title">How to build a static site/blog</h2><small class="published_at_line"><time class="published_at" itemprop="datePublished" content="2018-03-15T00:23:42+0000" datetime=
+        "2018-03-15T00:23:42+0000">2018-03-15</time> <time class="modified_at" itemprop="dateModified" content="2018-03-15T00:23:42+0000" datetime="2018-03-15T00:23:42+0000">2018-03-15</time></small>
+        <figure class="post_hero">
+          <img itemprop="image" src="/posts/2018/03/how-to-build-static-site-blog.png" alt="About how to build a static site or blog">
+          <figcaption>
+            About how to build a static site or blog
+          </figcaption>
+        </figure>
+        <p>A comment on my previous post <a href="/posts/2018/03/push-rinse-repeat/">»Push, rinse, repeat …«</a> made me think about that you might want to know how this blog is being built and deployed.</p>
+        <p>This site (if you reading this blog post at its canonical location) is freshly hatched. And I realized that I used a couple of things some people might not be familiar with … yet.</p>
+        <p>While everything is still in progress, the heavy lifting for getting it up and running is already done, and I think I can maybe give you some insights on how it is made.</p>
+        <p>In this article we will discover how to get a static site or blog bootstrapped with a GitHub repository, filling it with cobalt.rs, deploying on netlify, using your own domain, get it DNS managed, and using SSL/TLS via Let's
+        Encrypt (https!). A final note on status monitoring via updown.io included as well.</p>
+        <p>Sounds exciting? Then keep reading. Beware the long read, it is probably not your typical how-to guide, it is more like a journey.</p>
+        <h3>Darkness was over the surface of the deep</h3>
+        <p>Step Zero would be to have a reason why you want to build a site or blog, but I assume you found your reason already and just cannot wait to get your ideas published into the world.</p>
+        <p>So especially tech-savvy people love to build or run their own stuff. The middle of a hosted blog and running stuff on your own server is probably using some managed services without relying on the software of the hosting
+        providers. Tools like WordPress are cool and I remember that they are quite beginner friendly, also to the lesser tech-savvy ones, but—no matter your actual background and knowledge—you might have come to the conclusion that you
+        really want to explore the field of owning more of the build and run aspect. You might not need a fully fledged software, maybe even require less to no dynamic features (makes it mostly safer against hacks), or you're just not
+        satisfied with what they offer. But writing your own CMS or blog engine from scratch is also something many developers have tried, but in the end stepped away or replaced this idea with better projects. I always wanted to build
+        such software, but lost interest or motivation in continuing it. A static site usually serves my purposes quite well.</p>
+        <h3>All your rebase are belong to us</h3>
+        <p>Anyway I'm lost in my own thoughts, but you want to read a guide, not my history and reasoning. At least I could save this for a future post.</p>
+        <p>So, the very first thing is: <strong>how and where do I want to store my data (content and site stuff) and which tool do I want to use to build and manage?</strong></p>
+        <p>Nowadays a GitHub repository seems to be the most favourite choice. You could use alternative services and even another version control system entirely. Git is quite popular and you will find a lot of help out there when
+        stuck.</p>
+        <p><img src="/posts/2018/03/how-to_new-github-repo.png" alt="How to create a new repository on GitHub"></p>
+        <p>Since we want to build a static site, we need a tool helping us. Of course, you could write and maintain everything manually, but you will get exhausted by it.</p>
+        <h3>Generators, Generators, Generators!</h3>
+        <p>So naturally a vast amount of static site generators exists, because a lot of people feel the same. And plenty of them created applications to help us.</p>
+        <p>I went for <a href="https://cobalt-org.github.io/">cobalt</a>, because I want to learn and use Rust more often. If you not so much into such adventures, then the following tools will do it as well: <em>Jekyll, Hugo, OctoPress,
+        Gatsby, Middleman, …</em> (check out <a href="https://www.staticgen.com/">https://www.staticgen.com/</a> to get a more complete list of available static site generators). Jekyll is special, because it is also supported by <a href=
+        "https://pages.github.com/">GitHub Pages</a>, which would be another alternative to deploy your static site.</p>
+        <p><img src="/posts/2018/03/how-to_cobalt-org.png" alt="Homepage of cobalt.rs, a static site generator written in Rust"></p>
+        <p>Within your freshly cloned and probably still very empty repository you run something like <code>cobalt init</code> (or whatever your tool requires) and start the heavy work of creating a website from bits and pieces. You can
+        spend already hours and days just building the site, since layout and design are a neverending story. But also pages and posts need to be written, and this will take some time as well.</p>
+        <h3><code>&lt;/head&gt;&lt;body&gt;</code></h3>
+        <p>Of course, you can start easy. It doesn't have to be pixel perfect right from the start. Look at this one, it might seem a bit rough and edgy here and there (depending when you will discover this article).</p>
+        <p>Anyway, let's assume you learned some lessons around web design and writing. So don't forget to commit and push your changes to your GitHub repository. Do it more often than not. Your computer might store everything now, but
+        it's not reliable in the long run and you don't want to deploy your machine anyway. Building a home server is a completely different story.</p>
+        <p>So, you built, wrote, pushed. Now we come to the beauty of 2018: let it automatically publish your site and expose it to the world!</p>
+        <h3>Publish it like it's hot</h3>
+        <p>I discovered <a href="https://www.netlify.com/">netlify</a> just because we use and support it at my work (<a href="https://www.contentful.com/">Contentful</a>), and by googling for this article I just found some resources if
+        you're interested in it:</p>
+        <ul>
+          <li>
+            <a href="https://www.gatsbyjs.org/blog/2017-12-06-gatsby-plus-contentful-plus-netlify/">https://www.gatsbyjs.org/blog/2017-12-06-gatsby-plus-contentful-plus-netlify/</a>
+          </li>
+          <li>
+            <a href="https://dev.to/milkstarz/contentful-and-netlify-the-dynamic-duo-of-static-site-management-55i">https://dev.to/milkstarz/contentful-and-netlify-the-dynamic-duo-of-static-site-management-55i</a>
+          </li>
+          <li>
+            <a href="https://www.smcculloch.com/code/netlify-contentful-jamstack">https://www.smcculloch.com/code/netlify-contentful-jamstack</a>
+          </li>
+          <li>
+            <a href="https://www.netlify.com/blog/2017/07/06/contentful-an-api-first-cms/">https://www.netlify.com/blog/2017/07/06/contentful-an-api-first-cms/</a>
+          </li>
+        </ul>
+        <p>Since I'm not starting with a Contentful-backed approach I will not dive deeper into it. I leave the advertising to our evangelists for now. :-)</p>
+        <p>Initially I really thought that GitHub Pages would be okay already, but netlify comes with some batteries I didn't want to miss, the biggest one was the <a href="https://letsencrypt.org/">Let's Encrypt</a> based SSL/TLS
+        certificate, so I can get <code>https</code> all the time and not have to think about the renewal in the future. This works best if you not only bring your own domain, but also can configure it this way that you can let netlify
+        manage your DNS settings (I think this was recommended for better subdomain stuff and enforcing https across them; could be done in your DNS provider probably, but hey, let's give it a try and see how netlify can deal with it).</p>
+        <p><img src="/posts/2018/03/how-to_netlify-dns.png" alt="Manage DNS for your domain with netlify"></p>
+        <p>Another cool feature is that you can use GitHub's pull requests (and branching in general) to get a preview deployment. So you can check your changes not only on your local machine, but also let other see how the things will
+        look like (pretty good for teams and collaboration). In fact, I used this for this blog post, so I can test this opportunity. Another tiny benefit is that you can use online validators (like <a href=
+        "https://validator.w3.org/nu/">https://validator.w3.org/nu/</a> for HTML) and fix issues before they go into your production site. Sounds cool, he?</p>
+        <p><em>Hey, netlify folks, when you reading this by accident, you can donate a bit to <a href="https://www.paypal.me/asaaki">my PayPal account</a> for my advertisement efforts.</em></p>
+        <p>Setting up netlify is quite easy even without the domain stuff. Point it to your repository and maybe define what (supported) tool should be run. Since <code>cobalt</code> is not widely used yet, I already ship my generated site
+        with the repo, so I only need to tell netlify, which folder to use instead. That would be also the case if you went full manual and craft your pages by hand.</p>
+        <p>Netlify offers a lot more stuff, which I'm not using yet. You should discover their features on your own. Split testing might be interesting for sites with customers and your attempts to drag them to CTAs (call to actions). Form
+        handling is probably nice if you want to get feedback or collect other data.</p>
+        <h3>Hey, author, where you're going?</h3>
+        <p>Sorry. You wanted to know how difficult it is to get your site deployed with netlify.</p>
+        <p>Well, I have to disappoint you. Once you've set up your repo, branch and optional configs, you're pretty much done. You can either trigger a deployment manually or just push changes to your previously configured branch. You wait
+        a few seconds (the very first deployment might take a slightly bit longer) and then you check if you're site is up and running.</p>
+        <p>I really mean it, it is so simple, that any How To for netlify is more complicated and longer than their step by step guidance within their interface. Give it a try.</p>
+        <p>If you're really stuck, then their help pages should do the rest. All the things I wanted to use and try was provided within netlify's documentation. And in the end, deploying a static site should not be so much magic.</p>
+        <h3>Vertrauen ist gut, Kontrolle ist besser</h3>
+        <p>I know that nothing comes with perfect 100 percent uptime. That's usually okay. And better you're notified about it. Independently, of course. While you can go with well-known services like pingdom, I use <a href=
+        "https://updown.io/">updown.io</a>, which is not free, but with initial signup you will get enough credits to monitor a single website for a long time. If you think it is really not worth it, change to another uptime monitoring
+        solution.</p>
+        <p>What I like about updown is, that they offer a simple status page, you can expose via a subdomain you control. For this blog you can check it under <a href=
+        "https://status.markentier.tech/">https://status.markentier.tech/</a>:</p>
+        <p><img src="/posts/2018/03/how-to_updown-monitoring.png" alt="updown.io uptime monitoring page for markentier.tech"></p>
+        <p>That's all I have for today.</p>
+        <p>I hope this article is useful to anyone of you. If you want to give feedback, have questions or suggestions, you can usually find me on Twitter: <a href="https://twitter.com/asaaki">https://twitter.com/asaaki</a> — See you soon!
+        👋🏽</p>
+        <div class="meta">
+          <link itemprop="url" href="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog">
+          <link itemprop="mainEntityOfPage" href="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog">
+          <div itemprop="publisher author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="name" content="Christoph Grabo">
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer>
+      © 2018 markentier.tech / Christoph Grabo | <a href="/feed.rss.xml" rel="alternate" type="application/rss+xml" title="RSS Feed for markentier.tech">rss</a>, <a href="/feed.json" rel="alternate" type="application/json" title=
+      "JSON Feed for markentier.tech">jsonfeed</a> | <a href="//status.markentier.tech/" rel="external" title="Status page for markentier.tech (provided by updown.io)">status</a>
+    </footer>
+  </div>
+</body>
+</html>

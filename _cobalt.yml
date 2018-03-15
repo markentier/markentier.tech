@@ -4,16 +4,17 @@ destination: public
 site:
   title: markentier.tech
   description: About code and people
-  base_url: https://markentier.tech/
+  base_url: https://markentier.tech
   data:
-    keywords: tech, IT, programming, Rust, code, social, humans, software, development, engineering, conduct, diversity, inclusion
+    keywords: [code, people, humans, software, development, diversity, inclusion, rust, programming, unicorn, tech]
+    author: Christoph Grabo
+    author_nick: "@asaaki"
     example: value
 
 # Page/Post options
 
 default:
   excerpt_separator: "\n\n"
-  # excerpt_separator: ''
   is_draft: false
 
 syntax_highlight:
@@ -33,8 +34,10 @@ assets:
 pages:
   default:
     data:
+      tags: []
       has_image: false
-      image_url: https://markentier.tech/assets/m-twitter-card-default-image--512.png
+      has_hero: false
+      image_url: assets/m-twitter-card-default-image--1024x512.png
       image_alt: 'markentier.tech'
 
 posts:
@@ -48,6 +51,8 @@ posts:
   default:
     permalink: /{{parent}}/{{slug}}
     data:
+      tags: []
       has_image: false
-      image_url: https://markentier.tech/assets/m-twitter-card-default-image--512.png
+      has_hero: false
+      image_url: assets/m-twitter-card-default-image--1024x512.png
       image_alt: 'markentier.tech'
