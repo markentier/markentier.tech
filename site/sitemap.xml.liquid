@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for page in collections.posts.pages %}
   <url>
-    <loc>{{site.base_url | append: "/" | append: page.permalink}}</loc>
+    <loc>{{site.base_url | append: "/" | append: page.permalink | append: "/"}}</loc>
     <lastmod>{{page.published_date | date: "%F"}}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
