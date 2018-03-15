@@ -55,6 +55,6 @@ posts:
   rss: feed.rss.xml
   jsonfeed: feed.json
   default:
-    permalink: /{{parent}}/{{slug}}
+    permalink: /{{parent}}/{{slug}}/
     data:
       page_type: article

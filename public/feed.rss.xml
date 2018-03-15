@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>markentier.tech</title><link>https://markentier.tech</link><description>About code and people</description><item><title>How to build a static site/blog</title><link>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog</link><description>&lt;p&gt;A comment on my previous post &lt;a href=&quot;/posts/2018/03/push-rinse-repeat/&quot;&gt;»Push, rinse, repeat …«&lt;/a&gt; made me think about that you might want to know how this blog is being built and deployed.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>markentier.tech</title><link>https://markentier.tech</link><description>About code and people</description><item><title>How to build a static site/blog</title><link>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</link><description>&lt;p&gt;A comment on my previous post &lt;a href=&quot;/posts/2018/03/push-rinse-repeat/&quot;&gt;»Push, rinse, repeat …«&lt;/a&gt; made me think about that you might want to know how this blog is being built and deployed.&lt;/p&gt;
 &lt;p&gt;This site (if you reading this blog post at its canonical location) is freshly hatched. And I realized that I used a couple of things some people might not be familiar with … yet.&lt;/p&gt;
 &lt;p&gt;While everything is still in progress, the heavy lifting for getting it up and running is already done, and I think I can maybe give you some insights on how it is made.&lt;/p&gt;
 &lt;p&gt;In this article we will discover how to get a static site or blog bootstrapped with a GitHub repository, filling it with cobalt.rs, deploying on netlify, using your own domain, get it DNS managed, and using SSL/TLS via Let&apos;s Encrypt (https!). A final note on status monitoring via updown.io included as well.&lt;/p&gt;
@@ -53,7 +53,7 @@ While you can go with well-known services like pingdom, I use &lt;a href=&quot;h
 &lt;p&gt;&lt;img src=&quot;/posts/2018/03/how-to_updown-monitoring.png&quot; alt=&quot;updown.io uptime monitoring page for markentier.tech&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;That&apos;s all I have for today.&lt;/p&gt;
 &lt;p&gt;I hope this article is useful to anyone of you. If you want to give feedback, have questions or suggestions, you can usually find me on Twitter: &lt;a href=&quot;https://twitter.com/asaaki&quot;&gt;https://twitter.com/asaaki&lt;/a&gt; — See you soon! 👋🏽&lt;/p&gt;
-</description><guid>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog</guid><pubDate>Thu, 15 Mar 2018 00:23:42 +0000</pubDate></item><item><title>Push, rinse, repeat, …</title><link>https://markentier.tech/posts/2018/03/push-rinse-repeat</link><description>&lt;p&gt;I haven&apos;t bootstrapped a blog or static site for quite some time.&lt;/p&gt;
+</description><guid>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</guid><pubDate>Thu, 15 Mar 2018 00:23:42 +0000</pubDate></item><item><title>Push, rinse, repeat, …</title><link>https://markentier.tech/posts/2018/03/push-rinse-repeat/</link><description>&lt;p&gt;I haven&apos;t bootstrapped a blog or static site for quite some time.&lt;/p&gt;
 &lt;p&gt;With a service like netlify this becomes kind of a bearable task.&lt;/p&gt;
 &lt;p&gt;And since this site hasn&apos;t seen much popularity yet—it just exists for less than 24 hours—I can even play this game live and in production.
 Like the good old PHP-FTP times.&lt;/p&gt;
@@ -63,7 +63,7 @@ Like the good old PHP-FTP times.&lt;/p&gt;
 Bear with me, actual content will follow. Hence this new site. ;-)&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;em&gt;Crossposted to: &lt;a href=&quot;https://dev.to/asaaki/push-rinse-repeat---16jo&quot;&gt;dev.to&lt;/a&gt;, &lt;a href=&quot;https://medium.com/markentier-tech/push-rinse-repeat-1e277fa35942&quot;&gt;Medium&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-</description><guid>https://markentier.tech/posts/2018/03/push-rinse-repeat</guid><pubDate>Sun, 11 Mar 2018 18:00:00 +0000</pubDate></item><item><title>Hello, code!</title><link>https://markentier.tech/posts/2018/03/hello-code</link><description>&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;/p&gt;
+</description><guid>https://markentier.tech/posts/2018/03/push-rinse-repeat/</guid><pubDate>Sun, 11 Mar 2018 18:00:00 +0000</pubDate></item><item><title>Hello, code!</title><link>https://markentier.tech/posts/2018/03/hello-code/</link><description>&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;/p&gt;
 &lt;p&gt;This blog post has no deeper meaning.
 It exists for sole entertainment of systems, servers, build tools, and the author of this site.&lt;/p&gt;
 &lt;pre style=&quot;background-color:#ffffff&quot;&gt;
@@ -75,4 +75,4 @@ It exists for sole entertainment of systems, servers, build tools, and the autho
 &lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;font-weight:bold;color:#a71d5d;&quot;&gt;end&lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;color:#323232;&quot;&gt;
 &lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;color:#323232;&quot;&gt;
 &lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;font-style:italic;color:#969896;&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;background-color:#ffffff;font-style:italic;color:#969896;&quot;&gt;=&amp;gt; 567890-abcdefghi-234567890-abcdefghi-234567890-abcdefghi-234567890-abcdef.80
-&lt;/span&gt;&lt;/pre&gt;</description><guid>https://markentier.tech/posts/2018/03/hello-code</guid><pubDate>Sat, 10 Mar 2018 23:42:00 +0000</pubDate></item></channel></rss>
+&lt;/span&gt;&lt;/pre&gt;</description><guid>https://markentier.tech/posts/2018/03/hello-code/</guid><pubDate>Sat, 10 Mar 2018 23:42:00 +0000</pubDate></item></channel></rss>
