@@ -67,6 +67,22 @@ body {
 }
 
 .index_listing_post {
+    opacity: 0.8;
+
+    .coverthumb {
+        width: 40%;
+        float: right;
+        margin: 0.25em 0 0 0.5em;
+        opacity: 0.666;
+    }
+
+    &:hover {
+        opacity: 1;
+        .coverthumb {
+            opacity: 1;
+        }
+    }
+
     a {
         text-decoration: none;
     }
