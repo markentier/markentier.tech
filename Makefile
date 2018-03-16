@@ -32,3 +32,10 @@ build-cobalt: $(COBALT_BIN)
 
 $(COBALT_DIR):
 	git clone $(COBALT_GH)
+
+# netlify - testing
+
+netlify-build: netlify-cobalt-build build-netlify-files build-sitemap
+
+netlify-cobalt-build:
+	tools/cobalt build
