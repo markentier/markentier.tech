@@ -47,5 +47,5 @@ netlify-build: netlify-cobalt-build build-netlify-files build-sitemap
 .PHONY: netlify-build
 
 netlify-cobalt-build:
-	tools/cobalt build
+	tools/cobalt -L trace build
 .PHONY: netlify-cobalt-build
