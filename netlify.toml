@@ -7,7 +7,7 @@
 [build]
   base    = "site"
   publish = "public"
-  command = "make netlify-build -d"
+  command = "make netlify-build -f ../Makefile"
 
 # # Production context: All deploys to the main
 # # repository branch will inherit these settings.
