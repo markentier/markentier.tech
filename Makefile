@@ -5,6 +5,12 @@ COBALT_GH = https://github.com/cobalt-org/cobalt.rs.git
 COBALT_DIR = cobalt.rs
 COBALT_BIN = $(COBALT_DIR)/target/release/cobalt
 # brew install tidy-html5 fd
+TIDY_SETTINGS = -q -m -w 0 -i \
+	--indent-with-tabs yes \
+	--indent-spaces 2 \
+	--tab-size 2 \
+	--clean yes \
+	--join-styles yes
 
 build: $(COBALT_BIN) build-site build-netlify-files build-sitemap build-tidy-html
 
@@ -19,8 +25,7 @@ build-sitemap:
 
 build-tidy-html:
 	cd public && \
-	fd -e html \
-		-x tidy -q -m -i -w 10240 {} \;
+		fd -e html -x tidy $(TIDY_SETTINGS) {} \;
 
 serve: $(COBALT_BIN)
 	$(COBALT_BIN) serve
