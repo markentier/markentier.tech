@@ -11,10 +11,10 @@
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="/assets/m-128.png" type="image/png" />
 {%- if is_post %}{% include 'head.posts.liquid' %}{% endif -%}
-{% include 'head.tracking.liquid' %}
 {% if page_type == 'index' or page_type == 'error' %}{% for page in collections.posts.pages limit: 2 %}
 {%- assign canonical_page_url = site.base_url | append: "/" | append: page.permalink -%}
 <link rel="prefetch prerender" href="{{canonical_page_url}}" />
 {% endfor %}{% endif %}
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{site.title}}" href="/{{collections.posts.rss}}" />
 <link rel="alternate" type="application/json" title="JSON Feed for {{site.title}}" href="/{{collections.posts.jsonfeed}}" />
+{% include 'head.tracking.liquid' %}
