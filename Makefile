@@ -1,9 +1,10 @@
 # markentier.tech
 
+# cobalt.rs/
 COBALT_GH = https://github.com/cobalt-org/cobalt.rs.git
 COBALT_DIR = cobalt.rs
 COBALT_BIN = $(COBALT_DIR)/target/release/cobalt
-# brew install tidy-html5
+# brew install tidy-html5 fd
 
 build: $(COBALT_BIN) build-site build-netlify-files build-sitemap build-tidy-html
 
@@ -17,7 +18,9 @@ build-sitemap:
 	mv public/sitemap.xml.html public/sitemap.xml
 
 build-tidy-html:
-	find public -iname '*.html' -exec echo {} \; -exec tidy -q -m -i -w 240 {} \;
+	cd public && \
+	fd -e html \
+		-x tidy -q -m -i -w 10240 {} \;
 
 serve: $(COBALT_BIN)
 	$(COBALT_BIN) serve
