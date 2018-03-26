@@ -14,21 +14,11 @@ GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(DEPLOY_URL) $(GUTENBERG_OUTDIR)
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
-netlify-build: netlify-build-site netlify-build-feeds
-
 netlify-lambda:
 	yarn && yarn build:lambda
 
-netlify-build-site:
-	$(GUTENBERG_BUILD)
-
-netlify-build-feeds:
-	mv atom/index.html feed.atom.xml
-	mv rss/index.html feed.rss.xml
-	mv json/index.html feed.json
-
-
 build: build-dirty build-tidy-html
+netlify-build: build-dirty netlify-build-tidy-html
 
 build-preview: build-dirty
 
@@ -45,6 +35,9 @@ build-feeds:
 build-tidy-html:
 	cd public && \
 		fd -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
+netlify-build-tidy-html:
+	cd public && \
+		tools/fd -e html -x sh -c "echo {} && tools/tidy $(TIDY_SETTINGS) {}" \;
 
 serve:
 	cd site && $(GUTENBERG_SERVE)
