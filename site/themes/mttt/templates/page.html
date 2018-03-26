@@ -20,7 +20,13 @@
             <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
           </div>
           <div class="time_and_words">
-            <span>reading time: ~ <strong>{{page.reading_time}}</strong> minutes</span>
+            <span>reading time:
+               {% if page.reading_time < 1 %}
+               less than a minute
+               {% else %}
+               ~ <strong>{{page.reading_time}}</strong> minute{% if page.reading_time != 1 %}s{% endif %}
+               {% endif %}
+            </span>
             <span>(<strong>{{page.word_count}}</strong> words)</span>
           </div>
         </div>
