@@ -3,6 +3,7 @@
 {% macro fq_sec(base) %}{{base}}_index.md{% endmacro fq_sec %}
 
 {% macro get_cover_image_url(url) %}{{url}}cover.png{% endmacro get_cover_image_url %}
+{% macro get_default_cover_image_url(base,img) %}{{base}}/{{img}}{% endmacro get_default_cover_image_url %}
 
 {% macro sec_traverse(sec) %}
     {{ self::sec_pages(sec=sec) }}
