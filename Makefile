@@ -1,5 +1,5 @@
 # markentier.tech
-DEPLOY_URL ?= https://markentier.tech
+NETLIFY_DEPLOY_URL ?= https://markentier.tech
 
 # brew install tidy-html5 fd
 TIDY_SETTINGS = -q -m -w 0 -i \
@@ -11,7 +11,7 @@ TIDY_SETTINGS = -q -m -w 0 -i \
 
 GUTENBERG = gutenberg
 GUTENBERG_OUTDIR = --output-dir ../public
-GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(DEPLOY_URL) $(GUTENBERG_OUTDIR)
+GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBERG_OUTDIR)
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
 netlify: netlify-build netlify-lambda
