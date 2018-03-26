@@ -15,6 +15,6 @@ window.onload = () => {
     const start = t.navigationStart
     const loadTime = (end - start) / 1000
     const footer = document.querySelector('footer')
-    footer.innerHTML += ` | <span>Page loaded in <strong>${loadTime}</strong> seconds</span>`
+    footer.innerHTML += `<br /><small><code>Page loaded in <strong>${loadTime}</strong> seconds<code></small>`
   }, 0)
 }

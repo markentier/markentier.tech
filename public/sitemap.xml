@@ -1,25 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</loc>
-    <lastmod>2018-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
+<!-- build at: 1522059286 -->
   <url>
     <loc>https://markentier.tech/posts/2018/03/push-rinse-repeat/</loc>
     <lastmod>2018-03-11</lastmod>
-    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</loc>
+    <lastmod>2018-03-15</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://markentier.tech/posts/2018/03/hello-code/</loc>
     <lastmod>2018-03-10</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://markentier.tech/404/</loc>
+    
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/about/</loc>
+    <lastmod>2018-03-11</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/json/</loc>
+    
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/atom/</loc>
+    
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/rss/</loc>
+    
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/posts/2018/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://markentier.tech/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/posts/2018/04/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/posts/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/posts/2018/03/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/categories/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/categories/default/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/blog/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/bootstrap/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/cobalt-rs/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/fresh/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/generator/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/github/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/hello/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/lets-encrypt/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/netlify/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/new/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/ssl-tls/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/static-site/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech/tags/world/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://markentier.tech</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

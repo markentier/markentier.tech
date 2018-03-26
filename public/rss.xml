@@ -1,13 +1,25 @@
-{
-  "version": "https://jsonfeed.org/version/1",
-  "title": "markentier.tech",
-  "home_page_url": "https://markentier.tech",
-  "feed_url": "https://markentier.tech/feed.json",
-  "items": [
-    {
-      "id": "https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/",
-      "url": "https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/",
-      "content_text": "&lt;p&gt;A comment on my previous post &lt;a href=&quot;&#x2F;posts&#x2F;2018&#x2F;03&#x2F;push-rinse-repeat&#x2F;&quot;&gt;»Push, rinse, repeat …«&lt;&#x2F;a&gt; made me think about that you might want to know how this blog is being built and deployed.&lt;&#x2F;p&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <channel>
+    <title>markentier.tech</title>
+    <subtitle>About code and people</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://markentier.tech/rss.xml" />
+    <link rel="alternate" type="text/html" href="https://markentier.tech" />
+    <id>markentier.tech</id>
+    <icon>https://markentier.tech/m-128.png</icon>
+    <logo>https://markentier.tech/m-128.png</logo>
+    <rights>Copyright © 2018, markentier.tech</rights>
+    <author>
+      <name>Christoph Grabo</name>
+    </author>
+    <updated>2018-03-15T00:23:42+0000</updated>
+    <entry>
+      <title>How to build a static site&#x2F;blog</title>
+      <link>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</link>
+      <guid>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</guid>
+      <updated>2018-03-15T00:23:42+0000</updated>
+      <summary>A comment on my previous post »Push, rinse, repeat …« made me think about that you might want to know how this blog is being built and deployed.</summary>
+      <content>&lt;p&gt;A comment on my previous post &lt;a href=&quot;&#x2F;posts&#x2F;2018&#x2F;03&#x2F;push-rinse-repeat&#x2F;&quot;&gt;»Push, rinse, repeat …«&lt;&#x2F;a&gt; made me think about that you might want to know how this blog is being built and deployed.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;This site (if you reading this blog post at its canonical location) is freshly hatched. And I realized that I used a couple of things some people might not be familiar with … yet.&lt;&#x2F;p&gt;
 &lt;p&gt;While everything is still in progress, the heavy lifting for getting it up and running is already done, and I think I can maybe give you some insights on how it is made.&lt;&#x2F;p&gt;
@@ -62,12 +74,15 @@ While you can go with well-known services like pingdom, I use &lt;a href=&quot;h
 &lt;p&gt;What I like about updown is, that they offer a simple status page, you can expose via a subdomain you control. For this blog you can check it under &lt;a href=&quot;https:&#x2F;&#x2F;status.markentier.tech&#x2F;&quot;&gt;https:&#x2F;&#x2F;status.markentier.tech&#x2F;&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;img src=&quot;.&#x2F;how-to_updown-monitoring.png&quot; alt=&quot;updown.io uptime monitoring page for markentier.tech&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;That&#x27;s all I have for today.&lt;&#x2F;p&gt;
-&lt;p&gt;I hope this article is useful to anyone of you. If you want to give feedback, have questions or suggestions, you can usually find me on Twitter: &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;asaaki&quot;&gt;https:&#x2F;&#x2F;twitter.com&#x2F;asaaki&lt;&#x2F;a&gt; — See you soon! 👋🏽&lt;&#x2F;p&gt;"
-    },
-    {
-      "id": "https://markentier.tech/posts/2018/03/push-rinse-repeat/",
-      "url": "https://markentier.tech/posts/2018/03/push-rinse-repeat/",
-      "content_text": "&lt;p&gt;I haven&#x27;t bootstrapped a blog or static site for quite some time.&lt;&#x2F;p&gt;
+&lt;p&gt;I hope this article is useful to anyone of you. If you want to give feedback, have questions or suggestions, you can usually find me on Twitter: &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;asaaki&quot;&gt;https:&#x2F;&#x2F;twitter.com&#x2F;asaaki&lt;&#x2F;a&gt; — See you soon! 👋🏽&lt;&#x2F;p&gt;</content>
+    </entry>
+    <entry>
+      <title>Push, rinse, repeat, …</title>
+      <link>https://markentier.tech/posts/2018/03/push-rinse-repeat/</link>
+      <guid>https://markentier.tech/posts/2018/03/push-rinse-repeat/</guid>
+      <updated>2018-03-11T18:00:00+0000</updated>
+      <summary>I haven't bootstrapped a blog or static site for quite some time.</summary>
+      <content>&lt;p&gt;I haven&#x27;t bootstrapped a blog or static site for quite some time.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;With a service like netlify this becomes kind of a bearable task.&lt;&#x2F;p&gt;
 &lt;p&gt;And since this site hasn&#x27;t seen much popularity yet—it just exists for less than 24 hours—I can even play this game live and in production.
@@ -77,12 +92,15 @@ Like the good old PHP-FTP times.&lt;&#x2F;p&gt;
 &lt;p&gt;This is just the second pretty useless post, but I think this is not so unusal for new blogs.
 Bear with me, actual content will follow. Hence this new site. ;-)&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
-&lt;p&gt;&lt;em&gt;Crossposted to: &lt;a href=&quot;https:&#x2F;&#x2F;dev.to&#x2F;asaaki&#x2F;push-rinse-repeat---16jo&quot;&gt;dev.to&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;markentier-tech&#x2F;push-rinse-repeat-1e277fa35942&quot;&gt;Medium&lt;&#x2F;a&gt;&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;"
-    },
-    {
-      "id": "https://markentier.tech/posts/2018/03/hello-code/",
-      "url": "https://markentier.tech/posts/2018/03/hello-code/",
-      "content_text": "&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Crossposted to: &lt;a href=&quot;https:&#x2F;&#x2F;dev.to&#x2F;asaaki&#x2F;push-rinse-repeat---16jo&quot;&gt;dev.to&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;markentier-tech&#x2F;push-rinse-repeat-1e277fa35942&quot;&gt;Medium&lt;&#x2F;a&gt;&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;</content>
+    </entry>
+    <entry>
+      <title>Hello, code!</title>
+      <link>https://markentier.tech/posts/2018/03/hello-code/</link>
+      <guid>https://markentier.tech/posts/2018/03/hello-code/</guid>
+      <updated>2018-03-10T23:42:00+0000</updated>
+      <summary>Nothing but initialization of yet another tech blog.</summary>
+      <content>&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;This blog post has no deeper meaning.
 It exists for sole entertainment of systems, servers, build tools, and the author of this site.&lt;&#x2F;p&gt;
@@ -95,7 +113,7 @@ It exists for sole entertainment of systems, servers, build tools, and the autho
 &lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#272822;color:#f92672;&quot;&gt;end
 &lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#272822;color:#f8f8f2;&quot;&gt;
 &lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#272822;color:#75715e;&quot;&gt;#=&amp;gt; 567890-abcdefghi-234567890-abcdefghi-234567890-abcdefghi-234567890-abcdef.80
-&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;"
-    }
-  ]
-}
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</content>
+    </entry>
+  </channel>
+</feed>
