@@ -16,7 +16,7 @@ GUTENBERG_VERSION = "0.3.2"
 #   [context.production.environment]
 #     ACCESS_TOKEN = "super secret"
 
-[context.deploy-preview.environment]
+[context.deploy-preview]
 command = "make build netlify-lambda DEPLOY_URL=$DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
