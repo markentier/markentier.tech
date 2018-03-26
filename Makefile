@@ -15,6 +15,9 @@ GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBER
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
 netlify: netlify-build netlify-lambda
+	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
+	@echo DEPLOY_URL = $(DEPLOY_URL)
+	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
 
 build: build-dirty build-tidy-html
 netlify-build: build-dirty netlify-build-tidy-html
