@@ -36,23 +36,30 @@
   <meta name="geo.position" content="52.52755;13.47982" />
   <meta name="geo.pluscode" content="https://plus.codes/9F4MGFHH+2W" />
   <meta name="ICBM" content="52.52755, 13.47982" />
-  {%- if page -%}{%- set is_post = page.permalink is containing("/posts/") %}{%- if is_post == true %}
+
+  {% if page %}
+    {% set is_post = page.permalink is containing("/posts/") %}
+  {% if is_post == true %}
+
   <link rel="canonical" href="{{page.permalink}}" />
+
   {% if page.extra.has_hero %}
-  {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
+    {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
   {% else %}
-  {% set page_image_url = macros::get_default_cover_image_url(base=config.base_url, img=config.extra.image_url) %}
+    {% set page_image_url = macros::get_default_cover_image_url(base=config.base_url, img=config.extra.image_url) %}
   {% endif %}
+
   {% set page_image_alt = page.extra.image_alt | default(value=config.extra.image_alt) %}
-  {#% if page.extra.image_alt %}{% set page_image_alt = page.extra.image_alt %}{% else %}{% set page_image_alt = config.extra.image_alt %}{% endif %#}
+
   {% if page.description %}
-  {% set page_description = page.description %}
+    {% set page_description = page.description %}
   {% elif page.summary %}
-  {% set page_description = page.summary %}
+    {% set page_description = page.summary %}
   {% else %}
-  {% set page_description = page.content %}
+    {% set page_description = page.content %}
   {% endif %}
   {% set page_description = page_description | safe | striptags | split(pat=" ") | slice(end=31) | join(sep=" ") %}
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="{{page.permalink}}">
   <meta name="twitter:title" content="{{page.title}}">
@@ -69,11 +76,18 @@
   <meta property="og:site_name" content="{{config.title}}">
   <meta property="og:see_also" content="{{config.base_url}}">
   <meta property="article:author" content="{{config.extra.author}}" />
-  {% if page.tags %}{%- for tag in page.tags -%}
+  {% if page.tags %}{% for tag in page.tags %}
   <meta property="article:tag" content="{{tag}}" />
-  {%- endfor -%}{%- endif -%}
-  {% if page.category %}<meta property="article:section" content="{{page.category}}" />{%- endif -%}
-  {%- endif -%}{%- endif -%}
+  {% endfor %}{% endif %}
+  {% if page.category %}
+  <meta property="article:section" content="{{page.category}}" />
+  {% endif %}
+
+  {# --if-page==post-- #}
+  {% endif %}
+  {# --if-page-- #}
+  {% endif %}
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115476438-1"></script>
   <script async src="/assets/g.js"></script>
   {% block before_head_end %}{% endblock before_head_end %}
