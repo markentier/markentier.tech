@@ -79,7 +79,18 @@
     {
       "id": "{{page.permalink | safe }}",
       "url": "{{page.permalink | safe }}",
-      "content_text": {{page.content | safe | trim | json_encode(pretty=true)}}
+      "date_published": "{{page.date | date(format="%FT%TZ")}}",
+      {%- if page.extra.has_hero %}
+      {%- set page_image_url = self::get_cover_image_url(url=page.permalink) %}
+      "banner_image": "{{page_image_url | safe}}",
+      {%- endif %}
+      {%- if page.summary %}
+      "summary": {{page.summary | safe | striptags | trim | json_encode(pretty=true)}},
+      {%- endif %}
+      {%- if page.tags %}
+      "tags": {{page.tags | json_encode}},
+      {%- endif %}
+      "content_html": {{page.content | safe | trim | json_encode(pretty=true)}}
     },
 {%- else -%}
 <!-- feed type not supported -->
