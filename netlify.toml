@@ -1,6 +1,6 @@
 ### https://www.netlify.com/docs/netlify-toml-reference/
 [build]
-base    = "site"
+base    = ""
 publish = "public"
 command = "" # noop
 # command = "make netlify-lambda"
@@ -17,7 +17,7 @@ GUTENBERG_VERSION = "0.3.2"
 #     ACCESS_TOKEN = "super secret"
 
 [context.deploy-preview.environment]
-command = "make netlify-build netlify-lambda DEPLOY_URL=$DEPLOY_PRIME_URL"
+command = "make build netlify-lambda DEPLOY_URL=$DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
-command = "make netlify-build netlify-lambda DEPLOY_URL=$DEPLOY_PRIME_URL"
+command = "make build netlify-lambda DEPLOY_URL=$DEPLOY_PRIME_URL"
