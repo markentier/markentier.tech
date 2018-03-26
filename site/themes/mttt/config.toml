@@ -1,0 +1,7 @@
+base_url = "https://example.com"
+compile_sass = true
+highlight_code = true
+highlight_theme = "monokai"
+
+[extra]
+mttt = "markentier.tech theme"

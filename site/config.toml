@@ -1,0 +1,31 @@
+title = "markentier.tech"
+description = "About code and people"
+base_url = "https://markentier.tech"
+
+compile_sass = true
+highlight_code = true
+# https://www.getgutenberg.io/documentation/getting-started/configuration/#syntax-highlighting
+highlight_theme = "monokai"
+theme = "mttt"
+
+generate_rss = true
+rss_limit = 10
+generate_categories_pages = true
+generate_tags_pages = true
+
+ignored_content = []
+
+[extra]
+last_feed_update = "2018-03-15T00:23:42Z"
+answer = 42
+site_base = "markentier.tech"
+author = "Christoph Grabo"
+author_nick = "@asaaki"
+# author_email = "asaaki@mannaz.cc"
+# author_uri = ""
+feed_id = "markentier.tech"
+keywords = ["code", "people", "humans", "software", "development", "diversity", "inclusion", "rust", "programming", "unicorn", "tech"]
+has_image = false
+has_hero = false
+image_url = "assets/m-twitter-card-default-image--1024x512.png"
+image_alt = "markentier.tech"

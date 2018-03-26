@@ -1,0 +1,33 @@
+{% extends "default.html" %}
+{% block title %}{{page.title}} | {{config.title}}{% endblock title %}
+{%- block content %}
+{%- set is_post = page.permalink is containing("/posts/") -%}
+      <article{%- if is_post == true %} itemscope itemtype="http://schema.org/Article"{% endif %}>
+        {% if page.extra.has_image -%}
+        {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
+        <figure class="post_hero">
+          <img itemprop="image" src="{{page_image_url}}" alt="{{page.extra.image_alt | safe | escape}}" />
+          <figcaption>{{page.extra.image_alt | safe | escape}}</figcaption>
+        </figure>
+        {%- endif %}
+        <h2 itemprop="headline" class="post_title">{{ page.title }}</h2>
+        {% if is_post %}
+        {% set pdate_iso = page.date | date(format="%FT%T%z") %}
+        {% set pdate_date = page.date | date %}
+          <small class="published_at_line">
+            <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
+            <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
+          </small>
+        {% endif %}
+        {{ page.content | safe }}
+        {% if is_post -%}
+        <div class="meta">
+          <link itemprop="url" href="{{page.permalink}}" />
+          <link itemprop="mainEntityOfPage" href="{{page.permalink}}" />
+          <div itemprop="publisher author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="name" content="{{config.extra.author}}">
+          </div>
+        </div>
+        {%- endif %}
+      </article>
+{%- endblock content -%}

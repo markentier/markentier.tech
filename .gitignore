@@ -1,7 +1,12 @@
 **/*.rs.bk
 .DS_Store
 .vscode
+/node_modules
+/public
 /target/
 Cargo.lock
 cobalt.rs
 local-stuff
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,101 @@
+{% macro html_escaped(str) %}{{str | safe | escape}}{% endmacro html_escaped %}
+
+{% macro fq_sec(base) %}{{base}}_index.md{% endmacro fq_sec %}
+
+{% macro get_cover_image_url(url) %}{{url}}cover.png{% endmacro get_cover_image_url %}
+{% macro get_default_cover_image_url(base,img) %}{{base}}/{{img}}{% endmacro get_default_cover_image_url %}
+
+{% macro sec_traverse(sec) %}
+    {{ self::sec_pages(sec=sec) }}
+    {% if sec.subsections %}
+    {% for sub in sec.subsections | reverse %}
+    {% set ss = get_section(path=self::fq_sec(base=sub.path)) %}
+    {{ self::sec_traverse(sec = ss) }}
+    {% endfor %}
+    {% endif %}
+{% endmacro sec_traverse %}
+
+{% macro sec_pages(sec) %}
+  {% for page in sec.pages %}
+  {% if page.draft == false %}
+  {# page.reading_time in min, page.category, page.tags #}
+  <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
+    {% if page.extra.has_hero %}
+    {% set page_image_url = self::get_cover_image_url(url=page.permalink) %}
+    <img class="coverthumb" itemprop="image" src="{{page_image_url}}" alt="{{page.extra.image_alt | escape}}" />
+    {% endif %}
+    <a href="{{page.permalink}}">
+      <h2 class="post_title">{{page.title}}</h2>
+      {# TODO extract as macro: macros::published_at(date=date) #}
+      {% set pdate_iso = page.date | date(format="%FT%T%z") %}
+      {% set pdate_date = page.date | date %}
+      <small class="published_at_line">
+        <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
+        <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
+      </small>
+      {% if page.summary %}
+         <p>{{page.summary | safe | striptags}}</p>
+      {% elif page.description %}
+        <p>{{page.description | safe | striptags}}</p>
+      {% endif %}
+    </a>
+  </article>
+  {% endif %}
+  {% endfor %}
+{% endmacro sec_pages %}
+
+{% macro feed_posts(sec, feed, first=false) -%}
+{{ self::feed_items(sec=sec, feed=feed) }}
+{%- for sub in sec.subsections | reverse -%}
+{%- set ss = get_section(path=self::fq_sec(base=sub.path)) -%}
+{{ self::feed_posts(sec=ss, feed=feed, first=false) }}
+{%- if first == true and feed == "json" -%},,,,{%- endif -%}
+{%- endfor %}
+{%- endmacro feed_posts %}
+
+{%- macro feed_items(sec, feed) -%}
+{%- for page in sec.pages -%}
+{%- set is_published = page.draft == false -%}
+{%- if is_published -%}
+{%- if feed == "atom" %}
+  <entry>
+    <title>{{page.title}}</title>
+    <link href="{{page.permalink | safe }}" />
+    <id>{{page.permalink | safe}}</id>
+    <updated>{{page.date | date(format="%FT%TZ")}}</updated>
+    {%- if page.summary %}
+    <summary>{{page.summary | safe | striptags | trim}}</summary>
+    {%- endif %}
+    <content type="html"><![CDATA[{{page.content | trim}}]]></content>
+  </entry>
+{%- elif feed == "rss" %}
+    <item>
+      <title>{{page.title}}</title>
+      <link>{{page.permalink | safe}}</link>
+      <guid isPermaLink="true">{{page.permalink | safe}}</guid>
+      <pubDate>{{page.date | date(format="%a, %d %b %Y %H:%M:%S %z")}}</pubDate>
+      <description><![CDATA[{{page.content | trim}}]]></description>
+    </item>
+{%- elif feed == "json" %}
+    {
+      "id": "{{page.permalink | safe }}",
+      "url": "{{page.permalink | safe }}",
+      "date_published": "{{page.date | date(format="%FT%TZ")}}",
+      {%- if page.extra.has_hero %}
+      {%- set page_image_url = self::get_cover_image_url(url=page.permalink) %}
+      "banner_image": "{{page_image_url | safe}}",
+      {%- endif %}
+      {%- if page.summary %}
+      "summary": {{page.summary | safe | striptags | trim | json_encode(pretty=true)}},
+      {%- endif %}
+      {%- if page.tags %}
+      "tags": {{page.tags | json_encode}},
+      {%- endif %}
+      "content_html": {{page.content | safe | trim | json_encode(pretty=true)}}
+    },
+{%- else -%}
+<!-- feed type not supported -->
+{%- endif -%}
+{%- endif -%}
+{%- endfor %}
+{%- endmacro feed_items %}

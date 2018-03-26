@@ -1,9 +1,6 @@
 # markentier.tech
+DEPLOY_URL ?= https://markentier.tech
 
-# cobalt.rs/
-COBALT_GH = https://github.com/cobalt-org/cobalt.rs.git
-COBALT_DIR = cobalt.rs
-COBALT_BIN = $(COBALT_DIR)/target/release/cobalt
 # brew install tidy-html5 fd
 TIDY_SETTINGS = -q -m -w 0 -i \
 	--indent-with-tabs yes \
@@ -12,31 +9,57 @@ TIDY_SETTINGS = -q -m -w 0 -i \
 	--clean yes \
 	--join-styles yes
 
-build: $(COBALT_BIN) build-site build-netlify-files build-sitemap build-tidy-html
+GUTENBERG = gutenberg
+GUTENBERG_OUTDIR = --output-dir ../public
+GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(DEPLOY_URL) $(GUTENBERG_OUTDIR)
+GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
+
+netlify: netlify-build netlify-lambda
+
+build: build-dirty build-tidy-html
+netlify-build: build-dirty netlify-build-tidy-html
+
+build-preview: build-dirty
+build-dirty: build-site build-feeds
 
 build-site:
-	$(COBALT_BIN) build
+	cd site && $(GUTENBERG_BUILD)
 
-build-netlify-files:
-	cp site/_redirects site/_headers public
-
-build-sitemap:
-	mv public/sitemap.xml.html public/sitemap.xml
+build-feeds:
+	mv public/atom/index.html public/feed.atom.xml
+	mv public/rss/index.html public/feed.rss.xml
+	mv public/json/index.html public/feed.json
 
 build-tidy-html:
 	cd public && \
-		fd -e html -x tidy $(TIDY_SETTINGS) {} \;
+		fd -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
+netlify-build-tidy-html:
+	cd public && \
+		../tools/fd -e html -x sh -c "echo {} && ../tools/tidy $(TIDY_SETTINGS) {}" \;
 
-serve: $(COBALT_BIN)
-	$(COBALT_BIN) serve
+serve:
+	cd site && $(GUTENBERG_SERVE)
 
-clean: $(COBALT_BIN)
-	$(COBALT_BIN) clean
+serve-with-theme-reload:
+	cd site && watchexec -w themes/mttt -r -s SIGHUP "$(GUTENBERG_SERVE)"
 
-$(COBALT_BIN): $(COBALT_DIR)
-	cd cobalt.rs && cargo build --release --features "syntax-highlight,sass"
+netlify-lambda:
+	yarn && yarn build:lambda
 
-build-cobalt: $(COBALT_BIN)
+clean:
+	@rm -rf public
 
-$(COBALT_DIR):
-	git clone $(COBALT_GH)
+# ---
+
+check-cert:
+	@echo | \
+	openssl s_client \
+		-connect markentier.tech:443 \
+		-servername markentier.tech \
+		-tls1_2 -status
+	@echo | \
+	openssl s_client \
+		-connect markentier.tech:443 \
+		-servername markentier.tech \
+		2>/dev/null | \
+		openssl x509 -text

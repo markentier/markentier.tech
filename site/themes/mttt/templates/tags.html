@@ -1,0 +1,10 @@
+{% extends "default.html" %}
+{% block title %}tags | {{config.title}}{% endblock title %}
+{% block content %}
+<article class="section-page section-tags">
+  <h2 class="header-tags">Tags</h2>
+  {% for tag in tags %}
+  <span><a href="{{tag.permalink}}">{{tag.name}}</a></span>
+  {% endfor %}
+</article>
+{% endblock content %}

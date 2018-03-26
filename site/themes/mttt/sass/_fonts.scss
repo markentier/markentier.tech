@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Lusitana';
+  src: url('/assets/fonts/lusitana-regular.woff2') format('woff2'),
+       url('/assets/fonts/lusitana-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lusitana';
+  src: url('/assets/fonts/lusitana-bold.woff2') format('woff2'),
+       url('/assets/fonts/lusitana-bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Varela Round';
+  src: url('/assets/fonts/varela-round-regular.woff2') format('woff2'),
+       url('/assets/fonts/varela-round-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/assets/fonts/hack-regular.woff2?sha=3114f1256') format('woff2'),
+       url('/assets/fonts/hack-regular.woff?sha=3114f1256') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/assets/fonts/hack-bold.woff2?sha=3114f1256') format('woff2'),
+       url('/assets/fonts/hack-bold.woff?sha=3114f1256') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/assets/fonts/hack-italic.woff2?sha=3114f1256') format('woff2'),
+       url('/assets/fonts/hack-italic.woff?sha=3114f1256') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/assets/fonts/hack-bolditalic.woff2?sha=3114f1256') format('woff2'),
+       url('/assets/fonts/hack-bolditalic.woff?sha=3114f1256') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}

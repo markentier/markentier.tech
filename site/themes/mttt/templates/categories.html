@@ -1,0 +1,12 @@
+{% extends "default.html" %}
+{% block title %}categories | {{config.title}}{% endblock title %}
+{% block content %}
+<article class="section-page section-categories">
+  <h2 class="header-categories">Categories</h2>
+  <ul>
+  {% for cat in categories %}
+    <li><a href="{{cat.permalink}}">{{cat.name}}</a></li>
+  {% endfor %}
+  </ul>
+</article>
+{% endblock content %}
