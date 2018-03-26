@@ -14,14 +14,12 @@ GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(DEPLOY_URL) $(GUTENBERG_OUTDIR)
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
-netlify-lambda:
-	yarn && yarn build:lambda
+netlify: netlify-build netlify-lambda
 
 build: build-dirty build-tidy-html
 netlify-build: build-dirty netlify-build-tidy-html
 
 build-preview: build-dirty
-
 build-dirty: build-site build-feeds
 
 build-site:
@@ -44,6 +42,9 @@ serve:
 
 serve-with-theme-reload:
 	cd site && watchexec -w themes/mttt -r -s SIGHUP "$(GUTENBERG_SERVE)"
+
+netlify-lambda:
+	yarn && yarn build:lambda
 
 clean:
 	@rm -rf public
