@@ -1,0 +1,20 @@
+{
+  "name": "markentier.tech",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "netlify-lambda": "^0.3.0"
+  },
+  "scripts": {
+    "start:lambda": "netlify-lambda serve lambda",
+    "build:lambda": "netlify-lambda build lambda"
+  },
+  "proxy": {
+    "/functions": {
+      "target": "http://localhost:9000",
+      "pathRewrite": {
+        "^/\\functions": ""
+      }
+    }
+  }
+}

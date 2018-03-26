@@ -14,7 +14,23 @@ GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(DEPLOY_URL) $(GUTENBERG_OUTDIR)
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
+netlify-build: netlify-build-site netlify-build-feeds
+
+netlify-lambda:
+	yarn && yarn build:lambda
+
+netlify-build-site:
+	$(GUTENBERG_BUILD)
+
+netlify-build-feeds:
+	mv atom/index.html feed.atom.xml
+	mv rss/index.html feed.rss.xml
+	mv json/index.html feed.json
+
+
 build: build-dirty build-tidy-html
+
+build-preview: build-dirty
 
 build-dirty: build-site build-feeds
 
@@ -38,3 +54,18 @@ serve-with-theme-reload:
 
 clean:
 	@rm -rf public
+
+# ---
+
+check-cert:
+	@echo | \
+	openssl s_client \
+		-connect markentier.tech:443 \
+		-servername markentier.tech \
+		-tls1_2 -status
+	@echo | \
+	openssl s_client \
+		-connect markentier.tech:443 \
+		-servername markentier.tech \
+		2>/dev/null | \
+		openssl x509 -text

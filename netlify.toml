@@ -1,13 +1,13 @@
-# Global settings applied to the whole site.  
-# 
-# “publish” is the directory to publish (relative to root of your repo),
-# “command” is your build command,
-# “base” is directory to change to before starting build. if you set base:
-#    that is where we will look for package.json/.nvmrc/etc not repo root!
+### https://www.netlify.com/docs/netlify-toml-reference/
 [build]
-  base    = "site"
-  publish = "public"
-  command = "" # noop
+base    = "site"
+publish = "public"
+command = "" # noop
+# command = "make netlify-lambda"
+functions = "functions"
+
+[build.environment]
+GUTENBERG_VERSION = "0.3.2"
 
 # # Production context: All deploys to the main
 # # repository branch will inherit these settings.
@@ -16,21 +16,8 @@
 #   [context.production.environment]
 #     ACCESS_TOKEN = "super secret"
 
-# # Deploy Preview context: All Deploy Previews
-# # will inherit these settings.
-# [context.deploy-preview.environment]
-#   ACCESS_TOKEN = "not so secret"
+[context.deploy-preview.environment]
+command = "make netlify-build netlify-lambda DEPLOY_URL=$DEPLOY_PRIME_URL"
 
-# # Branch Deploy context: All deploys that are not in
-# # an active Deploy Preview will inherit these settings.
-# [context.branch-deploy]
-#   command = "make staging"
-
-# # Specific branch context: Deploys from this branch
-# # will take these settings and override their
-# # current ones.
-# [context.feature]
-#   command = "make feature"
-
-# [context."features/branch"]
-#   command = "gulp"
+[context.branch-deploy]
+command = "make netlify-build netlify-lambda DEPLOY_URL=$DEPLOY_PRIME_URL"
