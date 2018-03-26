@@ -14,10 +14,16 @@
         {% if is_post %}
         {% set pdate_iso = page.date | date(format="%FT%T%z") %}
         {% set pdate_date = page.date | date %}
-          <small class="published_at_line">
+        <div class="post_content_info">
+          <div class="published_at_line">
             <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
             <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-          </small>
+          </div>
+          <div class="time_and_words">
+            <span>reading time: ~ <strong>{{page.reading_time}}</strong> minutes</span>
+            <span>(<strong>{{page.word_count}}</strong> words)</span>
+          </div>
+        </div>
         {% endif %}
         {{ page.content | safe }}
         {% if is_post -%}

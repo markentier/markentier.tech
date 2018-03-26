@@ -68,7 +68,9 @@ body {
 }
 
 .index_listing_post {
+    padding-bottom: .5rem;
     opacity: 0.8;
+
     .coverthumb {
         width: 40%;
         float: right;
@@ -96,7 +98,6 @@ body {
         }
     }
     &+& {
-        // border-top: 1px solid hsla(206, 55%, 30%, 0.25);
         h1,
         h2 {
             margin-top: 0.5em;
@@ -123,13 +124,19 @@ pre {
     margin-bottom: 0em;
 }
 
-.published_at_line {
+.post_content_info {
     font-family: var(--font-code);
     font-size: 0.6em;
     color: rgba(66, 35, 18, 0.7);
-    .modified_at {
-        display: none
+    display: flex;
+    justify-content: space-between;
+    & .published_at_line {
+        .modified_at {
+            display: none
+        }
     }
+    // & .time_and_words {
+    // }
 }
 
 article {
@@ -150,7 +157,9 @@ article {
         background-color: rgba(35, 66, 86, 0.2);
         text-shadow: 1px 1px 3px #def;
     } // excerpt paragraph
-    p:first-of-type {
+    // `&>` avoids application for further nested <p>'s
+    &.index_listing_post p,
+    &>p:first-of-type {
         font-style: italic;
         filter: brightness(1.5);
         &::after {
@@ -175,7 +184,6 @@ hr {
 }
 
 @import "mtt.shortcodes";
-
 // debugging
 #__tera_context {
     margin: 1em 0 0 0;
