@@ -59,9 +59,9 @@
 {%- if feed == "atom" %}
   <entry>
     <title>{{page.title}}</title>
-    <link>{{page.permalink | safe }}</link>
-    <guid>{{page.permalink | safe }}</guid>
-    <updated>{{page.date | date(format="%FT%T%z")}}</updated>
+    <link href="{{page.permalink | safe }}" />
+    <id>{{page.permalink | safe }}</id>
+    <updated>{{page.date | date(format="%FT%TZ")}}</updated>
     {%- if page.summary %}
     <summary>{{page.summary | safe | striptags | trim}}</summary>
     {%- endif %}

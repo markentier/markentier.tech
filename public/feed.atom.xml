@@ -2,21 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>markentier.tech</title>
   <subtitle>About code and people</subtitle>
-  <link rel="self" type="application/atom+xml" href="https://markentier.tech/atom.xml" />
+  <link rel="self" type="application/atom+xml" href="https://markentier.tech/feed.atom.xml" />
   <link rel="alternate" type="text/html" href="https://markentier.tech" />
-  <id>tag:markentier.tech</id>
+  <id>tag:markentier.tech,2005:markentier.tech/feed.atom.xml</id>
   <icon>https://markentier.tech/m-128.png</icon>
   <logo>https://markentier.tech/m-128.png</logo>
   <rights>Copyright © 2018, markentier.tech / Christoph Grabo</rights>
   <author>
     <name>Christoph Grabo</name>
   </author>
-  <updated>2018-03-15T00:23:42+0000</updated>
+  <updated>2018-03-15T00:23:42Z</updated>
   <entry>
     <title>How to build a static site&#x2F;blog</title>
-    <link>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</link>
-    <guid>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</guid>
-    <updated>2018-03-15T00:23:42+0000</updated>
+    <link href="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/" />
+    <id>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</id>
+    <updated>2018-03-15T00:23:42Z</updated>
     <summary>A comment on my previous post »Push, rinse, repeat …« made me think about that you might want to know how this blog is being built and deployed.</summary>
     <content type="html"><![CDATA[&lt;p&gt;A comment on my previous post &lt;a href=&quot;&#x2F;posts&#x2F;2018&#x2F;03&#x2F;push-rinse-repeat&#x2F;&quot;&gt;»Push, rinse, repeat …«&lt;&#x2F;a&gt; made me think about that you might want to know how this blog is being built and deployed.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
@@ -77,9 +77,9 @@ While you can go with well-known services like pingdom, I use &lt;a href=&quot;h
   </entry>
   <entry>
     <title>Push, rinse, repeat, …</title>
-    <link>https://markentier.tech/posts/2018/03/push-rinse-repeat/</link>
-    <guid>https://markentier.tech/posts/2018/03/push-rinse-repeat/</guid>
-    <updated>2018-03-11T18:00:00+0000</updated>
+    <link href="https://markentier.tech/posts/2018/03/push-rinse-repeat/" />
+    <id>https://markentier.tech/posts/2018/03/push-rinse-repeat/</id>
+    <updated>2018-03-11T18:00:00Z</updated>
     <summary>I haven't bootstrapped a blog or static site for quite some time.</summary>
     <content type="html"><![CDATA[&lt;p&gt;I haven&#x27;t bootstrapped a blog or static site for quite some time.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
@@ -95,9 +95,9 @@ Bear with me, actual content will follow. Hence this new site. ;-)&lt;&#x2F;p&gt
   </entry>
   <entry>
     <title>Hello, code!</title>
-    <link>https://markentier.tech/posts/2018/03/hello-code/</link>
-    <guid>https://markentier.tech/posts/2018/03/hello-code/</guid>
-    <updated>2018-03-10T23:42:00+0000</updated>
+    <link href="https://markentier.tech/posts/2018/03/hello-code/" />
+    <id>https://markentier.tech/posts/2018/03/hello-code/</id>
+    <updated>2018-03-10T23:42:00Z</updated>
     <summary>Nothing but initialization of yet another tech blog.</summary>
     <content type="html"><![CDATA[&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;

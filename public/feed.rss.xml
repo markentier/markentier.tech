@@ -4,6 +4,7 @@
     <title>markentier.tech</title>
     <description>About code and people</description>
     <link>https://markentier.tech</link>
+    <link rel="self">https://markentier.tech/feed.rss.xml</link>
     <lastBuildDate>Thu, 15 Mar 2018 00:23:42 +0000</lastBuildDate>
     <item>
       <title>How to build a static site&#x2F;blog</title>

@@ -5,6 +5,7 @@
     <title>{{config.title}}</title>
     <description>{{config.description}}</description>
     <link>{{config.base_url | safe}}</link>
+    <link rel="self">{{config.base_url | safe}}/feed.rss.xml</link>
     <lastBuildDate>{{config.extra.last_feed_update | date(format="%a, %d %b %Y %H:%M:%S %z")}}</lastBuildDate>{{ macros::feed_posts(sec = get_section(path="posts/_index.md"), feed="rss") }}
   </channel>
 </rss>
