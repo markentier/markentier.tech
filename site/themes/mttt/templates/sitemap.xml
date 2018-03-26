@@ -21,13 +21,13 @@
   </url>
 {%- endif %}
 {%- endfor %}
---DISLABED-- #}{%- for section in sections | reverse %}
+{%- for section in sections | reverse %}
   <url>
     <loc>{{section.permalink | safe}}</loc>
     <priority>0.6</priority>
   </url>
 {%- endfor %}
-{%- for category in categories %}
+--DISLABED-- #}{%- for category in categories %}
   <url>
     <loc>{{category.permalink | safe}}</loc>
     <priority>0.5</priority>
