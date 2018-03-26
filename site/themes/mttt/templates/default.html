@@ -1,0 +1,110 @@
+<!DOCTYPE html>{% import "macros.html" as macros %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{{config.title}}{% endblock title %}</title>
+  <meta name="description" content="{{config.description}}">
+  {% if section %}
+  <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
+  {% else %}
+  {% if page.tags %}
+  <meta name="keywords" content="{{page.tags | join(sep=",") }}" />
+  {% endif %}
+  {% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet subresource" href="/mtt.css?v=0" />
+  <link rel="icon" href="/m-128.png?v=0" sizes="128x128" type="image/png" />
+  <link rel="shortcut icon" href="/favicon.ico?v=0" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />
+  {# icon examples
+  <link rel=icon href=favicon.png sizes="16x16" type="image/png" />
+  <link rel=icon href=windows.ico sizes="32x32 48x48" type="image/vnd.microsoft.icon" />
+  <link rel=icon href=mac.icns sizes="128x128 512x512 8192x8192 32768x32768" />
+  <link rel=icon href=iphone.png sizes="57x57" type="image/png" />
+  <link rel=icon href=gnome.svg sizes="any" type="image/svg+xml" />
+  #}
+
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}" href="/feed.rss.xml" />
+  <link rel="alternate" type="application/json" title="JSON Feed for {{config.title}}" href="/feed.json" />
+
+  <meta name="author" content="{{config.extra.author}} ({{config.extra.author_nick}})" />
+  <link rel="author" href="/humans.txt" />
+  <link rel="author" href="https://plus.google.com/116780993927713078767?rel=author" />
+
+  <meta name="geo.region" content="DE-BE" />
+  <meta name="geo.placename" content="Berlin" />
+  <meta name="geo.position" content="52.52755;13.47982" />
+  <link rel="geo.pluscode" href="https://plus.codes/9F4MGFHH+2W" />
+  <meta name="ICBM" content="52.52755, 13.47982" />
+  {%- if page -%}{%- set is_post = page.permalink is containing("/posts/") %}{%- if is_post == true %}
+  <link rel="canonical" href="{{page.permalink}}" />
+  {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
+  {% if page.extra.image_alt %}{% set page_image_alt = page.extra.image_alt %}{% else %}{% set page_image_alt = config.extra.image_alt %}{% endif %}
+  {% if page.description %}
+  {% set page_description = page.description %}
+  {% elif page.summary %}
+  {% set page_description = page.summary %}
+  {% else %}
+  {% set page_description = page.content %}
+  {% endif %}
+  {% set page_description = page_description | safe | striptags | split(pat=" ") | slice(end=31) | join(sep=" ") %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="{{page.permalink}}">
+  <meta name="twitter:title" content="{{page.title}}">
+  <meta name="twitter:description" content="{{page_description}}">
+  <meta name="twitter:creator" content="{{config.extra.author_nick}}">
+  <meta name="twitter:image" content="{{page_image_url}}">
+  <meta name="twitter:image:alt" content="{{page_image_alt}}">
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{page.permalink}}">
+  <meta property="og:title" content="{{page.title}}">
+  <meta property="og:description" content="{{page_description}}">
+  <meta property="article:published_time" content="{{page.date | date(format="%FT%T%z")}}" />
+  <meta property="og:image" content="{{page_image_url}}">
+  <meta property="og:site_name" content="{{config.title}}">
+  <meta property="og:see_also" content="{{config.base_url}}">
+  <meta property="article:author" content="{{config.extra.author}}" />
+  {% if page.tags %}{%- for tag in page.tags -%}
+  <meta property="article:tag" content="{{tag}}" />
+  {%- endfor -%}{%- endif -%}
+  {% if page.category %}<meta property="article:section" content="{{page.category}}" />{%- endif -%}
+  {%- endif -%}{%- endif -%}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115476438-1"></script>
+  <script async src="/assets/g.js"></script>
+  {% block before_head_end %}{% endblock before_head_end %}
+</head>
+<body>
+  {% block after_body_open %}{% endblock after_body_open %}
+  <div id="wrppr">
+    <header>{% block header %}
+      <h1><a href="/" rel="home" title="home"><span id="big-m"></span> {{config.title}}</a></h1>
+      <p class="site_description">{{config.description}}</p>
+    {% endblock header %}</header>
+    <nav>{% block navigation %}
+      <a href="/">home</a> |
+      <a href="/about/">about</a>
+    {% endblock navigation %}</nav>
+    <main id="content">
+      {% block content_header %}{% endblock content_header %}
+      {% block content %}{% endblock content %}
+    </main>
+    <footer>{% block footer %}
+     &copy; 2018 markentier.tech / Christoph Grabo |
+      feeds:
+      <a href="/feed.atom.xml" rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}">atom</a>,
+      <a href="/feed.rss.xml" rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}">rss</a>,
+      <a href="/feed.json" rel="alternate" type="application/json" title="JSON Feed for {{config.title}}">json</a> |
+      <a href="/tags/">tags</a>,
+      <a href="/categories/">categories</a>
+      <br />
+      <a target="_blank" href="https://status.markentier.tech/" rel="external" title="Status page for {{config.title}} (provided by updown.io)">status</a> |
+      <a target="_blank" href="https://github.com/markentier/markentier.tech" rel="external" title="Source code for {{config.title}}">source</a> |
+      <a target="_blank" href="https://securityheaders.io/?q=https://markentier.tech/" rel="external" title="Security Headers check for {{config.title}} (schd.io/5SaU)">schd.io</a>,
+      <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=markentier.tech" rel="external" title="SSL/TLS check for {{config.title}}">ssltest</a>
+    {% endblock footer %}</footer>
+  </div>
+  <script async src="/assets/scripts/loaded.js"></script>
+  {% block before_body_end %}{% endblock before_body_end %}
+{# DEBUG (port=3000) #}{% if config.base_url is containing(":3000") %}<pre id="__tera_context">{{ __tera_context }}</pre>{% endif %}
+</body>
+</html>

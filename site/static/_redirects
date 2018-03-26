@@ -1,0 +1,3 @@
+## https://www.netlify.com/docs/redirects/
+/about /about.html 200
+/* /404/index.html 404

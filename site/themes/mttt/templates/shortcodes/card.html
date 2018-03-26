@@ -1,0 +1,10 @@
+{# USAGE:
+  {{ card(url="https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/", title="custom title", rel="nofollow") }}
+  title defaults to URL if not given
+  rel="external" is always added
+#}
+<div class="{% if class %}{{class}}{% else %}__sc_card{% endif %}">
+  <!-- <link rel="external" href="{{url}}" /> -->
+  <a rel="external{% if rel %} {{rel}}{% endif %}" href="{{url}}">{% if title %}{{title}}{% else %}{{url}}{% endif %}</a>
+  {# TODO: script/lambda -> fetch url -> parse meta -> build snippet -> return #}
+</div>

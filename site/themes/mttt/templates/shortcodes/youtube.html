@@ -1,0 +1,6 @@
+{# USAGE: {{ youtube(id="dQw4w9WgXcQ", autoplay=true, class="youtube class-override") }} #}
+<figure class="{% if class %}{{class}}{% else %}__sc_youtube{% endif %}">
+  <iframe src="https://www.youtube.com/embed/{{id}}{% if autoplay %}?autoplay=1{% endif %}"
+  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <figcaption><a rel="external" href="https://www.youtube.com/watch?v={{id}}">https://www.youtube.com/watch?v={{id}}</a></figcaption>
+</figure>

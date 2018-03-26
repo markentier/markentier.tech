@@ -1,0 +1,4 @@
+{# USAGE: {{ gist(url="https://gist.github.com/Keats/e5fb6aad409f28721c0ba14161644c57", file="foobar.md", class="gist") }} #}
+<div class="{% if class %}{{class}}{% else %}__sc_gist{% endif %}">
+  <script src="{{ url }}.js{% if file %}?file={{file}}{% endif %}"></script>
+</div>

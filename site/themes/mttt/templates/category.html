@@ -1,0 +1,9 @@
+{% extends "default.html" %}
+{% block content_header %}
+<article>
+  <h2 class="header-category">Category: {{category.name}}</h2>
+</article>
+{% endblock content_header %}
+{% block content %}
+{{ macros::sec_traverse(sec = category) }}
+{% endblock content %}

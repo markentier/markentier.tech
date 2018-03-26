@@ -1,0 +1,5 @@
+{% extends "default.html" %}
+{% block title %}{{section.title}} | {{config.title}}{% endblock title %}
+{% block content %}
+{{ macros::sec_traverse(sec = section) }}
+{% endblock content %}
