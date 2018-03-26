@@ -2,6 +2,7 @@
 .DS_Store
 .vscode
 /node_modules
+/public
 /target/
 Cargo.lock
 cobalt.rs
