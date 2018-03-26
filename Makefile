@@ -37,7 +37,7 @@ build-tidy-html:
 		fd -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
 netlify-build-tidy-html:
 	cd public && \
-		tools/fd -e html -x sh -c "echo {} && tools/tidy $(TIDY_SETTINGS) {}" \;
+		../tools/fd -e html -x sh -c "echo {} && ../tools/tidy $(TIDY_SETTINGS) {}" \;
 
 serve:
 	cd site && $(GUTENBERG_SERVE)
