@@ -60,7 +60,7 @@
   <entry>
     <title>{{page.title}}</title>
     <link href="{{page.permalink | safe }}" />
-    <id>{{page.permalink | safe }}</id>
+    <id>{{page.permalink | safe}}</id>
     <updated>{{page.date | date(format="%FT%TZ")}}</updated>
     {%- if page.summary %}
     <summary>{{page.summary | safe | striptags | trim}}</summary>
@@ -70,10 +70,10 @@
 {%- elif feed == "rss" %}
     <item>
       <title>{{page.title}}</title>
-      <link>{{page.permalink | safe }}</link>
-      <guid>{{page.permalink | safe }}</guid>
+      <link>{{page.permalink | safe}}</link>
+      <guid isPermaLink="true">{{page.permalink | safe}}</guid>
       <pubDate>{{page.date | date(format="%a, %d %b %Y %H:%M:%S %z")}}</pubDate>
-      <description type="html"><![CDATA[{{page.content | trim}}]]></description>
+      <description><![CDATA[{{page.content | trim}}]]></description>
     </item>
 {%- elif feed == "json" %}
     {

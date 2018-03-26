@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>markentier.tech</title>
     <description>About code and people</description>
     <link>https://markentier.tech</link>
-    <link rel="self">https://markentier.tech/feed.rss.xml</link>
+    <atom:link href="https://markentier.tech/feed.rss.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>Thu, 15 Mar 2018 00:23:42 +0000</lastBuildDate>
     <item>
       <title>How to build a static site&#x2F;blog</title>
       <link>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</link>
-      <guid>https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</guid>
+      <guid isPermaLink="true">https://markentier.tech/posts/2018/03/how-to-build-static-site-blog/</guid>
       <pubDate>Thu, 15 Mar 2018 00:23:42 +0000</pubDate>
-      <description type="html"><![CDATA[&lt;p&gt;A comment on my previous post &lt;a href=&quot;&#x2F;posts&#x2F;2018&#x2F;03&#x2F;push-rinse-repeat&#x2F;&quot;&gt;»Push, rinse, repeat …«&lt;&#x2F;a&gt; made me think about that you might want to know how this blog is being built and deployed.&lt;&#x2F;p&gt;
+      <description><![CDATA[&lt;p&gt;A comment on my previous post &lt;a href=&quot;&#x2F;posts&#x2F;2018&#x2F;03&#x2F;push-rinse-repeat&#x2F;&quot;&gt;»Push, rinse, repeat …«&lt;&#x2F;a&gt; made me think about that you might want to know how this blog is being built and deployed.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;This site (if you reading this blog post at its canonical location) is freshly hatched. And I realized that I used a couple of things some people might not be familiar with … yet.&lt;&#x2F;p&gt;
 &lt;p&gt;While everything is still in progress, the heavy lifting for getting it up and running is already done, and I think I can maybe give you some insights on how it is made.&lt;&#x2F;p&gt;
@@ -71,9 +71,9 @@ While you can go with well-known services like pingdom, I use &lt;a href=&quot;h
     <item>
       <title>Push, rinse, repeat, …</title>
       <link>https://markentier.tech/posts/2018/03/push-rinse-repeat/</link>
-      <guid>https://markentier.tech/posts/2018/03/push-rinse-repeat/</guid>
+      <guid isPermaLink="true">https://markentier.tech/posts/2018/03/push-rinse-repeat/</guid>
       <pubDate>Sun, 11 Mar 2018 18:00:00 +0000</pubDate>
-      <description type="html"><![CDATA[&lt;p&gt;I haven&#x27;t bootstrapped a blog or static site for quite some time.&lt;&#x2F;p&gt;
+      <description><![CDATA[&lt;p&gt;I haven&#x27;t bootstrapped a blog or static site for quite some time.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;With a service like netlify this becomes kind of a bearable task.&lt;&#x2F;p&gt;
 &lt;p&gt;And since this site hasn&#x27;t seen much popularity yet—it just exists for less than 24 hours—I can even play this game live and in production.
@@ -88,9 +88,9 @@ Bear with me, actual content will follow. Hence this new site. ;-)&lt;&#x2F;p&gt
     <item>
       <title>Hello, code!</title>
       <link>https://markentier.tech/posts/2018/03/hello-code/</link>
-      <guid>https://markentier.tech/posts/2018/03/hello-code/</guid>
+      <guid isPermaLink="true">https://markentier.tech/posts/2018/03/hello-code/</guid>
       <pubDate>Sat, 10 Mar 2018 23:42:00 +0000</pubDate>
-      <description type="html"><![CDATA[&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;&#x2F;p&gt;
+      <description><![CDATA[&lt;p&gt;Nothing but initialization of yet another tech blog.&lt;&#x2F;p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;This blog post has no deeper meaning.
 It exists for sole entertainment of systems, servers, build tools, and the author of this site.&lt;&#x2F;p&gt;
