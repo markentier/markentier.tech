@@ -1,6 +1,6 @@
 +++
 title = "about"
-date = 2018-03-11T15:15:00Z
+date = 2018-03-11
 +++
 ### author
 
