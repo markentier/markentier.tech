@@ -1,13 +1,8 @@
 +++
 title = "How to build a static site/blog"
-# description = ""
 date = 2018-03-15T00:23:42Z
-draft = false
 tags = ["static site", "generator", "netlify", "cobalt.rs", "ssl/tls", "github", "lets encrypt", "blog"]
-# category = ""
-# order = 0
-# weight = 0
-# aliases = []
+category = "default"
 [extra]
 has_image = true
 has_hero = true

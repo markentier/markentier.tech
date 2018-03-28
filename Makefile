@@ -34,11 +34,9 @@ build-feeds:
 	mv public/json/index.html public/feed.json
 
 build-tidy-html:
-	cd public && \
-		fd -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
+	fd -I -p public -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
 netlify-build-tidy-html:
-	cd public && \
-		../tools/fd -e html -x sh -c "echo {} && ../tools/tidy $(TIDY_SETTINGS) {}" \;
+	tools/fd -p public -e html -x sh -c "echo {} && tools/tidy $(TIDY_SETTINGS) {}" \;
 
 serve:
 	cd site && $(GUTENBERG_SERVE)

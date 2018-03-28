@@ -1,13 +1,8 @@
 +++
 title = "Hello, code!"
-# description = ""
 date = 2018-03-10T23:42:00Z
-draft = false
 tags = ["hello", "world", "new", "blog"]
 category = "default"
-# order = 0
-# weight = 0
-# aliases = []
 +++
 Nothing but initialization of yet another tech blog.
 
