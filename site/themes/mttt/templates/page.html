@@ -36,8 +36,12 @@
         <div class="meta">
           <link itemprop="url" href="{{page.permalink | safe}}" />
           <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}" />
-          <div itemprop="publisher author" itemscope itemtype="http://schema.org/Person">
+          <div itemprop="author" itemscope itemtype="http://schema.org/Person">
             <meta itemprop="name" content="{{config.extra.author}}">
+          </div>
+          <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop="name" content="{{config.extra.publisher}}">
+            <img itemprop="logo" src="{{config.base_url}}/m-128.png" alt="logo" />
           </div>
         </div>
         {%- endif %}

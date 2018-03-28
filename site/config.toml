@@ -19,6 +19,7 @@ ignored_content = []
 last_feed_update = "2018-03-28T00:00:00Z"
 answer = 42
 site_base = "markentier.tech"
+publisher = "markentier.tech"
 author = "Christoph Grabo"
 author_nick = "@asaaki"
 # author_email = "asaaki@mannaz.cc"
