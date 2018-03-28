@@ -6,7 +6,7 @@
         {% if page.extra.has_image -%}
         {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
         <figure class="post_hero">
-          <img itemprop="image" src="{{page_image_url}}" alt="{{page.extra.image_alt | safe | escape}}" />
+          <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page.extra.image_alt | safe | escape}}" />
           <figcaption>{{page.extra.image_alt | safe | escape}}</figcaption>
         </figure>
         {%- endif %}
@@ -34,8 +34,8 @@
         {{ macros::absolutify(content=page.content, permalink=page.permalink) | trim }}
         {% if is_post -%}
         <div class="meta">
-          <link itemprop="url" href="{{page.permalink}}" />
-          <link itemprop="mainEntityOfPage" href="{{page.permalink}}" />
+          <link itemprop="url" href="{{page.permalink | safe}}" />
+          <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}" />
           <div itemprop="publisher author" itemscope itemtype="http://schema.org/Person">
             <meta itemprop="name" content="{{config.extra.author}}">
           </div>
