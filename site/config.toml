@@ -16,7 +16,7 @@ generate_tags_pages = true
 ignored_content = []
 
 [extra]
-last_feed_update = "2018-03-15T00:23:42Z"
+last_feed_update = "2018-03-28T00:00:00Z"
 answer = 42
 site_base = "markentier.tech"
 author = "Christoph Grabo"
