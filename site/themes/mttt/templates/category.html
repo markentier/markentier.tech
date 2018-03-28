@@ -1,9 +1,24 @@
 {% extends "default.html" %}
+{% block title -%}
+  {%- set is_home = category.name == "default" -%}
+  {%- if is_home -%}
+     {{config.description}}: {{config.title}}
+  {%- else -%}
+    '{{category.name}}' category
+  {%- endif %}
+{%- endblock title %}
 {% block content_header %}
+{% set is_home = category.name == "default" %}
+{% if is_home %}
+<article>
+  <h2 class="header-home">Recent posts</h2>
+</article>
+{% else %}
 <article>
   <h2 class="header-category">Category: {{category.name}}</h2>
 </article>
+{% endif %}
 {% endblock content_header %}
 {% block content %}
-{{ macros::sec_traverse(sec = category) }}
+{{ macros::list_pages(pages=category.pages, limit=9) }}
 {% endblock content %}
