@@ -31,7 +31,7 @@
           </div>
         </div>
         {% endif %}
-        {{ page.content | safe }}
+        {{ macros::absolutify(content=page.content, permalink=page.permalink) | trim }}
         {% if is_post -%}
         <div class="meta">
           <link itemprop="url" href="{{page.permalink}}" />
