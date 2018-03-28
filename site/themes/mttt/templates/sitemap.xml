@@ -10,7 +10,8 @@
     <priority>0.85</priority>
   </url>
 {%- endif %}
-{%- endfor %}{# --DISLABED--
+{%- endfor %}{#
+--DISLABED--
 {%- for page in pages %}
 {%- set is_post = page.permalink is containing("/posts/") %}
 {%- if is_post == false %}
@@ -27,13 +28,14 @@
     <priority>0.6</priority>
   </url>
 {%- endfor %}
---DISLABED-- #}{%- for category in categories %}
+{%- for category in categories %}
   <url>
     <loc>{{category.permalink | safe}}</loc>
     <priority>0.5</priority>
   </url>
 {%- endfor %}
-{%- for tag in tags %}
+--DISLABED--
+#}{%- for tag in tags %}
   <url>
     <loc>{{tag.permalink | safe}}</loc>
     <priority>0.3</priority>

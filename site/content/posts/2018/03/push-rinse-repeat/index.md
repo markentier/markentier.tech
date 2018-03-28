@@ -1,13 +1,9 @@
 +++
 title = "Push, rinse, repeat, …"
-# description = ""
 date = 2018-03-11T18:00:00Z
 draft = false
 tags = ["new", "blog", "bootstrap", "fresh", "static site"]
-# category = ""
-# order = 0
-# weight = 0
-# aliases = []
+category = "default"
 [extra]
 has_image = true
 has_hero = true

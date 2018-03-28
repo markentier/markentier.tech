@@ -4,12 +4,10 @@
   <meta charset="utf-8">
   <title>{% block title %}{{config.title}}{% endblock title %}</title>
   <meta name="description" content="{{config.description}}">
-  {% if section %}
-  <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
-  {% else %}
   {% if page.tags %}
   <meta name="keywords" content="{{page.tags | join(sep=",") }}" />
-  {% endif %}
+  {% else %}
+  <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
   {% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet subresource" href="/mtt.css?v=0" />
@@ -106,6 +104,7 @@
     <main id="content">
       {% block content_header %}{% endblock content_header %}
       {% block content %}{% endblock content %}
+      {% block content_footer %}{% endblock content_footer %}
     </main>
     <footer>{% block footer %}
      &copy; 2018 markentier.tech / Christoph Grabo |
@@ -113,8 +112,7 @@
       <a href="/feed.atom.xml" rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}">atom</a>,
       <a href="/feed.rss.xml" rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}">rss</a>,
       <a href="/feed.json" rel="alternate" type="application/json" title="JSON Feed for {{config.title}}">json</a> |
-      <a href="/tags/">tags</a>,
-      <a href="/categories/">categories</a>
+      <a href="/tags/">tags</a>
       <br />
       <a target="_blank" href="https://status.markentier.tech/" rel="external" title="Status page for {{config.title}} (provided by updown.io)">status</a> |
       <a target="_blank" href="https://github.com/markentier/markentier.tech" rel="external" title="Source code for {{config.title}}">source</a> |
