@@ -8,6 +8,7 @@ self.addEventListener('install', e => {
     `/index.html?timestamp=${timeStamp}`,
 
     `/mtt.css?timestamp=${timeStamp}`,
+    `/head.svg?timestamp=${timeStamp}`,
     `/js/mtt.js?timestamp=${timeStamp}`,
     `/js/loaded.js?timestamp=${timeStamp}`,
 

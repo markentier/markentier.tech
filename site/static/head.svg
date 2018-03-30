@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 700">
+  <defs>
+    <radialGradient id="a" cx="1024" cy="100" r="1000" fx="1024" fy="0" fr="0"
+        gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 .5 0 100)">
+      <stop offset="0" stop-color="#005090" stop-opacity=".333"/>
+      <stop offset="1" stop-color="#005090" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path
+    d="M-360 700V360l705-200L525 50l125 85 80-45 150 145 144-35 216-160 50 60 100-80 75 35 125-30 150 140h140l230 140 75 60 75 700z"
+    opacity=".42" fill="url(#a)"/>
+</svg>
