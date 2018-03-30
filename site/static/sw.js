@@ -9,6 +9,7 @@ self.addEventListener('install', e => {
 
     `/mtt.css?timestamp=${timeStamp}`,
     `/js/mtt.js?timestamp=${timeStamp}`,
+    `/js/loaded.js?timestamp=${timeStamp}`,
 
     `/assets/fonts/lusitana-regular.woff2?timestamp=${timeStamp}`,
     `/assets/fonts/lusitana-regular.woff?timestamp=${timeStamp}`,
