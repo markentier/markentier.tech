@@ -11,7 +11,7 @@
   {% endif %}
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/m-128.png?v=0" sizes="128x128" type="image/png" />
+  <link rel="icon" href="/m.128.png?v=0" sizes="128x128" type="image/png" />
 
   {# styles #}
   <style>@font-face{font-family:'Lusitana';src:url('/assets/fonts/lusitana-regular.woff2') format('woff2'),url('/assets/fonts/lusitana-regular.woff') format('woff');font-weight: normal;font-style:normal;font-display:swap;}@font-face{font-family:'Varela Round';src:url('/assets/fonts/varela-round-regular.woff2') format('woff2'),url('/assets/fonts/varela-round-regular.woff') format('woff');font-weight:normal;font-style:normal;font-display:swap;}</style>
@@ -27,14 +27,15 @@
   <link rel="preconnect" href="https://www.google-analytics.com/" />
 
   {# more icons #}
+  <link rel=icon href="/m.57.png" sizes="57x57" type="image/png" />
   <link rel="shortcut icon" href="/favicon.ico?v=0" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />
   {# icon examples
-  <link rel=icon href=favicon.png sizes="16x16" type="image/png" />
-  <link rel=icon href=windows.ico sizes="32x32 48x48" type="image/vnd.microsoft.icon" />
   <link rel=icon href=mac.icns sizes="128x128 512x512 8192x8192 32768x32768" />
-  <link rel=icon href=iphone.png sizes="57x57" type="image/png" />
   <link rel=icon href=gnome.svg sizes="any" type="image/svg+xml" />
   #}
+
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#cce9ec" />
 
   <link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml" />
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}" href="/feed.rss.xml" />
@@ -129,10 +130,10 @@
       <a href="/feed.json" rel="alternate" type="application/json" title="JSON Feed for {{config.title}}">json</a> |
       <a href="/tags/">tags</a>
       <br />
-      <a target="_blank" href="https://status.markentier.tech/" rel="external" title="Status page for {{config.title}} (provided by updown.io)">status</a> |
-      <a target="_blank" href="https://github.com/markentier/markentier.tech" rel="external" title="Source code for {{config.title}}">source</a> |
-      <a target="_blank" href="https://securityheaders.io/?q=https://markentier.tech/" rel="external" title="Security Headers check for {{config.title}} (schd.io/5SaU)">schd.io</a>,
-      <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=markentier.tech" rel="external" title="SSL/TLS check for {{config.title}}">ssltest</a>
+      <a target="_blank" href="https://status.markentier.tech/" rel="external noopener" title="Status page for {{config.title}} (provided by updown.io)">status</a> |
+      <a target="_blank" href="https://github.com/markentier/markentier.tech" rel="external noopener" title="Source code for {{config.title}}">source</a> |
+      <a target="_blank" href="https://securityheaders.io/?q=https://markentier.tech/" rel="external noopener" title="Security Headers check for {{config.title}} (schd.io/5SaU)">schd.io</a>,
+      <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=markentier.tech" rel="external noopener" title="SSL/TLS check for {{config.title}}">ssltest</a>
     {% endblock footer %}</footer>
   </div>
   <script async src="/assets/scripts/loaded.js"></script>

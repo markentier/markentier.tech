@@ -1,0 +1,42 @@
+{
+  "short_name": "mtt",
+  "name": "markentier.tech blog",
+  "description": "About code and people",
+  "icons": [
+    {
+      "src": "m.48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "m.96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "m.128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "m.192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "m.256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "m.512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#cce9ec",
+  "theme_color": "#cce9ec",
+  "display": "standalone",
+  "orientation": "portrait"
+}
