@@ -15,7 +15,16 @@
   expect-ct: max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly
 
 /favicon.ico
-  Cache-Control: max-age=3600000
+  cache-control: max-age=2592000
 
 /sw.js
-  Cache-Control: max-age=100000
+  cache-control: max-age=86400
+
+/*.svg
+  cache-control: max-age=604800
+
+/*.woff
+  cache-control: max-age=2592000
+
+/*.woff2
+  cache-control: max-age=2592000
