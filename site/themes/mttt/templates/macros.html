@@ -3,6 +3,7 @@
 {% macro fq_sec(base) %}{{base}}_index.md{% endmacro fq_sec %}
 
 {% macro get_cover_image_url(url) %}{{url}}cover.png{% endmacro get_cover_image_url %}
+{% macro get_thumb_image_url(url) %}{{url}}thumb.png{% endmacro get_thumb_image_url %}
 {% macro get_default_cover_image_url(base,img) %}{{base}}/{{img}}{% endmacro get_default_cover_image_url %}
 
 {% macro sec_traverse(sec) %}
@@ -25,8 +26,8 @@
   {# page.reading_time in min, page.category, page.tags #}
   <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
     {% if page.extra.has_hero %}
-    {% set page_image_url = self::get_cover_image_url(url=page.permalink) %}
-    <img class="coverthumb" itemprop="image" src="{{page_image_url}}" alt="{{page.extra.image_alt | escape}}" />
+    {% set page_image_url = self::get_thumb_image_url(url=page.permalink) %}
+    <img class="thumbnail" itemprop="image" src="{{page_image_url}}" alt="{{page.extra.image_alt | escape}}" />
     {% endif %}
     <a href="{{page.permalink}}">
       <h2 class="post_title">{{page.title}}</h2>

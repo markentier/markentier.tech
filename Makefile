@@ -38,6 +38,32 @@ build-tidy-html:
 netlify-build-tidy-html:
 	tools/fd -IH -p public -e html -x sh -c "echo {} && tools/tidy $(TIDY_SETTINGS) {}" \;
 
+# imagemagick, pngquant, optipng, pngcrush
+COVERS = $(shell find site -iname 'cover.png')
+THUMBS = $(COVERS:cover.png=thumb.png)
+THUMB_SIZE = 320x160
+
+create-thumbs: $(THUMBS)
+
+delete-thumbs:
+	rm -rf $(THUMBS)
+
+$(THUMBS): %thumb.png: %cover.png
+	@echo "from\n  $<\nto\n  $@"
+	convert -resize $(THUMB_SIZE) $< $@
+	@ls -ahlF $@
+	pngquant --speed 1 --strip --force --output $@ 16 $@
+	optipng -clobber -o7 -zm1-9 $@ -out $@
+	pngcrush -reduce -brute -ow $@
+	@ls -ahlF $@
+	@echo
+
+list-pngs:
+	find site -iname '*.png' -exec ls -ahlF {} \;
+
+resize-covers:
+	fd -e png cover -x sh -c "convert -resize 320x160 {} | pngquant --speed 1 --ext -thumb.png" \;
+
 serve:
 	cd site && $(GUTENBERG_SERVE)
 
