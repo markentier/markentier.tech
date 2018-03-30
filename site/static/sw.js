@@ -28,7 +28,8 @@ self.addEventListener('install', e => {
     `/assets/fonts/hack-bolditalic.woff?timestamp=${timeStamp}`,
     `/assets/fonts/hack-bolditalic.woff?timestamp=${timeStamp}`,
 
-    `/m.128.png?timestamp=${timeStamp}`
+    `/m.128.png?timestamp=${timeStamp}`,
+    `/favicon.ico?timestamp=${timeStamp}`
   ]
   const cacheFn = cache => {
     return cache.addAll(files).then(() => self.skipWaiting());
