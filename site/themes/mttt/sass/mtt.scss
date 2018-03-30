@@ -1,9 +1,11 @@
-// @import "normalize";
+/*!mtt*/
+@charset "UTF-8";
+
 @import "sanitize";
-@import "fonts";
 @import "root";
 @import "base";
 @import "mnmlsm";
+
 #wrppr {
     min-width: 10em;
     margin: auto;
@@ -70,8 +72,9 @@ body {
 .index_listing_post {
     padding-bottom: .5rem;
     opacity: 0.8;
-
-    .coverthumb {
+    .thumbnail {
+        max-width: 320px;
+        max-height: 160px;
         width: 40%;
         float: right;
         margin: 0.25em 0 0 0.5em;
@@ -79,7 +82,7 @@ body {
     }
     &:hover {
         opacity: 1;
-        .coverthumb {
+        .thumbnail {
             opacity: 1;
         }
     }
@@ -110,13 +113,18 @@ body {
     min-height: 20em;
 }
 
+code,
+pre,
+.post_content_info {
+    font-family: var(--font-code);
+}
+
 pre {
     margin: 0 -1rem;
     padding: 1rem;
     border: 3px solid rgba(42, 222, 255, 0.1);
     border-radius: 0.25em;
     white-space: pre-wrap;
-    font-family: var(--font-code);
     font-size: 0.8em;
 }
 
@@ -125,7 +133,6 @@ pre {
 }
 
 .post_content_info {
-    font-family: var(--font-code);
     font-size: 0.6em;
     color: rgba(66, 35, 18, 0.7);
     display: flex;
@@ -135,8 +142,6 @@ pre {
             display: none
         }
     }
-    // & .time_and_words {
-    // }
 }
 
 article {
@@ -194,3 +199,29 @@ hr {
         content: "__tera_context = ";
     }
 }
+
+// simple fake texts
+[data-before]::before {
+    content: attr(data-before);
+}
+
+[data-after]::after {
+    content: attr(data-after);
+}
+
+// <span class="correction"><del data-text="removed"></del><ins>added</ins></span>
+.correction {
+    del {
+        &::before {
+            content: attr(data-text);
+            text-decoration: line-through;
+        }
+    } // ins
+}
+
+a.lnk::before {
+    content: attr(href)
+}
+
+// font loading after all CSS
+@import "fonts";

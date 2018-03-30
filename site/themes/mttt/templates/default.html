@@ -9,9 +9,24 @@
   {% else %}
   <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
   {% endif %}
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet subresource" href="/mtt.css?v=0" />
   <link rel="icon" href="/m-128.png?v=0" sizes="128x128" type="image/png" />
+
+  {# styles #}
+  <style>@font-face{font-family:'Lusitana';src:url('/assets/fonts/lusitana-regular.woff2') format('woff2'),url('/assets/fonts/lusitana-regular.woff') format('woff');font-weight: normal;font-style:normal;font-display:swap;}@font-face{font-family:'Varela Round';src:url('/assets/fonts/varela-round-regular.woff2') format('woff2'),url('/assets/fonts/varela-round-regular.woff') format('woff');font-weight:normal;font-style:normal;font-display:swap;}</style>
+  <style>@charset "UTF-8";html{font-family:sans-serif;}</style>
+
+  <link rel="preload" href="/assets/fonts/lusitana-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/varela-round-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet subresource" href="/mtt.css?v=0" />
+
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
+  <link rel="preconnect" href="https://www.googletagmanager.com/" />
+  <link rel="preconnect" href="https://www.google-analytics.com/" />
+
+  {# more icons #}
   <link rel="shortcut icon" href="/favicon.ico?v=0" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />
   {# icon examples
   <link rel=icon href=favicon.png sizes="16x16" type="image/png" />
