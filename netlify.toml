@@ -6,7 +6,7 @@ command = "make netlify"
 functions = "functions"
 
 [build.environment]
-GUTENBERG_VERSION = "0.3.2"
+GUTENBERG_VERSION = "0.3.3"
 
 [context.deploy-preview]
 command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
