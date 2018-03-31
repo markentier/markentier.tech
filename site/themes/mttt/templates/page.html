@@ -1,56 +1,14 @@
 {% extends "default.html" %}
-{% block title %}{{page.title}} | {{config.title}}{% endblock title %}
-{%- block content %}
-{%- set is_post = page.permalink is containing("/posts/") -%}
-      <article{%- if is_post == true %} itemscope itemtype="http://schema.org/Article"{% endif %}>
-        {% if page.extra.has_image -%}
-        {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
-        <figure class="post_hero">
-          <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page.extra.image_alt | safe | escape}}" />
-          <figcaption>{{page.extra.image_alt | safe | escape}}</figcaption>
-        </figure>
-        {%- endif %}
-        <h2 itemprop="headline" class="post_title">{{ page.title }}</h2>
-        {% if is_post %}
-        {% set pdate_iso = page.date | date(format="%FT%T%z") %}
-        {% set pdate_date = page.date | date %}
-        <div class="post_content_info">
-          <div class="published_at_line">
-            <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-            <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-          </div>
-          <div class="time_and_words">
-            <span>reading time:
-               {% if page.reading_time < 1 %}
-               less than a minute
-               {% else %}
-               ~ <strong>{{page.reading_time}}</strong> minute{% if page.reading_time != 1 %}s{% endif %}
-               {% endif %}
-            </span>
-            <span>(<strong>{{page.word_count}}</strong> words)</span>
-          </div>
+{% import "macros.html" as m %}
+{% import "page.macros.html" as pm %}
+{% block title %}{{page.extra.long_title | default(value=page.title)}} | {{config.title}}{% endblock title %}
+{% block content %}
+{% set is_post = page.permalink is containing("/posts/") %}
+      <article{%- if is_post == true %} class="hentry" itemscope itemtype="http://schema.org/Article"{% endif %}>
+        {{pm::pheader(page=page)}}
+        <div class="article-body">
+          {{m::absolutify(content=page.content, permalink=page.permalink) | trim}}
         </div>
-        {% endif %}
-        {{ macros::absolutify(content=page.content, permalink=page.permalink) | trim }}
-        {% if is_post -%}
-        <div class="meta">
-          <link itemprop="url" href="{{page.permalink | safe}}" />
-          <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}" />
-          <div itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="name" content="{{config.extra.author}}">
-          </div>
-          <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-            <a itemprop="url" href="{{config.base_url | safe }}">
-              <meta itemprop="name" content="{{config.extra.publisher}}">
-              <meta itemprop="description" content="{{config.description}}">
-              <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-                <img itemprop="url" src="{{config.base_url | safe }}/m.128.png" alt="logo" />
-                <meta itemprop="width" content="128" />
-                <meta itemprop="height" content="128" />
-              </span>
-            </a>
-          </div>
-        </div>
-        {%- endif %}
+        {% if is_post %}{{pm::pfooter(page=page, config=config)}}{% endif %}
       </article>
-{%- endblock content -%}
+{% endblock content %}

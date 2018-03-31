@@ -1,3 +1,6 @@
+{% macro date_iso(date) %}{{date | date(format="%FT%T%z")}}{% endmacro date_iso %}
+{% macro date_date(date) %}{{date | date}}{% endmacro date_date %}
+
 {% macro html_escaped(str) %}{{str | safe | escape}}{% endmacro html_escaped %}
 
 {% macro fq_sec(base) %}{{base}}_index.md{% endmacro fq_sec %}
@@ -32,8 +35,8 @@
     <a href="{{page.permalink}}">
       <h2 class="post_title">{{page.title}}</h2>
       {# TODO extract as macro: macros::published_at(date=date) #}
-      {% set pdate_iso = page.date | date(format="%FT%T%z") %}
-      {% set pdate_date = page.date | date %}
+      {% set pdate_iso = self::date_iso(date=page.date) %}
+      {% set pdate_date = self::date_date(date=page.date) %}
       <small class="published_at_line">
         <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
         <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>

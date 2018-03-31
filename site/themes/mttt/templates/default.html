@@ -5,7 +5,7 @@
   <title>{% block title %}{{config.title}}{% endblock title %}</title>
   <meta name="description" content="{{config.description}}">
   {% if page.tags %}
-  <meta name="keywords" content="{{page.tags | join(sep=",") }}" />
+  <meta name="keywords" content="{{page.tags | slice(end=10) | join(sep=",") }}" />
   {% else %}
   <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
   {% endif %}
@@ -123,7 +123,7 @@
       {% block content %}{% endblock content %}
       {% block content_footer %}{% endblock content_footer %}
     </main>
-    <footer>{% block footer %}
+    <footer class='footer'>{% block footer %}
      &copy; 2018 markentier.tech / Christoph Grabo |
       feeds:
       <a href="/feed.atom.xml" rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}">atom</a>,

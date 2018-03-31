@@ -162,9 +162,9 @@ article {
         background-color: rgba(35, 66, 86, 0.2);
         text-shadow: 1px 1px 3px #def;
     } // excerpt paragraph
-    // `&>` avoids application for further nested <p>'s
+    // `.foo>p:...` avoids application for further nested <p>'s
     &.index_listing_post p,
-    &>p:first-of-type {
+    .article-body>p:first-of-type {
         font-style: italic;
         filter: brightness(1.5);
         &::after {
@@ -174,6 +174,9 @@ article {
             font-style: normal;
             content: "·   ·   ·";
         }
+    }
+    .article-body>p:first-of-type {
+        font-size: 1.2em;
     }
 }
 
