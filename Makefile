@@ -38,10 +38,16 @@ build-tidy-html:
 netlify-build-tidy-html:
 	tools/fd -IH -p public -e html -x sh -c "echo {} && tools/tidy $(TIDY_SETTINGS) {}" \;
 
-# imagemagick, pngquant, optipng, pngcrush
+# imagemagick, pngquant, optipng
 COVERS = $(shell find site -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
 THUMB_SIZE = 320x160
+PNG_COLORS = 32
+## removed, because it increases the size most of the time:
+# 	@echo "=== Size: `wc -c < $@`"
+#	pngcrush -q -reduce -brute -ow $@ 2>/dev/null
+
+regenerate-thumbs: delete-thumbs create-thumbs
 
 create-thumbs: $(THUMBS)
 
@@ -50,19 +56,25 @@ delete-thumbs:
 
 $(THUMBS): %thumb.png: %cover.png
 	@echo "from\n  $<\nto\n  $@"
+	@echo "=== [0] Size: `wc -c < $<`"
 	convert -resize $(THUMB_SIZE) $< $@
-	@ls -ahlF $@
-	pngquant --speed 1 --strip --force --output $@ 16 $@
-	optipng -clobber -o7 -zm1-9 $@ -out $@
-	pngcrush -reduce -brute -ow $@
-	@ls -ahlF $@
+	@echo "=== [1] Size: `wc -c < $@`"
+	pngquant --speed 1 --strip --force --output $@ $(PNG_COLORS) $@ 2>/dev/null
+	@echo "=== [2] Size: `wc -c < $@`"
+	optipng -quiet -clobber -o7 -zm1-9 -out $@ $@
+	@echo "=== [F] Size: `wc -c < $@`"
 	@echo
 
 list-pngs:
-	find site -iname '*.png' -exec ls -ahlF {} \;
+	@find site -iname '*.png' -exec wc -c {} \;
 
-resize-covers:
-	fd -e png cover -x sh -c "convert -resize 320x160 {} | pngquant --speed 1 --ext -thumb.png" \;
+opimize-pngs:
+	@find site -iname '*.png' -exec sh -c "\
+		echo 'Optimizing file: {}' && \
+		echo ' -- before size: \c' && wc -c < {} && \
+		optipng -quiet -clobber -o7 -zm1-9 -out {} {} && \
+		echo ' --- after size: \c' && wc -c < {} \
+	" \;
 
 serve:
 	cd site && $(GUTENBERG_SERVE)
@@ -75,8 +87,6 @@ netlify-lambda:
 
 clean:
 	@rm -rf public
-
-# ---
 
 check-cert:
 	@echo | \
