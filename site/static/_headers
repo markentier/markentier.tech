@@ -23,6 +23,12 @@
 /*.svg
   cache-control: max-age=604800
 
+/*.png
+  cache-control: max-age=604800
+
+/*.jpg
+  cache-control: max-age=604800
+
 /*.woff
   cache-control: max-age=2592000
 
