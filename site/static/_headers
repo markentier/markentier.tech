@@ -3,6 +3,10 @@
 ### https://securityheaders.io/
 ### https://scotthelme.co.uk/a-new-security-header-referrer-policy/
 ### https://scotthelme.co.uk/a-new-security-header-expect-ct/
+#
+## 1d = 86400
+## 7d = 604800
+## 30d = 2592000
 
 /*
   x-github-user: https://github.com/asaaki
@@ -18,16 +22,16 @@
   cache-control: max-age=2592000
 
 /sw.js
-  cache-control: max-age=86400
+  cache-control: max-age=604800
 
 /*.svg
-  cache-control: max-age=604800
+  cache-control: max-age=2592000
 
 /*.png
-  cache-control: max-age=604800
+  cache-control: max-age=2592000
 
 /*.jpg
-  cache-control: max-age=604800
+  cache-control: max-age=2592000
 
 /*.woff
   cache-control: max-age=2592000
