@@ -137,12 +137,10 @@ pre {
   color: rgba(66, 35, 18, 0.7);
   display: flex;
   justify-content: space-between;
-  & .published_at_line {
-    .modified_at {
-      display: none
-    }
-  }
 }
+
+// always hide this timestamp
+.modified_at { display: none }
 
 article {
   .meta {
