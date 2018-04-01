@@ -28,5 +28,8 @@
   "/m.128.png",
   "/favicon.ico",
 
+  "/about/",
+  "/tags/",
+
   "/manifest.json"
 ]
