@@ -12,7 +12,9 @@ TIDY_SETTINGS = -q -m -w 0 -i \
 GUTENBERG = gutenberg
 GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBERG_OUTDIR)
-GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
+# GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
+# makes developing service worker stuff much easier:
+GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
 netlify: netlify-build netlify-lambda
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)

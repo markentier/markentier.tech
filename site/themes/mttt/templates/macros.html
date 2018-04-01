@@ -28,11 +28,15 @@
   {% if page.draft == false %}
   {# page.reading_time in min, page.category, page.tags #}
   <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
-    {% if page.extra.has_hero %}
-    {% set page_image_url = self::get_thumb_image_url(url=page.permalink) %}
-    <img class="thumbnail" itemprop="image" src="{{page_image_url}}" alt="{{page.extra.image_alt | escape}}" />
-    {% endif %}
+    <link rel="prerender" href="{{page.permalink}}" data-fetch />
     <a href="{{page.permalink}}">
+      {% if page.extra.has_hero %}
+      {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
+      {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
+      <img class="thumbnail" itemprop="image" src="{{page_thumb_url}}" alt="{{page.extra.image_alt | escape}}" />
+      {#<link rel="preload" type="image/png" as="image" href="{{page_cover_url}}" data-fetch />#}
+      <link rel="prefetch" type="image/png" as="image" href="{{page_cover_url}}" data-fetch />
+      {% endif %}
       <h2 class="post_title">{{page.title}}</h2>
       {# TODO extract as macro: macros::published_at(date=date) #}
       {% set pdate_iso = self::date_iso(date=page.date) %}

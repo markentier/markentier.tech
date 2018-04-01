@@ -7,223 +7,260 @@
 @import "mnmlsm";
 
 #wrppr {
-    min-width: 10em;
-    margin: auto;
-    padding: 0 0.5em;
+  min-width: 10em;
+  margin: auto;
+  padding: 0 0.5em;
 }
 
 body {
-    background-image: url(/head.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top center;
+  background-image: url(/head.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
 }
 
 .site_description {
-    margin-top: -0.5em;
-    margin-left: 6.4rem;
+  margin-top: -0.5em;
+  margin-left: 6.4rem;
 }
 
 @media only screen and (max-width: 900px) {
-    body {
-        font-size: 16px;
-        line-height: 1.4;
+  body {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  header h1 {
+    font-size: 2em;
+    #big-m {
+      font-size: 5rem;
+      vertical-align: baseline;
     }
-    header h1 {
-        font-size: 2em;
-        #big-m {
-            font-size: 5rem;
-            vertical-align: baseline;
-        }
-    }
-    .site_description {
-        margin-top: 0;
-        margin-left: 0;
-    }
+  }
+  .site_description {
+    margin-top: 0;
+    margin-left: 0;
+  }
 }
 
 @media only screen and (min-width: 901px) {
-    body {
-        background-color: transparent;
-        background-size: 0 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        &::before {
-            content: "";
-            z-index: -1;
-            position: inherit;
-            left: inherit;
-            top: inherit;
-            width: inherit;
-            height: inherit;
-            background-image: inherit;
-            background-size: contain;
-            background-repeat: no-repeat;
-            filter: blur(3px);
-        }
+  body {
+    background-color: transparent;
+    background-size: 0 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    &::before {
+      content: "";
+      z-index: -1;
+      position: inherit;
+      left: inherit;
+      top: inherit;
+      width: inherit;
+      height: inherit;
+      background-image: inherit;
+      background-size: contain;
+      background-repeat: no-repeat;
+      filter: blur(3px);
     }
-    #wrppr {
-        width: 42em;
-        /* 20px * 42em = 840px */
-    }
+  }
+  #wrppr {
+    /* 20px * 42em = 840px */
+    width: 42em;
+  }
 }
 
 .index_listing_post {
-    padding-bottom: .5rem;
-    opacity: 0.8;
+  padding-bottom: .5rem;
+  opacity: 0.8;
+  .thumbnail {
+    max-width: 320px;
+    max-height: 160px;
+    width: 40%;
+    float: right;
+    margin: 0.25em 0 0 0.5em;
+    opacity: 0.666;
+  }
+  &:hover {
+    opacity: 1;
     .thumbnail {
-        max-width: 320px;
-        max-height: 160px;
-        width: 40%;
-        float: right;
-        margin: 0.25em 0 0 0.5em;
-        opacity: 0.666;
+      opacity: 1;
     }
-    &:hover {
-        opacity: 1;
-        .thumbnail {
-            opacity: 1;
-        }
+  }
+  a {
+    text-decoration: none;
+  }
+  a:link,
+  a:visited {
+    color: inherit;
+  }
+  &:hover {
+    h1,
+    h2,
+    p {
+      text-shadow: 2px 2px 2px hsla(50, 100%, 50%, 0.15);
     }
-    a {
-        text-decoration: none;
+  }
+  &+& {
+    h1,
+    h2 {
+      margin-top: 0.5em;
     }
-    a:link,
-    a:visited {
-        color: inherit;
-    }
-    &:hover {
-        h1,
-        h2,
-        p {
-            text-shadow: 2px 2px 2px hsla(50, 100%, 50%, 0.15);
-        }
-    }
-    &+& {
-        h1,
-        h2 {
-            margin-top: 0.5em;
-        }
-    }
+  }
 }
 
 #content {
-    margin-top: 3rem;
-    min-height: 20em;
+  margin-top: 3rem;
+  min-height: 20em;
 }
 
 code,
 pre,
 .post_content_info {
-    font-family: var(--font-code);
+  font-family: var(--font-code);
 }
 
 pre {
-    margin: 0 -1rem;
-    padding: 1rem;
-    border: 3px solid rgba(42, 222, 255, 0.1);
-    border-radius: 0.25em;
-    white-space: pre-wrap;
-    font-size: 0.8em;
+  margin: 0 -1rem;
+  padding: 1rem;
+  border: 3px solid rgba(42, 222, 255, 0.1);
+  border-radius: 0.25em;
+  white-space: pre-wrap;
+  font-size: 0.8em;
 }
 
 .post_title {
-    margin-bottom: 0em;
+  margin-bottom: 0em;
 }
 
 .post_content_info {
-    font-size: 0.6em;
-    color: rgba(66, 35, 18, 0.7);
-    display: flex;
-    justify-content: space-between;
-    & .published_at_line {
-        .modified_at {
-            display: none
-        }
+  font-size: 0.6em;
+  color: rgba(66, 35, 18, 0.7);
+  display: flex;
+  justify-content: space-between;
+  & .published_at_line {
+    .modified_at {
+      display: none
     }
+  }
 }
 
 article {
-    .meta {
-        display: none
+  .meta {
+    display: none
+  }
+  img {
+    // 860x430 (2:1)
+    display: block;
+    margin: 0 -1rem;
+    max-width: calc(100% + 2rem);
+  }
+  figcaption {
+    text-align: center;
+    font-size: 0.6em;
+    margin: 0 -1rem;
+    padding: 0.25em;
+    background-color: rgba(35, 66, 86, 0.2);
+    text-shadow: 1px 1px 3px #def;
+  }
+  // excerpt paragraph
+  // `.foo>p:...` avoids application for further nested <p>'s
+  &.index_listing_post p,
+  .article-body > p:first-of-type {
+    font-style: italic;
+    filter: brightness(1.5);
+    &::after {
+      display: block;
+      margin-top: 1.5em;
+      text-align: center;
+      font-style: normal;
+      content: "·   ·   ·";
     }
-    img {
-        // 860x430 (2:1)
-        display: block;
-        margin: 0 -1rem;
-        max-width: calc(100% + 2rem);
+  }
+  .article-body > p:first-of-type {
+    font-size: 1.2em;
+  }
+
+  .article-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    & > * {
+      flex-grow: 1;
+      flex-basis: 100%;
     }
-    figcaption {
-        text-align: center;
-        font-size: 0.6em;
-        margin: 0 -1rem;
-        padding: 0.25em;
-        background-color: rgba(35, 66, 86, 0.2);
-        text-shadow: 1px 1px 3px #def;
-    } // excerpt paragraph
-    // `.foo>p:...` avoids application for further nested <p>'s
-    &.index_listing_post p,
-    .article-body>p:first-of-type {
-        font-style: italic;
-        filter: brightness(1.5);
-        &::after {
-            display: block;
-            margin-top: 1.5em;
-            text-align: center;
-            font-style: normal;
-            content: "·   ·   ·";
-        }
+
+    // make it a floatable box, somehow ...
+    aside {
+      // TODO ...
+      width: 40%;
     }
-    .article-body>p:first-of-type {
-        font-size: 1.2em;
-    }
+  }
 }
 
 hr {
-    height: auto;
-    padding: 0;
-    border: none;
-    text-align: center;
-    margin-bottom: 1em;
-    &::after {
-        content: "·   ·   ·";
-    }
+  height: auto;
+  padding: 0;
+  border: none;
+  text-align: center;
+  margin-bottom: 1em;
+  &::after {
+    content: "·   ·   ·";
+  }
 }
 
 @import "mtt.shortcodes";
 // debugging
 #__tera_context {
-    margin: 1em 0 0 0;
-    padding: 1em;
-    background: black;
-    color: white;
-    &::before {
-        content: "__tera_context = ";
-    }
+  margin: 1em 0 0 0;
+  padding: 1em;
+  background: black;
+  color: white;
+  &::before {
+    content: "__tera_context = ";
+  }
 }
 
 // simple fake texts
 [data-before]::before {
-    content: attr(data-before);
+  content: attr(data-before);
 }
 
 [data-after]::after {
-    content: attr(data-after);
+  content: attr(data-after);
 }
 
 // <span class="correction"><del data-text="removed"></del><ins>added</ins></span>
 .correction {
-    del {
-        &::before {
-            content: attr(data-text);
-            text-decoration: line-through;
-        }
-    } // ins
+  del {
+  &::before {
+    content: attr(data-text);
+    text-decoration: line-through;
+  }
+  } // ins
 }
 
 a.lnk::before {
-    content: attr(href)
+  content: attr(href)
+}
+.quoted {
+  blockquote{
+    font-style: italic;
+  }
+  blockquote+.blockquote-source {
+    margin-top: -1em;
+    font-size: .9em;
+    text-align: right;
+
+    &::before { content: "— "; }
+  }
+}
+
+
+a:local-link {
+  text-decoration: none;
 }
 
 // font loading after all CSS

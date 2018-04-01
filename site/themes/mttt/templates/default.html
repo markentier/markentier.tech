@@ -107,7 +107,7 @@
   <script async src="/js/mtt.js"></script>
   {% block before_head_end %}{% endblock before_head_end %}
 </head>
-<body>
+<body class="mtt">
   {% block after_body_open %}{% endblock after_body_open %}
   <div id="wrppr">
     <header>{% block header %}
@@ -139,6 +139,9 @@
   </div>
   <script async src="/js/loaded.js"></script>
   {% block before_body_end %}{% endblock before_body_end %}
-{# DEBUG (port=3000) #}{% if config.base_url is containing(":3000") %}<pre id="__tera_context">{{ __tera_context }}</pre>{% endif %}
+{# DEBUG (port=3000) #}
+{% if config.base_url is containing(":3000") %}
+<pre id="__tera_context">{{ __tera_context | safe | escape }}</pre>
+{% endif %}
 </body>
 </html>

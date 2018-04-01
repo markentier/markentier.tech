@@ -1,0 +1,14 @@
+<div class="quoted">
+  <blockquote{% if href is defined %} cite="{{href | safe}}"{% endif %}>
+    {{body}}
+  </blockquote>
+  {%- if href or source %}
+  <div class="blockquote-source">
+    {%- if href -%}
+    <a href="{{href | safe}}">{% if source %}{{source}}{% else %}{{href}}{% endif %}</a>
+    {%- else -%}
+    {{source}}
+    {%- endif -%}
+  </div>
+  {%- endif %}
+</div>

@@ -1,50 +1,75 @@
 'use strict';
 // https://github.com/GoogleChromeLabs/airhorn/blob/master/app/sw.js
 
-self.addEventListener('install', e => {
-  const timeStamp = Date.now()
-  const files = [
-    `/`,
-    `/index.html?timestamp=${timeStamp}`,
+const version = 'mtt-20180401.1';
 
-    `/mtt.css?timestamp=${timeStamp}`,
-    `/head.svg?timestamp=${timeStamp}`,
-    `/js/mtt.js?timestamp=${timeStamp}`,
-    `/js/loaded.js?timestamp=${timeStamp}`,
+const cacheFn = cache => {
+  return fetch('cache.json')
+    .then((response) => response.json())
+    .then((files) => cache.addAll(files))
+    .then(() => self.skipWaiting());
+}
 
-    `/assets/fonts/lusitana-regular.woff2?timestamp=${timeStamp}`,
-    `/assets/fonts/lusitana-regular.woff?timestamp=${timeStamp}`,
-    `/assets/fonts/varela-round-regular.woff2?timestamp=${timeStamp}`,
-    `/assets/fonts/varela-round-regular.woff?timestamp=${timeStamp}`,
-
-    `/assets/fonts/lusitana-bold.woff2?timestamp=${timeStamp}`,
-    `/assets/fonts/lusitana-bold.woff?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-regular.woff2?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-regular.woff2?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-bold.woff?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-bold.woff?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-italic.woff?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-italic.woff?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-bolditalic.woff?timestamp=${timeStamp}`,
-    `/assets/fonts/hack-bolditalic.woff?timestamp=${timeStamp}`,
-
-    `/m.128.png?timestamp=${timeStamp}`,
-    `/favicon.ico?timestamp=${timeStamp}`
-  ]
-  const cacheFn = cache => {
-    return cache.addAll(files).then(() => self.skipWaiting());
+const purgeFn = (cacheName) => {
+  if (cacheName !== version) {
+    // console.log('[ServiceWorker] Deleting old cache:', cacheName);
+    return caches.delete(cacheName);
   }
-  e.waitUntil(caches.open('mtt').then(cacheFn))
-})
+};
+const cacheKeysPurgeFn = (cacheNames) =>
+  Promise.all(cacheNames.map(purgeFn));
 
-self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim())
-})
+const cacheableFetch = (e) => {
+  return caches.open(version).then((cache) => {
+    return cache.match(e.request)
+      .then((response) => response || Promise.reject('not-found'))
+      .catch((err) => {
+        return fetch(e.request)
+          .then((response) => {
+            scheduleCacheUpdate(cache, e, response);
+            return response;
+          });
+      });
+  });
+};
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request, { ignoreSearch: true }).then(response => {
-      return response || fetch(event.request)
-    })
+const scheduleCacheUpdate = (cache, e, response) => {
+  const updateCacheFn = () => {
+    cache.put(e.request, response.clone());
+    return response;
+  };
+  const updateCacheP = new Promise((resolve) => resolve(updateCacheFn()));
+  // e.waitUntil(updateCacheP.then(notifyClients));
+  e.waitUntil(updateCacheP);
+};
+
+// const notifyClients = (response) => {
+//   const message = {
+//     type: 'refresh',
+//     url: response.url,
+//     eTag: response.headers.get('ETag')
+//   };
+//   const notifyClient = (client) => client.postMessage(JSON.stringify(message));
+//   const notifyAllClients = (clients) => clients.forEach(notifyClient);
+//   return self.clients.matchAll().then(notifyAllClients);
+// };
+
+const installHandler = (e) => {
+  e.waitUntil(caches.open(version).then(cacheFn));
+};
+
+const activateHandler = (e) => {
+  e.waitUntil(
+    caches.keys()
+          .then(cacheKeysPurgeFn)
+          .then(() => self.clients.claim())
   )
-})
+};
+
+const fetchHandler = (e) => {
+  e.respondWith(cacheableFetch(e))
+};
+
+self.addEventListener('install', installHandler)
+self.addEventListener('activate', activateHandler)
+self.addEventListener('fetch', fetchHandler)

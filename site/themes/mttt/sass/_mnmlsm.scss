@@ -37,9 +37,12 @@ a:focus {
 }
 
 blockquote {
-    margin-left: 0;
+    margin: 0;
+    // margin-left: 0;
     padding-left: 0.75em;
     border-left: 0.25em solid #def;
+    // color: currentColor;
+    opacity: .8;
 }
 
 ul,
