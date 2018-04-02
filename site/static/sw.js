@@ -1,7 +1,7 @@
 'use strict';
 // https://github.com/GoogleChromeLabs/airhorn/blob/master/app/sw.js
 
-const version = 'mtt-20180401.1';
+const version = 'mtt-20180402.1';
 
 const cacheFn = cache => {
   return fetch('cache.json')
