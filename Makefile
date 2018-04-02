@@ -1,6 +1,9 @@
 # markentier.tech
 NETLIFY_DEPLOY_URL ?= https://markentier.tech
 
+# COMMIT_REF ?= ffffffffffffffffffffffffffffffffffffffff
+COMMIT_REF ?= $(shell git rev-parse HEAD)
+
 # brew install tidy-html5 fd
 TIDY_SETTINGS = -q -m -w 0 -i \
 	--indent-with-tabs yes \
@@ -16,7 +19,7 @@ GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBER
 # makes developing service worker stuff much easier:
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
-netlify: netlify-build netlify-lambda
+netlify: netlify-build netlify-lambda netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
@@ -86,6 +89,9 @@ serve-with-theme-reload:
 
 netlify-lambda:
 	yarn && yarn build:lambda
+
+netlify-deployment:
+	@echo '{"deployment":{"sha":"$(COMMIT_REF)"}}' > public/deployment.json
 
 clean:
 	@rm -rf public
