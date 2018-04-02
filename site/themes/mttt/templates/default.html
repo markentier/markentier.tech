@@ -141,6 +141,7 @@
     {% endblock footer %}</footer>
   </div>
   <script async src="/js/loaded.js"></script>
+  <link rel="prefetch" href="/deployment.json" data-fetch />
   {% block before_body_end %}{% endblock before_body_end %}
 {# DEBUG (port=3000) #}
 {% if config.base_url is containing(":3000") %}
