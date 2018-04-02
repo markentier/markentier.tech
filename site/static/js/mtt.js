@@ -10,6 +10,13 @@
   //   };
   // };
 
+  const prefetchStage2 = () => {
+    // store prefetchables
+    document.querySelectorAll('link[data-fetch]').forEach((link) => fetch(link.href));
+    document.querySelectorAll('a[data-fetch]').forEach((a) => fetch(a.href));
+    // document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
+  }
+
   const registerSwOnLoad = () => {
     navigator.serviceWorker
       .register('/sw.js', { scope: '/' })
@@ -20,10 +27,7 @@
       })
       .then(() => {
         // navigator.serviceWorker.onmessage = swOnMessageFn;
-        // store prefetchables
-        document.querySelectorAll('link[data-fetch]').forEach((link) => fetch(link.href));
-        document.querySelectorAll('a[data-fetch]').forEach((a) => fetch(a.href));
-        // document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
+        prefetchStage2();
       });
 
     // sw state changes
@@ -33,8 +37,9 @@
         console.log(`[controllerchange][statechange] A "statechange" has occured: ${this.state}`);
         if (this.state === 'activated') {
           // safe to go offline
-          const wrppr= document.getElementById('wrppr');
-          wrppr.classList.add('activated')
+          const wrppr = document.getElementById('wrppr');
+          wrppr.classList.add('activated');
+          prefetchStage2();
         } else {
           // something else?
           // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state
@@ -42,6 +47,10 @@
         }
       });
     });
+
+    const deploymentSyncPeriod = 60*1000;
+    const deploymentSync = () => { fetch('/deployment.json'); };
+    setInterval(deploymentSync, deploymentSyncPeriod);
   };
 
   if ('serviceWorker' in navigator) { window.addEventListener('load', registerSwOnLoad); }
