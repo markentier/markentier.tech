@@ -26,7 +26,7 @@ netlify: netlify-build netlify-lambda netlify-deployment
 
 build: build-dirty build-tidy-html build-html-postprocessing
 
-netlify-build: build-dirty netlify-build-tidy-html build-html-postprocessing
+netlify-build: build-dirty netlify-build-tidy-html netlify-build-html-postprocessing
 
 build-preview: build-dirty
 
