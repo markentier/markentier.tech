@@ -15,7 +15,7 @@
   {% set pdate_date = m::date_date(date=page.date) %}
   <div class="post_content_info">
     <div class="published_at_line">
-      <time class="published_at updated" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}" pubdate>{{pdate_date}}</time>
+      <time class="published_at updated" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
       <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
     </div>
     <div class="time_and_words">
@@ -37,14 +37,14 @@
 
 {% macro pfooter(page, config) %}
 <footer class="meta">
-  <section class="info">
+  <div class="info">
     <span class="permalink" title="Permalink">🔖</span> <a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br />
     {% if page.extra.origin_url %}
     {% set rels = "external alternate nofollow noreferrer noopener" %}
     <span class="origin" title="Originally published at">⎇</span> <a target="_blank" rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a>
     {% endif %}
-  </section>
-  <section class="data">
+  </div>
+  <div class="data">
       <link itemprop="url" href="{{page.permalink | safe}}" />
       <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}" />
       <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -62,6 +62,6 @@
           </span>
         </a>
       </div>
-  </section>
+  </div>
 </footer>
 {% endmacro pfooter %}
