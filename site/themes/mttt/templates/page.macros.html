@@ -9,7 +9,7 @@
     <figcaption>{{page.extra.image_alt | safe | escape}}</figcaption>
   </figure>
   {%- endif %}
-  <h2 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title)}}</h2>
+  <h2 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title | safe)}}</h2>
   {% if is_post %}
   {% set pdate_iso = m::date_iso(date=page.date) %}
   {% set pdate_date = m::date_date(date=page.date) %}
@@ -37,22 +37,31 @@
 
 {% macro pfooter(page, config) %}
 <footer class="meta">
-  <link itemprop="url" href="{{page.permalink | safe}}" />
-  <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}" />
-  <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="{{config.extra.author}}">
-    <span class="fn">{{config.extra.author}}</span>
-  </div>
-  <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <a itemprop="url" href="{{config.base_url | safe }}">
-      <meta itemprop="name" content="{{config.extra.publisher}}">
-      <meta itemprop="description" content="{{config.description}}">
-      <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-        <img itemprop="url" src="{{config.base_url | safe }}/m.128.png" alt="logo" />
-        <meta itemprop="width" content="128" />
-        <meta itemprop="height" content="128" />
-      </span>
-    </a>
-  </div>
+  <section class="info">
+    <span class="permalink" title="Permalink">🔖</span> <a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br />
+    {% if page.extra.origin_url %}
+    {% set rels = "external alternate nofollow noreferrer noopener" %}
+    <span class="origin" title="Originally published at">⎇</span> <a target="_blank" rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a>
+    {% endif %}
+  </section>
+  <section class="data">
+      <link itemprop="url" href="{{page.permalink | safe}}" />
+      <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}" />
+      <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="{{config.extra.author}}">
+        <span class="fn">{{config.extra.author}}</span>
+      </div>
+      <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <a itemprop="url" href="{{config.base_url | safe }}">
+          <meta itemprop="name" content="{{config.extra.publisher}}">
+          <meta itemprop="description" content="{{config.description}}">
+          <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <img itemprop="url" src="{{config.base_url | safe }}/m.128.png" alt="logo" />
+            <meta itemprop="width" content="128" />
+            <meta itemprop="height" content="128" />
+          </span>
+        </a>
+      </div>
+  </section>
 </footer>
 {% endmacro pfooter %}

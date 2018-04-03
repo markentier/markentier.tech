@@ -9,7 +9,7 @@
 #wrppr {
   min-width: 10em;
   margin: auto;
-  padding: 0 0.5em;
+  padding: 0; // 0.5em;
 }
 
 body {
@@ -22,51 +22,6 @@ body {
 .site_description {
   margin-top: -0.5em;
   margin-left: 6.4rem;
-}
-
-@media only screen and (max-width: 900px) {
-  body {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-  header h1 {
-    font-size: 2em;
-    #big-m {
-      font-size: 5rem;
-      vertical-align: baseline;
-    }
-  }
-  .site_description {
-    margin-top: 0;
-    margin-left: 0;
-  }
-}
-
-@media only screen and (min-width: 901px) {
-  body {
-    background-color: transparent;
-    background-size: 0 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    &::before {
-      content: "";
-      z-index: -1;
-      position: inherit;
-      left: inherit;
-      top: inherit;
-      width: inherit;
-      height: inherit;
-      background-image: inherit;
-      background-size: contain;
-      background-repeat: no-repeat;
-      filter: blur(3px);
-    }
-  }
-  #wrppr {
-    /* 20px * 42em = 840px */
-    width: 42em;
-  }
 }
 
 .index_listing_post {
@@ -123,7 +78,7 @@ pre {
   margin: 0 -1rem;
   padding: 1rem;
   border: 3px solid rgba(42, 222, 255, 0.1);
-  border-radius: 0.25em;
+  border-radius: .25em;
   white-space: pre-wrap;
   font-size: 0.8em;
 }
@@ -143,11 +98,7 @@ pre {
 .modified_at { display: none }
 
 article {
-  .meta {
-    display: none
-  }
   img {
-    // 860x430 (2:1)
     display: block;
     margin: 0 -1rem;
     max-width: calc(100% + 2rem);
@@ -157,7 +108,8 @@ article {
     font-size: 0.6em;
     margin: 0 -1rem;
     padding: 0.25em;
-    background-color: rgba(35, 66, 86, 0.2);
+    // background-color: rgba(35, 66, 86, .2);
+    background: rgba(34,34,34,.1);
     text-shadow: 1px 1px 3px #def;
   }
   // excerpt paragraph
@@ -194,6 +146,28 @@ article {
     aside {
       // TODO ...
       width: 40%;
+    }
+  }
+
+  footer.meta {
+    margin: 1rem -1rem;
+    padding: 1rem;
+    background: rgba(34,34,34,.1);
+    border-radius: .25rem;
+
+    .info {
+      .permalink, .origin {
+        display: inline-block;
+        width: 1rem;
+      }
+      .origin {
+        font-weight: bold;
+      }
+    }
+
+    // structured data
+    .data {
+      display: none
     }
   }
 }
@@ -233,16 +207,28 @@ hr {
 // <span class="correction"><del data-text="removed"></del><ins>added</ins></span>
 .correction {
   del {
-  &::before {
-    content: attr(data-text);
-    text-decoration: line-through;
+    &::before {
+      content: attr(data-text);
+      text-decoration: line-through;
+    }
   }
-  } // ins
 }
 
 a.lnk::before {
   content: attr(href)
 }
+
+blockquote {
+    margin: 0 0 0 -1rem;
+    padding-left: .7em;
+    border-left: .3em solid rgba(66, 35, 18, 0.1);
+    opacity: .8;
+
+    & blockquote {
+      margin: 0;
+    }
+}
+
 .quoted {
   blockquote{
     font-style: italic;
@@ -259,7 +245,9 @@ a.lnk::before {
 
 a:local-link {
   text-decoration: none;
-}
+};
+
+@import "media.queries";
 
 // font loading after all CSS
 @import "fonts";
