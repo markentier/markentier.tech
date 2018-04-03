@@ -1,7 +1,7 @@
 {% extends "default.html" %}
 {% import "macros.html" as m %}
 {% import "page.macros.html" as pm %}
-{% block title %}{{page.extra.long_title | default(value=page.title)}} | {{config.title}}{% endblock title %}
+{% block title %}{{page.extra.long_title | default(value=page.title | safe)}} | {{config.title}}{% endblock title %}
 {% block content %}
 {% set is_post = page.permalink is containing("/posts/") %}
       <article{%- if is_post == true %} class="hentry" itemscope itemtype="http://schema.org/Article"{% endif %}>

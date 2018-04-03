@@ -12,6 +12,9 @@ TIDY_SETTINGS = -q -m -w 0 -i \
 	--clean yes \
 	--join-styles yes
 
+SED_RULE_ONE = 's/ type=\"text\/css\"//g'
+SED_RULE_TWO = 's/<a name=\"[^\"]*\"/<a/g'
+
 GUTENBERG = gutenberg
 GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBERG_OUTDIR)
@@ -24,10 +27,12 @@ netlify: netlify-build netlify-lambda netlify-deployment
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
 
-build: build-dirty build-tidy-html
-netlify-build: build-dirty netlify-build-tidy-html
+build: build-dirty build-tidy-html build-html-postprocessing
+
+netlify-build: build-dirty netlify-build-tidy-html netlify-build-html-postprocessing
 
 build-preview: build-dirty
+
 build-dirty: build-site build-feeds
 
 build-site:
@@ -40,17 +45,30 @@ build-feeds:
 
 build-tidy-html:
 	fd -IH -p public -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
+
 netlify-build-tidy-html:
 	tools/fd -IH -p public -e html -x sh -c "echo {} && tools/tidy $(TIDY_SETTINGS) {}" \;
+
+# macos: https://stackoverflow.com/questions/12696125/sed-edit-file-in-place#comment51611455_12696224
+build-html-postprocessing:
+	fd -IH -p public -e html -x sh -c "\
+		echo {} && \
+		sed -i '' $(SED_RULE_ONE) {} && \
+		sed -i '' $(SED_RULE_TWO) {}\
+	" \;
+
+netlify-build-html-postprocessing:
+	tools/fd -IH -p public -e html -x sh -c "\
+		echo {} && \
+		sed -i $(SED_RULE_ONE) {} && \
+		sed -i $(SED_RULE_TWO) {}\
+	" \;
 
 # imagemagick, pngquant, optipng
 COVERS = $(shell find site -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
 THUMB_SIZE = 320x160
 PNG_COLORS = 32
-## removed, because it increases the size most of the time:
-# 	@echo "=== Size: `wc -c < $@`"
-#	pngcrush -q -reduce -brute -ow $@ 2>/dev/null
 
 regenerate-thumbs: delete-thumbs create-thumbs
 
