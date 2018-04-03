@@ -58,7 +58,7 @@ netlify-build-html-postprocessing:
 	tools/fd -IH -p public -e html -x sh -c "\
 		echo {} && \
 		sed -i 's/ type=\"text\/css\"//g' {} && \
-		sed -i 's/ name=\"[^\"]+\"//g' {}\
+		sed -i 's/ name=\"[^\"]*\"//g' {}\
 	" \;
 
 # imagemagick, pngquant, optipng
