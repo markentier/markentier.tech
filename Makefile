@@ -12,6 +12,9 @@ TIDY_SETTINGS = -q -m -w 0 -i \
 	--clean yes \
 	--join-styles yes
 
+SED_RULE_ONE = 's/ type=\"text\/css\"//g'
+SED_RULE_TWO = 's/<a name=\"[^\"]*\"/<a/g'
+
 GUTENBERG = gutenberg
 GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBERG_OUTDIR)
@@ -50,15 +53,15 @@ netlify-build-tidy-html:
 build-html-postprocessing:
 	fd -IH -p public -e html -x sh -c "\
 		echo {} && \
-		sed -i '' 's/ type=\"text\/css\"//g' {} && \
-		sed -i '' 's/ name=\"[^\"]*\"//g' {}\
+		sed -i '' $(SED_RULE_ONE) {} && \
+		sed -i '' $(SED_RULE_TWO) {}\
 	" \;
 
 netlify-build-html-postprocessing:
 	tools/fd -IH -p public -e html -x sh -c "\
 		echo {} && \
-		sed -i 's/ type=\"text\/css\"//g' {} && \
-		sed -i 's/<a name=\"[^\"]*\"/<a/g' {}\
+		sed -i $(SED_RULE_ONE) {} && \
+		sed -i $(SED_RULE_TWO) {}\
 	" \;
 
 # imagemagick, pngquant, optipng
