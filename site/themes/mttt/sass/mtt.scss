@@ -83,6 +83,12 @@ img, figcaption, pre {
 img {
   max-width: calc(100% + 2rem);
 }
+figcaption {
+  padding: 0 .5em;
+  background: var(--accent-color);
+  font-size: .6em;
+  text-align: center;
+}
 pre {
   padding: 1rem;
   background: var(--accent-color);
