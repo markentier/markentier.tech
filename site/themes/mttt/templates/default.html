@@ -11,14 +11,17 @@
   {% endif %}
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/m.128.png?v=0" sizes="128x128" type="image/png" />
+  <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png" />
 
   {# styles #}
-  <style>@font-face{font-family:'Lusitana';src:url('/assets/fonts/lusitana-regular.woff2') format('woff2'),url('/assets/fonts/lusitana-regular.woff') format('woff');font-weight: normal;font-style:normal;}@font-face{font-family:'Varela Round';src:url('/assets/fonts/varela-round-regular.woff2') format('woff2'),url('/assets/fonts/varela-round-regular.woff') format('woff');font-weight:normal;font-style:normal;}html{font-family:serif;}</style>
+  <style>@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Regular.woff2') format('woff2'),url('/assets/fonts/Lora-Regular.woff') format('woff');font-weight:normal;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Italic.woff2') format('woff2'),url('/assets/fonts/Lora-Italic.woff') format('woff');font-weight:normal;font-style:italic;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold.woff2') format('woff2'),url('/assets/fonts/Lora-Bold.woff') format('woff');font-weight:bold;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold-Italic.woff2') format('woff2'),url('/assets/fonts/Lora-Bold-Italic.woff') format('woff');font-weight:bold;font-style:italic;}@font-face{font-family:'Varela Round';src:url('/assets/fonts/varela-round-regular.woff2') format('woff2'),url('/assets/fonts/varela-round-regular.woff') format('woff');font-weight:normal;font-style:normal;}html{font-family:serif;}</style>
 
-  <link rel="preload" href="/assets/fonts/lusitana-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/Lora-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/Lora-Italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/Lora-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/Lora-Bold-Italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/varela-round-regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet subresource" href="/mtt.css?v=0" />
+  <link rel="stylesheet subresource" href="/mtt.css" />
 
   <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
@@ -26,12 +29,10 @@
   <link rel="preconnect" href="https://www.google-analytics.com/" />
 
   {# more icons #}
+  <link rel="shortcut icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />
   <link rel=icon href="/m.57.png" sizes="57x57" type="image/png" />
-  <link rel="shortcut icon" href="/favicon.ico?v=0" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />
-  {# icon examples
-  <link rel=icon href=mac.icns sizes="128x128 512x512 8192x8192 32768x32768" />
-  <link rel=icon href=gnome.svg sizes="any" type="image/svg+xml" />
-  #}
+  <link rel=icon href=/m.svg sizes="any" type="image/svg+xml" />
+  {#<link rel=icon href=mac.icns sizes="128x128 512x512 8192x8192 32768x32768" />#}
 
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#cce9ec" />
@@ -108,9 +109,11 @@
 </head>
 <body class="mtt">
   {% block after_body_open %}{% endblock after_body_open %}
-  <div id="wrppr">
+  <div id="wrppr" class="wrppr">
     <header>{% block header %}
-      <h1><a href="/" rel="home" title="home"><span id="big-m"></span> {{config.title}}</a></h1>
+      <a href="/" rel="home" title="home" class="headlink">
+        <div id="big-m" class="m"></div><h1>{{config.title}}</h1>
+      </a>
       <p class="site_description">{{config.description}}</p>
     {% endblock header %}</header>
     <nav>{% block navigation %}
@@ -123,8 +126,7 @@
       {% block content_footer %}{% endblock content_footer %}
     </main>
     <footer class='footer'>{% block footer %}
-     &copy; 2018 markentier.tech / Christoph Grabo |
-      feeds:
+     &copy; 2018 markentier.tech / Christoph Grabo<br />
       <a href="/feed.atom.xml" rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}">atom</a>,
       <a href="/feed.rss.xml" rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}">rss</a>,
       <a href="/feed.json" rel="alternate" type="application/json" title="JSON Feed for {{config.title}}">json</a> |
