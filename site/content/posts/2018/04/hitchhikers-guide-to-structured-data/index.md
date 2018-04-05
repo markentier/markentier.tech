@@ -23,7 +23,7 @@ image_alt = "What have a bowl of petunias and a whale to do with structured data
 
 When I started using computers, I never thought about if and how they could help me to do things — and if that in turn would improve my life. I automatically assumed that we invented tools, machines, devices, phones, computers, and so on because we wanted to make our lives better, and to think less about tedious tasks by making the complex and especially complicated ones easier and more usable.
 
-In the late 90s I not only learned but experienced that computers are connected. There was this thing called internet, mostly advertised in the form of WWW, the world wide web: gazillions of documents more or less linked to each other. Mostly plastered with flashy animations saying that this place is under construction. And the `&lt;marquee&gt;` tag made us feel as important as breaking news or a stock market ticker.
+In the late 90s I not only learned but experienced that computers are connected. There was this thing called internet, mostly advertised in the form of WWW, the world wide web: gazillions of documents more or less linked to each other. Mostly plastered with flashy animations saying that this place is under construction. And the `<marquee>` tag made us feel as important as breaking news or a stock market ticker.
 
 ![Pammie Jay's Webpage (geocities)](./pammiejay.png)
 
