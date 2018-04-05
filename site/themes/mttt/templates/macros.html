@@ -34,8 +34,7 @@
       {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
       {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
       <img class="thumbnail" itemprop="image" src="{{page_thumb_url}}" alt="{{page.extra.image_alt | escape}}" />
-      {#<link rel="preload" type="image/png" as="image" href="{{page_cover_url}}" data-fetch />#}
-      <link rel="prefetch" type="image/png" as="image" href="{{page_cover_url}}" data-fetch />
+      <link rel="preload" type="image/png" as="image" href="{{page_cover_url}}" data-fetch />
       {% endif %}
       <h2 class="post_title">{{page.title}}</h2>
       {# TODO extract as macro: macros::published_at(date=date) #}
