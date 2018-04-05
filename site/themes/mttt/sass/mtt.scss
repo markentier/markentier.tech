@@ -86,6 +86,9 @@ img {
 pre {
   padding: 1rem;
   background: var(--accent-color);
+  border-radius: .25em;
+  white-space: pre-wrap;
+  font-size: .8em;
 }
 
 blockquote {
