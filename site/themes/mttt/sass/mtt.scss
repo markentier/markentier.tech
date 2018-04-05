@@ -7,7 +7,7 @@
   --ref-size: 20px;
 
   --default-font: 'Lora', Cambria, Cochin, Georgia, "Times New Roman", Times, serif;
-  --brand-font: "Varela Round", Arial, sans-serif;
+  --brand-font: "Varela", Arial, sans-serif;
   --code-font: "Hack", "Source Code Pro", "Courier Std", "Fira Mono", "Inconsolata", Courier, monospace;
 
   --text-color: #242322;
@@ -242,7 +242,7 @@ nav {
 // fonts
 
 @font-face {
-    font-family: 'Varela Round';
+    font-family: 'Varela';
     src: url('/assets/fonts//varela-round-regular.woff2') format('woff2'), url('/assets/fonts/varela-round-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
