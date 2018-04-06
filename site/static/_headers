@@ -26,6 +26,7 @@
 /favicon.ico
   cache-control: max-age=2592000
 
+# 1d only to avoid update deferrals
 /sw.js
   cache-control: max-age=86400
 
