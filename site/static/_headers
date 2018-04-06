@@ -19,6 +19,10 @@
   referrer-policy: strict-origin-when-cross-origin
   expect-ct: max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly
 
+# never ever cache this one
+/deployment.json
+  cache-control: no-cache, no-store, must-revalidate
+
 /favicon.ico
   cache-control: max-age=2592000
 
