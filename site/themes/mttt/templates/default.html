@@ -12,11 +12,11 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png" />
-
+  <link rel="icon" href="/m.svg" sizes="any" type="image/svg+xml" />
+  {#<link rel="preload icon" href="/m.svg" as="image" type="image/svg+xml" sizes="any" crossorigin />#}
   {# fonts and styles #}
-
   <style>@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Regular.woff2') format('woff2');font-weight:normal;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Italic.woff2') format('woff2');font-weight:normal;font-style:italic;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold.woff2') format('woff2');font-weight:bold;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold-Italic.woff2') format('woff2');font-weight:bold;font-style:italic;}@font-face{font-family:'Varela';src:url('/assets/fonts/varela-round-regular.woff2') format('woff2');font-weight:normal;font-style:normal;}</style>
-  <style>html{font-family:'Lora',Cambria,Cochin,Georgia,'Times New Roman',Times,serif;}h1,h2,h3,h4,h5,h6{font-family:'Varela',Arial,sans-serif;}</style>
+  <style>html{box-sizing:border-box;-webkit-font-smoothing:antialiased;font-family:'Lora',Cambria,Cochin,Georgia,'Times New Roman',Times,serif;}*,*::before,*::after{box-sizing: inherit;}html,body{margin:0;padding:0;border:0;}h1,h2,h3,h4,h5,h6{font-family:'Varela',Arial,sans-serif;}.wrppr{margin:auto;padding:0 1rem;max-width:38rem;}.headlink{text-decoration:none;display:flex;align-items:center;padding:1rem 0 0 0;min-width:17rem;}.headlink .m{width: 4.5rem;height: 4.5rem;background:url('/m.svg');background-size:4.5rem 4.5rem;margin-left:-1.2rem;}.headlink h1{margin:0 0 0 -.3rem;padding-top: 1.4rem;}.headlink h1::first-letter{font-size: 0;}</style>
 
   <link rel="preload" href="/assets/fonts/varela-round-regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Lora-Regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -33,9 +33,9 @@
 
   {# more icons #}
   <link rel="shortcut icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />
-  <link rel=icon href="/m.57.png" sizes="57x57" type="image/png" />
-  <link rel=icon href=/m.svg sizes="any" type="image/svg+xml" />
-  {#<link rel=icon href=mac.icns sizes="128x128 512x512 8192x8192 32768x32768" />#}
+  <link rel="icon" href="/m.57.png" sizes="57x57" type="image/png" />
+  {#<link rel="icon" href="/m.svg" sizes="any" type="image/svg+xml" />#}
+  {#<link rel="icon" href="mac.icns" sizes="128x128 512x512 8192x8192 32768x32768" />#}
 
   <meta name="theme-color" content="#0c1328" />
   <link rel="manifest" href="/manifest.json" />
@@ -141,7 +141,7 @@
     {% endblock footer %}</footer>
   </div>
   <script async src="/js/loaded.js"></script>
-  <link rel="prefetch" href="/deployment.json" data-fetch />
+  {#<link rel="prefetch" href="/deployment.json" data-fetch />#}
   {% block before_body_end %}{% endblock before_body_end %}
 {# DEBUG (port=3000) #}
 {% if config.base_url is containing(":3000") %}

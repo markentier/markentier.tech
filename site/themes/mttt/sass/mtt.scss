@@ -23,7 +23,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
@@ -126,7 +126,7 @@ nav {
 .headlink .m {
   width: 4.5rem;
   height: 4.5rem;
-  background: url(/m.svg);
+  background: url('/m.svg');
   background-size: 4.5rem 4.5rem;
   margin-left: -1.2rem;
 }

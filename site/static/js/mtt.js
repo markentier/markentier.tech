@@ -1,5 +1,22 @@
 'use strict';
 (() => {
+  const registerSwOnLoad = () => {
+    navigator.serviceWorker
+      .register('/sw.js', { scope: '/' })
+      .then((reg) => {
+        console.log('[ServiceWorker] Registration successful with scope: ', reg.scope);
+        swPostRegSteps();
+      }, (err) => {
+        console.log('[ServiceWorker] Registration failed: ', err);
+      });
+  };
+
+  const swPostRegSteps = () => {
+    // navigator.serviceWorker.onmessage = swOnMessageFn;
+    prefetchStage2();
+    swEvents();
+  };
+
   // const swOnMessageFn = (e) => {
   //   const message = JSON.parse(e.data);
   //   const isRefresh = message.type === 'refresh';
@@ -10,31 +27,18 @@
   //   };
   // };
 
+  // store prefetchables
   const prefetchStage2 = () => {
-    // store prefetchables
     document.querySelectorAll('link[data-fetch]').forEach((link) => fetch(link.href));
     document.querySelectorAll('a[data-fetch]').forEach((a) => fetch(a.href));
     // document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
-  }
+  };
 
-  const registerSwOnLoad = () => {
-    navigator.serviceWorker
-      .register('/sw.js', { scope: '/' })
-      .then((registration) => {
-        console.log('[ServiceWorker] Registration successful with scope: ', registration.scope);
-      }, (err) => {
-        console.log('[ServiceWorker] Registration failed: ', err);
-      })
-      .then(() => {
-        // navigator.serviceWorker.onmessage = swOnMessageFn;
-        prefetchStage2();
-      });
-
-    // sw state changes
+  const swEvents = () => {
     navigator.serviceWorker.addEventListener('controllerchange', (event) => {
-      console.log(`[controllerchange] A "controllerchange" event has happened within navigator.serviceWorker: ${event}`);
+      console.log(`[controllerchange] A "controllerchange" event has happened within navigator.serviceWorker: `, event);
       navigator.serviceWorker.controller.addEventListener('statechange', () => {
-        console.log(`[controllerchange][statechange] A "statechange" has occured: ${this.state}`);
+        console.log(`[controllerchange][statechange] A "statechange" has occured: `, this.state);
         if (this.state === 'activated') {
           // safe to go offline
           const wrppr = document.getElementById('wrppr');
@@ -47,11 +51,8 @@
         }
       });
     });
-
-    const deploymentSyncPeriod = 60*1000;
-    const deploymentSync = () => { fetch('/deployment.json'); };
-    setInterval(deploymentSync, deploymentSyncPeriod);
   };
 
+  // start it:
   if ('serviceWorker' in navigator) { window.addEventListener('load', registerSwOnLoad); }
 })();
