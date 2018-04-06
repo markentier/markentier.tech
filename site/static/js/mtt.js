@@ -5,6 +5,7 @@
       .register('/sw.js', { scope: '/' })
       .then((reg) => {
         console.log('[ServiceWorker] Registration successful with scope: ', reg.scope);
+        reg.update();
         swPostRegSteps();
       }, (err) => {
         console.log('[ServiceWorker] Registration failed: ', err);
@@ -43,7 +44,7 @@
           // safe to go offline
           const wrppr = document.getElementById('wrppr');
           wrppr.classList.add('activated');
-          prefetchStage2();
+          // prefetchStage2();
         } else {
           // something else?
           // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state
