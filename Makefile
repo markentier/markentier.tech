@@ -109,7 +109,7 @@ netlify-lambda:
 	yarn && yarn build:lambda
 
 netlify-deployment:
-	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s)}}' > public/deployment.json
+	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json
 
 clean:
 	@rm -rf public
