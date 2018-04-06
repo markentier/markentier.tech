@@ -10,7 +10,8 @@ TIDY_SETTINGS = -q -m -w 0 -i \
 	--indent-spaces 2 \
 	--tab-size 2 \
 	--clean yes \
-	--join-styles yes
+	--join-styles yes \
+	--tidy-mark no
 
 SED_RULE_ONE = 's/ type=\"text\/css\"//g'
 SED_RULE_TWO = 's/<a name=\"[^\"]*\"/<a/g'
