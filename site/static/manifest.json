@@ -1,35 +1,35 @@
 {
-  "short_name": "mtt",
   "name": "markentier.tech blog",
   "description": "About code and people",
+  "short_name": "mtt blog",
   "icons": [
     {
-      "src": "m.48.png",
+      "src": "m.48.c.bg.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "m.96.png",
+      "src": "m.96.c.bg.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "m.128.png",
+      "src": "m.128.c.bg.png",
       "type": "image/png",
       "sizes": "128x128"
     },
     {
-      "src": "m.192.png",
+      "src": "m.192.c.bg.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "m.256.png",
+      "src": "m.256.c.bg.png",
       "type": "image/png",
       "sizes": "256x256"
     },
     {
-      "src": "m.512.png",
+      "src": "m.512.c.bg.png",
       "type": "image/png",
       "sizes": "512x512"
     }
