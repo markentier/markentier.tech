@@ -1,0 +1,9 @@
+#__tera_context {
+  margin: 1em 0 0 0;
+  padding: 1em;
+  background: black;
+  color: white;
+  &::before {
+    content: "__tera_context = ";
+  }
+}

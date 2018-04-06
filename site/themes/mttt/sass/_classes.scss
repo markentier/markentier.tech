@@ -1,0 +1,93 @@
+.wrppr {
+  margin: auto;
+  padding: 0 1rem;
+  max-width: 38rem;
+}
+
+.headlink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 0 0;
+  min-width: 17rem;
+}
+.headlink .m {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: url('/m.svg');
+  background-size: 4.5rem 4.5rem;
+  margin-left: -1.2rem;
+}
+.headlink h1 { margin: 0 0 0 -.3rem; padding-top: 1.4rem; }
+.headlink h1::first-letter { font-size: 0; }
+
+.site_description {
+  margin: -1rem 0 0 4rem;
+  padding: 0;
+  font-size: .75rem;
+  line-height: 1em;
+}
+
+.index_listing_post {
+  padding-bottom: .5rem;
+  opacity: 0.8;
+}
+.index_listing_post .thumbnail {
+  max-width: 320px;
+  max-height: 160px;
+  width: 40%;
+  float: right;
+  margin: 0.25em 0 0 0.5em;
+  opacity: 0.666;
+}
+.index_listing_post:hover,
+.index_listing_post .thumbnail:hover {
+  opacity: 1;
+}
+.index_listing_post a {
+  text-decoration: none;
+}
+.index_listing_post a:link,
+.index_listing_post a:visited {
+  color: inherit;
+}
+
+.index_listing_post p,
+.article-body > p:first-of-type {
+  font-style: italic;
+    filter: brightness(1.5);
+}
+.index_listing_post p::after,
+.article-body > p:first-of-type::after {
+  display: block;
+  margin-top: 1.5em;
+  text-align: center;
+  font-style: normal;
+  content: "·   ·   ·";
+}
+
+.post_content_info {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+  opacity: .8;
+}
+
+.modified_at,
+.meta .data {
+  display: none;
+}
+
+.meta {
+  margin: 1rem -1rem;
+  padding: 1rem;
+  background: var(--accent-color);
+  border-radius: .25em;
+  font-size: .8rem;
+  word-wrap: break-word;
+}
+
+.footer {
+  margin-top: 3rem;
+  font-size: .8rem;
+}
