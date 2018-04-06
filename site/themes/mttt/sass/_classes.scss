@@ -14,16 +14,23 @@
   align-items: center;
   padding: 1rem 0 0 0;
   min-width: 17rem;
+
+  .logo {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-left: -1.2rem;
+  }
+  .logo-path {
+    color: var(--text-color);
+    stroke: var(--text-color);
+  }
+
+  h1 {
+    margin: 0 0 0 -.3rem;
+    padding-top: 1.333rem;
+    &::first-letter { font-size: 0; }
+  }
 }
-.headlink .m {
-  width: 4.5rem;
-  height: 4.5rem;
-  background: url('/m.svg');
-  background-size: 4.5rem 4.5rem;
-  margin-left: -1.2rem;
-}
-.headlink h1 { margin: 0 0 0 -.3rem; padding-top: 1.333rem; }
-.headlink h1::first-letter { font-size: 0; }
 
 .site_description {
   margin: -1rem 0 0 4rem;
