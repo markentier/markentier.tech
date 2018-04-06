@@ -45,7 +45,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   padding: .5rem;
-  padding-left: calc(50vw - var(--ref-size)*19); // relates to 50% wrppr width
+  padding-left: calc(50vw - var(--ref-size)*18.45); // relates to 50% wrppr width
   z-index: 999;
 
   a { font-family: var(--brand-font); }
@@ -68,7 +68,7 @@
   position: fixed; top: 0; left: 0;
   .homelink::before { width: 2rem; opacity: .333; }
 }
-.sticky + .content { padding-top: 5rem; }
+.sticky + .content { padding-top: 3rem; }
 
 .index_listing_post {
   padding-bottom: .5rem;

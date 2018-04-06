@@ -25,7 +25,23 @@
 
   const deploymentCheck = () => {
     const deploymentSyncPeriod = 60 * 1000;
-    const deploymentSync = () => { fetch(DEPLOYMENT_PATH); };
+    const deploymentSync = () => {
+      fetch(DEPLOYMENT_PATH)
+      .then((r) => r.json())
+      .catch((_err) => { return { deployment: { sha: 'unknown', ts: Date.now() } }; })
+      .then((payload) => {
+        const sha = payload.deployment.sha;
+        const keys =
+        window.caches.keys().then((cacheKeys) => {
+          const wrppr = document.querySelector('#wrppr')
+          if(!cacheKeys.includes(sha)) {
+            wrppr.classList.add('outdated'); // or no connection, we need to check better
+          } else {
+            wrppr.classList.remove('outdated');
+          }
+        })
+      })
+    };
     setInterval(deploymentSync, deploymentSyncPeriod);
     deploymentSync();
   };
