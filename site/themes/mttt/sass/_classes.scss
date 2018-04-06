@@ -4,6 +4,10 @@
   max-width: 38rem;
 }
 
+.siteheader {
+  margin-bottom: 2rem;
+}
+
 .headlink {
   text-decoration: none;
   display: flex;
@@ -18,7 +22,7 @@
   background-size: 4.5rem 4.5rem;
   margin-left: -1.2rem;
 }
-.headlink h1 { margin: 0 0 0 -.3rem; padding-top: 1.4rem; }
+.headlink h1 { margin: 0 0 0 -.3rem; padding-top: 1.333rem; }
 .headlink h1::first-letter { font-size: 0; }
 
 .site_description {
@@ -27,6 +31,37 @@
   font-size: .75rem;
   line-height: 1em;
 }
+
+.navbar {
+  // position: sticky; -- still in CSS draft :-(
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: .5rem;
+  padding-left: calc(50vw - var(--ref-size)*19); // relates to 50% wrppr width
+  z-index: 999;
+
+  a { font-family: var(--brand-font); }
+
+  .homelink{
+    &::before {
+      content: ' ';
+      display: inline-block;
+      width: 0; height: 2rem;
+      margin-right: .5rem;
+      vertical-align: middle;
+      background-image: url('/m.svg');
+      background-size: 2rem 2rem;
+      opacity: 0;
+      transition: all .25s ease;
+    }
+  }
+}
+.sticky {
+  position: fixed; top: 0; left: 0;
+  .homelink::before { width: 2rem; opacity: .333; }
+}
+.sticky + .content { padding-top: 5rem; }
 
 .index_listing_post {
   padding-bottom: .5rem;

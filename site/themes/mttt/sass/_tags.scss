@@ -88,5 +88,18 @@ blockquote {
 blockquote blockquote { margin: 0; }
 
 nav {
-  margin: 2rem 0;
+  display: flex;
+  align-items: baseline;
+  background: var(--accent-color);
+  margin-bottom: 2rem;
+  a {
+    display: block;
+    padding: 0 .5rem;
+    border-right: 1px solid var(--accent-darker-color);
+    text-decoration: none;
+    // color: var(--text-color);
+
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; border: 0; }
+  }
 }

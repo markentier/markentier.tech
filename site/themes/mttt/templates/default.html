@@ -37,7 +37,7 @@
   {#<link rel="icon" href="/m.svg" sizes="any" type="image/svg+xml" />#}
   {#<link rel="icon" href="mac.icns" sizes="128x128 512x512 8192x8192 32768x32768" />#}
 
-  <meta name="theme-color" content="#efeeec" />
+  <meta name="theme-color" content="#dfdddc" />
   <link rel="manifest" href="/manifest.json" />
 
   <link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml" />
@@ -113,17 +113,17 @@
 <body class="mtt">
   {% block after_body_open %}{% endblock after_body_open %}
   <div id="wrppr" class="wrppr">
-    <header>{% block header %}
+    <header class="siteheader">{% block header %}
       <a href="/" rel="home" title="home" class="headlink">
         <div id="big-m" class="m"></div><h1>{{config.title}}</h1>
       </a>
       <p class="site_description">{{config.description}}</p>
     {% endblock header %}</header>
-    <nav>{% block navigation %}
-      <a href="/">home</a> |
+    <nav class="navbar">{% block navigation %}
+      <a href="/" class="homelink">home</a>
       <a href="/about/">about</a>
     {% endblock navigation %}</nav>
-    <main id="content">
+    <main id="content" class="content">
       {% block content_header %}{% endblock content_header %}
       {% block content %}{% endblock content %}
       {% block content_footer %}{% endblock content_footer %}

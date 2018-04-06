@@ -56,4 +56,16 @@
 
   // start it:
   if ('serviceWorker' in navigator) { window.addEventListener('load', registerSwOnLoad); }
+
+  const navbar = document.querySelector('.navbar');
+  let sticky = navbar.offsetTop;
+  const navbarScroll = () => {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add('sticky')
+    } else {
+      navbar.classList.remove('sticky');
+    }
+  };
+
+  window.onscroll = () => { navbarScroll(); };
 })();
