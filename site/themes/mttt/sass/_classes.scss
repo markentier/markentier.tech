@@ -45,7 +45,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   padding: .5rem;
-  padding-left: calc(50vw - var(--ref-size)*19); // relates to 50% wrppr width
+  padding-left: calc(50vw - var(--ref-size)*18.45); // relates to 50% wrppr width
   z-index: 999;
 
   a { font-family: var(--brand-font); }
