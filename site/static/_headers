@@ -12,7 +12,8 @@
 /*
   x-github-user: https://github.com/asaaki
   x-github-repo: https://github.com/markentier/markentier.tech
-  content-security-policy: default-src 'self'; script-src 'self' *.cloudfront.net *.googletagmanager.com *.google-analytics.com; style-src 'self' 'unsafe-inline' *.cloudfront.net; img-src 'self' data: *.cloudfront.net *.gravatar.com *.google-analytics.com; font-src 'self' *.cloudfront.net; connect-src 'self' *.cloudfront.net *.googletagmanager.com *.google-analytics.com; media-src 'self' *.cloudfront.net; worker-src 'self'; manifest-src 'self'; prefetch-src 'self' *.cloudfront.net; object-src 'none'; frame-src 'none'; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce
+  report-to: {"group":"cspreport","max-age":2592000,"endpoints":[{"url":"https://markentiertech.report-uri.com/r/d/csp/enforce"}]}
+  content-security-policy: default-src 'self'; script-src 'self' *.cloudfront.net *.googletagmanager.com *.google-analytics.com; style-src 'self' 'unsafe-inline' *.cloudfront.net; img-src 'self' data: *.cloudfront.net *.gravatar.com *.google-analytics.com; font-src 'self' *.cloudfront.net; connect-src 'self' *.cloudfront.net *.googletagmanager.com *.google-analytics.com; media-src 'self' *.cloudfront.net; worker-src 'self'; manifest-src 'self'; prefetch-src 'self' *.cloudfront.net; object-src 'none'; frame-src 'none'; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport
   x-frame-options: SAMEORIGIN
   x-xss-protection: 1; mode=block
   x-content-type-options: nosniff
