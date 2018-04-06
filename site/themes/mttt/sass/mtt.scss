@@ -23,7 +23,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
@@ -95,7 +95,7 @@ pre {
   background: var(--accent-color);
   border-radius: .25em;
   white-space: pre-wrap;
-  font-size: .8em;
+  font-size: .8rem;
 }
 
 blockquote {
@@ -126,7 +126,7 @@ nav {
 .headlink .m {
   width: 4.5rem;
   height: 4.5rem;
-  background: url(/m.svg);
+  background: url('/m.svg');
   background-size: 4.5rem 4.5rem;
   margin-left: -1.2rem;
 }
@@ -228,9 +228,9 @@ nav {
 }
 
 @media only screen and (max-width: 479px) {
-  html, body {
-    font-size: 14px;
-  }
+  html, body { font-size: 18px; }
+  pre { font-size: 1em; }
+  .post_content_info, .meta, .footer { font-size: .89rem; }
 }
 
 @import "mtt.shortcodes";
