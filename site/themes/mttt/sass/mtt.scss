@@ -95,7 +95,7 @@ pre {
   background: var(--accent-color);
   border-radius: .25em;
   white-space: pre-wrap;
-  font-size: .8em;
+  font-size: .8rem;
 }
 
 blockquote {
@@ -228,9 +228,9 @@ nav {
 }
 
 @media only screen and (max-width: 479px) {
-  html, body {
-    font-size: 16px;
-  }
+  html, body { font-size: 18px; }
+  pre { font-size: 1em; }
+  .post_content_info, .meta, .footer { font-size: .89rem; }
 }
 
 @import "mtt.shortcodes";
