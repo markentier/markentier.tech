@@ -1,11 +1,6 @@
-html {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-}
+html { box-sizing: border-box; }
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
+*, *::before, *::after { box-sizing: inherit; }
 
 html, body, figure {
   margin: 0; padding: 0; border: 0;
@@ -18,6 +13,9 @@ html, body {
   font-family: var(--default-font);
   font-size: var(--ref-size);
   line-height: 1.75rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-stroke: .45px rgba(0,0,0,.1);
 }
 
 a, a:link, a:visited {
@@ -65,14 +63,12 @@ img {
 }
 figcaption {
   padding: 0 .5em;
-  background: var(--accent-color);
   font-size: .6em;
   line-height: 1.75em;
   text-align: center;
 }
 pre {
   padding: 1rem;
-  background: var(--accent-color);
   border-radius: .25em;
   font-size: .8rem;
   white-space: pre;
@@ -88,18 +84,9 @@ blockquote {
 blockquote blockquote { margin: 0; }
 
 nav {
-  display: flex;
-  align-items: baseline;
-  background: var(--accent-color);
   margin-bottom: 2rem;
+}
 
-  a {
-    display: block;
-    padding: 0 0 0 .5rem;
-    margin-left: .5rem;
-    border-left: 1px solid var(--accent-darker-color);
-    text-decoration: none;
-
-    &:first-child { margin-left: 0; padding-left: 0; border: 0 }
-  }
+figcaption, pre, nav {
+  background: var(--accent-color);
 }

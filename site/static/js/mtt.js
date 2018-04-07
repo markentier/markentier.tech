@@ -67,5 +67,16 @@
     }
   };
 
-  window.onscroll = () => { navbarScroll(); };
+  const scrollprogress = document.querySelector('.scrollprogress');
+  const scrollMaxHeight = () => { return window.scrollMaxY || (document.documentElement.scrollHeight - document.documentElement.clientHeight); };
+  const scrollHeight = () => { return window.pageYOffset; };
+  const updateProgressWithScrollHeight = () => {
+    scrollprogress.max = scrollMaxHeight();
+    scrollprogress.value = scrollHeight();
+  };
+
+  window.onscroll = () => {
+    navbarScroll();
+    updateProgressWithScrollHeight();
+  };
 })();

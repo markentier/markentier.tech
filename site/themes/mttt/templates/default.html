@@ -16,7 +16,7 @@
   {#<link rel="preload icon" href="/m.svg" as="image" type="image/svg+xml" sizes="any" crossorigin />#}
   {# fonts and styles #}
   <style>@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Regular.woff2') format('woff2');font-weight:normal;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Italic.woff2') format('woff2');font-weight:normal;font-style:italic;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold.woff2') format('woff2');font-weight:bold;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold-Italic.woff2') format('woff2');font-weight:bold;font-style:italic;}@font-face{font-family:'Varela';src:url('/assets/fonts/varela-round-regular.woff2') format('woff2');font-weight:normal;font-style:normal;}</style>
-  <style>html{box-sizing:border-box;-webkit-font-smoothing:antialiased;font-family:'Lora',Cambria,Cochin,Georgia,'Times New Roman',Times,serif;}*,*::before,*::after{box-sizing: inherit;}html,body{margin:0;padding:0;border:0;}h1,h2,h3,h4,h5,h6{font-family:'Varela',Arial,sans-serif;}.wrppr{margin:auto;padding:0 1rem;max-width:38rem;}.headlink{text-decoration:none;display:flex;align-items:center;padding:1rem 0 0 0;min-width:17rem}.headlink .logo{width:4.5rem;height:4.5rem;margin-left:-1.2rem}.headlink h1{margin:0 0 0 -.3rem;padding-top:1.333rem}.headlink h1::first-letter{font-size:0}.site_description{margin:-1rem 0 0 4rem;padding:0;font-size:.75rem;line-height:1em}</style>
+  <style>html{box-sizing:border-box;font-family:'Lora',Cambria,Cochin,Georgia,'Times New Roman',Times,serif;}*,*::before,*::after{box-sizing:inherit;}html,body{margin:0;padding:0;border:0;}h1,h2,h3,h4,h5,h6{font-family:'Varela',Arial,sans-serif;}.wrppr{margin:auto;padding:0 1rem;max-width:38rem;}.headlink{text-decoration:none;display:flex;align-items:center;padding:1rem 0 0 0;min-width:17rem}.headlink .logo{width:4.5rem;height:4.5rem;margin-left:-1.2rem}.headlink h1{margin:0 0 0 -.3rem;padding-top:1.333rem}.headlink h1::first-letter{font-size:0}.site_description{margin:-1rem 0 0 4rem;padding:0;font-size:.75rem;line-height:1em}</style>
 
   <link rel="preload" href="/assets/fonts/varela-round-regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Lora-Regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -112,22 +112,31 @@
 </head>
 <body class="mtt">
   {% block after_body_open %}{% endblock after_body_open %}
+  {# NOTE: ALWAYS KEEP IN SYNC WITH FILE #}
+  <svg xmlns="http://www.w3.org/2000/svg" id="svg-logo" style="display: none;">
+    <symbol id="m" viewBox="0 0 1024 1024">
+      <path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409"
+      />
+    </symbol>
+  </svg>
   <div id="wrppr" class="wrppr">
     <header class="siteheader">{% block header %}
       <a href="/" rel="home" title="home" class="headlink">
-        {# NOTE: ALWAYS KEEP IN SYNC WITH FILE #}
-        <svg xmlns="http://www.w3.org/2000/svg" id="logo" class="logo" viewBox="0 0 1024 1024">
-          <path class="logo-path" fill="none" stroke="#0c1328" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409"
-          />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="header-logo"><use xlink:href="#m"></svg>
         <h1>{{config.title}}</h1>
       </a>
       <p class="site_description">{{config.description}}</p>
     {% endblock header %}</header>
-    <nav class="navbar">{% block navigation %}
-      <a href="/" class="homelink">home</a>
-      <a href="/about/">about</a>
-    {% endblock navigation %}</nav>
+    <nav class="navbar">
+      <div class="navbar-menu">
+
+        <a href="/" class="homelink"><svg xmlns="http://www.w3.org/2000/svg" class="home-logo">
+          <use xlink:href="#m">
+        </svg> home</a>
+        <a href="/about/">about</a>
+      </div>
+      <progress class="scrollprogress"></progress>
+    </nav>
     <main id="content" class="content">
       {% block content_header %}{% endblock content_header %}
       {% block content %}{% endblock content %}
@@ -150,7 +159,10 @@
   {% block before_body_end %}{% endblock before_body_end %}
 {# DEBUG (port=3000) #}
 {% if config.base_url is containing(":3000") %}
-<pre id="__tera_context">{{ __tera_context | safe | escape }}</pre>
+<details>
+  <summary>DEBUG</summary>
+  <pre id="__tera_context">{{ __tera_context | safe | escape }}</pre>
+</details>
 {% endif %}
 </body>
 </html>

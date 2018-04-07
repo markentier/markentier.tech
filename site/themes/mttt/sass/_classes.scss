@@ -15,14 +15,12 @@
   padding: 1rem 0 0 0;
   min-width: 17rem;
 
-  .logo {
+  .header-logo {
     width: 4.5rem;
     height: 4.5rem;
     margin-left: -1.2rem;
-  }
-  .logo-path {
-    color: var(--text-color);
-    stroke: var(--text-color);
+    color: var(--head-color);
+    stroke: var(--head-color);
   }
 
   h1 {
@@ -44,31 +42,79 @@
   position: relative;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  padding: .5rem;
+  // padding: .5rem;
   padding-left: calc(50vw - var(--ref-size)*18.45); // relates to 50% wrppr width
   z-index: 999;
 
   a { font-family: var(--brand-font); }
 
-  .homelink{
-    &::before {
-      content: ' ';
-      display: inline-block;
-      width: 0; height: 2rem;
-      margin-right: .5rem;
-      vertical-align: middle;
-      background-image: url('/m.svg');
-      background-size: 2rem 2rem;
-      opacity: 0;
-      transition: all .100s ease;
+  .navbar-menu {
+    padding: .5rem;
+    padding-left: 0;
+    display: flex;
+    align-items: baseline;
+
+    a {
+      display: block;
+      padding: 0 0 0 .5rem;
+      margin-left: .5rem;
+      border-left: 1px solid var(--accent-dark-color);
+      text-decoration: none;
+
+      &:first-child { margin-left: 0; padding-left: 0; border: 0 }
     }
+
+    .homelink {
+      .home-logo {
+        display: inline-block;
+        width: 0; height: 2rem;
+        // vertical-align: middle;
+        vertical-align: bottom;
+        color: var(--link-color);
+        stroke: var(--link-color);
+        opacity: 0;
+        transition: all .1s ease;
+      }
+    }
+  }
+
+  .scrollprogress {
+    display: block;
+    width: 100vw;
+    height: 1px;
+    margin-left: calc(-50vw + var(--ref-size)*18.45);
+
+    opacity: 0;
+    transition: opacity .1s ease;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    color: var(--accent-darkest-color);
+
+    &, &::-webkit-progress-bar { background-color: transparent; }
+    // yes, both need to be separate, otherwise Chrome does not apply :tableflip:
+    &::-webkit-progress-value { background: var(--accent-darkest-color); }
+    &::-moz-progress-bar { background: var(--accent-darkest-color); }
   }
 }
 .sticky {
   position: fixed; top: 0; left: 0;
-  .homelink::before { width: 2rem; opacity: .333; }
+  .navbar-menu {
+    .homelink .home-logo {
+      width: 2rem;
+      opacity: 1;
+      transition: all .1s ease;
+    }
+  }
+
+  .scrollprogress[value] {
+    opacity: 1;
+    transition: opacity .3s ease .7s;
+  }
 }
-.sticky + .content { padding-top: 3rem; }
+.sticky + .content { padding-top: 5rem; }
 
 .index_listing_post {
   padding-bottom: .5rem;
