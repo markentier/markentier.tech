@@ -5,12 +5,17 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
 # brew install tidy-html5 fd
-TIDY_SETTINGS = -q -m -w 0 -i \
+TIDY_SETTINGS = -q -m -i \
+	--wrap 0 \
 	--indent-with-tabs yes \
 	--indent-spaces 2 \
 	--tab-size 2 \
 	--clean yes \
 	--join-styles yes \
+	--uppercase-attributes preserve \
+	--hide-comments yes \
+	--priority-attributes id,class,name,href,src \
+	--show-warnings no \
 	--tidy-mark no
 
 SED_RULE_ONE = 's/ type=\"text\/css\"//g'
