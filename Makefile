@@ -106,6 +106,9 @@ serve:
 serve-with-theme-reload:
 	cd site && watchexec -w themes/mttt -r -s SIGHUP "$(GUTENBERG_SERVE)"
 
+local-deployment-json:
+	$(MAKE) netlify-deployment COMMIT_REF=fake-commit-sha
+
 netlify-lambda:
 	yarn && yarn build:lambda
 
