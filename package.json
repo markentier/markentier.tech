@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "netlify-lambda": "^0.3.0"
+    "netlify-lambda": "*"
   },
   "scripts": {
     "start:lambda": "netlify-lambda serve lambda",

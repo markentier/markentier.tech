@@ -60,12 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76,14 +75,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.handler = handler;
 function handler(event, context, callback) {
+  console.log('[archive.js] triggered!');
   console.log('event', event);
   console.log('context', context);
 
   callback(null, {
     statusCode: 200,
-    body: JSON.stringify({ msg: 'Hello, World!' })
+    body: JSON.stringify({ msg: 'archive it!', event: event, context: context })
   });
-}
+};
 
 /***/ })
 /******/ ])));
