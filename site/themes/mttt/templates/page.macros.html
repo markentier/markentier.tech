@@ -19,7 +19,7 @@
       <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
     </div>
     <div class="time_and_words">
-      <span class="rtime">reading time: {{self::preadtime(reading_time=page.reading_time)}}</span>
+      <span class="rtime">{{self::preadtime(reading_time=page.reading_time)}}</span>
       <span class="wordcount">(<strong>{{page.word_count}}</strong> words)</span>
     </div>
   </div>
@@ -29,9 +29,9 @@
 
 {% macro preadtime(reading_time) %}
 {% if reading_time < 1 %}
-  less than a minute
+  one minute read
 {% else %}
-  ~ <strong>{{reading_time}}</strong> minute{% if reading_time != 1 %}s{% endif %}
+  {{reading_time}} min{% if reading_time != 1 %}s{% endif %} read
 {% endif %}
 {% endmacro preadtime %}
 

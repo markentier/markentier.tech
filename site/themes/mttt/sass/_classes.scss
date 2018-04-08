@@ -158,7 +158,9 @@
   display: flex;
   justify-content: space-between;
   font-size: .8rem;
-  opacity: .8;
+  opacity: .7;
+
+  .wordcount { display: none }
 }
 
 .modified_at,

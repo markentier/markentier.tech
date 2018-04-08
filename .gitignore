@@ -1,6 +1,7 @@
 **/*.rs.bk
 .DS_Store
 .envrc
+.netlify
 .vscode
 /functions
 /node_modules
