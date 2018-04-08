@@ -1,6 +1,5 @@
 export function handler (event, context, callback) {
-  console.log('event', event)
-  console.log('context', context)
+  console.log('event.body', event.body)
 
   callback(null, {
     statusCode: 200,
