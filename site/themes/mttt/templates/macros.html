@@ -28,13 +28,13 @@
   {% if page.draft == false %}
   {# page.reading_time in min, page.category, page.tags #}
   <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
-    <link rel="prerender" href="{{page.permalink}}" data-fetch />
-    <a href="{{page.permalink}}">
+    <link rel="prerender" href="{{page.permalink | safe}}" data-fetch />
+    <a href="{{page.permalink | safe}}">
       {% if page.extra.has_hero %}
       {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
       {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
-      <img class="thumbnail" itemprop="image" src="{{page_thumb_url}}" alt="{{page.extra.image_alt | escape}}" />
-      <link rel="prefetch" href="{{page_cover_url}}" data-fetch />
+      <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | escape | safe}}" />
+      <link rel="prefetch" href="{{page_cover_url | safe}}" data-fetch />
       {% endif %}
       <h2 class="post_title">{{page.title}}</h2>
       {# TODO extract as macro: macros::published_at(date=date) #}
@@ -71,7 +71,7 @@
 {%- if feed == "atom" %}
   <entry>
     <title>{{page.title}}</title>
-    <link href="{{page.permalink | safe }}" />
+    <link href="{{page.permalink | safe}}" />
     <id>{{page.permalink | safe}}</id>
     <updated>{{page.date | date(format="%FT%TZ")}}</updated>
     {%- if page.summary %}
@@ -89,8 +89,8 @@
     </item>
 {%- elif feed == "json" %}
     {
-      "id": "{{page.permalink | safe }}",
-      "url": "{{page.permalink | safe }}",
+      "id": "{{page.permalink | safe}}",
+      "url": "{{page.permalink | safe}}",
       "date_published": "{{page.date | date(format="%FT%TZ")}}",
       {%- if page.extra.has_hero %}
       {%- set page_image_url = self::get_cover_image_url(url=page.permalink) %}

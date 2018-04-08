@@ -2,11 +2,6 @@
   "name": "markentier.tech",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "netlify-lambda": "*",
-    "@sendgrid/mail": "*",
-    "request": "*"
-  },
   "scripts": {
     "start:lambda": "netlify-lambda serve lambda",
     "build:lambda": "netlify-lambda build lambda"
@@ -19,11 +14,35 @@
       }
     }
   },
+  "dependencies": {
+    "@sendgrid/mail": "*",
+    "netlify-lambda": "*",
+    "request": "*"
+  },
   "devDependencies": {
     "eslint-config-standard": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-node": "*",
     "eslint-plugin-promise": "*",
-    "eslint-plugin-standard": "*"
+    "eslint-plugin-standard": "*",
+    "image-size": "*",
+    "post-config": "*",
+    "post-load-plugins": "*",
+    "posthtml": "*",
+    "posthtml-alt-always": "*",
+    "posthtml-cli": "*",
+    "posthtml-img-autosize": "./vendor/posthtml-img-autosize",
+    "posthtml-load-config": "*",
+    "sqip": "*"
+  },
+  "peerDependencies": {},
+  "posthtml": {
+    "from": "public/**/*.html",
+    "plugins": {
+      "img-autosize": {
+        "root": "public",
+        "processEmptySize": true
+      }
+    }
   }
 }

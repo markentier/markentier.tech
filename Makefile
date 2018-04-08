@@ -28,10 +28,24 @@ GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBER
 # makes developing service worker stuff much easier:
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
+SQIP = yarn run sqip
+SQIP_SETTINGS = \
+	--numberOfPrimitives=5 \
+	--mode=0 \
+	--blur=12
+
 netlify: netlify-build netlify-lambda netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
+
+# brew tap netlify/netlifyctl && brew install netlifyctl --> netlifyctl
+# or: yarn global add netlify-cli --> netlify
+local-deploy: build
+	netlify deploy -s $(SITE_ID) -p public
+
+local-deploy-draft: build
+	netlify deploy -s $(SITE_ID) -p public --draft
 
 build: build-dirty build-tidy-html build-html-postprocessing
 
@@ -39,7 +53,7 @@ netlify-build: build-dirty netlify-build-tidy-html netlify-build-html-postproces
 
 build-preview: build-dirty
 
-build-dirty: build-site build-feeds
+build-dirty: build-site build-feeds postprogressing
 
 build-site:
 	cd site && $(GUTENBERG_BUILD)
@@ -48,6 +62,10 @@ build-feeds:
 	mv public/atom/index.html public/feed.atom.xml
 	mv public/rss/index.html public/feed.rss.xml
 	mv public/json/index.html public/feed.json
+
+postprogressing:
+	yarn && \
+	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run posthtml 'public/**/*.html'
 
 build-tidy-html:
 	fd -IH -p public -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
@@ -125,6 +143,9 @@ netlify-deployment:
 
 clean:
 	@rm -rf public
+
+clean-yarn:
+	@rm -rf node_modules yarn*
 
 check-cert:
 	@echo | \

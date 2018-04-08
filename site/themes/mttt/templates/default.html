@@ -58,7 +58,6 @@
   {% if page %}
     {% set is_post = page.permalink is containing("/posts/") %}
   {% if is_post == true %}
-
   <link rel="canonical" href="{{page.permalink | safe}}" />
 
   {% if page.extra.has_hero %}
@@ -123,17 +122,14 @@
   <div id="wrppr" class="wrppr">
     <header class="siteheader">{% block header %}
       <a href="/" rel="home" title="home" class="headlink">
-        <svg xmlns="http://www.w3.org/2000/svg" class="header-logo"><use xlink:href="#m"></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="header-logo"><use href="#m"></svg>
         <h1>{{config.title}}</h1>
       </a>
       <p class="site_description">{{config.description}}</p>
     {% endblock header %}</header>
     <nav class="navbar">
       <div class="navbar-menu">
-
-        <a href="/" class="homelink"><svg xmlns="http://www.w3.org/2000/svg" class="home-logo">
-          <use xlink:href="#m">
-        </svg> home</a>
+        <a href="/" class="homelink"><svg xmlns="http://www.w3.org/2000/svg" class="home-logo"><use href="#m"></svg> home</a>
         <a href="/about/">about</a>
       </div>
       <progress class="scrollprogress"></progress>

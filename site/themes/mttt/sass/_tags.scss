@@ -60,6 +60,7 @@ img, figcaption, pre {
 
 img {
   max-width: calc(100% + 2rem);
+  width: auto; height: auto;
 }
 figcaption {
   padding: 0 .5em;
