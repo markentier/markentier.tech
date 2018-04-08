@@ -141,7 +141,15 @@ start-lambda:
 netlify-go:
 	mkdir -p .functions
 	go get ./...
-	go build -o .functions/hi ./...
+	$(MAKE) go-functions
+
+GO_FUNCS = $(shell find functions -iname '*.go')
+GO_BINS = $(patsubst %,.%,$(GO_FUNCS:.go=))
+
+go-functions: $(GO_BINS)
+
+$(GO_BINS): .%: %.go
+	go build -o $@ $<
 
 netlify-deployment:
 	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json
