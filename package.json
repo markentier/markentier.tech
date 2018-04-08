@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start:lambda": "netlify-lambda serve lambda",
-    "build:lambda": "netlify-lambda build lambda"
+    "start:lambda": "netlify-lambda serve ./functions",
+    "build:lambda": "netlify-lambda build ./functions"
   },
   "proxy": {
     "/functions": {

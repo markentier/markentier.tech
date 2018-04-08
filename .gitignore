@@ -1,14 +1,10 @@
-**/*.rs.bk
 .DS_Store
 .envrc
+.functions
 .netlify
 .vscode
-/functions
-/node_modules
-/public
-/target/
-Cargo.lock
-cobalt.rs
+node_modules
+public
 local-stuff
 npm-debug.log*
 yarn-debug.log*

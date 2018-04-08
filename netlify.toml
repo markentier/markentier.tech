@@ -3,7 +3,7 @@
 base = ""
 publish = "public"
 command = "make netlify"
-functions = "functions"
+functions = ".functions"
 
 [build.environment]
 GUTENBERG_VERSION = "0.3.3"
