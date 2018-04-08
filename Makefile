@@ -140,7 +140,6 @@ start-lambda:
 
 netlify-go:
 	mkdir -p .functions
-	go get ./...
 	$(MAKE) go-functions
 
 GO_FUNCS = $(shell find functions -iname '*.go')
@@ -149,6 +148,7 @@ GO_BINS = $(patsubst %,.%,$(GO_FUNCS:.go=))
 go-functions: $(GO_BINS)
 
 $(GO_BINS): .%: %.go
+	# go get ???
 	go build -o $@ $<
 
 netlify-deployment:
