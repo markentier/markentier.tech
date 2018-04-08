@@ -11,6 +11,7 @@ import (
 
 func handler(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	fmt.Println("test")
+	fmt.Print("[request] ")
 	fmt.Println(request)
 
 	lc, ok := lambdacontext.FromContext(ctx)
@@ -22,6 +23,10 @@ func handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 	}
 
 	cc := lc.ClientContext
+	fmt.Print("[cc] ")
+	fmt.Println(cc.Env)
+	fmt.Println(cc.Custom)
+	fmt.Println(cc.Client)
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
