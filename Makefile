@@ -34,7 +34,7 @@ SQIP_SETTINGS = \
 	--mode=0 \
 	--blur=12
 
-netlify: netlify-build netlify-lambda netlify-deployment
+netlify: netlify-build netlify-deployment netlify-lambda netlify-go
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
@@ -137,6 +137,11 @@ netlify-lambda:
 
 start-lambda:
 	yarn && yarn start:lambda
+
+netlify-go:
+	mkdir -p .functions
+	go get ./...
+	go build -o .functions/hi ./...
 
 netlify-deployment:
 	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json

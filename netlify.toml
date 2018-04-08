@@ -7,6 +7,7 @@ functions = ".functions"
 
 [build.environment]
 GUTENBERG_VERSION = "0.3.3"
+GO_IMPORT_PATH = "github.com/markentier/markentier.tech/functions"
 
 [context.deploy-preview]
 command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
