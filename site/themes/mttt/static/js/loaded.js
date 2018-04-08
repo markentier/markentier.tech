@@ -26,7 +26,7 @@
   const deploymentCheck = () => {
     const deploymentSyncPeriod = 60 * 1000;
     const deploymentSync = () => {
-      fetch(DEPLOYMENT_PATH)
+      fetch(DEPLOYMENT_PATH, { cache: 'no-store' })
       .then((r) => r.json())
       .catch((_err) => { return { deployment: { sha: 'unknown', ts: Date.now() } }; })
       .then((payload) => {

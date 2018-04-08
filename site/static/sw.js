@@ -72,7 +72,7 @@ const cacheableFetch = (e) => {
 };
 
 const addDeployment = (e) => {
-  return fetch(e.request)
+  return fetch(e.request, { cache: 'no-store' })
     .then((response) => {
       e.waitUntil(new Promise((resolve) => resolve(() => {
         return response.clone().json()
