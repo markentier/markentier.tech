@@ -132,27 +132,30 @@ serve-with-theme-reload:
 local-deployment-json:
 	$(MAKE) netlify-deployment COMMIT_REF=fake-commit-sha
 
-netlify-lambda:
+netlify-lambda: .functions
 	yarn && yarn build:lambda
 
 start-lambda:
 	yarn && yarn start:lambda
 
 netlify-go:
-	mkdir -p .functions
 	$(MAKE) go-functions
 
 GO_FUNCS = $(shell find functions -iname '*.go')
 GO_BINS = $(patsubst %,.%,$(GO_FUNCS:.go=))
 
-go-functions: $(GO_BINS)
+go-functions: .functions $(GO_BINS)
 
+# GOOS=linux GOARCH=amd64
+# go get ???
 $(GO_BINS): .%: %.go
-	# go get ???
 	go build -o $@ $<
 
 netlify-deployment:
 	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json
+
+.functions:
+	mkdir -p $@
 
 clean:
 	@rm -rf public
