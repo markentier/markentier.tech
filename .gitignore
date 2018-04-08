@@ -1,5 +1,6 @@
 **/*.rs.bk
 .DS_Store
+.envrc
 .vscode
 /node_modules
 /public

@@ -117,6 +117,9 @@ local-deployment-json:
 netlify-lambda:
 	yarn && yarn build:lambda
 
+start-lambda:
+	yarn && yarn start:lambda
+
 netlify-deployment:
 	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json
 

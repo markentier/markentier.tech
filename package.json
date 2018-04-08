@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "netlify-lambda": "*"
+    "netlify-lambda": "*",
+    "@sendgrid/mail": "*"
   },
   "scripts": {
     "start:lambda": "netlify-lambda serve lambda",
