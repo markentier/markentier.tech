@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "netlify-lambda": "*",
-    "@sendgrid/mail": "*"
+    "@sendgrid/mail": "*",
+    "request": "*"
   },
   "scripts": {
     "start:lambda": "netlify-lambda serve lambda",
