@@ -1,7 +1,9 @@
 +++
 title = "theme"
 date = 2018-04-11
-# html mode
+
+[extra]
+additional_scripts = ["/js/theme.js"]
 +++
 
 ### colors
@@ -19,21 +21,5 @@ date = 2018-04-11
   <div style="background:var(--accent-darker-color)"><span>--accent-darker-color</span></div>
 </div>
 <script>
-// dynamically inject color information
-((w, d) => {
-  // https://stackoverflow.com/a/41665515/653173
-  const rgb2hex = (rgb) => {
-    return '#' +
-            rgb.substr(4, rgb.indexOf(')') - 4)
-               .split(',')
-               .map((color) => String('0' + parseInt(color).toString(16)).slice(-2))
-               .join('');
-  }
-  const theme = d.querySelector('.theme')
-  for(child of theme.children) {
-    const bgColor = window.getComputedStyle(child,null).getPropertyValue('background-color')
-    const span = child.querySelector('span')
-    span.innerHTML = `${rgb2hex(bgColor)}<br>${bgColor}<br>${span.innerHTML}`
-  }
-})(window, document)
+
 </script>

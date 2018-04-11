@@ -153,6 +153,11 @@
   </div>
   <script async src="/js/loaded.js"></script>
   {#<link rel="prefetch" href="/deployment.json" data-fetch />#}
+  {% if page and page.extra.additional_scripts %}
+    {% for script_path in page.extra.additional_scripts %}
+    <script async src="{{script_path | safe }}"></script>
+    {% endfor %}
+  {% endif %}
   {% block before_body_end %}{% endblock before_body_end %}
 {# DEBUG (port=3000) #}
 {% if config.base_url is containing(":3000") %}
