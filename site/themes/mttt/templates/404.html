@@ -1,7 +1,7 @@
 {% extends "default.html" %}
 {% block title %}{{config.title}}: {{config.description}}{% endblock title %}
 {% block content %}
-{% if page.content %}{{page.content | safe }}{% endif %}
+{% if page.content %}{{page.content | safe}}{% endif %}
 {% set section = get_section(path="posts/_index.md") %}
 {{ macros::sec_traverse(sec = section) }}
 {% endblock content %}
