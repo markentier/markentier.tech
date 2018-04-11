@@ -8,7 +8,6 @@ additional_scripts = ["/js/theme.js"]
 
 ### colors
 
-<!-- </div> -->
 <div class="theme">
   <div style="background:var(--head-light-color)"><span style="color:var(--bg-color)">--head-light-color</span></div>
   <div style="background:var(--head-color)"><span style="color:var(--bg-color)">--head-color<br/>(--link-color)</span></div>
@@ -20,6 +19,3 @@ additional_scripts = ["/js/theme.js"]
   <div style="background:var(--accent-dark-color)"><span>--accent-dark-color</span></div>
   <div style="background:var(--accent-darker-color)"><span>--accent-darker-color</span></div>
 </div>
-<script>
-
-</script>
