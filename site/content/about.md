@@ -9,7 +9,8 @@ date = 2018-03-11
 * github: <https://github.com/asaaki>
 * twitter: <https://twitter.com/asaaki>
 * dev.to: <https://dev.to/asaaki>
-* medium: <https://medium.com/@asaaki>
+* medium: <https://medium.com/@asaaki> (<https://medium.com/markentier-tech>)
+* refind: [https://refind.com/asaaki](https://refind.com/asaaki?invite=5bf5fd0575)
 * paypal: <https://www.paypal.me/asaaki>
 
 <!-- FOAF http://xmlns.com/foaf/spec/
@@ -31,3 +32,7 @@ GE/IT/O d---(-)@ s-: !a C+++$>++++ UL*--- P- L++$ !E-- W+++$ !N !o K--? w !O-- M
   </foaf:geekcode>
 </foaf:Person>
 -->
+
+### design
+
+See [/theme](/theme/)
