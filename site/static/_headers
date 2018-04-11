@@ -20,16 +20,18 @@
   referrer-policy: strict-origin-when-cross-origin
   expect-ct: max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly
 
-# never ever cache this one
+# never ever cache these:
+
 /deployment.json
   cache-control: no-cache, no-store, must-revalidate
 
+/sw.js
+  cache-control: no-cache, no-store, must-revalidate
+
+# assets can be cached for pretty long time, let's start with 30d for now
+
 /favicon.ico
   cache-control: max-age=2592000
-
-# 1d only to avoid update deferrals
-/sw.js
-  cache-control: max-age=86400
 
 /*.svg
   cache-control: max-age=2592000
