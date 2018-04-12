@@ -90,8 +90,8 @@ cache-control = "max-age=2592000"
 for = "/*.woff2"
 [headers.values]
 cache-control = "max-age=2592000"
-[[headers]]
 
+# [[headers]]
 # for = "/*."
 # [headers.values]
 # cache-control = "max-age=604800"
