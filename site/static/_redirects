@@ -1,4 +1,0 @@
-## https://www.netlify.com/docs/redirects/
-# /target /source.html 200
-/ /categories/default/index.html 200
-/* /404/index.html 404
