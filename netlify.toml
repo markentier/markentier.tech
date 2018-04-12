@@ -22,6 +22,7 @@ command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
 ### https://scotthelme.co.uk/a-new-security-header-referrer-policy/
 ### https://scotthelme.co.uk/a-new-security-header-expect-ct/
 ## Time hints:
+## 1h = 3600
 ## 1d = 86400
 ## 7d = 604800
 ## 30d = 2592000
@@ -39,6 +40,12 @@ x-github-repo = "https://github.com/markentier/markentier.tech"
 x-github-user = "https://github.com/asaaki"
 x-xss-protection = "1; mode=block"
 
+# entry point file
+[[headers]]
+for = "/categories/default/index.html"
+[headers.values]
+cache-control = "max-age=3600"
+
 [[headers]]
 for = "/deployment.json"
 [headers.values]
@@ -46,6 +53,11 @@ cache-control = "no-cache, no-store, must-revalidate"
 
 [[headers]]
 for = "/sw.js"
+[headers.values]
+cache-control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+for = "/cache.json"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
 
@@ -78,6 +90,11 @@ cache-control = "max-age=2592000"
 for = "/*.woff2"
 [headers.values]
 cache-control = "max-age=2592000"
+[[headers]]
+
+# for = "/*."
+# [headers.values]
+# cache-control = "max-age=604800"
 
 # REDIRECTS
 ## https://www.netlify.com/docs/redirects/
