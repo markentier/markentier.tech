@@ -16,7 +16,7 @@
   const swPostRegSteps = () => {
     // navigator.serviceWorker.onmessage = swOnMessageFn;
     prefetchStage2();
-    swEvents();
+    // swEvents();
   };
 
   // const swOnMessageFn = (e) => {
@@ -35,24 +35,24 @@
     document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
   };
 
-  const swEvents = () => {
-    navigator.serviceWorker.addEventListener('controllerchange', (event) => {
-      console.log(`[controllerchange] A "controllerchange" event has happened within navigator.serviceWorker: `, event);
-      navigator.serviceWorker.controller.addEventListener('statechange', () => {
-        console.log(`[controllerchange][statechange] A "statechange" has occured: `, this.state);
-        if (this.state === 'activated') {
-          // safe to go offline
-          const wrppr = document.getElementById('wrppr');
-          wrppr.classList.add('activated');
-          // prefetchStage2();
-        } else {
-          // something else?
-          // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state
-          // values: installing, installed, activating, activated, or redundant.
-        }
-      });
-    });
-  };
+  // const swEvents = () => {
+  //   navigator.serviceWorker.addEventListener('controllerchange', (event) => {
+  //     console.log(`[controllerchange] A "controllerchange" event has happened within navigator.serviceWorker: `, event);
+  //     navigator.serviceWorker.controller.addEventListener('statechange', () => {
+  //       console.log(`[controllerchange][statechange] A "statechange" has occured: `, this.state);
+  //       if (this.state === 'activated') {
+  //         // safe to go offline
+  //         const wrppr = document.getElementById('wrppr');
+  //         wrppr.classList.add('activated');
+  //         // prefetchStage2();
+  //       } else {
+  //         // something else?
+  //         // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state
+  //         // values: installing, installed, activating, activated, or redundant.
+  //       }
+  //     });
+  //   });
+  // };
 
   // start it:
   if ('serviceWorker' in navigator) { window.addEventListener('load', registerSwOnLoad); }

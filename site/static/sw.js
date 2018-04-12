@@ -1,4 +1,4 @@
-/* global self, importScripts, caches, fetch, idb */
+/* global self, importScripts, caches, fetch, idb, Response */
 'use strict';
 
 // https://github.com/GoogleChromeLabs/airhorn/blob/master/app/sw.js
@@ -6,6 +6,9 @@
 importScripts('/sw-idb.js');
 
 // const unixTimestamp = () => parseInt(Date.now() / 1000);
+
+const FORCE_UPDATE_PAH_RE = new RegExp('/sw-force-update');
+const FORCE_UPDATE_RESPONSE = JSON.stringify({ ok: true });
 
 const DEPLOYMENT_PATH = '/deployment.json';
 const DEPLOYMENT_PATH_RE = new RegExp(`${DEPLOYMENT_PATH}`);
@@ -66,11 +69,23 @@ const purgeFn = (cacheName, version) => {
 };
 
 const cacheableFetch = (e) => {
-  if (e.request.url.match(DEPLOYMENT_PATH_RE)) {
-    return addDeployment(e);
-  } else {
-    return serveOrFetch(e);
-  }
+  if (e.request.url.match(FORCE_UPDATE_PAH_RE)) return forceUpdate(e);
+  if (e.request.url.match(DEPLOYMENT_PATH_RE)) return addDeployment(e);
+  return serveOrFetch(e);
+};
+
+const forceUpdate = (e) => {
+  e.waitUntil(
+    syncAndUpdate()
+      .then(() => caches.keys())
+      .then(cacheKeysPurgeFn)
+  );
+  return new Response(FORCE_UPDATE_RESPONSE);
+};
+
+const syncAndUpdate = () => {
+  return deploymentSync()
+    .finally(() => getVersionedCache().then(cacheFn));
 };
 
 const addDeployment = (e) => {
@@ -146,9 +161,7 @@ const deploymentSync = () => {
 };
 
 const installHandler = (e) => {
-  e.waitUntil(
-    deploymentSync().finally(() => getVersionedCache().then(cacheFn))
-  );
+  e.waitUntil(syncAndUpdate());
 };
 
 const activateHandler = (e) => {
@@ -163,17 +176,8 @@ const activateHandler = (e) => {
 
 const fetchHandler = (e) => {
   e.respondWith(cacheableFetch(e));
-  // e.waitUntil();
 };
-
-// const notificationHandler = (e) => {
-//   console.log(`[sw] On notification click: ${e.notification.tag}`);
-//   console.log('--n:', e.notification);
-//   e.notification.close();
-//   // e.waitUntil()
-// };
 
 self.addEventListener('install', installHandler)
 self.addEventListener('activate', activateHandler)
 self.addEventListener('fetch', fetchHandler)
-// self.addEventListener('notificationclick', notificationHandler);
