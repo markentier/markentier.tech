@@ -1,3 +1,4 @@
+/* global fetch */
 'use strict';
 (() => {
   const registerSwOnLoad = () => {
@@ -30,9 +31,8 @@
 
   // store prefetchables
   const prefetchStage2 = () => {
-    document.querySelectorAll('link[data-fetch]').forEach((link) => fetch(link.href));
-    document.querySelectorAll('a[data-fetch]').forEach((a) => fetch(a.href));
-    // document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
+    document.querySelectorAll('a[data-fetch], link[data-fetch]').forEach((e) => fetch(e.href));
+    document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
   };
 
   const swEvents = () => {

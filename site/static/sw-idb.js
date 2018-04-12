@@ -1,12 +1,13 @@
+/* global indexedDB, IDBDatabase, IDBObjectStore, IDBIndex, IDBCursor, IDBTransaction, self */
 'use strict';
 // https://raw.githubusercontent.com/jakearchibald/idb/master/lib/idb.js
 
 (function () {
-  function toArray(arr) {
+  function toArray (arr) {
     return Array.prototype.slice.call(arr);
   }
 
-  function promisifyRequest(request) {
+  function promisifyRequest (request) {
     return new Promise(function (resolve, reject) {
       request.onsuccess = function () {
         resolve(request.result);
@@ -18,7 +19,7 @@
     });
   }
 
-  function promisifyRequestCall(obj, method, args) {
+  function promisifyRequestCall (obj, method, args) {
     var request;
     var p = new Promise(function (resolve, reject) {
       request = obj[method].apply(obj, args);
@@ -29,7 +30,7 @@
     return p;
   }
 
-  function promisifyCursorRequestCall(obj, method, args) {
+  function promisifyCursorRequestCall (obj, method, args) {
     var p = promisifyRequestCall(obj, method, args);
     return p.then(function (value) {
       if (!value) return;
@@ -37,7 +38,7 @@
     });
   }
 
-  function proxyProperties(ProxyClass, targetProp, properties) {
+  function proxyProperties (ProxyClass, targetProp, properties) {
     properties.forEach(function (prop) {
       Object.defineProperty(ProxyClass.prototype, prop, {
         get: function () {
@@ -50,7 +51,7 @@
     });
   }
 
-  function proxyRequestMethods(ProxyClass, targetProp, Constructor, properties) {
+  function proxyRequestMethods (ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function (prop) {
       if (!(prop in Constructor.prototype)) return;
       ProxyClass.prototype[prop] = function () {
@@ -59,7 +60,7 @@
     });
   }
 
-  function proxyMethods(ProxyClass, targetProp, Constructor, properties) {
+  function proxyMethods (ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function (prop) {
       if (!(prop in Constructor.prototype)) return;
       ProxyClass.prototype[prop] = function () {
@@ -68,7 +69,7 @@
     });
   }
 
-  function proxyCursorRequestMethods(ProxyClass, targetProp, Constructor, properties) {
+  function proxyCursorRequestMethods (ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function (prop) {
       if (!(prop in Constructor.prototype)) return;
       ProxyClass.prototype[prop] = function () {
@@ -77,7 +78,7 @@
     });
   }
 
-  function Index(index) {
+  function Index (index) {
     this._index = index;
   }
 
@@ -101,7 +102,7 @@
     'openKeyCursor'
   ]);
 
-  function Cursor(cursor, request) {
+  function Cursor (cursor, request) {
     this._cursor = cursor;
     this._request = request;
   }
@@ -134,7 +135,7 @@
     };
   });
 
-  function ObjectStore(store) {
+  function ObjectStore (store) {
     this._store = store;
   }
 
@@ -174,7 +175,7 @@
     'deleteIndex'
   ]);
 
-  function Transaction(idbTransaction) {
+  function Transaction (idbTransaction) {
     this._tx = idbTransaction;
     this.complete = new Promise(function (resolve, reject) {
       idbTransaction.oncomplete = function () {
@@ -202,7 +203,7 @@
     'abort'
   ]);
 
-  function UpgradeDB(db, oldVersion, transaction) {
+  function UpgradeDB (db, oldVersion, transaction) {
     this._db = db;
     this.oldVersion = oldVersion;
     this.transaction = new Transaction(transaction);
@@ -223,7 +224,7 @@
     'close'
   ]);
 
-  function DB(db) {
+  function DB (db) {
     this._db = db;
   }
 
@@ -272,7 +273,7 @@
           }
           items.push(cursor.value);
 
-          if (count !== undefined && items.length == count) {
+          if (count !== undefined && items.length === count) {
             resolve(items);
             return;
           }
@@ -305,8 +306,7 @@
   if (typeof module !== 'undefined') {
     module.exports = exp;
     module.exports.default = module.exports;
-  }
-  else {
+  } else {
     self.idb = exp;
   }
 }());

@@ -20,6 +20,7 @@
     "request": "*"
   },
   "devDependencies": {
+    "eslint": "*",
     "eslint-config-standard": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-node": "*",
@@ -33,7 +34,8 @@
     "posthtml-cli": "*",
     "posthtml-img-autosize": "./vendor/posthtml-img-autosize",
     "posthtml-load-config": "*",
-    "sqip": "*"
+    "sqip": "*",
+    "standardx": "*"
   },
   "peerDependencies": {},
   "posthtml": {

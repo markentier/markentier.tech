@@ -1,18 +1,20 @@
+/* global self, importScripts, caches, fetch, idb */
 'use strict';
+
 // https://github.com/GoogleChromeLabs/airhorn/blob/master/app/sw.js
 
 importScripts('/sw-idb.js');
 
-const unixTimestamp = () => parseInt(Date.now() / 1000);
+// const unixTimestamp = () => parseInt(Date.now() / 1000);
 
 const DEPLOYMENT_PATH = '/deployment.json';
 const DEPLOYMENT_PATH_RE = new RegExp(`${DEPLOYMENT_PATH}`);
 
 const FALLBACK_SHA = 'ffffffffffffffffffffffffffffffffffffffff';
-const FALLBACK_PAYLOAD_FN = () => { return { deployment: { sha: FALLBACK_SHA, ts: unixTimestamp() } } };
+const FALLBACK_PAYLOAD_FN = () => { return { deployment: { sha: FALLBACK_SHA, ts: Date.now() } } };
 
 const VERSION_FALLBACK = 'mtt-20180406.1';
-const VERSION_FALLBACK_ITEM = { sha: VERSION_FALLBACK, ts: unixTimestamp() };
+const VERSION_FALLBACK_ITEM = { sha: VERSION_FALLBACK, ts: Date.now() };
 
 const IDB_NAME = 'mtt-sw-data';
 const IDB_VERSION = 1;
@@ -42,7 +44,7 @@ const getVersionedCache = () => {
 };
 
 const cacheFn = cache => {
-  return fetch('/cache.json')
+  return fetch('/cache.json', { cache: 'no-store' })
     .then((response) => response.json())
     .then((files) => cache.addAll(files))
     .then(() => self.skipWaiting());
@@ -68,7 +70,7 @@ const cacheableFetch = (e) => {
     return addDeployment(e);
   } else {
     return serveOrFetch(e);
-  };
+  }
 };
 
 const addDeployment = (e) => {
@@ -77,13 +79,13 @@ const addDeployment = (e) => {
       e.waitUntil(new Promise((resolve) => resolve(() => {
         return response.clone().json()
           .then((payload) => updateShaWithDb(payload))
-          .catch((err) => updateShaWithDb(FALLBACK_PAYLOAD))
+          .catch((_err) => updateShaWithDb(FALLBACK_PAYLOAD_FN()))
       })));
       return response;
     });
 };
 
-const updateShaWithDb = (paylod) => {
+const updateShaWithDb = (payload) => {
   return idb
     .open(IDB_NAME, IDB_VERSION)
     .then((db) => updateSha(payload, db))
@@ -103,8 +105,8 @@ const serveOrFetch = (e) => {
   return getVersionedCache()
     .then((cache) => {
       return cache.match(e.request)
-        .then((response) => response || Promise.reject('not-found'))
-        .catch((err) => {
+        .then((response) => response || Promise.reject(new Error('not-found')))
+        .catch((_err) => {
           return fetch(e.request)
             .then((response) => {
               scheduleCacheUpdate(cache, e, response);
@@ -135,7 +137,7 @@ const scheduleCacheUpdate = (cache, e, response) => {
 // };
 
 const deploymentSync = () => {
-  return fetch(`${DEPLOYMENT_PATH}?_sw_ts=${Date.now()}`)
+  return fetch(`${DEPLOYMENT_PATH}?_sw_ts=${Date.now()}`, { cache: 'no-store' })
     .then((response) => response.json())
     .catch((_err) => { return FALLBACK_PAYLOAD_FN(); })
     .then((payload) => {

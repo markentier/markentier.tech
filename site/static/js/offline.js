@@ -5,14 +5,14 @@
   const headerElement = document.querySelector('header')
   const metaTagTheme = document.querySelector('meta[name=theme-color]')
 
-  document.addEventListener('DOMContentLoaded', function(event) {
+  document.addEventListener('DOMContentLoaded', function (event) {
     if (!navigator.onLine) { updateNetworkStatus() }
     window.addEventListener('online', updateNetworkStatus, false)
     window.addEventListener('offline', updateNetworkStatus, false)
   })
 
-  //To update network status
-  function updateNetworkStatus() {
+  // To update network status
+  function updateNetworkStatus () {
     if (navigator.onLine) {
       metaTagTheme.setAttribute('content', '#0288d1')
       headerElement.classList.remove('app__offline')

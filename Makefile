@@ -41,10 +41,10 @@ netlify: netlify-build netlify-deployment netlify-lambda netlify-go
 
 # brew tap netlify/netlifyctl && brew install netlifyctl --> netlifyctl
 # or: yarn global add netlify-cli --> netlify
-local-deploy: build
+netlify-local-deploy: build
 	netlify deploy -s $(SITE_ID) -p public
 
-local-deploy-draft: build
+netlify-local-deploy-draft: build
 	netlify deploy -s $(SITE_ID) -p public --draft
 
 build: build-dirty build-tidy-html build-html-postprocessing
@@ -153,6 +153,9 @@ $(GO_BINS): .%: %.go
 
 netlify-deployment:
 	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json
+
+local-deployment:
+	@echo '{"deployment":{"sha":"$(shell git rev-parse HEAD)","ts":$(shell date +%s042)}}' > public/deployment.json
 
 .functions:
 	mkdir -p $@
