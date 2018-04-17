@@ -50,8 +50,15 @@
     deploymentSync();
   };
 
+  const asyncPostPrefetch = () => {
+    document.querySelectorAll('a[data-fetch], link[data-fetch]').forEach((e) => fetch(e.href));
+    document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
+    document.querySelectorAll('[data-cover-url]').forEach((e) => fetch(e.dataset.coverUrl));
+  };
+
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
+    setTimeout(asyncPostPrefetch, 0);
     setTimeout(loadTimeInfo, 0);
   };
 })();
