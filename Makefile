@@ -4,23 +4,6 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 # COMMIT_REF ?= ffffffffffffffffffffffffffffffffffffffff
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
-# brew install tidy-html5 fd
-TIDY_SETTINGS = -q -m -i \
-	--wrap 0 \
-	--indent-with-tabs yes \
-	--indent-spaces 2 \
-	--tab-size 2 \
-	--clean yes \
-	--join-styles yes \
-	--uppercase-attributes preserve \
-	--hide-comments yes \
-	--priority-attributes id,class,name,href,src \
-	--show-warnings no \
-	--tidy-mark no
-
-SED_RULE_ONE = 's/ type=\"text\/css\"//g'
-SED_RULE_TWO = 's/<a name=\"[^\"]*\"/<a/g'
-
 GUTENBERG = gutenberg
 GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBERG_OUTDIR)
@@ -28,13 +11,13 @@ GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBER
 # makes developing service worker stuff much easier:
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
-SQIP = yarn run sqip
-SQIP_SETTINGS = \
-	--numberOfPrimitives=5 \
-	--mode=0 \
-	--blur=12
+# SQIP = yarn run sqip
+# SQIP_SETTINGS = \
+# 	--numberOfPrimitives=5 \
+# 	--mode=0 \
+# 	--blur=12
 
-netlify: netlify-build netlify-deployment netlify-lambda netlify-go
+netlify: build netlify-deployment netlify-lambda netlify-go
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
@@ -47,13 +30,7 @@ netlify-local-deploy: build
 netlify-local-deploy-draft: build
 	netlify deploy -s $(SITE_ID) -p public --draft
 
-build: build-dirty build-tidy-html build-html-postprocessing
-
-netlify-build: build-dirty netlify-build-tidy-html netlify-build-html-postprocessing
-
-build-preview: build-dirty
-
-build-dirty: build-site build-feeds postprogressing
+build: build-site build-feeds postprogressing
 
 build-site:
 	cd site && $(GUTENBERG_BUILD)
@@ -64,29 +41,10 @@ build-feeds:
 	mv public/json/index.html public/feed.json
 
 postprogressing:
-	yarn && \
-	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run posthtml 'public/**/*.html'
+	yarn && IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
 
-build-tidy-html:
-	fd -IH -p public -e html -x sh -c "echo {} && tidy $(TIDY_SETTINGS) {}" \;
-
-netlify-build-tidy-html:
-	tools/fd -IH -p public -e html -x sh -c "echo {} && tools/tidy $(TIDY_SETTINGS) {}" \;
-
-# macos: https://stackoverflow.com/questions/12696125/sed-edit-file-in-place#comment51611455_12696224
-build-html-postprocessing:
-	fd -IH -p public -e html -x sh -c "\
-		echo {} && \
-		sed -i '' $(SED_RULE_ONE) {} && \
-		sed -i '' $(SED_RULE_TWO) {}\
-	" \;
-
-netlify-build-html-postprocessing:
-	tools/fd -IH -p public -e html -x sh -c "\
-		echo {} && \
-		sed -i $(SED_RULE_ONE) {} && \
-		sed -i $(SED_RULE_TWO) {}\
-	" \;
+check-html-size:
+	@find public -type f -name '*.html' -exec du -h {} \; | sort -r -u -k 1
 
 # imagemagick, pngquant, optipng
 COVERS = $(shell find site -iname 'cover.png')

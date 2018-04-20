@@ -15,9 +15,7 @@
     }
   },
   "dependencies": {
-    "@sendgrid/mail": "*",
-    "netlify-lambda": "*",
-    "request": "*"
+    "netlify-lambda": "*"
   },
   "devDependencies": {
     "eslint": "*",
@@ -26,25 +24,18 @@
     "eslint-plugin-node": "*",
     "eslint-plugin-promise": "*",
     "eslint-plugin-standard": "*",
-    "image-size": "*",
-    "post-config": "*",
-    "post-load-plugins": "*",
-    "posthtml": "*",
+    "gulp": "*",
+    "gulp-cli": "*",
+    "gulp-inline": "*",
+    "gulp-htmltidy": "*",
+    "gulp-posthtml": "*",
+    "gulp-remove-empty-lines": "*",
+    "gulp-replace": "*",
+    "gulp-whitespace": "*",
     "posthtml-alt-always": "*",
-    "posthtml-cli": "*",
     "posthtml-img-autosize": "./vendor/posthtml-img-autosize",
-    "posthtml-load-config": "*",
     "sqip": "*",
     "standardx": "*"
   },
-  "peerDependencies": {},
-  "posthtml": {
-    "from": "public/**/*.html",
-    "plugins": {
-      "img-autosize": {
-        "root": "public",
-        "processEmptySize": true
-      }
-    }
-  }
+  "peerDependencies": {}
 }

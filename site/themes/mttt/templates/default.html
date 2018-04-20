@@ -12,20 +12,19 @@
   <base href="{{config.base_url | safe}}">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png" />
   <link rel="icon" href="/m.svg" sizes="any" type="image/svg+xml" />
-  {#<link rel="preload icon" href="/m.svg" as="image" type="image/svg+xml" sizes="any" crossorigin />#}
-  {# fonts and styles #}
+  <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png" />
+
+  {#
   <style>@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Regular.woff2') format('woff2');font-weight:normal;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Italic.woff2') format('woff2');font-weight:normal;font-style:italic;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold.woff2') format('woff2');font-weight:bold;font-style:normal;}@font-face {font-family: 'Lora';src:url('/assets/fonts/Lora-Bold-Italic.woff2') format('woff2');font-weight:bold;font-style:italic;}@font-face{font-family:'Varela';src:url('/assets/fonts/varela-round-regular.woff2') format('woff2');font-weight:normal;font-style:normal;}</style>
   <style>html{box-sizing:border-box;font-family:'Lora',Cambria,Cochin,Georgia,'Times New Roman',Times,serif;}*,*::before,*::after{box-sizing:inherit;}html,body{margin:0;padding:0;border:0;}h1,h2,h3,h4,h5,h6{font-family:'Varela',Arial,sans-serif;}.wrppr{margin:auto;padding:0 1rem;max-width:38rem;}.headlink{text-decoration:none;display:flex;align-items:center;padding:1rem 0 0 0;min-width:17rem}.headlink .logo{width:4.5rem;height:4.5rem;margin-left:-1.2rem}.headlink h1{margin:0 0 0 -.3rem;padding-top:1.333rem}.headlink h1::first-letter{font-size:0}.site_description{margin:-1rem 0 0 4rem;padding:0;font-size:.75rem;line-height:1em}</style>
-
   <link rel="preload" href="/assets/fonts/varela-round-regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Lora-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Lora-Italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Lora-Bold.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/Lora-Bold-Italic.woff2" as="font" type="font/woff2" crossorigin />
-
-  <link rel="stylesheet subresource" href="/mtt.css" />
+  #}
+  <link rel="stylesheet" href="/mtt.css" />
 
   <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
@@ -33,8 +32,8 @@
   <link rel="preconnect" href="https://www.google-analytics.com/" />
 
   {# more icons #}
-  <link rel="shortcut icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />
-  <link rel="icon" href="/m.57.png" sizes="57x57" type="image/png" />
+  {#<link rel="shortcut icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" type="image/x-icon" />#}
+  {#<link rel="icon" href="/m.57.png" sizes="57x57" type="image/png" />#}
   {#<link rel="icon" href="/m.svg" sizes="any" type="image/svg+xml" />#}
   {#<link rel="icon" href="/mac.icns" sizes="128x128 512x512 8192x8192 32768x32768" />#}
 
@@ -104,10 +103,6 @@
   {% endif %}
   {# --if-page-- #}
   {% endif %}
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115476438-1"></script>
-  <script async src="/js/g.js"></script>
-  <script async src="/js/mtt.js"></script>
   {% block before_head_end %}{% endblock before_head_end %}
 </head>
 <body class="mtt">
@@ -159,13 +154,14 @@
       <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=markentier.tech" rel="external noopener" title="SSL/TLS check for {{config.title}}">ssltest</a>
     {% endblock footer %}</footer>
   </div>
-  <script async src="/js/loaded.js"></script>
-  {#<link rel="prefetch" href="/deployment.json" data-fetch />#}
+  <script async src="/js/mtt.js"></script>
   {% if page and page.extra.additional_scripts %}
     {% for script_path in page.extra.additional_scripts %}
     <script async src="{{script_path | safe }}"></script>
     {% endfor %}
   {% endif %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115476438-1"></script>
+  <script async src="/js/g.js"></script>
   {% block before_body_end %}{% endblock before_body_end %}
 {# DEBUG (port=3000) #}
 {% if config.base_url is containing(":3000") %}
