@@ -1,6 +1,7 @@
 'use strict';
 
 const SRC_HTML = 'public/**/*.html';
+const SRC_JS = 'public/**/*.js';
 const DEST = 'public';
 
 const gulp = require('gulp');
@@ -10,6 +11,7 @@ const htmltidy = require('gulp-htmltidy');
 const replace = require('gulp-replace');
 const removeEmptyLines = require('gulp-remove-empty-lines');
 const whitespace = require('gulp-whitespace');
+const minify = require('gulp-minify');
 
 const inlineConfig = {
   base: DEST,
@@ -40,7 +42,14 @@ const plugins = [
   require('posthtml-alt-always')({})
 ];
 
-gulp.task('default', ['html']);
+const minifyConfig = {
+  ext: {
+    src: '-debug.js',
+    min: '.js'
+  }
+}
+
+gulp.task('default', ['html', 'javascript']);
 
 gulp.task('html', () => {
   return gulp.src(SRC_HTML)
@@ -51,5 +60,11 @@ gulp.task('html', () => {
     .pipe(replace(' name="continue-reading"', ''))
     .pipe(removeEmptyLines({ removeComments: true }))
     .pipe(whitespace({ removeTrailing: true }))
+    .pipe(gulp.dest(DEST));
+});
+
+gulp.task('javascript', () => {
+  return gulp.src(SRC_JS)
+    .pipe(minify(minifyConfig))
     .pipe(gulp.dest(DEST));
 });

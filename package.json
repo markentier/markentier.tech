@@ -31,6 +31,7 @@
     "gulp-posthtml": "*",
     "gulp-remove-empty-lines": "*",
     "gulp-replace": "*",
+    "gulp-minify": "*",
     "gulp-whitespace": "*",
     "posthtml-alt-always": "*",
     "posthtml-img-autosize": "./vendor/posthtml-img-autosize",
