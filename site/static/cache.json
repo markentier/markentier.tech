@@ -6,7 +6,6 @@
   "/mtt.css",
   "/m.svg",
   "/js/mtt.js",
-  "/js/loaded.js",
   "/js/g.js",
 
   "/assets/fonts/varela-round-regular.woff2",
@@ -21,20 +20,7 @@
   "/assets/fonts/hack-bold.woff2",
   "/assets/fonts/hack-bolditalic.woff2",
 
-  "/assets/fonts/varela-round-regular.woff",
-
-  "/assets/fonts/Lora-Regular.woff",
-  "/assets/fonts/Lora-Italic.woff",
-  "/assets/fonts/Lora-Bold.woff",
-  "/assets/fonts/Lora-Bold-Italic.woff",
-
-  "/assets/fonts/hack-regular.woff",
-  "/assets/fonts/hack-italic.woff",
-  "/assets/fonts/hack-bold.woff",
-  "/assets/fonts/hack-bolditalic.woff",
-
   "/m.128.png",
-  "/favicon.ico",
 
   "/about/",
   "/theme/",
