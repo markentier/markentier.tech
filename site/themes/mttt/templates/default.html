@@ -112,24 +112,32 @@
 </head>
 <body class="mtt">
   {% block after_body_open %}{% endblock after_body_open %}
-  {# NOTE: ALWAYS KEEP IN SYNC WITH FILE #}
+  {# NOTE: ALWAYS KEEP IN SYNC WITH EXTERNAL FILE (see paths below as well) #}
+  {#
+  not using this, since iOS and some older browsers seems to not like <use ...> tag
   <svg xmlns="http://www.w3.org/2000/svg" id="svg-logo" style="display: none;">
     <symbol id="m" viewBox="0 0 1024 1024">
       <path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409"
       />
     </symbol>
   </svg>
+  #}
   <div id="wrppr" class="wrppr">
     <header class="siteheader">{% block header %}
       <a href="/" rel="home" title="home" class="headlink">
-        <svg xmlns="http://www.w3.org/2000/svg" class="header-logo"><use href="#m"></svg>
+        {# duplicated svg path #}
+        <svg xmlns="http://www.w3.org/2000/svg" class="mtt-logo header-logo"><path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409"
+        /></svg>
         <h1>{{config.title}}</h1>
       </a>
       <p class="site_description">{{config.description}}</p>
     {% endblock header %}</header>
     <nav class="navbar">
       <div class="navbar-menu">
-        <a href="/" class="homelink"><svg xmlns="http://www.w3.org/2000/svg" class="home-logo"><use href="#m"></svg> home</a>
+        <a href="/" class="homelink">
+          {# duplicated svg path #}
+          <svg xmlns="http://www.w3.org/2000/svg" class="mtt-logo home-logo"><path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409"
+        /></svg> home</a>
         <a href="/about/">about</a>
       </div>
       <progress class="scrollprogress"></progress>

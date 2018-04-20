@@ -8,6 +8,11 @@
   margin-bottom: 2rem;
 }
 
+.mtt-logo {
+  color: var(--head-color);
+  stroke: var(--head-color);
+}
+
 .headlink {
   text-decoration: none;
   display: flex;
@@ -19,8 +24,6 @@
     width: 4.5rem;
     height: 4.5rem;
     margin-left: -1.2rem;
-    color: var(--head-color);
-    stroke: var(--head-color);
   }
 
   h1 {
@@ -69,10 +72,7 @@
       .home-logo {
         display: inline-block;
         width: 0; height: 2rem;
-        // vertical-align: middle;
         vertical-align: bottom;
-        color: var(--link-color);
-        stroke: var(--link-color);
         opacity: 0;
         transition: all .1s ease;
       }
