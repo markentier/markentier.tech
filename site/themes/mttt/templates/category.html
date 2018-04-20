@@ -7,6 +7,17 @@
     '{{category.name}}' category
   {%- endif %}
 {%- endblock title %}
+{% block before_head_end %}
+{% set is_home = category.name == "default" %}
+{% if is_home %}
+<meta property="og:site_name" content="{{config.title}}">
+<meta property="og:title" content="{{config.title}}" />
+<meta property="og:description" content="{{config.description}}">
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{config.base_url | safe}}" />
+<meta property="og:image" content="{{config.base_url | safe}}/m.1024.txt.bg.png" />
+{% endif %}
+{% endblock before_head_end %}
 {% block content_header %}
 {% set is_home = category.name == "default" %}
 {% if is_home %}
