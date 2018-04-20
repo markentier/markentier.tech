@@ -28,5 +28,5 @@ feed_id = "markentier.tech"
 keywords = ["code", "people", "humans", "software", "development", "diversity", "inclusion", "rust", "programming", "unicorn", "tech"]
 has_image = false
 has_hero = false
-image_url = "assets/m.card.1024x512.png"
+image_url = "m.card.1024x512.png"
 image_alt = "markentier.tech"
