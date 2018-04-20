@@ -1,6 +1,8 @@
-const url = require('url');
+const fs = require('fs');
 const path = require('path');
+const url = require('url');
 const http = require('http');
+
 const imageSize = require('image-size');
 const ratio = require('./ratio.js');
 
@@ -50,6 +52,13 @@ module.exports = {
                         if (dimensions.height) {
                             img.attrs.height = dimensions.height;
                         }
+                    }).then(() => {
+                        const svgPath = `${imagePath}.svg`;
+                        if (fs.existsSync(svgPath)) {
+                            const data = fs.readFileSync(svgPath, options);
+                            const b64 = encodeBase64(data);
+                            img.attrs.style = `background-size:cover;background-image:url(data:image/svg+xml;base64,${b64});`;
+                        }
                     })
                 );
 
@@ -70,7 +79,7 @@ function translatePath(projectRoot, htmlRelativePath, imgBaseUrl, imgPath) {
 
     if (img.host) {
         if (imgBase && img.host === imgBase.host) {
-            imgPath = img.pathname
+            imgPath = img.pathname;
         } else {
             return imgPath;
         }
@@ -107,3 +116,5 @@ function getImageDimensions(imgPath) {
         }).on('error', reject);
     });
 }
+
+const encodeBase64 = (data) => Buffer.from(data).toString('base64');

@@ -1,6 +1,6 @@
 'use strict';
 
-const FROM = 'public/**/*.html';
+const SRC_HTML = 'public/**/*.html';
 const DEST = 'public';
 
 const gulp = require('gulp');
@@ -40,8 +40,10 @@ const plugins = [
   require('posthtml-alt-always')({})
 ];
 
-gulp.task('default', () => {
-  return gulp.src(FROM)
+gulp.task('default', ['html']);
+
+gulp.task('html', () => {
+  return gulp.src(SRC_HTML)
     .pipe(inline(inlineConfig))
     .pipe(postHTML(plugins))
     .pipe(htmltidy(htmltidyConfig))

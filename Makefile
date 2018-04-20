@@ -11,12 +11,6 @@ GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBER
 # makes developing service worker stuff much easier:
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 
-# SQIP = yarn run sqip
-# SQIP_SETTINGS = \
-# 	--numberOfPrimitives=5 \
-# 	--mode=0 \
-# 	--blur=12
-
 netlify: build netlify-deployment netlify-lambda netlify-go
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
@@ -46,7 +40,9 @@ postprogressing:
 check-html-size:
 	@find public -type f -name '*.html' -exec du -h {} \; | sort -r -u -k 1
 
-# imagemagick, pngquant, optipng
+images: create-thumbs create-sqip
+
+# imagemagick(convert), pngquant, optipng
 COVERS = $(shell find site -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
 THUMB_SIZE = 320x160
@@ -80,6 +76,25 @@ opimize-pngs:
 		optipng -quiet -clobber -o7 -zm1-9 -out {} {} && \
 		echo ' --- after size: \c' && wc -c < {} \
 	" \;
+
+SRC_IMAGES = $(shell find -E site/content -iregex '.*\.(png|jpg|gif)$$')
+SQIP_IMAGES = $(SRC_IMAGES:%=%.svg)
+SQIP_IMAGES_B64 = $(SQIP_IMAGES:%=%.b64)
+
+SQIP = yarn run sqip
+# (m)ode, (n)umberOfPrimitives, (b)lur
+SQIP_SETTINGS = -m 0 -n 9 -b 12
+
+create-sqip: $(SQIP_IMAGES)
+
+$(SQIP_IMAGES_B64): %.b64: %
+	base64 -i $< -o $@
+
+$(SQIP_IMAGES): %.svg: %
+	yarn run sqip \
+		$(SQIP_SETTINGS) \
+		-o $@ \
+		$<
 
 serve:
 	cd site && $(GUTENBERG_SERVE)
