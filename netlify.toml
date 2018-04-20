@@ -47,6 +47,11 @@ for = "/categories/default/index.html"
 cache-control = "max-age=3600"
 
 [[headers]]
+for = "/sw-force-update"
+[headers.values]
+cache-control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
 for = "/deployment.json"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"

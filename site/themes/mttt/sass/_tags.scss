@@ -1,6 +1,12 @@
 html { box-sizing: border-box; }
 
 *, *::before, *::after { box-sizing: inherit; }
+* {
+  -webkit-tap-highlight-color: transparent; /* prevent tap highlight color / shadow */
+  -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+  // -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+  // user-select: none; /* why would we want to do that? */
+}
 
 html, body, figure {
   margin: 0; padding: 0; border: 0;
