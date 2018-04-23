@@ -110,4 +110,6 @@
     setTimeout(asyncPostPrefetch, 0);
     setTimeout(loadTimeInfo, 0);
   };
+
+  window.markentier = { tech: '🦄' }; // ;-)
 })();
