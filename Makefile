@@ -16,8 +16,7 @@ netlify: build netlify-deployment netlify-lambda netlify-go
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
 
-# brew tap netlify/netlifyctl && brew install netlifyctl --> netlifyctl
-# or: yarn global add netlify-cli --> netlify
+# yarn global add netlify-cli --> netlify
 netlify-local-deploy: build
 	netlify deploy -s $(SITE_ID) -p public
 
@@ -77,7 +76,6 @@ opimize-pngs:
 		echo ' --- after size: \c' && wc -c < {} \
 	" \;
 
-# SRC_IMAGES = $(shell find -E site/content -iregex '.*\.(png|jpg|gif)$$')
 SRC_IMAGES = $(shell find site/content -iname '*.png' -o -iname '*.jpg' -o -iname '*.gif')
 SQIP_IMAGES = $(SRC_IMAGES:%=%.svg)
 SQIP_IMAGES_B64 = $(SQIP_IMAGES:%=%.b64)
