@@ -3,19 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{{config.title}}{% endblock title %}</title>
-  <meta name="description" content="{{config.description}}">
-  {% if page.tags %}
-  <meta name="keywords" content="{{page.tags | slice(end=10) | join(sep=",") }}" />
-  {% else %}
-  <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
-  {% endif %}
-  <base href="{{config.base_url | safe}}">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="{{config.base_url | safe}}">
+  <link rel="preload" href="/assets/fonts//varela-round-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/mtt.css" />
+
   <link rel="shortcut icon" href="/m.svg" sizes="any" type="image/svg+xml" />
   <link rel="icon" href="/m.192.png" sizes="192x192" type="image/png" />
   <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png" />
-  <link rel="stylesheet" href="/mtt.css" />
 
   <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
@@ -31,6 +26,13 @@
   <link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml" />
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}" href="/feed.rss.xml" />
   <link rel="alternate" type="application/json" title="JSON Feed for {{config.title}}" href="/feed.json" />
+
+  <meta name="description" content="{{config.description}}">
+  {% if page.tags %}
+  <meta name="keywords" content="{{page.tags | slice(end=10) | join(sep=",") }}" />
+  {% else %}
+  <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
+  {% endif %}
 
   <meta name="author" content="{{config.extra.author}} ({{config.extra.author_nick}})" />
   <link rel="author" href="/humans.txt" />
