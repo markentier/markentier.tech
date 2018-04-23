@@ -91,12 +91,14 @@ for = "/*.woff"
 [headers.values]
 cache-control = "max-age=2592000"
 content-type = "application/font-woff"
+access-control-allow-origin = "*"
 
 [[headers]]
 for = "/*.woff2"
 [headers.values]
 cache-control = "max-age=2592000"
 content-type = "font/woff2"
+access-control-allow-origin = "*"
 
 # [[headers]]
 # for = "/*."
