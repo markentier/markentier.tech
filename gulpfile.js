@@ -58,6 +58,7 @@ gulp.task('html', () => {
     .pipe(htmltidy(htmltidyConfig))
     .pipe(replace(' type="text/css"', ''))
     .pipe(replace(' name="continue-reading"', ''))
+    .pipe(replace('crossorigin=""', 'crossorigin'))
     .pipe(removeEmptyLines({ removeComments: true }))
     .pipe(whitespace({ removeTrailing: true }))
     .pipe(gulp.dest(DEST));
