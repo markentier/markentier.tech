@@ -77,7 +77,8 @@ opimize-pngs:
 		echo ' --- after size: \c' && wc -c < {} \
 	" \;
 
-SRC_IMAGES = $(shell find -E site/content -iregex '.*\.(png|jpg|gif)$$')
+# SRC_IMAGES = $(shell find -E site/content -iregex '.*\.(png|jpg|gif)$$')
+SRC_IMAGES = $(shell find site/content -iname '*.png' -o -iname '*.jpg' -o -iname '*.gif')
 SQIP_IMAGES = $(SRC_IMAGES:%=%.svg)
 SQIP_IMAGES_B64 = $(SQIP_IMAGES:%=%.b64)
 
