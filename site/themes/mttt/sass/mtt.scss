@@ -1,13 +1,16 @@
 /*!mtt*/
 @charset "UTF-8";
+/*!mtt fonts*/
+@import "fonts";
 @import "sanitize";
 /*!mtt css*/
 @import "root";
 @import "tags";
 @import "ids";
 @import "classes";
+
 @import "special";
 @import "shortcodes";
 @import "media.queries";
-@import "fonts";
+
 @import "debug";
