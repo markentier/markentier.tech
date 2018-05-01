@@ -26,17 +26,18 @@
     "eslint-plugin-standard": "*",
     "gulp": "*",
     "gulp-cli": "*",
-    "gulp-inline": "*",
     "gulp-htmltidy": "*",
+    "gulp-inline": "*",
+    "gulp-minify": "*",
     "gulp-posthtml": "*",
     "gulp-remove-empty-lines": "*",
     "gulp-replace": "*",
-    "gulp-minify": "*",
     "gulp-whitespace": "*",
     "posthtml-alt-always": "*",
     "posthtml-img-autosize": "./vendor/posthtml-img-autosize",
     "sqip": "*",
-    "standardx": "*"
+    "standardx": "*",
+    "text-to-svg": "*"
   },
   "peerDependencies": {}
 }
