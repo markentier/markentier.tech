@@ -32,7 +32,7 @@
       {% if page.extra.has_hero %}
       {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
       {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
-      <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | escape | safe}}" data-cover-url="{{page_cover_url | safe}}" />
+      <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | escape | safe}}" data-cover-url="{{page_cover_url | safe}}">
       {% endif %}
       <h2 class="post_title">{{page.title}}</h2>
       {# TODO extract as macro: macros::published_at(date=date) #}
@@ -49,7 +49,7 @@
         <p>{{page.description | safe | striptags}}</p>
       {% endif %}
     </a>
-    <link rel="prerender" href="{{page.permalink | safe}}" data-fetch />
+    <link rel="prerender" href="{{page.permalink | safe}}" data-fetch>
   </article>
   {% endif %}
   {% endfor %}

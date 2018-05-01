@@ -5,7 +5,7 @@
   {% if page.extra.has_image -%}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
   <figure class="post_hero">
-    <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page.extra.image_alt | safe | escape}}" />
+    <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page.extra.image_alt | safe | escape}}">
     <figcaption>{{page.extra.image_alt | safe | escape}}</figcaption>
   </figure>
   {%- endif %}
@@ -38,15 +38,15 @@
 {% macro pfooter(page, config) %}
 <footer class="meta">
   <div class="info">
-    <span class="permalink" title="Permalink">🔖</span> <a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br />
+    <span class="permalink" title="Permalink">🔖</span> <a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br>
     {% if page.extra.origin_url %}
     {% set rels = "external alternate nofollow noreferrer noopener" %}
     <span class="origin" title="Originally published at">⎇</span> <a target="_blank" rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a>
     {% endif %}
   </div>
   <div class="data">
-      <link itemprop="url" href="{{page.permalink | safe}}" />
-      <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}" />
+      <link itemprop="url" href="{{page.permalink | safe}}">
+      <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
       <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="{{config.extra.author}}">
         <span class="fn">{{config.extra.author}}</span>
@@ -56,9 +56,9 @@
           <meta itemprop="name" content="{{config.extra.publisher}}">
           <meta itemprop="description" content="{{config.description}}">
           <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <img itemprop="url" src="{{config.base_url | safe }}/m.amp.png" alt="logo" />
-            <meta itemprop="height" content="60" />
-            <meta itemprop="width" content="600" />
+            <img itemprop="url" src="{{config.base_url | safe }}/m.amp.png" alt="logo">
+            <meta itemprop="height" content="60">
+            <meta itemprop="width" content="600">
           </span>
         </a>
       </div>

@@ -4,7 +4,7 @@
   rel="external" is always added
 #}
 <div class="{% if class %}{{class}}{% else %}__sc_card{% endif %}">
-  <!-- <link rel="external" href="{{url}}" /> -->
+  <!-- <link rel="external" href="{{url}}"> -->
   <a rel="external{% if rel %} {{rel}}{% endif %}" href="{{url}}">{% if title %}{{title}}{% else %}{{url}}{% endif %}</a>
   {# TODO: script/lambda -> fetch url -> parse meta -> build snippet -> return #}
 </div>

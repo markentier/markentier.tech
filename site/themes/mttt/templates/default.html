@@ -3,52 +3,52 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{{config.title}}{% endblock title %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="{{config.base_url | safe}}">
-  <link rel="preload" href="/assets/fonts/varela-round-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/fonts.css" />
-  <link rel="stylesheet" href="/mtt.css" />
+  <link rel="preload" href="/assets/fonts/varela-round-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/mtt.css">
 
-  <link rel="shortcut icon" href="/m.svg" sizes="any" type="image/svg+xml" />
-  <link rel="icon" href="/m.192.png" sizes="192x192" type="image/png" />
-  <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png" />
+  <link rel="shortcut icon" href="/m.svg" sizes="any" type="image/svg+xml">
+  <link rel="icon" href="/m.192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png">
 
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
-  <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
-  <link rel="preconnect" href="https://www.googletagmanager.com/" />
-  <link rel="preconnect" href="https://www.google-analytics.com/" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com/">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com/">
+  <link rel="preconnect" href="https://www.googletagmanager.com/">
+  <link rel="preconnect" href="https://www.google-analytics.com/">
 
-  <meta name="theme-color" content="#dfdddc" />
-  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#dfdddc">
+  <link rel="manifest" href="/manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="{{config.title}}" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="#dfdddc" />
+  <meta name="apple-mobile-web-app-title" content="{{config.title}}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#dfdddc">
 
-  <link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml" />
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}" href="/feed.rss.xml" />
-  <link rel="alternate" type="application/json" title="JSON Feed for {{config.title}}" href="/feed.json" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}" href="/feed.rss.xml">
+  <link rel="alternate" type="application/json" title="JSON Feed for {{config.title}}" href="/feed.json">
 
   <meta name="description" content="{{config.description}}">
   {% if page.tags %}
-  <meta name="keywords" content="{{page.tags | slice(end=10) | join(sep=",") }}" />
+  <meta name="keywords" content="{{page.tags | slice(end=10) | join(sep=",") }}">
   {% else %}
-  <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}" />
+  <meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}">
   {% endif %}
 
-  <meta name="author" content="{{config.extra.author}} ({{config.extra.author_nick}})" />
-  <link rel="author" href="/humans.txt" />
-  <link rel="author" href="https://plus.google.com/116780993927713078767?rel=author" />
+  <meta name="author" content="{{config.extra.author}} ({{config.extra.author_nick}})">
+  <link rel="author" href="/humans.txt">
+  <link rel="author" href="https://plus.google.com/116780993927713078767?rel=author">
 
-  <meta name="geo.region" content="DE-BE" />
-  <meta name="geo.placename" content="Berlin" />
-  <meta name="geo.position" content="52.52755;13.47982" />
-  <meta name="geo.pluscode" content="https://plus.codes/9F4MGFHH+2W" />
-  <meta name="ICBM" content="52.52755, 13.47982" />
+  <meta name="geo.region" content="DE-BE">
+  <meta name="geo.placename" content="Berlin">
+  <meta name="geo.position" content="52.52755;13.47982">
+  <meta name="geo.pluscode" content="https://plus.codes/9F4MGFHH+2W">
+  <meta name="ICBM" content="52.52755, 13.47982">
 
   {% if page %}
     {% set is_post = page.permalink is containing("/posts/") %}
   {% if is_post == true %}
-  <link rel="canonical" href="{{page.permalink | safe}}" />
+  <link rel="canonical" href="{{page.permalink | safe}}">
 
   {% if page.extra.has_hero %}
     {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
@@ -74,20 +74,20 @@
   <meta name="twitter:creator" content="{{config.extra.author_nick}}">
   <meta name="twitter:image" content="{{page_image_url | safe}}">
   <meta name="twitter:image:alt" content="{{page_image_alt}}">
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="article">
   <meta property="og:url" content="{{page.permalink | safe}}">
   <meta property="og:title" content="{{page.title}}">
   <meta property="og:description" content="{{page_description}}">
-  <meta property="article:published_time" content="{{page.date | date(format="%FT%T%z")}}" />
+  <meta property="article:published_time" content="{{page.date | date(format="%FT%T%z")}}">
   <meta property="og:image" content="{{page_image_url | safe}}">
   <meta property="og:site_name" content="{{config.title}}">
   <meta property="og:see_also" content="{{config.base_url | safe}}">
-  <meta property="article:author" content="{{config.extra.author}}" />
+  <meta property="article:author" content="{{config.extra.author}}">
   {% if page.tags %}{% for tag in page.tags %}
-  <meta property="article:tag" content="{{tag}}" />
+  <meta property="article:tag" content="{{tag}}">
   {% endfor %}{% endif %}
   {% if page.category %}
-  <meta property="article:section" content="{{page.category}}" />
+  <meta property="article:section" content="{{page.category}}">
   {% endif %}
 
   {# --if-page==post-- #}
@@ -103,8 +103,9 @@
     <header class="siteheader">{% block header %}
       <a href="/" rel="home" title="home" class="headlink">
         {# NOTE: ALWAYS KEEP IN SYNC WITH EXTERNAL FILE #}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" class="mtt-logo header-logo"><path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409"
-        /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" class="mtt-logo header-logo">
+          <path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409" />
+        </svg>
         <h1>{{config.title}}</h1>
       </a>
       <p class="site_description">{{config.description}}</p>
@@ -113,8 +114,9 @@
       <div class="navbar-menu">
         <a href="/" class="homelink">
           {# NOTE: ALWAYS KEEP IN SYNC WITH EXTERNAL FILE #}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" class="mtt-logo home-logo"><path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409"
-        /></svg> home</a>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" class="mtt-logo home-logo">
+            <path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409" />
+          </svg> home</a>
         <a href="/about/">about</a>
       </div>
       <progress class="scrollprogress"></progress>
@@ -125,7 +127,7 @@
       {% block content_footer %}{% endblock content_footer %}
     </main>
     <footer class='footer'>{% block footer %}
-     &copy; 2018 markentier.tech / Christoph Grabo<br />
+     &copy; 2018 markentier.tech / Christoph Grabo<br>
       <a href="/feed.atom.xml" rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}">atom</a>,
       <a href="/feed.rss.xml" rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}">rss</a>,
       <a href="/feed.json" rel="alternate" type="application/json" title="JSON Feed for {{config.title}}">json</a> |
