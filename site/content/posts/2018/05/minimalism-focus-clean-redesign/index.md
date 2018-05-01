@@ -41,7 +41,7 @@ I love minimalism, I really do. And I wish I could follow this principle a bit m
 
 Not all my previous designs and themes were minimal, simple, or even easy to use. Some were artistic; I think in the early 2000s artsy, graphical and very detailed themes were a thing. Sadly I forgot to bookmark (and screenshot) some of my favourites, I cannot even remember the names of the people, so no hint how to find them again. Well, it's history anyway.
 
-In the end I always come to enjoy a design and layout which is not overloaded with stuff and cruft. I sometimes will add something here and there. And just a bit later I think I should remove something again.
+In the end I always come to enjoy a design and layout which is not overloaded with stuff and cruft. Sometimes I will add something here and there. And just a bit later I think I should remove something again.
 
 Also: minimalism doesn't necessarily mean total emptyness or absense of everthing. But I came to love the huge blanks, and the vast endlessness of the plains.
 
@@ -72,7 +72,7 @@ If you want to get more excited about SVGs:
 {{ youtube(id="lMFfTRiipOQ") }}
 {{ youtube(id="ADXX4fmWHbo") }}
 
-There are definitely more, but above videos should be a nice starting point.
+There are definitely more, but above videos should be a nice starting point. I might come back to this topic in the future.
 
 <div class='img-with-borders'>
 
