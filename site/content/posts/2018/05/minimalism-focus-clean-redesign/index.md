@@ -70,6 +70,7 @@ Yes, exactly, this is all. It is probably the most compact version I could use. 
 If you want to get more excited about SVGs:
 
 {{ youtube(id="lMFfTRiipOQ") }}
+
 {{ youtube(id="ADXX4fmWHbo") }}
 
 There are definitely more, but above videos should be a nice starting point. I might come back to this topic in the future.
