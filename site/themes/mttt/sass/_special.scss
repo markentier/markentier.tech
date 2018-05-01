@@ -1,3 +1,7 @@
+.img-with-borders img {
+  border: 1px solid var(--accent-dark-color);
+}
+
 /* <span class="correction"><del data-text="removed"></del><ins>added</ins></span> */
 .correction del::before {
   content: attr(data-text);

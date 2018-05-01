@@ -1,3 +1,4 @@
+.__sc_video,
 .__sc_youtube,
 .__sc_vimeo {
     width: 100%;
@@ -10,9 +11,12 @@
         margin: auto;
     }
     figcaption {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0.25em;
+        background: transparent;
         text-align: center;
         font-size: .6em;
-        padding: 0.25em;
         a {
             color: #236;
         }
