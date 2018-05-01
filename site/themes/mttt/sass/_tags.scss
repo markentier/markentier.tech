@@ -25,6 +25,9 @@ html, body {
   -webkit-text-stroke: .45px rgba(0,0,0,.1);
 }
 
+a {
+  text-decoration: double underline;
+}
 a, a:link, a:visited {
   color: var(--link-color);
 }
