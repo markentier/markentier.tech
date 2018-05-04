@@ -3,6 +3,7 @@
 .__sc_vimeo {
     width: 100%;
     background: rgba(0, 0, 0, 0.1);
+
     iframe {
         display: block;
         // no fixed size, otherwise it overflows on smaller viewports
@@ -11,6 +12,7 @@
         border: 0;
         margin: auto;
     }
+
     figcaption {
         width: 100%;
         margin: 0 auto;
@@ -21,6 +23,10 @@
         a {
             color: #236;
         }
+    }
+
+    & + & {
+        margin-top: .5rem;
     }
 }
 
