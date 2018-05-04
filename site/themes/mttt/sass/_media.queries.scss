@@ -14,7 +14,10 @@
   pre { font-size: 1em; }
   .meta, .footer { font-size: .89rem; }
   .post_content_info { flex-direction: column; font-size: .78rem; }
+}
 
+// only for video iframes
+@media only screen and (max-width: 680px) {
   .__sc_youtube iframe {
     max-width: 320px;
     max-height: 180px;
