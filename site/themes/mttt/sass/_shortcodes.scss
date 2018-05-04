@@ -5,8 +5,9 @@
     background: rgba(0, 0, 0, 0.1);
     iframe {
         display: block;
-        width: 640px;
-        height: 360px;
+        // no fixed size, otherwise it overflows on smaller viewports
+        // width: 640px;
+        // height: 360px;
         border: 0;
         margin: auto;
     }
@@ -23,6 +24,6 @@
     }
 }
 
-.__sc_vimeo iframe {
-    height: 274px;
-}
+// .__sc_vimeo iframe {
+//     height: 274px;
+// }
