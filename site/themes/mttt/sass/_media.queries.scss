@@ -14,4 +14,13 @@
   pre { font-size: 1em; }
   .meta, .footer { font-size: .89rem; }
   .post_content_info { flex-direction: column; font-size: .78rem; }
+
+  .__sc_youtube iframe {
+    max-width: 320px;
+    max-height: 180px;
+  }
+
+  .__sc_vimeo iframe {
+    max-height: 137px;
+  }
 }

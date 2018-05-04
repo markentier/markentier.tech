@@ -6,9 +6,8 @@
 
     iframe {
         display: block;
-        // no fixed size, otherwise it overflows on smaller viewports
-        // width: 640px;
-        // height: 360px;
+        width: 640px;
+        height: 360px;
         border: 0;
         margin: auto;
     }
@@ -20,9 +19,6 @@
         background: transparent;
         text-align: center;
         font-size: .6em;
-        a {
-            color: #236;
-        }
     }
 
     & + & {
@@ -30,6 +26,6 @@
     }
 }
 
-// .__sc_vimeo iframe {
-//     height: 274px;
-// }
+.__sc_vimeo iframe {
+    height: 274px;
+}
