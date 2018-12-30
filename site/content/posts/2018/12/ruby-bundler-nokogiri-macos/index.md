@@ -88,6 +88,13 @@ checked program was:
 /* end */
 ```
 
+You can also check the logs for later reference, too.
+
+```txt
+/Users/chris/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/extensions/x86_64-darwin-17/2.5.0-static/nokogiri-1.8.5/gem_make.out
+/Users/chris/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/extensions/x86_64-darwin-17/2.5.0-static/nokogiri-1.8.5/mkmf.log
+```
+
 This is a problem that it cannot work with the iconv library currently present.
 
 Alternatively also another library can cause some troubles: `libxml2`
