@@ -3,6 +3,8 @@
 .functions
 .netlify
 .vscode
+gutenberg
+gutenberg.tar.gz
 node_modules
 public
 local-stuff

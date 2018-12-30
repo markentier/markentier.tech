@@ -6,7 +6,7 @@ command = "make netlify"
 functions = ".functions"
 
 [build.environment]
-GUTENBERG_VERSION = "0.3.3"
+GUTENBERG_VERSION = "0.3.4"
 GO_IMPORT_PATH = "github.com/markentier/markentier.tech/functions"
 
 [context.deploy-preview]
@@ -40,7 +40,7 @@ x-github-repo = "https://github.com/markentier/markentier.tech"
 x-github-user = "https://github.com/asaaki"
 x-xss-protection = "1; mode=block"
 
-# entry point file
+# entrypoint file
 [[headers]]
 for = "/categories/default/index.html"
 [headers.values]

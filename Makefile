@@ -5,11 +5,16 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
 GUTENBERG = gutenberg
+
 GUTENBERG_OUTDIR = --output-dir ../public
 GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBERG_OUTDIR)
 # GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
 # makes developing service worker stuff much easier:
 GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
+
+# Was renamed: gutenberg -> zola (https://www.getzola.org/)
+GUTENBERG_RELEASE_VER = 0.3.4
+GUTENBERG_RELEASE_URL = https://github.com/getzola/zola/archive/v$(GUTENBERG_RELEASE_VER).tar.gz
 
 netlify: build netlify-deployment netlify-lambda netlify-go
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
@@ -150,3 +155,10 @@ check-cert:
 		-servername markentier.tech \
 		2>/dev/null | \
 		openssl x509 -text
+
+# add `gutenberg/target/release/gutenberg` to PATH
+install-gutenberg:
+	rm -rf $(GUTENBERG)
+	curl -sSL -o $(GUTENBERG).tar.gz $(GUTENBERG_RELEASE_URL)
+	mkdir -p $(GUTENBERG) && tar zxf $(GUTENBERG).tar.gz -C $(GUTENBERG) --strip-components 1
+	cd $(GUTENBERG) && cargo build --release
