@@ -4,12 +4,6 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 # COMMIT_REF ?= ffffffffffffffffffffffffffffffffffffffff
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
-# last gutenberg version 0.4.2 is broken!
-# Was renamed: gutenberg -> zola (https://www.getzola.org/)
-GUTENBERG = gutenberg
-GUTENBERG_RELEASE_VER = 0.4.2
-GUTENBERG_RELEASE_URL = https://github.com/getzola/zola/archive/v$(GUTENBERG_RELEASE_VER).tar.gz
-
 ZOLA = zola
 ZOLA_RELEASE_VER ?= 0.5.1
 ZOLA_RELEASE_URL_LINUX = https://github.com/getzola/zola/releases/download/v$(ZOLA_RELEASE_VER)/zola-v$(ZOLA_RELEASE_VER)-x86_64-unknown-linux-gnu.tar.gz
@@ -19,7 +13,7 @@ BUILD_BIN ?= $(ZOLA)
 
 BUILD_OUTDIR = --output-dir ../public
 BUILD_CMD = $(BUILD_BIN) build --base-url $(NETLIFY_DEPLOY_URL) $(BUILD_OUTDIR)
-# SERVE_CMD = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
+# SERVE_CMD = $(BUILD_BIN) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
 # makes developing service worker stuff much easier:
 SERVE_CMD = $(BUILD_BIN) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
 
@@ -163,15 +157,6 @@ check-cert:
 		-servername markentier.tech \
 		2>/dev/null | \
 		openssl x509 -text
-
-# add `gutenberg/target/release/gutenberg` to PATH
-install-gutenberg:
-	rm -rf $(GUTENBERG)
-	curl -sSL -o $(GUTENBERG).tar.gz $(GUTENBERG_RELEASE_URL)
-	mkdir -p $(GUTENBERG) && tar zxf $(GUTENBERG).tar.gz -C $(GUTENBERG) --strip-components 1
-	cd $(GUTENBERG) && \
-		sed -i.bak -e 's/tera 0.11.14/tera 0.11.20/g' Cargo.lock && \
-		cargo build --release
 
 install-zola:
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)
