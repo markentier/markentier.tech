@@ -8,12 +8,18 @@ highlight_code = true
 highlight_theme = "monokai"
 theme = "mttt"
 
+taxonomies = [
+  {name = "tags", rss = true},
+  {name = "categories", rss = true},
+]
+
 generate_rss = true
 rss_limit = 10
-generate_categories_pages = true
-generate_tags_pages = true
 
+build_search_index = true
+check_external_links = false
 ignored_content = []
+extra_syntaxes = []
 
 [extra]
 last_feed_update = "2018-03-28T00:00:00Z"

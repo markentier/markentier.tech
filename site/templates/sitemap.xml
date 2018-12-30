@@ -10,15 +10,18 @@
     <priority>0.85</priority>
   </url>
 {%- endif %}
-{%- endfor %}{# tags disabled; causes error:
-Reason: Variable `tags` not found in context while rendering 'sitemap.xml'
-Dunno why ...
-{%- for tag in tags %}
+{%- endfor %}
+{%- for tax in taxonomies %}
+    {%- for item in tax %}
+      {%- set is_tag = item.permalink is containing("/tags/") %}
+      {%- if is_tag == true %}
   <url>
-    <loc>{{tag.permalink | safe}}</loc>
+    <loc>{{item.permalink | safe}}</loc>
     <priority>0.3</priority>
   </url>
-{%- endfor %} #}
+      {%- endif %}
+    {%- endfor %}
+  {%- endfor %}
   <url>
     <loc>{{config.base_url | safe}}/</loc>
     <changefreq>weekly</changefreq>
