@@ -39,36 +39,36 @@ module.exports = {
 
                 promises.push(
                     // extend with https://github.com/technopagan/sqip
-                    getImageDimensions(imagePath).then(dimensions => {
-                        dimensions = ratio(
-                            { width: img.attrs.width, height: img.attrs.height },
-                            dimensions
-                        );
+                    getImageDimensions(imagePath)
+                        .then(dimensions => {
+                            dimensions = ratio(
+                                { width: img.attrs.width, height: img.attrs.height },
+                                dimensions
+                            );
 
-                        if (dimensions.width) {
-                            img.attrs.width = dimensions.width;
-                        }
+                            if (dimensions.width) {
+                                img.attrs.width = dimensions.width;
+                            }
 
-                        if (dimensions.height) {
-                            img.attrs.height = dimensions.height;
-                        }
-                    }).then(() => {
-                        const svgPath = `${imagePath}.svg`;
-                        if (fs.existsSync(svgPath)) {
-                            const data = fs.readFileSync(svgPath, options);
-                            const b64 = encodeBase64(data);
-                            img.attrs.style = `background-size:cover;background-image:url(data:image/svg+xml;base64,${b64});`;
-                        }
-                    })
+                            if (dimensions.height) {
+                                img.attrs.height = dimensions.height;
+                            }
+                        })
+                        .then(() => {
+                            const svgPath = `${imagePath}.svg`;
+                            if (fs.existsSync(svgPath)) {
+                                const data = fs.readFileSync(svgPath, options);
+                                const b64 = encodeBase64(data);
+                                img.attrs.style = `background-size:cover;background-image:url(data:image/svg+xml;base64,${b64});`;
+                            }
+                        })
+                        .catch(e => Promise.reject(e.message))
                 );
 
                 return img;
             });
 
-            return Promise.all(promises).then(
-                () => tree,
-                () => { }
-            );
+            return Promise.all(promises).then(() => tree);
         };
     }
 };
