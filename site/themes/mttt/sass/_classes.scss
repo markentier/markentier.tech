@@ -152,7 +152,11 @@
   margin-top: 1.5em;
   text-align: center;
   font-style: normal;
-  content: "·   ·   ·";
+  opacity: .125;
+  content: "· · ✽ · ·";
+  // content: "· · • · ·";
+  // content: "· · ● · ·";
+  // content: "· · ✿ · ·";
 }
 
 .post_content_info {
