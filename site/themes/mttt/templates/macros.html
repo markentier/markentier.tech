@@ -13,7 +13,7 @@
     {{ self::sec_pages(sec=sec) }}
     {% if sec.subsections %}
     {% for sub in sec.subsections | reverse %}
-    {% set ss = get_section(path=self::fq_sec(base=sub.path)) %}
+    {% set ss = get_section(path=sub) %}
     {{ self::sec_traverse(sec = ss) }}
     {% endfor %}
     {% endif %}
@@ -58,7 +58,7 @@
 {% macro feed_posts(sec, feed, first=false) -%}
 {{ self::feed_items(sec=sec, feed=feed) }}
 {%- for sub in sec.subsections | reverse -%}
-{%- set ss = get_section(path=self::fq_sec(base=sub.path)) -%}
+{%- set ss = get_section(path=sub) -%}
 {{ self::feed_posts(sec=ss, feed=feed, first=false) }}
 {%- if first == true and feed == "json" -%},,,,{%- endif -%}
 {%- endfor %}
