@@ -35,7 +35,7 @@ Try to get and build the dependencies:
 bundle install
 ```
 
-And after a while ...
+And after a while …
 
 ```sh
 # snippet
@@ -52,7 +52,7 @@ In Gemfile:
 # /snippet
 ```
 
-If you run what is suggested:
+Now if you run what is suggested …
 
 ```sh
 gem install nokogiri -v '1.8.5'
@@ -90,16 +90,20 @@ checked program was:
 
 You can also check the logs for later reference, too.
 
+<div class="with-wrap">
+
 ```txt
 /Users/chris/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/extensions/x86_64-darwin-17/2.5.0-static/nokogiri-1.8.5/gem_make.out
 /Users/chris/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/extensions/x86_64-darwin-17/2.5.0-static/nokogiri-1.8.5/mkmf.log
 ```
 
-This is a problem that it cannot work with the iconv library currently present.
+</div>
+
+This is a problem that it cannot work with the **iconv** library currently present for linking. This can either be due to what was shipped with nokogiri or you have installed a different version via homebrew.
 
 Alternatively also another library can cause some troubles: `libxml2`
 
-Then the output might look like:
+Then the output might look like …
 
 ```txt
 Running 'compile' for libxml2 2.9.8... ERROR, review '/Users/chris/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/nokogiri-1.8.5/ext/nokogiri/tmp/x86_64-apple-darwin17.7.0/ports/libxml2/2.9.8/compile.log' to see what happened. Last lines are:
@@ -198,7 +202,7 @@ And that's it. Fixed!
 
 ## Nokogiri documentation
 
-If I also had consulted [the nokogiri documentation][ndoc] closely, I also would have got the hint earlier:
+If I had consulted [the nokogiri documentation][ndoc] at all, I also would have got the hint earlier:
 
 > Nokogiri will refuse to build against certain versions of libxml2, libxslt supplied with your operating system, and certain versions will cause mysterious problems. The compile scripts will warn you if you try to do this.
 
