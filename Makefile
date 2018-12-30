@@ -16,7 +16,8 @@ GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --
 GUTENBERG_RELEASE_VER = 0.3.4
 GUTENBERG_RELEASE_URL = https://github.com/getzola/zola/archive/v$(GUTENBERG_RELEASE_VER).tar.gz
 
-netlify: build netlify-deployment netlify-lambda netlify-go
+# disabled: netlify-lambda netlify-go
+netlify: build netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
