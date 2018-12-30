@@ -80,8 +80,10 @@ figcaption {
 }
 pre {
   padding: 1rem;
+  padding-right: .5em;
   border-radius: .25em;
-  font-size: .8rem;
+  font-size: .75rem;
+  line-height: 1.25rem;
   white-space: pre;
   overflow-x: scroll;
 }
