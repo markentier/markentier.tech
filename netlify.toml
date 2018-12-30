@@ -3,11 +3,12 @@
 base = ""
 publish = "public"
 command = "make netlify"
-functions = ".functions"
+# functions = ".functions"
 
 [build.environment]
-GUTENBERG_VERSION = "0.3.3"
-GO_IMPORT_PATH = "github.com/markentier/markentier.tech/functions"
+# zola binary needs to be called from the sites/ directory
+BUILD_BIN = "../zola/zola"
+ZOLA_RELEASE_VER = "0.5.1"
 
 [context.deploy-preview]
 command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
@@ -40,7 +41,7 @@ x-github-repo = "https://github.com/markentier/markentier.tech"
 x-github-user = "https://github.com/asaaki"
 x-xss-protection = "1; mode=block"
 
-# entry point file
+# entrypoint file
 [[headers]]
 for = "/categories/default/index.html"
 [headers.values]

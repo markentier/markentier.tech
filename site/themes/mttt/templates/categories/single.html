@@ -1,14 +1,14 @@
 {% extends "default.html" %}
 {% block title -%}
-  {%- set is_home = category.name == "default" -%}
+  {%- set is_home = term.name == "default" -%}
   {%- if is_home -%}
      {{config.description}}: {{config.title}}
   {%- else -%}
-    '{{category.name}}' category
+    '{{term.name}}' category
   {%- endif %}
 {%- endblock title %}
 {% block before_head_end %}
-{% set is_home = category.name == "default" %}
+{% set is_home = term.name == "default" %}
 {% if is_home %}
 <meta property="og:site_name" content="{{config.title}}">
 <meta property="og:title" content="{{config.title}}">
@@ -19,17 +19,17 @@
 {% endif %}
 {% endblock before_head_end %}
 {% block content_header %}
-{% set is_home = category.name == "default" %}
+{% set is_home = term.name == "default" %}
 {% if is_home %}
 <article>
   <h2 class="header-home">Recent posts</h2>
 </article>
 {% else %}
 <article>
-  <h2 class="header-category">Category: {{category.name}}</h2>
+  <h2 class="header-category">Category: {{term.name}}</h2>
 </article>
 {% endif %}
 {% endblock content_header %}
 {% block content %}
-{{ macros::list_pages(pages=category.pages, limit=10) }}
+{{ macros::list_pages(pages=term.pages, limit=10) }}
 {% endblock content %}
