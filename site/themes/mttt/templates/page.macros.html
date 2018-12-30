@@ -3,11 +3,18 @@
 {%- set is_post = page.permalink is containing("/posts/") -%}
 <header>
   {% if page.extra.has_image -%}
+  {% if page.extra.has_hero %}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
+  {% set page_image_alt = page.extra.image_alt %}
   <figure class="post_hero">
-    <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page.extra.image_alt | safe | escape}}">
-    <figcaption>{{page.extra.image_alt | safe | escape}}</figcaption>
+    <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe | escape}}">
+    <figcaption>{{page_image_alt | safe | escape}}</figcaption>
   </figure>
+  {% else %}
+  <!-- no hero image -->
+  {#% set page_image_url = m::get_default_cover_image_url(base=config.base_url, img=config.extra.image_url) %#}
+  {#% set page_image_alt = page.permalink %#}
+  {% endif %}
   {%- endif %}
   <h2 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title | safe)}}</h2>
   {% if is_post %}
