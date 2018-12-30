@@ -4,20 +4,27 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 # COMMIT_REF ?= ffffffffffffffffffffffffffffffffffffffff
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
-GUTENBERG = gutenberg
-
-GUTENBERG_OUTDIR = --output-dir ../public
-GUTENBERG_BUILD = $(GUTENBERG) build --base-url $(NETLIFY_DEPLOY_URL) $(GUTENBERG_OUTDIR)
-# GUTENBERG_SERVE = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
-# makes developing service worker stuff much easier:
-GUTENBERG_SERVE = $(GUTENBERG) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(GUTENBERG_OUTDIR)
-
+# last gutenberg version 0.4.2 is broken!
 # Was renamed: gutenberg -> zola (https://www.getzola.org/)
-GUTENBERG_RELEASE_VER = 0.3.4
+GUTENBERG = gutenberg
+GUTENBERG_RELEASE_VER = 0.4.2
 GUTENBERG_RELEASE_URL = https://github.com/getzola/zola/archive/v$(GUTENBERG_RELEASE_VER).tar.gz
 
+ZOLA = zola
+ZOLA_RELEASE_VER ?= 0.5.1
+ZOLA_RELEASE_URL_LINUX = https://github.com/getzola/zola/releases/download/v$(ZOLA_RELEASE_VER)/zola-v$(ZOLA_RELEASE_VER)-x86_64-unknown-linux-gnu.tar.gz
+ZOLA_RELEASE_URL_MACOS = https://github.com/getzola/zola/releases/download/v$(ZOLA_RELEASE_VER)/zola-v$(ZOLA_RELEASE_VER)-x86_64-apple-darwin.tar.gz
+
+BUILD_BIN ?= $(ZOLA)
+
+BUILD_OUTDIR = --output-dir ../public
+BUILD_CMD = $(BUILD_BIN) build --base-url $(NETLIFY_DEPLOY_URL) $(BUILD_OUTDIR)
+# SERVE_CMD = $(GUTENBERG) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
+# makes developing service worker stuff much easier:
+SERVE_CMD = $(BUILD_BIN) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
+
 # disabled: netlify-lambda netlify-go
-netlify: build netlify-deployment
+netlify: netlify-install-zola build netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
@@ -32,7 +39,7 @@ netlify-local-deploy-draft: build
 build: build-site build-feeds postprogressing
 
 build-site:
-	cd site && $(GUTENBERG_BUILD)
+	cd site && $(BUILD_CMD)
 
 build-feeds:
 	mv public/atom/index.html public/feed.atom.xml
@@ -102,10 +109,10 @@ $(SQIP_IMAGES): %.svg: %
 		$<
 
 serve:
-	cd site && $(GUTENBERG_SERVE)
+	cd site && $(SERVE_CMD)
 
 serve-with-theme-reload:
-	cd site && watchexec -w themes/mttt -r -s SIGHUP "$(GUTENBERG_SERVE)"
+	cd site && watchexec -w themes/mttt -r -s SIGHUP "$(SERVE_CMD)"
 
 local-deployment-json:
 	$(MAKE) netlify-deployment COMMIT_REF=fake-commit-sha
@@ -162,4 +169,17 @@ install-gutenberg:
 	rm -rf $(GUTENBERG)
 	curl -sSL -o $(GUTENBERG).tar.gz $(GUTENBERG_RELEASE_URL)
 	mkdir -p $(GUTENBERG) && tar zxf $(GUTENBERG).tar.gz -C $(GUTENBERG) --strip-components 1
-	cd $(GUTENBERG) && cargo build --release
+	cd $(GUTENBERG) && \
+		sed -i.bak -e 's/tera 0.11.14/tera 0.11.20/g' Cargo.lock && \
+		cargo build --release
+
+install-zola:
+	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)
+	mkdir -p $(ZOLA) && tar zxf $(ZOLA).tar.gz -C $(ZOLA)
+
+netlify-install-zola:
+	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_LINUX)
+	mkdir -p $(ZOLA) && tar zxf $(ZOLA).tar.gz -C $(ZOLA)
+
+clean-installs:
+	rm -rf ./gutenberg* ./zola*

@@ -3,11 +3,11 @@
 .functions
 .netlify
 .vscode
-gutenberg
-gutenberg.tar.gz
+gutenberg*
 node_modules
 public
 local-stuff
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+zola*
