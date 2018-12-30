@@ -1,8 +1,9 @@
 +++
 title = "Hello, code!"
 date = 2018-03-10T23:42:00Z
+[taxonomies]
 tags = ["hello", "world", "new", "blog"]
-category = "default"
+categories = ["default"]
 +++
 Nothing but initialization of yet another tech blog.
 

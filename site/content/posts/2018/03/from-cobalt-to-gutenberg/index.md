@@ -1,8 +1,9 @@
 +++
 title = "From cobalt.rs to gutenberg"
 date = 2018-03-28
+[taxonomies]
 tags = ["gutenberg", "cobalt", "cobalt.rs", "rust", "static site", "generator", "migration", "conversion", "switch"]
-category = "default"
+categories = ["default"]
 [extra]
 has_image = true
 has_hero = true
