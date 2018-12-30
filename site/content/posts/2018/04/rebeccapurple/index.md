@@ -3,7 +3,7 @@ title = "TIL: rebeccapurple"
 date = 2018-04-11
 [taxonomies]
 tags = ["rebecca","purple","color","css","eric meyer","honor","cancer","til","today I learned"]
-categories = ["default"]
+categories = ["default","til"]
 [extra]
 # origin_url = ""
 # long_title = ""
