@@ -41,8 +41,8 @@ build-feeds:
 	mv public/atom/index.html public/feed.atom.xml
 	mv public/rss/index.html public/feed.rss.xml
 	mv public/json/index.html public/feed.json
-	command -v tidy >/dev/null 2>&1 && \
-		find public -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} 2>/dev/null \;
+	-command -v tidy >/dev/null 2>&1 && \
+		find public -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} \;
 
 postprogressing:
 	yarn && IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
