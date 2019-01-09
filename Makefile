@@ -17,6 +17,13 @@ BUILD_CMD = $(BUILD_BIN) build --base-url $(NETLIFY_DEPLOY_URL) $(BUILD_OUTDIR)
 # makes developing service worker stuff much easier:
 SERVE_CMD = $(BUILD_BIN) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
 
+UNAME := $(shell uname)
+ifeq ($(UNAME), Linux)
+	export PATH := tools:$(PATH)
+else
+	# do nothing
+endif
+
 # disabled: netlify-lambda netlify-go
 netlify: netlify-install-zola build netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
