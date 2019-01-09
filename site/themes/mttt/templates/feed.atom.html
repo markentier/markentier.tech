@@ -15,5 +15,6 @@
     <email>{{config.extra.author_email}}</email>{% endif %} {%- if config.extra.author_uri %}
     <uri>{{config.extra.author_uri}}</uri>{% endif %}
   </author>
-  <updated>{{config.extra.last_feed_update | date(format="%FT%TZ")}}</updated>{{ macros::feed_posts(sec = get_section(path="posts/_index.md"), feed="atom") }}
+  <updated>{{now() | date(format="%FT%TZ")}}</updated>
+  {{ macros::feed_posts(sec = get_section(path="posts/_index.md"), feed="atom") }}
 </feed>

@@ -55,7 +55,7 @@
   {% endfor %}
 {% endmacro list_pages %}
 
-{% macro feed_posts(sec, feed, first=false) -%}
+{%- macro feed_posts(sec, feed, first=false) -%}
 {{ self::feed_items(sec=sec, feed=feed) }}
 {%- for sub in sec.subsections | reverse -%}
 {%- set ss = get_section(path=sub) -%}
@@ -99,8 +99,8 @@
       {%- if page.summary %}
       "summary": {{page.summary | safe | striptags | trim | json_encode(pretty=true)}},
       {%- endif %}
-      {%- if page.tags %}
-      "tags": {{page.tags | json_encode}},
+      {%- if page.taxonomies.tags %}
+      "tags": {{page.taxonomies.tags | json_encode}},
       {%- endif %}
       "content_html": {{ self::absolutify(content=page.content, permalink=page.permalink) | trim | json_encode(pretty=true)}}
     },
@@ -119,3 +119,7 @@
 
 {% macro rel_src() %}="./{% endmacro rel_src %}
 {% macro abs_src(link) %}="{{link}}{% endmacro abs_src %}
+
+{% macro categories() %}
+<!-- <meta name="categories" content="{{page.taxonomies.categories}}" /> -->
+{% endmacro categories %}

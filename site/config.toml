@@ -4,7 +4,6 @@ base_url = "https://markentier.tech"
 
 compile_sass = true
 highlight_code = true
-# https://www.getgutenberg.io/documentation/getting-started/configuration/#syntax-highlighting
 highlight_theme = "monokai"
 theme = "mttt"
 
@@ -22,15 +21,14 @@ ignored_content = []
 extra_syntaxes = []
 
 [extra]
-last_feed_update = "2018-03-28T00:00:00Z"
 answer = 42
 site_base = "markentier.tech"
 publisher = "markentier.tech"
 author = "Christoph Grabo"
 author_nick = "@asaaki"
-# author_email = "asaaki@mannaz.cc"
-# author_uri = ""
+site_nick = "@markentier_tech"
 feed_id = "markentier.tech"
+# default keywords
 keywords = ["code", "people", "humans", "software", "development", "diversity", "inclusion", "rust", "programming", "unicorn", "tech"]
 has_image = false
 has_hero = false
