@@ -111,8 +111,7 @@ $(SQIP_IMAGES_B64): %.b64: %
 $(SQIP_IMAGES): %.svg: %
 	yarn run sqip \
 		$(SQIP_SETTINGS) \
-		-o $@ \
-		$<
+		-o $@ -i $<
 
 serve:
 	cd site && $(SERVE_CMD)
