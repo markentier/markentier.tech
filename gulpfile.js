@@ -1,3 +1,4 @@
+/* eslint-disable space-before-function-paren */
 'use strict';
 
 const SRC_HTML = 'public/**/*.html';
@@ -9,7 +10,6 @@ const inline = require('gulp-inline');
 const postHTML = require('gulp-posthtml');
 const htmltidy = require('gulp-htmltidy');
 const replace = require('gulp-replace');
-const removeEmptyLines = require('gulp-remove-empty-lines');
 const whitespace = require('gulp-whitespace');
 const minify = require('gulp-minify');
 
@@ -57,7 +57,8 @@ function html() {
     .pipe(replace(' type="text/css"', ''))
     .pipe(replace(' name="continue-reading"', ''))
     .pipe(replace('crossorigin=""', 'crossorigin'))
-    .pipe(removeEmptyLines({ removeComments: true }))
+    .pipe(replace(/<!--[^>]*-->/gm, ''))
+    .pipe(replace(/\s\s+/g, ' '))
     .pipe(whitespace({ removeTrailing: true }))
     .pipe(gulp.dest(DEST));
 };

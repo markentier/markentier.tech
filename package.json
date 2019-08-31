@@ -30,7 +30,6 @@
     "gulp-inline": "*",
     "gulp-minify": "*",
     "gulp-posthtml": "*",
-    "gulp-remove-empty-lines": "*",
     "gulp-replace": "*",
     "gulp-whitespace": "*",
     "posthtml-alt-always": "*",
