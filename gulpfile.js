@@ -49,9 +49,7 @@ const minifyConfig = {
   }
 }
 
-gulp.task('default', ['html', 'javascript']);
-
-gulp.task('html', () => {
+function html() {
   return gulp.src(SRC_HTML)
     .pipe(inline(inlineConfig))
     .pipe(postHTML(plugins))
@@ -62,10 +60,14 @@ gulp.task('html', () => {
     .pipe(removeEmptyLines({ removeComments: true }))
     .pipe(whitespace({ removeTrailing: true }))
     .pipe(gulp.dest(DEST));
-});
+};
 
-gulp.task('javascript', () => {
+function javascript() {
   return gulp.src(SRC_JS)
     .pipe(minify(minifyConfig))
     .pipe(gulp.dest(DEST));
-});
+};
+
+var build = gulp.parallel(html, javascript)
+
+exports.default = build;

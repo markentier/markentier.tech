@@ -24,7 +24,7 @@
     "eslint-plugin-node": "*",
     "eslint-plugin-promise": "*",
     "eslint-plugin-standard": "*",
-    "gulp": "^3.9",
+    "gulp": "^4.0",
     "gulp-cli": "*",
     "gulp-htmltidy": "*",
     "gulp-inline": "*",
