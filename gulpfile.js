@@ -6,17 +6,11 @@ const SRC_JS = 'public/**/*.js';
 const DEST = 'public';
 
 const gulp = require('gulp');
-const inline = require('gulp-inline');
 const postHTML = require('gulp-posthtml');
 const htmltidy = require('gulp-htmltidy');
 const replace = require('gulp-replace');
 const whitespace = require('gulp-whitespace');
 const minify = require('gulp-minify');
-
-const inlineConfig = {
-  base: DEST,
-  disabledTypes: ['svg', 'js', 'img']
-};
 
 const htmltidyConfig = {
   doctype: 'html5',
@@ -51,7 +45,6 @@ const minifyConfig = {
 
 function html() {
   return gulp.src(SRC_HTML)
-    .pipe(inline(inlineConfig))
     .pipe(postHTML(plugins))
     .pipe(htmltidy(htmltidyConfig))
     .pipe(replace(' type="text/css"', ''))

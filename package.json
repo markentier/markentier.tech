@@ -27,7 +27,6 @@
     "gulp": "^4.0",
     "gulp-cli": "*",
     "gulp-htmltidy": "*",
-    "gulp-inline": "*",
     "gulp-minify": "*",
     "gulp-posthtml": "*",
     "gulp-replace": "*",
