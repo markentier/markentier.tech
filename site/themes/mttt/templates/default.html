@@ -150,8 +150,6 @@
     <script async src="{{script_path | safe }}"></script>
     {% endfor %}
   {% endif %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115476438-1"></script>
-  <script async src="/js/g.js"></script>
   {% block before_body_end %}{% endblock before_body_end %}
 {# DEBUG (port=3000) #}
 {% if config.base_url is containing(":3000") %}
