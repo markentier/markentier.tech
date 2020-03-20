@@ -40,7 +40,7 @@ netlify-local-deploy: build
 netlify-local-deploy-draft: build
 	netlify deploy -s $(SITE_ID) -p public --draft
 
-build: build-site build-feeds build-home postprogressing
+build: build-site build-feeds build-index-page postprogressing
 
 rebuild-all: regenerate-thumbs images build
 
@@ -59,9 +59,9 @@ build-feeds:
 
 # Instead of using netlify redirects and avoiding force vs shadowing,
 # we just move the desired index file into the right location
-build-home:
+build-index-page:
 	mv public/index.html public/index.fallback.html
-	mv public/categories/default/index.html public/index.html
+	cp public/categories/default/index.html public/index.html
 
 postprogressing:
 	yarn && IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
