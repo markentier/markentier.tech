@@ -7,7 +7,7 @@
       <article{%- if is_post == true %} class="hentry" itemscope itemtype="http://schema.org/Article"{% endif %}>
         {{pm::pheader(page=page)}}
         <div class="article-body">
-          {{m::absolutify(content=page.content, permalink=page.permalink) | trim}}
+          {{m::absolutify(content=page.content, permalink=page.permalink) | trim | safe}}
         </div>
         {% if is_post %}{{pm::pfooter(page=page, config=config)}}{% endif %}
       </article>
