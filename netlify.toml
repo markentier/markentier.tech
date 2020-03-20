@@ -110,10 +110,10 @@ access-control-allow-origin = "*"
 from = "/"
 to = "/categories/default/index.html"
 status = 200
-force = false
+force = true
 
 [[redirects]]
 from = "/*"
 to = "/404/index.html"
 status = 404
-force = false
+force = true
