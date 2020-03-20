@@ -6,10 +6,11 @@ command = "make netlify"
 # functions = ".functions"
 
 [build.environment]
+ZOLA_VERSION = "0.10.1"
+# in case the netlify provided zola cannot be used:
 # zola binary needs to be called from the sites/ directory
 # BUILD_BIN = "../zola/zola"
 # ZOLA_RELEASE_VER = "0.10.1"
-ZOLA_VERSION = "0.10.1"
 
 [context.deploy-preview]
 command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
