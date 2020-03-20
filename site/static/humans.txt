@@ -1,8 +1,7 @@
 /* TEAM */
-Your title: Your name.
-Site: email, link to a contact form, etc.
-Twitter: your Twitter username.
-Location: City, Country.
+Site owner: Christoph Grabo (asaaki)
+Twitter: https://twitter.com/asaaki
+GitHub: https://github.com/asaaki
 
 /* THANKS */
 Name: @PragTob <http://www.pragtob.info/>
@@ -15,5 +14,5 @@ and many more …
 Last update: continuously updated; first 2018-03-10
 Standards: HTML5, CSS3
 Components: vanilla
-Software: vscode (editor), cobalt.rs (static site generator)
+Software: vscode (editor), zola (SSG; https://www.getzola.org/)
 Services: GitHub (repository), netlify (website hosting)
