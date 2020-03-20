@@ -2,10 +2,11 @@ name = "mttt"
 description = "markentier.tech theme"
 homepage = "https://github.com/markentier/markentier.tech"
 license = "None"
-min_version = "0.3"
+min_version = "0.10"
+demo = "https://markentier.tech/"
 
 [author]
 name = "Christoph Grabo"
-homepage = "https://vincent.is"
+homepage = "https://markentier.tech/"
 
 [extra]

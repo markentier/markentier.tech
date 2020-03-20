@@ -1,7 +1,13 @@
-base_url = "https://example.com"
+base_url = "https://markentier.tech/"
 compile_sass = true
 highlight_code = true
 highlight_theme = "monokai"
+build_search_index = true
+
+# Create custom taxonomies if needed
+# taxonomies = [
+#     {name = "tags", rss = true},
+# ]
 
 [extra]
 mttt = "markentier.tech theme"
