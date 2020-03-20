@@ -18,10 +18,13 @@ BUILD_CMD = $(BUILD_BIN) build --base-url $(NETLIFY_DEPLOY_URL) $(BUILD_OUTDIR)
 SERVE_CMD = $(BUILD_BIN) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
 
 UNAME := $(shell uname)
+# use bundled tidy
 ifeq ($(UNAME), Linux)
 	export PATH := tools:$(PATH)
-else
-	# do nothing
+endif
+# use repo-locally installed zola
+ifeq ($(UNAME), Darwin)
+	export PATH := $(PWD)/zola:$(PATH)
 endif
 
 # disabled: netlify-lambda netlify-go
@@ -37,7 +40,9 @@ netlify-local-deploy: build
 netlify-local-deploy-draft: build
 	netlify deploy -s $(SITE_ID) -p public --draft
 
-build: build-site build-feeds postprogressing
+build: build-site build-feeds build-home postprogressing
+
+rebuild-all: regenerate-thumbs images build
 
 build-site:
 	cd site && $(BUILD_CMD)
@@ -51,6 +56,12 @@ build-feeds:
 	command -v tidy >/dev/null 2>&1 && \
 		(find public -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} \;) || \
 		echo "No tidy installed."
+
+# Instead of using netlify redirects and avoiding force vs shadowing,
+# we just move the desired index file into the right location
+build-home:
+	mv public/index.html public/index.fallback.html
+	mv public/categories/default/index.html public/index.html
 
 postprogressing:
 	yarn && IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
@@ -168,6 +179,9 @@ check-cert:
 		-servername markentier.tech \
 		2>/dev/null | \
 		openssl x509 -text
+
+install-mac: install-zola
+	brew install tidy-html5 imagemagick pngquant optipng
 
 install-zola:
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)

@@ -103,17 +103,9 @@ content-type = "font/woff2"
 access-control-allow-origin = "*"
 
 # REDIRECTS
-## https://www.netlify.com/docs/redirects/
-
-# Use the default cat as entry point (until gutenberg has pages collection globally)
-[[redirects]]
-from = "/"
-to = "/categories/default/index.html"
-status = 200
-force = true
+## https://docs.netlify.com/routing/redirects/
 
 [[redirects]]
 from = "/*"
 to = "/404/index.html"
 status = 404
-force = true
