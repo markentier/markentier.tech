@@ -30,7 +30,7 @@
   {% if page.draft == false %}
   {# page.reading_time in min, page.category, page.tags #}
   <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
-    <a href="{{page.permalink | safe}}">
+    <a href="{{page.permalink | safe}}" itemprop="url">
       {% if page.extra.has_hero %}
       {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
       {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
@@ -41,14 +41,12 @@
         <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | escape | safe}}" data-cover-url="{{page_cover_url | safe}}">
       </picture>
       {% endif %}
-      <h2 class="post_title">{{page.title}}</h2>
+      <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
       {# TODO extract as macro: macros::published_at(date=date) #}
       {% set pdate_iso = self::date_iso(date=page.date) %}
       {% set pdate_date = self::date_date(date=page.date) %}
       <small class="published_at_line">
         <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-         {#
-        <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>#}
       </small>
       {% if page.summary %}
          <p>{{page.summary | safe | striptags}}</p>
@@ -57,6 +55,26 @@
       {% endif %}
     </a>
     <link rel="prerender" href="{{page.permalink | safe}}" data-fetch>
+    <footer class="list-meta">
+      <div class="data">
+        <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
+        {# currently we just use the publishing date here: #}
+        <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
+          datetime="{{pdate_iso}}">{{pdate_date}}</time>
+        <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="{{config.extra.author}}">
+          <span class="fn">{{config.extra.author}}</span>
+        </div>
+        <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="{{config.extra.publisher}}">
+          <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <img itemprop="url" src="{{config.base_url | safe }}/m.amp.png" alt="logo">
+            <meta itemprop="height" content="60">
+            <meta itemprop="width" content="600">
+          </span>
+        </div>
+      </div>
+    </footer>
   </article>
   {% endif %}
   {% endfor %}
