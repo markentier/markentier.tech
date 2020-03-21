@@ -104,9 +104,7 @@
     return Array.from(arrayLike).slice(0, MAX_ITEMS);
   }
 
-  const slicedSelection = (selector) => {
-    sliced(document.querySelectorAll(selector))
-  };
+  const slicedSelection = (selector) => sliced(document.querySelectorAll(selector));
 
   const asyncPostPrefetchContent = () => {
     slicedSelection('a[data-fetch], link[data-fetch]').forEach((e) => fetch(e.href));
