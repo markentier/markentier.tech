@@ -30,14 +30,16 @@ command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
 ## 7d = 604800
 ## 30d = 2592000
 ## 180d = 15552000
+## 365d = 31536000
 
 [[headers]]
 for = "/*"
 [headers.values]
-content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self' *.cloudfront.net; style-src 'self' 'unsafe-inline' *.cloudfront.net; img-src 'self' data: *.cloudfront.net *.gravatar.com; font-src 'self' *.cloudfront.net; connect-src 'self' *.cloudfront.net; media-src 'self' *.cloudfront.net; worker-src 'self'; manifest-src 'self'; prefetch-src 'self' *.cloudfront.net; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport"
-expect-ct = "max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly"
-referrer-policy = "strict-origin-when-cross-origin"
+content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self' *.cloudfront.net; style-src 'self' 'unsafe-inline' *.cloudfront.net; img-src 'self' data: *.cloudfront.net *.gravatar.com; font-src 'self' *.cloudfront.net; connect-src 'self' *.cloudfront.net; media-src 'self' *.cloudfront.net; worker-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport"
 report-to = """{"group":"cspreport","max-age":2592000,"endpoints":[{"url":"https://markentiertech.report-uri.com/r/d/csp/enforce"}"""
+feature-policy = "layout-animations 'none'; unoptimized-images 'none'; oversized-images 'none'; sync-script 'none'; sync-xhr 'none'; unsized-media 'none'; autoplay 'none'; microphone 'none'; camera 'none'; geolocation 'none'; payment 'none'; usb 'none';"
+referrer-policy = "strict-origin-when-cross-origin"
+expect-ct = "max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly"
 x-content-type-options = "nosniff"
 x-frame-options = "SAMEORIGIN"
 x-github-repo = "https://github.com/markentier/markentier.tech"
@@ -69,6 +71,21 @@ cache-control = "no-cache, no-store, must-revalidate"
 for = "/cache.json"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+for = "/js/mtt.js"
+[headers.values]
+cache-control = "max-age=15552000"
+
+[[headers]]
+for = "/mtt.css"
+[headers.values]
+cache-control = "max-age=15552000"
+
+[[headers]]
+for = "/fonts.css"
+[headers.values]
+cache-control = "max-age=15552000"
 
 [[headers]]
 for = "/favicon.ico"
