@@ -84,8 +84,8 @@ pre {
   border-radius: .25em;
   font-size: .75rem;
   line-height: 1.25rem;
-  white-space: pre;
-  overflow-x: scroll;
+  white-space: pre-wrap;
+  overflow-x: auto;
 }
 
 blockquote {
