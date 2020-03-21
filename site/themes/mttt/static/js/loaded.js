@@ -58,7 +58,7 @@
 
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
-    setTimeout(asyncPostPrefetch, 0);
     setTimeout(loadTimeInfo, 0);
+    setTimeout(asyncPostPrefetch, 5000);
   };
 })();

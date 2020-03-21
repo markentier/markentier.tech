@@ -71,13 +71,29 @@ postprogressing:
 check-html-size:
 	@find public -type f -name '*.html' -exec du -h {} \; | sort -r -u -k 1
 
-images: create-thumbs create-sqip
+images: create-webp create-thumbs create-sqip
 
 # imagemagick(convert), pngquant, optipng
 COVERS = $(shell find site -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
+
 THUMB_SIZE = 320x160
 PNG_COLORS = 32
+
+PNGS = $(shell find site -iname '*.png')
+WEBPS = $(PNGS:.png=.webp)
+
+create-webp: $(WEBPS)
+
+$(WEBPS): %.webp: %.png
+	@echo "from\n  $<\nto\n  $@"
+	@cwebp -lossless -exact $< -o $@
+
+list-webps:
+	@find site -iname '*.webp' -exec wc -c {} \;
+
+delete-webps:
+	rm -rf $(WEBPS)
 
 regenerate-thumbs: delete-thumbs create-thumbs
 
@@ -183,7 +199,7 @@ check-cert:
 		openssl x509 -text
 
 install-mac: install-zola
-	brew install tidy-html5 imagemagick pngquant optipng
+	brew install tidy-html5 imagemagick pngquant optipng webp
 
 install-zola:
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)
