@@ -3,6 +3,7 @@
 
 const SRC_HTML = 'public/**/*.html';
 const SRC_JS = 'public/**/*.js';
+const SRC_JSON = 'public/**/*.json';
 const DEST = 'public';
 
 const gulp = require('gulp');
@@ -10,6 +11,7 @@ const postHTML = require('gulp-posthtml');
 const htmlmin = require('gulp-htmlmin');
 const htmltidy = require('gulp-htmltidy');
 const minify = require('gulp-minify');
+const jsonminify = require('gulp-jsonminify');
 
 const plugins = [
   require('./vendor/posthtml-img-autosize')({
@@ -66,6 +68,12 @@ function javascript() {
     .pipe(gulp.dest(DEST));
 };
 
-var build = gulp.parallel(html, javascript)
+function json() {
+  return gulp.src(SRC_JSON)
+    .pipe(jsonminify())
+    .pipe(gulp.dest(DEST));
+};
+
+var build = gulp.parallel(html, javascript, json)
 
 exports.default = build;
