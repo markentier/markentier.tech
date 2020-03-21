@@ -99,11 +99,7 @@
   // ASYNC POST FETCHING
 
   const MAX_ITEMS = 5;
-
-  const sliced = (arrayLike) => {
-    return Array.from(arrayLike).slice(0, MAX_ITEMS);
-  }
-
+  const sliced = (arrayLike) => Array.from(arrayLike).slice(0, MAX_ITEMS);
   const slicedSelection = (selector) => sliced(document.querySelectorAll(selector));
 
   const asyncPostPrefetchContent = () => {
