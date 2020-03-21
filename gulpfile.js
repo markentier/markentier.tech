@@ -7,26 +7,9 @@ const DEST = 'public';
 
 const gulp = require('gulp');
 const postHTML = require('gulp-posthtml');
+const htmlmin = require('gulp-htmlmin');
 const htmltidy = require('gulp-htmltidy');
-const replace = require('gulp-replace');
-const whitespace = require('gulp-whitespace');
 const minify = require('gulp-minify');
-
-const htmltidyConfig = {
-  doctype: 'html5',
-  hideComments: true,
-  wrap: 0,
-  indent: 'auto',
-  indentSpaces: 2,
-  indentWithTabs: true,
-  tabSize: 0,
-  keepTabs: true,
-  clean: true,
-  joinStyles: true,
-  uppercaseAttributes: 'preserve',
-  priorityAttributes: 'id,class,name,href,src',
-  tidyMark: false
-};
 
 const plugins = [
   require('./vendor/posthtml-img-autosize')({
@@ -35,6 +18,32 @@ const plugins = [
   }),
   require('posthtml-alt-always')({})
 ];
+
+const htmltidyConfig = {
+  doctype: 'html5',
+  hideComments: true,
+  wrap: 0,
+  indent: true,
+  indentSpaces: 2,
+  indentWithTabs: true,
+  tabSize: 2,
+  keepTabs: true,
+  clean: true,
+  joinStyles: true,
+  uppercaseAttributes: 'preserve',
+  priorityAttributes: 'id,class,name,href,src',
+  tidyMark: false
+};
+
+const htmlminOptions = { 
+  collapseBooleanAttributes: true, 
+  collapseWhitespace: true, 
+  conservativeCollapse: true, 
+  minifyCSS: true, 
+  minifyJS: true, 
+  removeComments: true, 
+  removeStyleLinkTypeAttributes: true 
+};
 
 const minifyConfig = {
   ext: {
@@ -47,12 +56,7 @@ function html() {
   return gulp.src(SRC_HTML)
     .pipe(postHTML(plugins))
     .pipe(htmltidy(htmltidyConfig))
-    .pipe(replace(' type="text/css"', ''))
-    .pipe(replace(' name="continue-reading"', ''))
-    .pipe(replace('crossorigin=""', 'crossorigin'))
-    .pipe(replace(/<!--[^>]*-->/gm, ''))
-    .pipe(replace(/\s\s+/g, ' '))
-    .pipe(whitespace({ removeTrailing: true }))
+    .pipe(htmlmin(htmlminOptions))
     .pipe(gulp.dest(DEST));
 };
 

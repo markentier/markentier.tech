@@ -40,11 +40,13 @@ netlify-local-deploy: build
 netlify-local-deploy-draft: build
 	netlify deploy -s $(SITE_ID) -p public --draft
 
-build: build-site build-feeds build-index-page postprogressing
+build: build-site postprogressing
 
 rebuild-all: regenerate-thumbs images build
 
-build-site:
+build-site: build-html build-feeds build-index-page
+
+build-html:
 	cd site && $(BUILD_CMD)
 
 TIDY_XML_SETTINGS = -q -m -w 0 -i -utf8 -xml --indent-with-tabs yes --indent-spaces 2 --tab-size 2
