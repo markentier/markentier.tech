@@ -26,9 +26,9 @@
       <guid>{{page.permalink | safe }}</guid>
       <updated>{{page.date | date(format="%FT%T%z")}}</updated>
       {%- if page.summary %}
-      <summary>{{page.summary | safe | striptags | trim}}</summary>
+      <summary>{{page.summary | striptags | trim | safe}}</summary>
       {%- endif %}
-      <content>{{page.content | trim}}</content>
+      <content type="html"><![CDATA[{{page.content | trim | safe}}]]></content>
     </entry>
     {%- endif %}
     {%- endfor %}

@@ -6,9 +6,11 @@ command = "make netlify"
 # functions = ".functions"
 
 [build.environment]
+ZOLA_VERSION = "0.10.1"
+# in case the netlify provided zola cannot be used:
 # zola binary needs to be called from the sites/ directory
-BUILD_BIN = "../zola/zola"
-ZOLA_RELEASE_VER = "0.5.1"
+# BUILD_BIN = "../zola/zola"
+# ZOLA_RELEASE_VER = "0.10.1"
 
 [context.deploy-preview]
 command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
@@ -103,17 +105,9 @@ content-type = "font/woff2"
 access-control-allow-origin = "*"
 
 # REDIRECTS
-## https://www.netlify.com/docs/redirects/
-
-# Use the default cat as entry point (until gutenberg has pages collection globally)
-[[redirects]]
-from = "/"
-to = "/categories/default/index.html"
-status = 200
-force = false
+## https://docs.netlify.com/routing/redirects/
 
 [[redirects]]
 from = "/*"
 to = "/404/index.html"
 status = 404
-force = false

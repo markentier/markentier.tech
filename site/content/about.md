@@ -9,9 +9,9 @@ date = 2018-03-11
 * github: <https://github.com/asaaki>
 * twitter: <https://twitter.com/asaaki>
 * dev.to: <https://dev.to/asaaki>
-* medium: <https://medium.com/@asaaki> (<https://medium.com/markentier-tech>)
 * refind: [https://refind.com/asaaki](https://refind.com/asaaki?invite=5bf5fd0575)
 * paypal: <https://www.paypal.me/asaaki>
+* patreon: <https://www.patreon.com/asaaki>
 
 <!-- FOAF http://xmlns.com/foaf/spec/
 <foaf:Person rdf:about="#asaaki" xmlns:foaf="http://xmlns.com/foaf/0.1/">

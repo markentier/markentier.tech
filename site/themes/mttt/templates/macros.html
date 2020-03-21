@@ -55,6 +55,10 @@
   {% endfor %}
 {% endmacro list_pages %}
 
+{%- macro naive_stringified_array(arr) -%}
+[{%- for item in arr -%}"{{item}}"{%- if not loop.last -%},{%- endif -%}{%- endfor -%}]
+{%- endmacro stringify_array -%}
+
 {%- macro feed_posts(sec, feed, first=false) -%}
 {{ self::feed_items(sec=sec, feed=feed) }}
 {%- for sub in sec.subsections | reverse -%}
@@ -75,7 +79,7 @@
     <id>{{page.permalink | safe}}</id>
     <updated>{{page.date | date(format="%FT%TZ")}}</updated>
     {%- if page.summary %}
-    <summary>{{page.summary | safe | striptags | trim}}</summary>
+    <summary>{{page.summary | striptags | trim | safe}}</summary>
     {%- endif %}
     <content type="html"><![CDATA[{{ self::absolutify(content=page.content, permalink=page.permalink) | trim }}]]></content>
   </entry>
@@ -97,10 +101,10 @@
       "banner_image": "{{page_image_url | safe}}",
       {%- endif %}
       {%- if page.summary %}
-      "summary": {{page.summary | safe | striptags | trim | json_encode(pretty=true)}},
+      "summary": {{page.summary | striptags | trim | json_encode(pretty=true) | safe}},
       {%- endif %}
       {%- if page.taxonomies.tags %}
-      "tags": {{page.taxonomies.tags | json_encode}},
+      "tags": {{ self::naive_stringified_array(arr=page.taxonomies.tags) }},
       {%- endif %}
       "content_html": {{ self::absolutify(content=page.content, permalink=page.permalink) | trim | json_encode(pretty=true)}}
     },
@@ -114,7 +118,7 @@
 {% macro absolutify(content, permalink) %}
 {% set rel_src = self::rel_src() %}
 {% set abs_src = self::abs_src(link=permalink) %}
-{{ content | safe | replace(from=rel_src, to=abs_src) }}
+{{ content | replace(from=rel_src, to=abs_src) | safe }}
 {% endmacro absolutify %}
 
 {% macro rel_src() %}="./{% endmacro rel_src %}

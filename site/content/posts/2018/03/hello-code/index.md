@@ -4,7 +4,14 @@ date = 2018-03-10T23:42:00Z
 [taxonomies]
 tags = ["hello", "world", "new", "blog"]
 categories = ["default"]
+[extra]
+#origin_url = ""
+#long_title = ""
+has_image = false
+has_hero = false
+#image_alt = "alt text"
 +++
+
 Nothing but initialization of yet another tech blog.
 
 <!-- more -->

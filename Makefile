@@ -5,7 +5,7 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
 ZOLA = zola
-ZOLA_RELEASE_VER ?= 0.5.1
+ZOLA_RELEASE_VER ?= 0.10.1
 ZOLA_RELEASE_URL_LINUX = https://github.com/getzola/zola/releases/download/v$(ZOLA_RELEASE_VER)/zola-v$(ZOLA_RELEASE_VER)-x86_64-unknown-linux-gnu.tar.gz
 ZOLA_RELEASE_URL_MACOS = https://github.com/getzola/zola/releases/download/v$(ZOLA_RELEASE_VER)/zola-v$(ZOLA_RELEASE_VER)-x86_64-apple-darwin.tar.gz
 
@@ -18,10 +18,13 @@ BUILD_CMD = $(BUILD_BIN) build --base-url $(NETLIFY_DEPLOY_URL) $(BUILD_OUTDIR)
 SERVE_CMD = $(BUILD_BIN) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
 
 UNAME := $(shell uname)
+# use bundled tidy
 ifeq ($(UNAME), Linux)
 	export PATH := tools:$(PATH)
-else
-	# do nothing
+endif
+# use repo-locally installed zola
+ifeq ($(UNAME), Darwin)
+	export PATH := $(PWD)/zola:$(PATH)
 endif
 
 # disabled: netlify-lambda netlify-go
@@ -37,9 +40,13 @@ netlify-local-deploy: build
 netlify-local-deploy-draft: build
 	netlify deploy -s $(SITE_ID) -p public --draft
 
-build: build-site build-feeds postprogressing
+build: build-site postprogressing
 
-build-site:
+rebuild-all: regenerate-thumbs images build
+
+build-site: build-html build-feeds build-index-page
+
+build-html:
 	cd site && $(BUILD_CMD)
 
 TIDY_XML_SETTINGS = -q -m -w 0 -i -utf8 -xml --indent-with-tabs yes --indent-spaces 2 --tab-size 2
@@ -51,6 +58,12 @@ build-feeds:
 	command -v tidy >/dev/null 2>&1 && \
 		(find public -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} \;) || \
 		echo "No tidy installed."
+
+# Instead of using netlify redirects and avoiding force vs shadowing,
+# we just move the desired index file into the right location
+build-index-page:
+	mv public/index.html public/index.fallback.html
+	cp public/categories/default/index.html public/index.html
 
 postprogressing:
 	yarn && IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
@@ -168,6 +181,9 @@ check-cert:
 		-servername markentier.tech \
 		2>/dev/null | \
 		openssl x509 -text
+
+install-mac: install-zola
+	brew install tidy-html5 imagemagick pngquant optipng
 
 install-zola:
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)

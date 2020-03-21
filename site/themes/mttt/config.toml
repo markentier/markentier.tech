@@ -1,4 +1,4 @@
-base_url = "https://example.com"
+base_url = "https://markentier.tech/"
 compile_sass = true
 highlight_code = true
 highlight_theme = "monokai"
