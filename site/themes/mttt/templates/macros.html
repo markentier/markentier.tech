@@ -54,10 +54,9 @@
         <p>{{page.description | safe | striptags}}</p>
       {% endif %}
     </a>
-    <link rel="prerender" href="{{page.permalink | safe}}" data-fetch>
     <footer class="list-meta">
       <div class="data">
-        <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
+        <link itemprop="mainEntityOfPage" rel="prerender" href="{{page.permalink | safe}}" data-fetch>
         {# currently we just use the publishing date here: #}
         <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
           datetime="{{pdate_iso}}">{{pdate_date}}</time>
