@@ -98,8 +98,10 @@
 
   // ASYNC POST FETCHING
 
-  const asyncPostPrefetch = () => {
+  const asyncPostPrefetchContent = () => {
     document.querySelectorAll('a[data-fetch], link[data-fetch]').forEach((e) => fetch(e.href));
+  };
+  const asyncPostPrefetchImages = () => {
     document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
     document.querySelectorAll('[data-cover-url]').forEach((e) => fetch(e.dataset.coverUrl));
   };
@@ -108,7 +110,8 @@
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
     setTimeout(loadTimeInfo, 0);
-    setTimeout(asyncPostPrefetch, 5000);
+    setTimeout(asyncPostPrefetchContent, 5000);
+    setTimeout(asyncPostPrefetchImages, 9000);
   };
 
   window.markentier = { tech: '🦄' }; // ;-)
