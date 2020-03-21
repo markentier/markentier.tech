@@ -28,8 +28,4 @@ class MarkentierTech < Blog
 end
 
 #=> 567890-abcdefghi-234567890-abcdefghi-234567890-abcdefghi-234567890-abcdef.80
-
-What.the.heck('is going on here?'); false
 ```
-
-🥳
