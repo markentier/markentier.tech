@@ -86,6 +86,10 @@ pre {
   line-height: 1.25rem;
   white-space: pre-wrap;
   overflow-x: auto;
+
+  & + pre {
+    margin-top: 0.125rem;
+  }
 }
 
 blockquote {
@@ -93,8 +97,9 @@ blockquote {
     padding-left: .7em;
     border-left: .3em solid var(--accent-darker-color);
     opacity: .8;
+
+    blockquote { margin: 0; }
 }
-blockquote blockquote { margin: 0; }
 
 nav {
   margin-bottom: 2rem;
