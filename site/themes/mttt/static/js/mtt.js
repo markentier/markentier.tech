@@ -98,12 +98,23 @@
 
   // ASYNC POST FETCHING
 
-  const asyncPostPrefetchContent = () => {
-    document.querySelectorAll('a[data-fetch], link[data-fetch]').forEach((e) => fetch(e.href));
+  const MAX_ITEMS = 5;
+
+  const sliced = (arrayLike) => {
+    return Array.from(arrayLike).slice(0, MAX_ITEMS);
+  }
+
+  const slicedSelection = (selector) => {
+    sliced(document.querySelectorAll(selector))
   };
+
+  const asyncPostPrefetchContent = () => {
+    slicedSelection('a[data-fetch], link[data-fetch]').forEach((e) => fetch(e.href));
+  };
+
   const asyncPostPrefetchImages = () => {
-    document.querySelectorAll('img[data-fetch]').forEach((img) => fetch(img.src));
-    document.querySelectorAll('[data-cover-url]').forEach((e) => fetch(e.dataset.coverUrl));
+    slicedSelection('img[data-fetch]').forEach((img) => fetch(img.src));
+    slicedSelection('[data-cover-url]').forEach((e) => fetch(e.dataset.coverUrl));
   };
 
   // TRIGGER ON LOAD
