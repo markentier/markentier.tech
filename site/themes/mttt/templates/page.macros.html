@@ -5,9 +5,13 @@
   {% if page.extra.has_image -%}
   {% if page.extra.has_hero %}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
+  {% set page_image_webp_url = m::get_cover_image_webp_url(url=page.permalink) %}
   {% set page_image_alt = page.extra.image_alt %}
   <figure class="post_hero">
-    <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe | escape}}">
+    <picture>
+      <source srcset="{{page_image_webp_url | safe}}" type="image/webp">
+      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe | escape}}">
+    </picture>
     <figcaption>{{page_image_alt | safe | escape}}</figcaption>
   </figure>
   {% else %}
