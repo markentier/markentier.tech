@@ -20,9 +20,9 @@
   "devDependencies": {
     "gulp": "^4.0",
     "gulp-cli": "*",
-    "gulp-jsonminify": "*",
     "gulp-htmlmin": "*",
     "gulp-htmltidy": "*",
+    "gulp-jsonminify": "*",
     "gulp-minify": "*",
     "gulp-posthtml": "*",
     "posthtml-alt-always": "*",
