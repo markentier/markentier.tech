@@ -201,7 +201,7 @@ check-cert:
 		openssl x509 -text
 
 install-mac: install-zola
-	brew install tidy-html5 imagemagick pngquant optipng webp
+	brew install -f tidy-html5 imagemagick pngquant optipng webp
 
 install-zola:
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)

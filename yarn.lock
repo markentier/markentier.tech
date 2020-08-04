@@ -6418,7 +6418,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sqip-cli@^1.0.0-alpha.35:
+sqip-cli@^1.0.0-alpha.36:
   version "1.0.0-alpha.36"
   resolved "https://registry.yarnpkg.com/sqip-cli/-/sqip-cli-1.0.0-alpha.36.tgz#10fd1356547d39c6f06ff988adfdc8055788bf4e"
   integrity sha512-qkz1yu4k9ocR/aDxOISTp9WAV8kb7EmegmQEWL4pOMciSqF3pnA2F6/viv7B5UIajN6vCF1bU4aZ34gFUozHpA==
@@ -6432,14 +6432,14 @@ sqip-cli@^1.0.0-alpha.35:
     sqip-plugin-primitive "^1.0.0-alpha.34"
     sqip-plugin-svgo "^1.0.0-alpha.33"
 
-sqip-plugin-blur@^1.0.0-alpha.32, sqip-plugin-blur@^1.0.0-alpha.33:
+sqip-plugin-blur@^1.0.0-alpha.33:
   version "1.0.0-alpha.33"
   resolved "https://registry.yarnpkg.com/sqip-plugin-blur/-/sqip-plugin-blur-1.0.0-alpha.33.tgz#1e0d6c3876e7a445a3fb3ec617c0031e0470546a"
   integrity sha512-zTXhgGa0wtc4SnFhhQL9SXOAyWj+S9ghohaiqWlXSSGtSmAl+HhYGevq3b5C6BovGmiohtah0GF0XxhBsbObQw==
   dependencies:
     sqip "^1.0.0-alpha.32"
 
-sqip-plugin-data-uri@^1.0.0-alpha.32, sqip-plugin-data-uri@^1.0.0-alpha.33:
+sqip-plugin-data-uri@^1.0.0-alpha.33:
   version "1.0.0-alpha.33"
   resolved "https://registry.yarnpkg.com/sqip-plugin-data-uri/-/sqip-plugin-data-uri-1.0.0-alpha.33.tgz#31aa86525b0875bc71944a5e273463efbc07609d"
   integrity sha512-GCOhzocX56MSLIjFhkGDg/EjCoXANR5s2phy8bNU0rJektIFfgSCIeKK0v6Ri1eQaO5VCmdwQavsRCIZNi0pIw==
@@ -6447,7 +6447,7 @@ sqip-plugin-data-uri@^1.0.0-alpha.32, sqip-plugin-data-uri@^1.0.0-alpha.33:
     mini-svg-data-uri "^1.2.3"
     sqip "^1.0.0-alpha.32"
 
-sqip-plugin-primitive@^1.0.0-alpha.33, sqip-plugin-primitive@^1.0.0-alpha.34:
+sqip-plugin-primitive@^1.0.0-alpha.34:
   version "1.0.0-alpha.34"
   resolved "https://registry.yarnpkg.com/sqip-plugin-primitive/-/sqip-plugin-primitive-1.0.0-alpha.34.tgz#ef1247ee5c6dff273d450ab3158b65e60cc6f8cb"
   integrity sha512-js2OLw3PV0l4eK3n//RqaqOf31De/v8RTn1n+CDbBGe63Wgksk1WARXsU/IQ1Hyxb8hhKR5bF6BfBz/1JtJxIw==
@@ -6457,14 +6457,14 @@ sqip-plugin-primitive@^1.0.0-alpha.33, sqip-plugin-primitive@^1.0.0-alpha.34:
     fs-extra "^9.0.1"
     sqip "^1.0.0-alpha.32"
 
-sqip-plugin-svgo@^1.0.0-alpha.32, sqip-plugin-svgo@^1.0.0-alpha.33:
+sqip-plugin-svgo@^1.0.0-alpha.33:
   version "1.0.0-alpha.33"
   resolved "https://registry.yarnpkg.com/sqip-plugin-svgo/-/sqip-plugin-svgo-1.0.0-alpha.33.tgz#6d9ad9e16b6e33d479ea7497d9ebe0bf6b76b215"
   integrity sha512-Ha58hyCtWdS0Etnh+4pczXybMW1FwLU3UyApcV8G+aISc+dyss16J7xjaIO3Fm9/FfkgSz50XH2lsVX5qJyMaQ==
   dependencies:
     svgo "^1.3.2"
 
-sqip@^1.0.0-alpha.31, sqip@^1.0.0-alpha.32:
+sqip@^1.0.0-alpha.32:
   version "1.0.0-alpha.32"
   resolved "https://registry.yarnpkg.com/sqip/-/sqip-1.0.0-alpha.32.tgz#9071e9b923697b89305f043b39ec4a5e35dd5ca3"
   integrity sha512-GkxmV1DPRkehrVUr+OlJSiHh5kY10HDEd+wD+j0LwcUj7o/1y5hbPTKTKcRcCjh4qfbCoSDkbT6klhqh3RSD5Q==
