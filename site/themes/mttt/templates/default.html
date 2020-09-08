@@ -149,6 +149,7 @@
     {% endblock footer %}</footer>
   </div>
   <script async src="/js/mtt.js"></script>
+  <!-- <script async src="/js/webvitals.js"></script> -->
   {% if page and page.extra.additional_scripts %}
     {% for script_path in page.extra.additional_scripts %}
     <script async src="{{script_path | safe }}"></script>

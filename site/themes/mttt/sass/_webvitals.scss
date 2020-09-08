@@ -1,0 +1,29 @@
+.web-vitals {
+  font-size: 0.8rem;
+
+  div, dl, dt, dd {
+    display: inline-block;
+  }
+
+  dd {
+    margin-inline-start: 0;
+    margin-right: .25rem;
+  }
+
+  div dd::after {
+    padding-left: .5em;
+    margin-right: 1em;
+  }
+
+  div:not(.is-done) dd::after {
+    content: '🕐';
+  }
+
+  div.is-great dd::after {
+    content: '✅';
+  }
+
+  div.is-poor dd::after {
+    content: '😿';
+  }
+}
