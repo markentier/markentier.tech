@@ -8,7 +8,7 @@
     <id>{{config.extra.feed_id}}</id>
     <icon>{{config.base_url | safe}}/m.128.png</icon>
     <logo>{{config.base_url | safe}}/m.128.png</logo>
-    <rights>Copyright © 2018, markentier.tech</rights>
+    <rights>Copyright © 2018—2020, markentier.tech</rights>
     {%- if config.extra.author %}
     <author>
       <name>{{config.extra.author}}</name>
@@ -22,8 +22,8 @@
     {%- if is_post == true %}
     <entry>
       <title>{{page.title}}</title>
-      <link>{{page.permalink | safe }}</link>
-      <guid>{{page.permalink | safe }}</guid>
+      <link>{{page.permalink | safe}}</link>
+      <guid>{{page.permalink | safe}}</guid>
       <updated>{{page.date | date(format="%FT%T%z")}}</updated>
       {%- if page.summary %}
       <summary>{{page.summary | striptags | trim | safe}}</summary>

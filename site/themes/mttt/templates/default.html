@@ -152,7 +152,7 @@
 {% if config.base_url is containing(":3000") %}
 <details>
   <summary>DEBUG</summary>
-  <pre id="__tera_context">{{ __tera_context | safe | escape }}</pre>
+  <pre id="__tera_context">{{ __tera_context | escape | safe }}</pre>
 </details>
 {% endif %}
 </body>

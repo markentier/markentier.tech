@@ -5,7 +5,7 @@
 {%- if is_post == true %}
   <url>
     <loc>{{page.permalink | safe}}</loc>
-    <lastmod>{{page.date | date}}</lastmod>
+    <lastmod>{{page.updated | date}}</lastmod>
     <priority>0.85</priority>
   </url>
 {%- endif %}

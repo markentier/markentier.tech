@@ -6,18 +6,16 @@
   {% if page.extra.has_hero %}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
   {% set page_image_webp_url = m::get_cover_image_webp_url(url=page.permalink) %}
-  {% set page_image_alt = page.extra.image_alt %}
+  {% set page_image_alt = page.extra.image_alt | safe %}
   <figure class="post_hero">
     <picture>
       <source srcset="{{page_image_webp_url | safe}}" type="image/webp">
-      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe | escape}}">
+      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe}}">
     </picture>
-    <figcaption>{{page_image_alt | safe | escape}}</figcaption>
+    <figcaption>{{page_image_alt | safe}}</figcaption>
   </figure>
   {% else %}
   <!-- no hero image -->
-  {#% set page_image_url = m::get_default_cover_image_url(base=config.base_url, img=config.extra.image_url) %#}
-  {#% set page_image_alt = page.permalink %#}
   {% endif %}
   {%- endif %}
   <h2 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title | safe)}}</h2>
@@ -68,7 +66,7 @@
           <meta itemprop="name" content="{{config.extra.publisher}}">
           <meta itemprop="description" content="{{config.description}}">
           <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <img itemprop="url" src="{{config.base_url | safe }}/m.amp.png" alt="logo">
+            <img itemprop="url" src="{{config.base_url | safe}}/m.amp.png" alt="logo">
             <meta itemprop="height" content="60">
             <meta itemprop="width" content="600">
           </span>

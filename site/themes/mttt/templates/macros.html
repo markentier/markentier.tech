@@ -1,7 +1,7 @@
 {% macro date_iso(date) %}{{date | date(format="%FT%T%z")}}{% endmacro date_iso %}
 {% macro date_date(date) %}{{date | date}}{% endmacro date_date %}
 
-{% macro html_escaped(str) %}{{str | safe | escape}}{% endmacro html_escaped %}
+{% macro html_escaped(str) %}{{str | escape | safe}}{% endmacro html_escaped %}
 
 {% macro fq_sec(base) %}{{base}}_index.md{% endmacro fq_sec %}
 
@@ -38,7 +38,7 @@
       {% set page_cover_webp_url = self::get_cover_image_webp_url(url=page.permalink) %}
       <picture>
         <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp" data-cover-url="{{page_cover_webp_url | safe}}">
-        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | escape | safe}}" data-cover-url="{{page_cover_url | safe}}">
+        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" data-cover-url="{{page_cover_url | safe}}">
       </picture>
       {% endif %}
       <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
@@ -49,9 +49,9 @@
         <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
       </small>
       {% if page.summary %}
-         <p>{{page.summary | safe | striptags}}</p>
+         <p>{{page.summary | striptags | safe}}</p>
       {% elif page.description %}
-        <p>{{page.description | safe | striptags}}</p>
+        <p>{{page.description | striptags | safe}}</p>
       {% endif %}
     </a>
     <footer class="list-meta">
@@ -67,7 +67,7 @@
         <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
           <meta itemprop="name" content="{{config.extra.publisher}}">
           <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <img itemprop="url" src="{{config.base_url | safe }}/m.amp.png" alt="logo">
+            <img itemprop="url" src="{{config.base_url | safe}}/m.amp.png" alt="logo">
             <meta itemprop="height" content="60">
             <meta itemprop="width" content="600">
           </span>
