@@ -1,7 +1,8 @@
 /*!mtt*/
 @charset "UTF-8";
-// @import "sanitize";
-@import "normalize";
+@import "sanitize";
+// @import "normalize"; // included in sanitize.css
+
 /*!mtt css*/
 @import "root";
 @import "tags";
