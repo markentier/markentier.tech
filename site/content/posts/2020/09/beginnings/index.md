@@ -10,6 +10,7 @@ categories = ["default", "me"]
 has_image = true
 has_hero = true
 image_alt = "🌼"
+custom_delimiter = "🌼"
 +++
 
 _They say, change is painful. You must become vulnerable. I hate being vulnerable. And yet I have to expose myself to change something …_
