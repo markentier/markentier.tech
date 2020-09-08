@@ -135,3 +135,12 @@ access-control-allow-origin = "*"
 from = "/*"
 to = "/404/index.html"
 status = 404
+
+[[plugins]]
+package = "netlify-plugin-image-optim"
+
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+package = "netlify-plugin-debug-cache"
