@@ -142,6 +142,11 @@
 }
 
 .index_listing_post p,
+.article-body > p {
+  font-size: 105%;
+}
+
+.index_listing_post p,
 .article-body > p:first-of-type {
   font-style: italic;
     filter: brightness(1.5);

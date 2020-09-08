@@ -3,19 +3,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  {# update with content of final fonts.css #}
+  <style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:'Varela Round';src:local("Varela Round Regular"),local("VarelaRound-Regular"),url("/assets/fonts/varela-round-regular.woff2") format("woff2");font-weight:normal;font-style:normal;font-display:swap}
+</style>
+
   <title>{% block title %}{{config.title}}{% endblock title %}</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="{{config.base_url | safe}}">
-  <link rel="stylesheet" href="/fonts.css">
+  {# disable external fonts.css when using inline style for them #}
+  <!-- <link rel="preload" as="font" crossorigin="anonymous" href="/assets/fonts/varela-round-regular.woff2"> -->
+  <!-- <link rel="stylesheet" href="/fonts.css"> -->
   <link rel="stylesheet" href="/mtt.css">
 
-  <link rel="shortcut icon" href="/m.svg" sizes="any" type="image/svg+xml">
-  <link rel="icon" href="/m.192.png" sizes="192x192" type="image/png">
-  <link rel="icon" href="/m.128.png" sizes="128x128" type="image/png">
-  <link rel="apple-touch-icon" href="/m.192.png">
+  <!-- https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df -->
+  <link rel="icon" href="/m.svg">
+  <link rel="mask-icon" href="/m.svg" color="#063656">
+  <link rel="apple-touch-icon" href="/m.180.png">
 
-  <meta name="theme-color" content="#dfdddc">
   <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#dfdddc">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="{{config.title}}">
   <meta name="apple-mobile-web-app-status-bar-style" content="#dfdddc">
