@@ -2,7 +2,7 @@
 title = "From cobalt.rs to gutenberg"
 date = 2018-03-28
 [taxonomies]
-tags = ["gutenberg", "cobalt", "cobalt.rs", "rust", "static site", "generator", "migration", "conversion", "switch"]
+tags = ["zola", "gutenberg", "cobalt", "cobalt.rs", "rust", "static site", "generator", "migration", "conversion", "switch"]
 categories = ["default"]
 [extra]
 has_image = true
@@ -15,7 +15,7 @@ I wish I could have the features of both tools, but for now I will use gutenberg
 <!-- more -->
 
 While [cobalt][cobalt] is a pretty nice and easy static site generator written in Rust (in the vein of [Jekyll][jekyll], the famous tool used for GitHub pages), I struggled a bit.
-Especially that the stylesheet compilation is not enabled by default yet, but also other tiny annoyances or missing features played into that. I still want to stick with [Rust][rust] and the only other active option here is [gutenberg][gutenberg]. But to be honest, this one also comes with its complications.
+Especially that the stylesheet compilation is not enabled by default yet, but also other tiny annoyances or missing features played into that. I still want to stick with [Rust][rust] and the only other active option here is [<s>gutenberg</s>zola][gutenberg]. But to be honest, this one also comes with its complications.
 
 **Cobalt** is your tool for a quick blog-like setup, because it supports the usual two different article types of (static) pages and blog posts. **Gutenberg** doesn't really have such distinction, and therefore you need to be more elaborate if you want to achieve the same.
 
@@ -124,11 +124,15 @@ And I have to admit, there is great appeal in such services. Especially for sing
 
 Because in the end all you really want is: **getting things done.**
 
+-----
+
+<small>Note: The tool got renamed to `zola`. IIRC there was a naming conflict in the past.</small>
+
 [array-issue]: https://github.com/Keats/gutenberg/issues/270
 [cobalt-data]: http://cobalt-org.github.io/docs/data.html
 [cobalt]: https://cobalt-org.github.io/
 [fd]: https://github.com/sharkdp/fd
-[gutenberg]: https://www.getgutenberg.io/
+[gutenberg]: https://www.getzola.org/
 [heroku]: https://www.heroku.com/
 [jekyll]: https://jekyllrb.com/
 [mtt-repo]: https://github.com/markentier/markentier.tech

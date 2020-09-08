@@ -113,3 +113,7 @@ nav {
 figcaption, pre, nav {
   background: var(--accent-color);
 }
+
+s, del, strike {
+  text-decoration: line-through var(--link-hl-color) wavy;
+}
