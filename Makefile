@@ -206,10 +206,12 @@ install-mac: install-zola
 install-zola:
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)
 	mkdir -p $(ZOLA) && tar zxf $(ZOLA).tar.gz -C $(ZOLA)
+	zola -V
 
 netlify-install-zola:
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_LINUX)
 	mkdir -p $(ZOLA) && tar zxf $(ZOLA).tar.gz -C $(ZOLA)
+	zola -V
 
 clean-installs:
 	rm -rf ./gutenberg* ./zola*
