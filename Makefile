@@ -4,33 +4,34 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 # COMMIT_REF ?= ffffffffffffffffffffffffffffffffffffffff
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
+export PATH := $(PWD)/zola:$(PATH)
+UNAME := $(shell uname -s)
+ifeq ($(UNAME), Linux)
+	export PATH := tools:$(PATH)
+	PLATFORM = x86_64-unknown-linux-gnu
+endif
+ifeq ($(UNAME), Darwin)
+	PLATFORM = x86_64-apple-darwin
+endif
+
 ZOLA = zola
 ZOLA_VERSION ?= 0.12.0
-ZOLA_RELEASE_URL_LINUX = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-x86_64-unknown-linux-gnu.tar.gz
-ZOLA_RELEASE_URL_MACOS = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-x86_64-apple-darwin.tar.gz
-
-NODE_VERSION ?= 14
+ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-$(PLATFORM).tar.gz
 
 BUILD_BIN ?= $(ZOLA)
-
+BUILD_PATH = $(BUILD_BIN)/$(BUILD_BIN)
 BUILD_OUTDIR = --output-dir ../public
 BUILD_CMD = $(BUILD_BIN) build --base-url $(NETLIFY_DEPLOY_URL) $(BUILD_OUTDIR)
 # SERVE_CMD = $(BUILD_BIN) serve --base-url markentier.local --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
 # makes developing service worker stuff much easier:
-SERVE_CMD = $(BUILD_BIN) serve --base-url localhost --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
+SERVE_CMD = $(BUILD_BIN) serve --drafts --base-url localhost --interface 0.0.0.0 --port 3000 $(BUILD_OUTDIR)
 
-UNAME := $(shell uname)
-# use bundled tidy
-ifeq ($(UNAME), Linux)
-	export PATH := tools:$(PATH)
-endif
-# use repo-locally installed zola
-ifeq ($(UNAME), Darwin)
-	export PATH := $(PWD)/zola:$(PATH)
-endif
+NODE_VERSION ?= 14
+
+build: install-zola build-site postprogressing
 
 # disabled: netlify-lambda netlify-go
-netlify: netlify-install-zola build netlify-deployment
+netlify: install-zola build netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
 	@echo DEPLOY_PRIME_URL = $(DEPLOY_PRIME_URL)
@@ -42,7 +43,6 @@ netlify-local-deploy: build
 netlify-local-deploy-draft: build
 	netlify deploy -s $(SITE_ID) -p public --draft
 
-build: build-site postprogressing
 
 rebuild-all: regenerate-thumbs images build
 
@@ -153,33 +153,33 @@ serve-with-theme-reload:
 local-deployment-json:
 	$(MAKE) netlify-deployment COMMIT_REF=fake-commit-sha
 
-netlify-lambda: .functions
-	yarn && yarn build:lambda
+# netlify-lambda: .functions
+# 	yarn && yarn build:lambda
 
-start-lambda:
-	yarn && yarn start:lambda
+# start-lambda:
+# 	yarn && yarn start:lambda
 
-netlify-go:
-	$(MAKE) go-functions
+# netlify-go:
+# 	$(MAKE) go-functions
 
-GO_FUNCS = $(shell find functions -iname '*.go')
-GO_BINS = $(patsubst %,.%,$(GO_FUNCS:.go=))
+# GO_FUNCS = $(shell find functions -iname '*.go')
+# GO_BINS = $(patsubst %,.%,$(GO_FUNCS:.go=))
 
-go-functions: .functions $(GO_BINS)
+# go-functions: .functions $(GO_BINS)
 
-# GOOS=linux GOARCH=amd64
-# go get ???
-$(GO_BINS): .%: %.go
-	go build -o $@ $<
+# .functions:
+# 	mkdir -p $@
+
+# # GOOS=linux GOARCH=amd64
+# # go get ???
+# $(GO_BINS): .%: %.go
+# 	go build -o $@ $<
 
 netlify-deployment:
 	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json
 
 local-deployment:
 	@echo '{"deployment":{"sha":"$(shell git rev-parse HEAD)","ts":$(shell date +%s042)}}' > public/deployment.json
-
-.functions:
-	mkdir -p $@
 
 clean:
 	@rm -rf public
@@ -203,15 +203,18 @@ check-cert:
 install-mac: install-zola
 	brew install -f tidy-html5 imagemagick pngquant optipng webp
 
-install-zola:
-	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_MACOS)
-	mkdir -p $(ZOLA) && tar zxf $(ZOLA).tar.gz -C $(ZOLA)
-	zola -V
+# debian/ubuntu based systems only for now.
+# NOTE: we ship a prebuilt tidy in the tools folder.
+install-debs: install-zola
+	sudo apt-get update
+	sudo apt-get install -y imagemagick pngquant optipng webp
 
-netlify-install-zola:
-	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL_LINUX)
+install-zola: $(BUILD_PATH)
+
+$(BUILD_PATH):
+	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL)
 	mkdir -p $(ZOLA) && tar zxf $(ZOLA).tar.gz -C $(ZOLA)
 	zola -V
 
 clean-installs:
-	rm -rf ./gutenberg* ./zola*
+	rm -rf ./zola*
