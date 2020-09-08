@@ -25,6 +25,10 @@ html, body {
   -webkit-text-stroke: .45px rgba(0,0,0,.1);
 }
 
+html {
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: double underline;
 }
