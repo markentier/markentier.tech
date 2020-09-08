@@ -5,9 +5,9 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 COMMIT_REF ?= $(shell git rev-parse HEAD)
 
 ZOLA = zola
-ZOLA_RELEASE_VER ?= 0.12.0
-ZOLA_RELEASE_URL_LINUX = https://github.com/getzola/zola/releases/download/v$(ZOLA_RELEASE_VER)/zola-v$(ZOLA_RELEASE_VER)-x86_64-unknown-linux-gnu.tar.gz
-ZOLA_RELEASE_URL_MACOS = https://github.com/getzola/zola/releases/download/v$(ZOLA_RELEASE_VER)/zola-v$(ZOLA_RELEASE_VER)-x86_64-apple-darwin.tar.gz
+ZOLA_VERSION ?= 0.12.0
+ZOLA_RELEASE_URL_LINUX = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-x86_64-unknown-linux-gnu.tar.gz
+ZOLA_RELEASE_URL_MACOS = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-x86_64-apple-darwin.tar.gz
 
 NODE_VERSION ?= 14
 
