@@ -16,7 +16,7 @@
   <!-- <link rel="stylesheet" href="/fonts.css"> -->
   <link rel="stylesheet" href="/mtt.css">
   {% if page.extra.custom_delimiter %}
-  <style>.article-body > p:first-of-type::after, hr::after { content: "· · {{page.extra.custom_delimiter}} · ·";opacity: .25;}</style>
+  <style>.article-body > p:first-of-type::after, hr::after { content: "{{page.extra.custom_delimiter}}";opacity: .25;}</style>
   {% endif %}
 
   <!-- https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df -->
