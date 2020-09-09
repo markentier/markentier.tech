@@ -38,7 +38,7 @@
       {% set page_cover_webp_url = self::get_cover_image_webp_url(url=page.permalink) %}
       <picture>
         <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp" data-cover-url="{{page_cover_webp_url | safe}}">
-        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" data-cover-url="{{page_cover_url | safe}}">
+        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" loading="lazy" data-cover-url="{{page_cover_url | safe}}">
       </picture>
       {% endif %}
       <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
