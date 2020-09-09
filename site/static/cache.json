@@ -2,7 +2,6 @@
   "/",
   "/index.html",
 
-  "/fonts.css",
   "/mtt.css",
   "/m.svg",
   "/js/mtt.js",
@@ -15,8 +14,6 @@
   "/m.1024.txt.bg.png",
 
   "/about/",
-  "/theme/",
-  "/tags/",
 
   "/manifest.json"
 ]
