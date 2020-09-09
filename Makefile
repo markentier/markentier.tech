@@ -73,7 +73,14 @@ postprogressing:
 check-html-size:
 	@find public -type f -name '*.html' -exec du -h {} \; | sort -r -u -k 1
 
-images: create-webp create-thumbs create-sqip
+images:
+	$(MAKE) create-thumbs
+	$(MAKE) create-webp
+	$(MAKE) create-sqip
+
+images-with-recreate:
+	$(MAKE) delete-webps delete-thumbs
+	$(MAKE) images
 
 # imagemagick(convert), pngquant, optipng
 COVERS = $(shell find site -iname 'cover.png')
