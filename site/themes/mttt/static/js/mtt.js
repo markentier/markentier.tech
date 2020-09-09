@@ -21,7 +21,7 @@
   // DEPLOYMENT CHECKER
 
   const deploymentCheck = () => {
-    const FORCE_UPDATE_PAH = '/sw-force-update';
+    const FORCE_UPDATE_PATH = '/sw-force-update';
     const DEPLOYMENT_PATH = '/deployment.json';
     const DEPLOYMENT_NOT_OK_RESPONSE = { deployment: false };
     const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
@@ -35,7 +35,7 @@
       const sha = payload.deployment.sha;
       window.caches.keys().then((cacheKeys) => {
         if (cacheKeys.includes(sha)) return;
-        fetch(FORCE_UPDATE_PAH);
+        fetch(FORCE_UPDATE_PATH);
       })
     };
     const deploymentSync = () => {
