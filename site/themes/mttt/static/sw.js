@@ -134,7 +134,7 @@ const serveOrFetch = (e) => {
           return fetch(e.request).then((response) => {
             // cache only valid requests
             if(response.ok && response.url.startsWith('https')) {
-              return cache.put(e.request, response);
+              return cache.put(e.request, response.clone());
             }
             // otherwise just return whatever it is
             return response;
