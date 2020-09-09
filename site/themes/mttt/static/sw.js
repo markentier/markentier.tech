@@ -132,6 +132,7 @@ const serveOrFetch = (e) => {
           console.log('[SW] Found uncached request:', e.request);
           return fetch(e.request)
             .then((response) => {
+              console.log("[SW] Uncached request fetched:", e.request);
               scheduleCacheUpdate(cache, e, response);
               return response;
             });
