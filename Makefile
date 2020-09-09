@@ -30,6 +30,9 @@ NODE_VERSION ?= 14
 
 build: install-zola build-site postprogressing
 
+local:
+	$(MAKE) build local-deployment-json NETLIFY_DEPLOY_URL=http://localhost:3000
+
 # disabled: netlify-lambda netlify-go
 netlify: install-zola build netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
