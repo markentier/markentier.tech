@@ -42,7 +42,10 @@ module.exports = {
                     getImageDimensions(imagePath)
                         .then(dimensions => {
                             dimensions = ratio(
-                                { width: img.attrs.width, height: img.attrs.height },
+                                {
+                                    width: img.attrs.width,
+                                    height: img.attrs.height,
+                                },
                                 dimensions
                             );
 
@@ -52,6 +55,11 @@ module.exports = {
 
                             if (dimensions.height) {
                                 img.attrs.height = dimensions.height;
+                            }
+
+                            // add lazy loading to all images without a loading attr:
+                            if (!img.attrs.loading) {
+                                img.attrs.loading = 'lazy';
                             }
                         })
                         .then(() => {
