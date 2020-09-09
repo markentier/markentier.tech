@@ -16,7 +16,7 @@ const DEPLOYMENT_PATH_RE = new RegExp(`${DEPLOYMENT_PATH}`);
 const FALLBACK_SHA = 'ffffffffffffffffffffffffffffffffffffffff';
 const FALLBACK_PAYLOAD_FN = () => { return { deployment: { sha: FALLBACK_SHA, ts: Date.now() } } };
 
-const VERSION_FALLBACK = 'mtt-20180406.1';
+const VERSION_FALLBACK = 'mtt-20200909.1';
 const VERSION_FALLBACK_ITEM = { sha: VERSION_FALLBACK, ts: Date.now() };
 
 const IDB_NAME = 'mtt-sw-data';
