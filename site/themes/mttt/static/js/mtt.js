@@ -43,28 +43,6 @@
     updateProgressWithScrollHeight();
   };
 
-  // PAGE LOAD TIME
-
-  /*
-  function loadTimeInfo:
-  (Unshamelessly)
-  Stolen from Stefan Judis,
-        who stole it from Tim Kadlec.
-  Kudos to Stefan and Tim. Thank you.
-  Ref: https://mnnz.cc/sj-loading-time
-*/
-  const loadTimeInfo = () => {
-    const w = window;
-    const p = (w.performance = w.performance || w.mozPerformance || w.msPerformance || w.webkitPerformance || {});
-    const t = p.timing;
-    if (!t) return;
-    const end = t.loadEventEnd;
-    const start = t.navigationStart;
-    const loadTime = (end - start) / 1000;
-    const footer = document.querySelector('footer[class=footer]');
-    footer.innerHTML += `<br><small><code>Page loaded in <strong>${loadTime}</strong> seconds<code></small>`;
-  };
-
   // DEPLOYMENT CHECKER
 
   const deploymentCheck = () => {
@@ -116,7 +94,6 @@
   // TRIGGER ON LOAD
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
-    setTimeout(loadTimeInfo, 0);
     setTimeout(asyncPostPrefetchContent, 5000);
     setTimeout(asyncPostPrefetchImages, 9000);
   };
