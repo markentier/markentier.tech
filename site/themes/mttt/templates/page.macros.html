@@ -10,7 +10,7 @@
   <figure class="post_hero">
     <picture>
       <source srcset="{{page_image_webp_url | safe}}" type="image/webp">
-      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe}}">
+      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe}}" loading="eager">
     </picture>
     <figcaption>{{page_image_alt | safe}}</figcaption>
   </figure>
