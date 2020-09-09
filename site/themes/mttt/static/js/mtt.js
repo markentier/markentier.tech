@@ -69,8 +69,8 @@
   // TRIGGER ON LOAD
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
-    setTimeout(asyncPostPrefetchContent, 5000);
-    setTimeout(asyncPostPrefetchImages, 9000);
+    // setTimeout(asyncPostPrefetchContent, 5000);
+    // setTimeout(asyncPostPrefetchImages, 9000);
   };
 
   window.markentier = { tech: '🦄' }; // ;-)
