@@ -2,6 +2,7 @@
 'use strict';
 
 // https://github.com/GoogleChromeLabs/airhorn/blob/master/app/sw.js
+// https://serviceworke.rs/strategy-cache-update-and-refresh.html
 
 importScripts('/sw-idb.js');
 
@@ -131,35 +132,16 @@ const serveOrFetch = (e) => {
         .then((response) => response || Promise.reject(new Error("not-found")))
         .catch((_not_found) => {
           return fetch(e.request).then((response) => {
-            console.log("[SW] Uncached request fetched:", e.request);
-            // scheduleCacheUpdate(cache, e, response);
-            // return response;
-            return cache.put(e.request, response);
+            // cache only valid requests
+            if(response.ok && response.url.startsWith('https')) {
+              return cache.put(e.request, response);
+            }
+            // otherwise just return whatever it is
+            return response;
           });
         });
     });
 };
-
-// const scheduleCacheUpdate = (cache, e, response) => {
-//   const updater = new Promise((resolve) => resolve(() => {
-//     console.log('[SW] Add request to cache,', e.request);
-//     cache.put(e.request, response.clone());
-//     return response;
-//   }))
-//   // e.waitUntil(updater.then(notifyClients));
-//   e.waitUntil(updater);
-// };
-
-// const notifyClients = (response) => {
-//   const message = {
-//     type: 'refresh',
-//     url: response.url,
-//     eTag: response.headers.get('ETag')
-//   };
-//   const notifyClient = (client) => client.postMessage(JSON.stringify(message));
-//   const notifyAllClients = (clients) => clients.forEach(notifyClient);
-//   return self.clients.matchAll().then(notifyAllClients);
-// };
 
 const deploymentSync = () => {
   return fetch(`${DEPLOYMENT_PATH}?_sw_ts=${Date.now()}`, { cache: 'no-store' })
