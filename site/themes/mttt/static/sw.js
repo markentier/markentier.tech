@@ -109,7 +109,7 @@ const addDeployment = (e) => {
 
 const updateShaWithDb = (payload) => {
   return idb
-    .open(IDB_NAME, IDB_VERSION)
+    .openDB(IDB_NAME, IDB_VERSION)
     .then((db) => updateSha(payload, db))
 };
 
@@ -128,7 +128,7 @@ const serveOrFetch = (e) => {
     .then((cache) => {
       return cache.match(e.request)
         .then((response) => response || Promise.reject(new Error('not-found')))
-        .catch((_err) => {
+        .catch((_not_found) => {
           return fetch(e.request)
             .then((response) => {
               scheduleCacheUpdate(cache, e, response);
