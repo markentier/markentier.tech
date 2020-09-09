@@ -129,6 +129,7 @@ const serveOrFetch = (e) => {
       return cache.match(e.request)
         .then((response) => response || Promise.reject(new Error('not-found')))
         .catch((_not_found) => {
+          console.log('[SW] Found uncached request:', e.request);
           return fetch(e.request)
             .then((response) => {
               scheduleCacheUpdate(cache, e, response);
@@ -140,6 +141,7 @@ const serveOrFetch = (e) => {
 
 const scheduleCacheUpdate = (cache, e, response) => {
   const updater = new Promise((resolve) => resolve(() => {
+    console.log('[SW] Add request to cache,', e.request);
     cache.put(e.request, response.clone());
     return response;
   }))
