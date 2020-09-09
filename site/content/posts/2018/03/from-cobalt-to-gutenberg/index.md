@@ -15,7 +15,7 @@ I wish I could have the features of both tools, but for now I will use gutenberg
 <!-- more -->
 
 While [cobalt][cobalt] is a pretty nice and easy static site generator written in Rust (in the vein of [Jekyll][jekyll], the famous tool used for GitHub pages), I struggled a bit.
-Especially that the stylesheet compilation is not enabled by default yet, but also other tiny annoyances or missing features played into that. I still want to stick with [Rust][rust] and the only other active option here is [<s>gutenberg</s>zola][gutenberg]. But to be honest, this one also comes with its complications.
+Especially that the stylesheet compilation is not enabled by default yet, but also other tiny annoyances or missing features played into that. I still want to stick with [Rust][rust] and the only other active option here is [<del>gutenberg</del><ins>zola</ins>][gutenberg]. But to be honest, this one also comes with its complications.
 
 **Cobalt** is your tool for a quick blog-like setup, because it supports the usual two different article types of (static) pages and blog posts. **Gutenberg** doesn't really have such distinction, and therefore you need to be more elaborate if you want to achieve the same.
 
