@@ -105,7 +105,7 @@
     {%- if page.summary %}
     <summary>{{page.summary | striptags | trim | safe}}</summary>
     {%- endif %}
-    <content type="html"><![CDATA[{{ self::absolutify(content=page.content, permalink=page.permalink) | trim }}]]></content>
+    <content type="html"><![CDATA[{{ self::absolutify(content=page.content, permalink=page.permalink) | trim | safe }}]]></content>
   </entry>
 {%- elif feed == "rss" %}
     <item>
@@ -113,7 +113,7 @@
       <link>{{page.permalink | safe}}</link>
       <guid isPermaLink="true">{{page.permalink | safe}}</guid>
       <pubDate>{{page.date | date(format="%a, %d %b %Y %H:%M:%S %z")}}</pubDate>
-      <description><![CDATA[{{ self::absolutify(content=page.content, permalink=page.permalink) | trim }}]]></description>
+      <description><![CDATA[{{ self::absolutify(content=page.content, permalink=page.permalink) | trim | safe }}]]></description>
     </item>
 {%- elif feed == "json" %}
     {
@@ -130,7 +130,7 @@
       {%- if page.taxonomies.tags %}
       "tags": {{ self::naive_stringified_array(arr=page.taxonomies.tags) }},
       {%- endif %}
-      "content_html": {{ self::absolutify(content=page.content, permalink=page.permalink) | trim | json_encode(pretty=true)}}
+      "content_html": {{ self::absolutify(content=page.content, permalink=page.permalink) | trim | json_encode(pretty=true) | safe}}
     },
 {%- else -%}
 <!-- feed type not supported -->
