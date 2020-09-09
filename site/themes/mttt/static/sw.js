@@ -23,17 +23,24 @@ const IDB_NAME = 'mtt-sw-data';
 const IDB_VERSION = 1;
 const IDB_OSTORE = 'deployments';
 
-const createDB = () => idb.open(IDB_NAME, IDB_VERSION, idbUpgrade);
+const openObject = {
+  upgrade(db, _oldVersion, _newVersion, _transaction) {
+    db.createObjectStore(IDB_OSTORE, { keyPath: "sha" });
+  },
+};
 
-const idbUpgrade = (upgradeDb) => { upgradeDb.createObjectStore(IDB_OSTORE, { keyPath: 'sha' }); };
+const createDB = () => idb.openDB(IDB_NAME, IDB_VERSION, openObject);
 
 const tsSort = (a, b) => { if (a.ts < b.ts) { return -1 }; if (a.ts > b.ts) { return 1 }; return 0; }
 
 const getVersion = () => {
-  return idb.open(IDB_NAME, IDB_VERSION, idbUpgrade)
-    .then((db) => db.transaction([IDB_OSTORE], 'readonly').objectStore(IDB_OSTORE).getAll())
+  return idb
+    .openDB(IDB_NAME, IDB_VERSION, openObject)
+    .then((db) =>
+      db.transaction([IDB_OSTORE], "readonly").objectStore(IDB_OSTORE).getAll()
+    )
     .then((items) => items.sort(tsSort))
-    .then((items) => (items[items.length - 1] || VERSION_FALLBACK_ITEM))
+    .then((items) => items[items.length - 1] || VERSION_FALLBACK_ITEM)
     .then((item) => item.sha)
     .catch((err) => {
       console.log(`[SW] getVersion ERR: ${err}`);
