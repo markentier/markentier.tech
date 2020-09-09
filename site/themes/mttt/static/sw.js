@@ -126,29 +126,29 @@ const updateSha = (payload, db) => {
 const serveOrFetch = (e) => {
   return getVersionedCache()
     .then((cache) => {
-      return cache.match(e.request)
-        .then((response) => response || Promise.reject(new Error('not-found')))
+      return cache
+        .match(e.request, { ignoreSearch: true })
+        .then((response) => response || Promise.reject(new Error("not-found")))
         .catch((_not_found) => {
-          console.log('[SW] Found uncached request:', e.request);
-          return fetch(e.request)
-            .then((response) => {
-              console.log("[SW] Uncached request fetched:", e.request);
-              scheduleCacheUpdate(cache, e, response);
-              return response;
-            });
+          return fetch(e.request).then((response) => {
+            console.log("[SW] Uncached request fetched:", e.request);
+            // scheduleCacheUpdate(cache, e, response);
+            // return response;
+            return cache.put(e.request, response);
+          });
         });
     });
 };
 
-const scheduleCacheUpdate = (cache, e, response) => {
-  const updater = new Promise((resolve) => resolve(() => {
-    console.log('[SW] Add request to cache,', e.request);
-    cache.put(e.request, response.clone());
-    return response;
-  }))
-  // e.waitUntil(updater.then(notifyClients));
-  e.waitUntil(updater);
-};
+// const scheduleCacheUpdate = (cache, e, response) => {
+//   const updater = new Promise((resolve) => resolve(() => {
+//     console.log('[SW] Add request to cache,', e.request);
+//     cache.put(e.request, response.clone());
+//     return response;
+//   }))
+//   // e.waitUntil(updater.then(notifyClients));
+//   e.waitUntil(updater);
+// };
 
 // const notifyClients = (response) => {
 //   const message = {
