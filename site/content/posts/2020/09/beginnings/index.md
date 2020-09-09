@@ -10,7 +10,11 @@ categories = ["default", "me"]
 has_image = true
 has_hero = true
 image_alt = "🌼"
-custom_delimiter = "· · 🌼 · ·"
+#custom_delimiter = "· · 🌼 · ·" # let's crunch everything into the custom CSS
+custom_css = """
+  .article-body > p:first-of-type::after, hr::after { content: '· · 🌼 · ·'; opacity: .25; }
+  .green { color: var(--green); text-shadow: 0 0 2px var(--accent-dark-color); }
+"""
 +++
 
 _They say, change is painful. You must become vulnerable. I hate being vulnerable. And yet I have to expose myself to change something …_
