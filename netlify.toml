@@ -55,9 +55,14 @@ x-xss-protection = "1; mode=block"
 
 # entrypoint file
 [[headers]]
-for = "/categories/default/index.html"
+for = "/index.html"
 [headers.values]
 cache-control = "max-age=3600"
+
+[[headers]]
+for = "/feed.json"
+[headers.values]
+access-control-allow-origin = "*"
 
 [[headers]]
 for = "/sw-force-update"
