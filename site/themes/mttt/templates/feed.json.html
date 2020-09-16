@@ -4,8 +4,7 @@
   "title": "{{config.title}}",
   "home_page_url": "{{config.base_url | safe}}",
   "feed_url": "{{config.base_url | safe}}/feed.json",
-  "icon": "{{config.base_url | safe}}/m.128.png",
-  "favicon": "{{config.base_url | safe}}/favicon.ico",
+  "icon": "{{config.base_url | safe}}/m.512.icon.png",
   "author": { "name": "{{config.extra.author}}" },
   "authors": [{ "name": "{{config.extra.author}}" }],
   "items": [{{ macros::feed_posts(sec = get_section(path="posts/_index.md"), feed="json", start=true) | replace(from=",END_MARKER", to="") | safe }}
