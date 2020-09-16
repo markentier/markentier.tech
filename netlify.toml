@@ -53,6 +53,8 @@ x-github-repo = "https://github.com/markentier/markentier.tech"
 x-github-user = "https://github.com/asaaki"
 x-xss-protection = "1; mode=block"
 
+Server = "markentier.tech"
+
 # entrypoint file
 [[headers]]
 for = "/index.html"
