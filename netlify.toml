@@ -63,7 +63,7 @@ cache-control = "max-age=3600"
 for = "/feed.json"
 [headers.values]
 access-control-allow-origin = "*"
-content-type = "application/feed+json"
+Content-Type = "application/feed+json"
 
 [[headers]]
 for = "/sw-force-update"
