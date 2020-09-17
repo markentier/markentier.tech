@@ -66,6 +66,7 @@ for = "/feed.json"
 [headers.values]
 access-control-allow-origin = "*"
 access-control-allow-headers = "*"
+access-control-allow-methods = "GET,OPTIONS"
 Content-Type = "application/feed+json"
 
 [[headers]]
