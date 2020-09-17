@@ -65,6 +65,7 @@ cache-control = "max-age=3600"
 for = "/feed.json"
 [headers.values]
 access-control-allow-origin = "*"
+access-control-allow-headers = "*"
 Content-Type = "application/feed+json"
 
 [[headers]]
