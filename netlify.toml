@@ -53,6 +53,7 @@ x-github-repo = "https://github.com/markentier/markentier.tech"
 x-github-user = "https://github.com/asaaki"
 x-xss-protection = "1; mode=block"
 
+# does not work :'-(
 Server = "markentier.tech"
 
 # entrypoint file
@@ -61,37 +62,43 @@ for = "/index.html"
 [headers.values]
 cache-control = "max-age=3600"
 
+# special treatment for the JSON feed
+# be as open as possible (mostly for my personal testing)
 [[headers]]
 for = "/feed.json"
 [headers.values]
-Content-Type = "application/feed+json"
+Content-Type = "application/feed+json" # casing matters to overwrite the original/automatic value
+content-security-policy = "default-src 'self'; script-src *; child-src *; worker-src *"
 access-control-max-age = "600"
 access-control-allow-origin = "*"
 access-control-allow-headers = "*"
 access-control-expose-headers = "*"
 access-control-allow-methods = "GET,OPTIONS"
 # access-control-allow-credentials = "true"
-content-security-policy = "default-src 'self'; script-src *; child-src *; worker-src *"
 
 [[headers]]
 for = "/sw-force-update"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
+x-note = "crude way of controlling the cache invalidation from main"
 
 [[headers]]
 for = "/deployment.json"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
+x-note = "regularly checked to automatically update cache after deployments"
 
 [[headers]]
 for = "/sw.js"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
+x-note = "service worker"
 
 [[headers]]
 for = "/cache.json"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
+x-note = "standard cache manifest"
 
 [[headers]]
 for = "/js/mtt.js"
