@@ -71,7 +71,7 @@ access-control-allow-headers = "*"
 access-control-expose-headers = "*"
 access-control-allow-methods = "GET,OPTIONS"
 # access-control-allow-credentials = "true"
-content-security-policy = "default-src 'self'; script-src *"
+content-security-policy = "default-src 'self'; script-src *; child-src *; worker-src *"
 
 [[headers]]
 for = "/sw-force-update"
