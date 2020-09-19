@@ -149,6 +149,12 @@ cache-control = "max-age=15552000"
 content-type = "font/woff2"
 access-control-allow-origin = "*"
 
+[[headers]]
+for = "*.avif"
+[headers.values]
+Content-Type = "image/avif"
+content-disposition = "inline"
+
 # REDIRECTS
 ## https://docs.netlify.com/routing/redirects/
 
