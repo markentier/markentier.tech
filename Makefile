@@ -1,4 +1,5 @@
 # markentier.tech
+
 NETLIFY_DEPLOY_URL ?= https://markentier.tech
 
 # COMMIT_REF ?= ffffffffffffffffffffffffffffffffffffffff
@@ -33,7 +34,6 @@ build: install-zola build-site postprogressing
 local:
 	$(MAKE) build local-deployment-json NETLIFY_DEPLOY_URL=http://localhost:3000
 
-# disabled: netlify-lambda netlify-go
 netlify: install-zola build netlify-deployment
 	@echo NETLIFY_DEPLOY_URL = $(NETLIFY_DEPLOY_URL)
 	@echo DEPLOY_URL = $(DEPLOY_URL)
@@ -77,15 +77,16 @@ check-html-size:
 	@find public -type f -name '*.html' -exec du -h {} \; | sort -r -u -k 1
 
 images:
+	$(MAKE) create-pngs
 	$(MAKE) create-thumbs
 	$(MAKE) create-webp
+	$(MAKE) create-avif
 	$(MAKE) create-sqip
 
 images-with-recreate:
-	$(MAKE) delete-webps delete-thumbs
+	$(MAKE) delete-avifs delete-webps delete-thumbs
 	$(MAKE) images
 
-# imagemagick(convert), pngquant, optipng
 COVERS = $(shell find site -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
 
@@ -93,19 +94,39 @@ THUMB_SIZE = 320x160
 PNG_COLORS = 32
 
 PNGS = $(shell find site -iname '*.png')
+JPGS = $(shell find site -iname '*.jpg')
+JPG2PNG = $(JPGS:.jpg=.png)
 WEBPS = $(PNGS:.png=.webp)
+AVIFS = $(PNGS:.png=.avif)
+
+create-pngs: $(JPG2PNG)
+
+$(JPG2PNG): %.png: %.jpg
+	convert $< $@
 
 create-webp: $(WEBPS)
 
 $(WEBPS): %.webp: %.png
 	@echo "from\n  $<\nto\n  $@"
-	@cwebp -lossless -exact $< -o $@
+	@cwebp -mt -pass 10 -z 9 -lossless -exact $< -o $@
 
 list-webps:
 	@find site -iname '*.webp' -exec wc -c {} \;
 
 delete-webps:
 	rm -rf $(WEBPS)
+
+create-avif: $(AVIFS)
+
+$(AVIFS): %.avif: %.png
+	@echo "from\n  $<\nto\n  $@"
+	@cavif --quality=70 --overwrite -o $@ $<
+
+list-avifs:
+	@find site -iname '*.avif' -exec wc -c {} \;
+
+delete-avifs:
+	rm -rf $(AVIFS)
 
 regenerate-thumbs: delete-thumbs create-thumbs
 
@@ -121,7 +142,7 @@ $(THUMBS): %thumb.png: %cover.png
 	@echo "=== [1] Size: `wc -c < $@`"
 	pngquant --speed 1 --strip --force --output $@ $(PNG_COLORS) $@ 2>/dev/null
 	@echo "=== [2] Size: `wc -c < $@`"
-	optipng -quiet -clobber -o7 -zm1-9 -out $@ $@
+	oxipng -q -o max -a -Z -s --fix --force --out $@ $@
 	@echo "=== [F] Size: `wc -c < $@`"
 	@echo
 
@@ -132,7 +153,7 @@ opimize-pngs:
 	@find site -iname '*.png' -exec sh -c "\
 		echo 'Optimizing file: {}' && \
 		echo ' -- before size: \c' && wc -c < {} && \
-		optipng -quiet -clobber -o7 -zm1-9 -out {} {} && \
+		oxipng -q -o max -a -Z -s --fix --force --out {} {} && \
 		echo ' --- after size: \c' && wc -c < {} \
 	" \;
 
@@ -150,9 +171,8 @@ $(SQIP_IMAGES_B64): %.b64: %
 	base64 -i $< -o $@
 
 $(SQIP_IMAGES): %.svg: %
-	yarn run sqip \
-		$(SQIP_SETTINGS) \
-		-o $@ -i $<
+	yarn run sqip $(SQIP_SETTINGS) -i $< -o $@
+	yarn run svgo --multipass -p 3 -i $@ -o $@
 
 serve:
 	cd site && $(SERVE_CMD)
@@ -162,28 +182,6 @@ serve-with-theme-reload:
 
 local-deployment-json:
 	$(MAKE) netlify-deployment COMMIT_REF=fake-commit-sha
-
-# netlify-lambda: .functions
-# 	yarn && yarn build:lambda
-
-# start-lambda:
-# 	yarn && yarn start:lambda
-
-# netlify-go:
-# 	$(MAKE) go-functions
-
-# GO_FUNCS = $(shell find functions -iname '*.go')
-# GO_BINS = $(patsubst %,.%,$(GO_FUNCS:.go=))
-
-# go-functions: .functions $(GO_BINS)
-
-# .functions:
-# 	mkdir -p $@
-
-# # GOOS=linux GOARCH=amd64
-# # go get ???
-# $(GO_BINS): .%: %.go
-# 	go build -o $@ $<
 
 netlify-deployment:
 	@echo '{"deployment":{"sha":"$(COMMIT_REF)","ts":$(shell date +%s042)}}' > public/deployment.json
@@ -211,13 +209,13 @@ check-cert:
 		openssl x509 -text
 
 install-mac: install-zola
-	brew install -f tidy-html5 imagemagick pngquant optipng webp
+	brew install -f tidy-html5 imagemagick pngquant webp
 
 # debian/ubuntu based systems only for now.
 # NOTE: we ship a prebuilt tidy in the tools folder.
-install-debs: install-zola
+install-debs: install-zola install-tools
 	sudo apt-get update
-	sudo apt-get install -y imagemagick pngquant optipng webp
+	sudo apt-get install -y imagemagick pngquant webp
 
 install-zola: $(BUILD_PATH)
 
@@ -225,6 +223,13 @@ $(BUILD_PATH):
 	curl -sSL -o $(ZOLA).tar.gz $(ZOLA_RELEASE_URL)
 	mkdir -p $(ZOLA) && tar zxf $(ZOLA).tar.gz -C $(ZOLA)
 	zola -V
+
+install-tools:
+	cargo install oxipng
+	cargo install cavif
+	cargo install svgcleaner
+	yarn global add svgo
+	yarn global add netlify-cli
 
 clean-installs:
 	rm -rf ./zola*
