@@ -1,9 +1,7 @@
 .DS_Store
 .envrc
-.functions
 .netlify
 .vscode
-gutenberg*
 node_modules
 public
 local-stuff
