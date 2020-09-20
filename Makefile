@@ -172,7 +172,8 @@ $(SQIP_IMAGES_B64): %.b64: %
 
 $(SQIP_IMAGES): %.svg: %
 	yarn run sqip $(SQIP_SETTINGS) -i $< -o $@
-	yarn run svgo --multipass -p 3 -i $@ -o $@
+	yarn run svgo --multipass -p 2 --enable=cleanupListOfValues,sortAttrs,reusePaths -i $@ -o $@
+	sed -i 's|<defs/>||g' $@
 
 serve:
 	cd site && $(SERVE_CMD)
