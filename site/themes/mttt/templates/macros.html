@@ -9,6 +9,8 @@
 {% macro get_thumb_image_url(url) %}{{url}}thumb.png{% endmacro get_thumb_image_url %}
 {% macro get_cover_image_webp_url(url) %}{{url}}cover.webp{% endmacro get_cover_image_webp_url %}
 {% macro get_thumb_image_webp_url(url) %}{{url}}thumb.webp{% endmacro get_thumb_image_webp_url %}
+{% macro get_cover_image_avif_url(url) %}{{url}}cover.avif{% endmacro get_cover_image_avif_url %}
+{% macro get_thumb_image_avif_url(url) %}{{url}}thumb.avif{% endmacro get_thumb_image_avif_url %}
 {% macro get_default_cover_image_url(base,img) %}{{base}}/{{img}}{% endmacro get_default_cover_image_url %}
 
 {% macro sec_traverse(sec) %}
@@ -36,7 +38,10 @@
       {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
       {% set page_thumb_webp_url = self::get_thumb_image_webp_url(url=page.permalink) %}
       {% set page_cover_webp_url = self::get_cover_image_webp_url(url=page.permalink) %}
+      {% set page_thumb_avif_url = self::get_thumb_image_avif_url(url=page.permalink) %}
+      {% set page_cover_avif_url = self::get_cover_image_avif_url(url=page.permalink) %}
       <picture>
+        <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif" data-cover-url="{{page_cover_avif_url | safe}}">
         <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp" data-cover-url="{{page_cover_webp_url | safe}}">
         <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" loading="lazy" data-cover-url="{{page_cover_url | safe}}">
       </picture>
