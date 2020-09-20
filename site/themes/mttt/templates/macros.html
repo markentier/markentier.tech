@@ -41,9 +41,12 @@
       {% set page_thumb_avif_url = self::get_thumb_image_avif_url(url=page.permalink) %}
       {% set page_cover_avif_url = self::get_cover_image_avif_url(url=page.permalink) %}
       <picture>
-        <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif" data-cover-url="{{page_cover_avif_url | safe}}">
-        <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp" data-cover-url="{{page_cover_webp_url | safe}}">
-        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" loading="lazy" data-cover-url="{{page_cover_url | safe}}">
+        <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif">
+          {# data-cover-url="{{page_cover_avif_url | safe}}" #}
+        <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp">
+          {# data-cover-url="{{page_cover_webp_url | safe}}" #}
+        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" loading="lazy">
+          {# data-cover-url="{{page_cover_url | safe}}" #}
       </picture>
       {% endif %}
       <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
@@ -61,7 +64,8 @@
     </a>
     <footer class="list-meta">
       <div class="data">
-        <link itemprop="mainEntityOfPage" rel="prerender" href="{{page.permalink | safe}}" data-fetch>
+        <link itemprop="mainEntityOfPage" rel="prerender" href="{{page.permalink | safe}}">
+          {# data-fetch #}
         {# currently we just use the publishing date here: #}
         <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
           datetime="{{pdate_iso}}">{{pdate_date}}</time>

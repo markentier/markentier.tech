@@ -1,25 +1,24 @@
 // https://github.com/gokulkrishh/demo-progressive-web-app/blob/master/js/offline.js
-(function () {
-  'use strict';
+"use strict";
 
-  const headerElement = document.querySelector('header')
-  const metaTagTheme = document.querySelector('meta[name=theme-color]')
-
-  document.addEventListener('DOMContentLoaded', function (event) {
-    if (!navigator.onLine) { updateNetworkStatus() }
-    window.addEventListener('online', updateNetworkStatus, false)
-    window.addEventListener('offline', updateNetworkStatus, false)
-  })
+(() => {
+  const headerElement = document.querySelector("header");
+  const metaTagTheme = document.querySelector("meta[name=theme-color]");
 
   // To update network status
-  function updateNetworkStatus () {
+  const updateNetworkStatus = () => {
     if (navigator.onLine) {
-      metaTagTheme.setAttribute('content', '#0288d1')
-      headerElement.classList.remove('app__offline')
+      metaTagTheme.setAttribute("content", "#dfdddc");
+      headerElement.classList.remove("app__offline");
     } else {
-      // toast('App is offline')
-      metaTagTheme.setAttribute('content', '#6b6b6b')
-      headerElement.classList.add('app__offline')
+      metaTagTheme.setAttribute("content", "#2f2d2c");
+      headerElement.classList.add("app__offline");
     }
   }
+
+  document.addEventListener("DOMContentLoaded", function (_e) {
+    if (!navigator.onLine) { updateNetworkStatus(); }
+    window.addEventListener("online", updateNetworkStatus, false);
+    window.addEventListener("offline", updateNetworkStatus, false);
+  });
 })()

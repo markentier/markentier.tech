@@ -49,28 +49,9 @@
     deploymentSync();
   };
 
-  // ASYNC POST FETCHING
-
-  const MAX_ITEMS = 3;
-  const sliced = (arrayLike) => Array.from(arrayLike).slice(0, MAX_ITEMS);
-  const slicedSelection = (selector) => sliced(document.querySelectorAll(selector));
-
-  const asyncPostPrefetchContent = () => {
-    slicedSelection('a[data-fetch], link[data-fetch]').forEach((e) => fetch(e.href));
-  };
-
-  const asyncPostPrefetchImages = () => {
-    // will be webp (only Safari will suffer :shrug:)
-    slicedSelection('source[data-cover-url]').forEach((e) => fetch(e.dataset.coverUrl));
-    // and this png - let's disable it for now
-    //slicedSelection('img[data-cover-url]').forEach((e) => fetch(e.dataset.coverUrl));
-  };
-
   // TRIGGER ON LOAD
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
-    // setTimeout(asyncPostPrefetchContent, 5000);
-    // setTimeout(asyncPostPrefetchImages, 9000);
   };
 
   window.markentier = { tech: '🦄' }; // ;-)
