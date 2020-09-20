@@ -120,7 +120,7 @@ create-avif: $(AVIFS)
 
 $(AVIFS): %.avif: %.png
 	@echo "from\n  $<\nto\n  $@"
-	@cavif --quality=70 --overwrite -o $@ $<
+	@cavif --quality=42 --overwrite -o $@ $<
 
 list-avifs:
 	@find site -iname '*.avif' -exec wc -c {} \;
