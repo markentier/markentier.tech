@@ -28,7 +28,6 @@
   }
 
   h1 {
-    // min-width: 1ch; // maybe as hack for firefox (mobile)?
     margin: 1.333rem 0 0 -.3rem;
     color: var(--head-color);
     &::first-letter { font-size: 0; }
@@ -43,7 +42,7 @@
 }
 
 .navbar {
-  position: sticky; top: 0; // non-JS stickyness; should work almost everywhere
+  position: sticky; top: 0; // non-JS stickyness; should work almost everywhere - yay!
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   padding-left: calc(50vw - var(--ref-size)*18.45); // relates to 50% wrppr width
