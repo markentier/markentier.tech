@@ -15,20 +15,21 @@
 
 .headlink {
   text-decoration: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: 4.5rem auto;
   align-items: center;
   padding: 1rem 0 0 0;
   min-width: 17rem;
+  margin-left: -1.15rem;
 
   .header-logo {
     width: 4.5rem;
     height: 4.5rem;
-    margin-left: -1.2rem;
   }
 
   h1 {
-    margin: 0 0 0 -.3rem;
-    padding-top: 1.333rem;
+    // min-width: 1ch; // maybe as hack for firefox (mobile)?
+    margin: 1.333rem 0 0 -.3rem;
     color: var(--head-color);
     &::first-letter { font-size: 0; }
   }
@@ -42,11 +43,9 @@
 }
 
 .navbar {
-  // position: sticky; -- still in CSS draft :-(
-  position: relative;
+  position: sticky; top: 0; // non-JS stickyness; should work almost everywhere
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  // padding: .5rem;
   padding-left: calc(50vw - var(--ref-size)*18.45); // relates to 50% wrppr width
   z-index: 999;
 
