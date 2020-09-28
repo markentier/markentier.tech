@@ -139,6 +139,13 @@
   color: inherit;
 }
 
+.index_listing_post,
+.article-body {
+  text-align: justify;
+  // currently only working on FF
+  text-justify: inter-character;
+}
+
 .index_listing_post p,
 .article-body > p {
   font-size: 105%;
