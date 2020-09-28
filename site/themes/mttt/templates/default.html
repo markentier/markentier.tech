@@ -128,15 +128,10 @@
     {% endblock header %}</header>
     <nav class="navbar">
       <div class="navbar-menu">
-        <a href="/" class="homelink">
-          {# NOTE: ALWAYS KEEP IN SYNC WITH EXTERNAL FILE #}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" class="mtt-logo home-logo">
-            <path class="logo-path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M480 506v208-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72v128-128s0-72 64-72 64 72 64 72 1 85 1 128c-1 28-24 54-24 54-126 161-348 207-527 111-179-97-262-309-196-501 66-193 261-309 462-275 200 33 347 206 348 409" />
-          </svg> home</a>
+        <a href="/">home</a>
         <a href="/resolution/">resolution</a>
         <a href="/about/">about</a>
       </div>
-      <progress class="scrollprogress"></progress>
     </nav>
     <main id="content" class="content">
       {% block content_header %}{% endblock content_header %}

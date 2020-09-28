@@ -52,7 +52,6 @@
 
   .navbar-menu {
     padding: .5rem;
-    padding-left: 0;
     display: flex;
     align-items: baseline;
 
@@ -65,37 +64,6 @@
 
       &:first-child { margin-left: 0; padding-left: 0; border: 0 }
     }
-
-    .homelink {
-      .home-logo {
-        display: inline-block;
-        width: 0; height: 2rem;
-        vertical-align: bottom;
-        opacity: 0;
-        transition: all .1s ease;
-      }
-    }
-  }
-
-  .scrollprogress {
-    display: block;
-    width: 100vw;
-    height: 1px;
-    margin-left: calc(-50vw + var(--ref-size)*18.45);
-
-    opacity: 0;
-    transition: opacity .1s ease;
-
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    color: var(--accent-darker-color);
-
-    &, &::-webkit-progress-bar { background-color: transparent; }
-    // yes, both need to be separate, otherwise Chrome does not apply :tableflip:
-    &::-webkit-progress-value { background: var(--accent-darker-color); }
-    &::-moz-progress-bar { background: var(--accent-darker-color); }
   }
 }
 

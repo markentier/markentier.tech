@@ -2,10 +2,11 @@
 .envrc
 .netlify
 .vscode
-node_modules
-public
+desktop.ini
 local-stuff
+node_modules
 npm-debug.log*
+public
 yarn-debug.log*
 yarn-error.log*
 zola*
