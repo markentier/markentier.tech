@@ -1,4 +1,7 @@
-html { box-sizing: border-box; }
+html {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
 
 *, *::before, *::after { box-sizing: inherit; }
 * {
