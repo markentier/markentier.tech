@@ -98,22 +98,6 @@
     &::-moz-progress-bar { background: var(--accent-darker-color); }
   }
 }
-.sticky {
-  position: fixed; top: 0; left: 0;
-  .navbar-menu {
-    .homelink .home-logo {
-      width: 2rem;
-      opacity: 1;
-      transition: all .1s ease;
-    }
-  }
-
-  .scrollprogress[value] {
-    opacity: 1;
-    transition: opacity .3s ease .7s;
-  }
-}
-.sticky + .content { padding-top: 5rem; }
 
 .index_listing_post {
   padding-bottom: .5rem;
@@ -139,16 +123,11 @@
   color: inherit;
 }
 
-.index_listing_post,
-.article-body {
-  text-align: justify;
-  // currently only working on FF
-  text-justify: inter-character;
-}
-
 .index_listing_post p,
 .article-body > p {
   font-size: 105%;
+  text-align: justify;
+  text-justify: inter-character; // currently only working on FF
 }
 
 .index_listing_post p,
