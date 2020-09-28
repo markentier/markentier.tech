@@ -35,7 +35,7 @@
         const newE = d.createElement("pre");
         const newCode = d.createElement("code");
         newCode.innerHTML = html;
-        newCode.style.fontSize = "150%";
+        newCode.style.fontSize = "133%";
         newE.appendChild(newCode);
         parent.replaceWith(newE);
       }
