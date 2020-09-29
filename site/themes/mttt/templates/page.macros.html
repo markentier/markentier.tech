@@ -30,22 +30,13 @@
       {#<time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>#}
     </div>
     <div class="time_and_words">
-      {# disabled; macro error because of `self`:
-        <span class="rtime">{{ self::preadtime(reading_time=page.reading_time) }}</span>#}
+      <span class="rtime">{{ m::preadtime(reading_time=page.reading_time) }}</span>
       <span class="wordcount">(<strong>{{page.word_count}}</strong> words)</span>
     </div>
   </div>
   {% endif %}
 </header>
 {% endmacro pheader %}
-
-{% macro preadtime(reading_time) %}
-{% if reading_time < 1 %}
-  one minute read
-{% else %}
-  {{reading_time}} min{% if reading_time != 1 %}s{% endif %} read
-{% endif %}
-{% endmacro preadtime %}
 
 {% macro pfooter(page, config) %}
 <footer class="meta">
