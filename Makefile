@@ -149,7 +149,7 @@ $(THUMBS): %thumb.png: %cover.png
 list-pngs:
 	@find site -iname '*.png' -exec wc -c {} \;
 
-opimize-pngs:
+optimize-pngs:
 	@find site -iname '*.png' -exec sh -c "\
 		echo 'Optimizing file: {}' && \
 		echo ' -- before size: \c' && wc -c < {} && \
