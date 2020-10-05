@@ -14,7 +14,7 @@
         );
         reg.update();
 
-        if ("periodicSync" in registration) {
+        if ("periodicSync" in reg) {
           reg.periodicSync.register("deploymentCheck", {
             minInterval: DEPLOYMENT_SYNC_PERIOD,
           }).then((result) => {
