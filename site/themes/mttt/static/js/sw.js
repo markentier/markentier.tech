@@ -4,9 +4,7 @@
 // https://github.com/GoogleChromeLabs/airhorn/blob/master/app/sw.js
 // https://serviceworke.rs/strategy-cache-update-and-refresh.html
 
-importScripts('/sw-idb.js');
-
-// const unixTimestamp = () => parseInt(Date.now() / 1000);
+importScripts('/js/sw-idb.js');
 
 const FORCE_UPDATE_PAH_RE = new RegExp('/sw-force-update');
 const FORCE_UPDATE_RESPONSE = JSON.stringify({ ok: true });

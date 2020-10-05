@@ -6,7 +6,7 @@
 
   const registerSwOnLoad = () => {
     navigator.serviceWorker
-      .register('/sw.js', { scope: '/' })
+      .register('/js/sw.js', { scope: '/' })
       .then((reg) => {
         console.log('[ServiceWorker] Registration successful with scope: ', reg.scope);
         reg.update();
