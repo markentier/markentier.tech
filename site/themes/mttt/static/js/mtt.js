@@ -49,6 +49,16 @@
     deploymentSync();
   };
 
+  // remove the background image styling, so transparent images won't have
+  // strange SQIP artefacts shining through
+  document.querySelectorAll("img[loading=lazy]").forEach((img) => {
+    img.addEventListener("load", (_event) => {
+      // img.className = "loaded"
+      // img.classList = [];
+      img.attributes.removeNamedItem("class");
+    });
+  });
+
   // TRIGGER ON LOAD
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
