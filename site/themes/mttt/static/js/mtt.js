@@ -50,7 +50,8 @@
     deploymentSync();
   };
 
-  const reloadStyles = () => {
+  const reloadResources = () => {
+    c.log("[main] Updating stylesheets ...");
     d.querySelectorAll("link[rel=stylesheet]").forEach((link) => {
       link.href = link.href.replace(/\?.*|$/, "?" + Date.now());
     });
@@ -68,8 +69,7 @@
     };
     n.serviceWorker.addEventListener("message", (event) => {
       if (event.data.reloadStyles) {
-        c.log("[main] Got informed to reload the stylesheets.");
-        reloadStyles();
+        reloadResources();
       };
     });
   };
