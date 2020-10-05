@@ -85,6 +85,7 @@ const forceUpdate = (e) => {
     syncAndUpdate()
       .then(() => caches.keys())
       .then(cacheKeysPurgeFn)
+      .then(reloadStylesInClients)
   );
   return new Response(FORCE_UPDATE_RESPONSE);
 };
@@ -151,6 +152,13 @@ const deploymentSync = () => {
     });
 };
 
+const reloadStylesInClients = async (event) => {
+  if (!event.clientId) return;
+  const client = await clients.get(event.clientId);
+  if (!client) return;
+  client.postMessage({ reloadStyles: true });
+}
+
 const installHandler = (e) => {
   e.waitUntil(syncAndUpdate());
 };
@@ -172,3 +180,6 @@ const fetchHandler = (e) => {
 self.addEventListener('install', installHandler)
 self.addEventListener('activate', activateHandler)
 self.addEventListener('fetch', fetchHandler)
+self.addEventListener('message', (event) => {
+  console.log("[SW] received message:", event.data);
+});

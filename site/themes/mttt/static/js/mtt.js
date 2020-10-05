@@ -49,6 +49,12 @@
     deploymentSync();
   };
 
+  const reloadStyles = () => {
+    document.querySelectorAll("link[rel=stylesheet]").forEach((link) => {
+      link.href = link.href.replace(/\?.*|$/, "?" + Date.now());
+    });
+  };
+
   // remove the background image styling, so transparent images won't have
   // strange SQIP artefacts shining through
   document.querySelectorAll("img[loading=lazy]").forEach((img) => {
@@ -63,6 +69,13 @@
   window.onload = () => {
     setTimeout(deploymentCheck, 0);
   };
+
+  window.navigator.serviceWorker.addEventListener('message', (event) => {
+    if(event.data.reloadStyles) {
+      console.log("[main] Got informed to reload the stylesheets.");
+      reloadStyles();
+    }
+  });
 
   window.markentier = { tech: '🦄' }; // ;-)
 })();
