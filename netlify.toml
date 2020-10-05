@@ -89,10 +89,10 @@ cache-control = "no-cache, no-store, must-revalidate"
 x-note = "regularly checked to automatically update cache after deployments"
 
 [[headers]]
-for = "/sw.js"
+for = "/js/sw.js"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
-x-note = "service worker"
+service-worker-allowed = "/"
 
 [[headers]]
 for = "/cache.json"
