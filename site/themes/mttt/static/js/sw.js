@@ -28,13 +28,12 @@ const openObject = {
   },
 };
 
-const createDB = () => idb.openDB(IDB_NAME, IDB_VERSION, openObject);
+const openDB = () => idb.openDB(IDB_NAME, IDB_VERSION, openObject);
 
 const tsSort = (a, b) => { if (a.ts < b.ts) { return -1 }; if (a.ts > b.ts) { return 1 }; return 0; }
 
 const getVersion = () => {
-  return idb
-    .openDB(IDB_NAME, IDB_VERSION, openObject)
+  return openDB()
     .then((db) =>
       db.transaction([IDB_OSTORE], "readonly").objectStore(IDB_OSTORE).getAll()
     )
@@ -132,7 +131,7 @@ const serveOrFetch = (event) => {
         .catch((_not_found) => {
           return fetch(event.request).then((response) => {
             // cache only valid requests
-            if(response.ok && response.url.startsWith('https')) {
+            if (response.ok && response.url.startsWith('https')) {
               event.waitUntil(cache.put(event.request, response.clone()));
               // await cache.put(event.request, response.clone());
             };
@@ -148,7 +147,7 @@ const deploymentSync = () => {
     .then((response) => response.json())
     .catch((_err) => { return FALLBACK_PAYLOAD_FN(); })
     .then((payload) => {
-      return createDB().then((db) => updateSha(payload, db));
+      return openDB().then((db) => updateSha(payload, db));
     });
 };
 
@@ -180,11 +179,27 @@ const fetchHandler = (event) => {
   event.respondWith(cacheableFetch(event));
 };
 
+const forceUpdateHandler = (event) => {
+  if (event.data.forceUpdate) {
+    forceUpdate(event);
+  };
+};
+
+const periodSyncHandler = (event) => {
+  if (event.tag === "deploymentCheck") {
+    event.waitUntil(
+      syncAndUpdate()
+        .then(() => caches.keys())
+        .then(cacheKeysPurgeFn)
+        .then((deletes) => {
+          console.log("[SW] periodic update triggered, deletes:", deletes);
+        })
+    );
+  }
+};
+
 self.addEventListener('install', installHandler)
 self.addEventListener('activate', activateHandler)
 self.addEventListener('fetch', fetchHandler)
-self.addEventListener('message', (event) => {
-  if(event.data.forceUpdate) {
-    forceUpdate(event);
-  };
-});
+self.addEventListener('message', forceUpdateHandler);
+self.addEventListener('periodicsync', periodSyncHandler);

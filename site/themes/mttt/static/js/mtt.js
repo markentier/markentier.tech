@@ -2,6 +2,8 @@
 'use strict';
 
 ((w, n, d, c) => {
+  const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
+
   // SERVICE WORKER
   const registerSW = () => {
     n.serviceWorker.register("/js/sw.js", { scope: "/" }).then(
@@ -10,6 +12,14 @@
           "[ServiceWorker] Registration successful with scope: ",
           reg.scope
         );
+        if ("PeriodicSyncManager" in window) {
+          reg.periodicSync.register("deploymentCheck", {
+            minInterval: DEPLOYMENT_SYNC_PERIOD,
+          });
+        } else {
+          // fallback to regular main thread check
+          deploymentCheck();
+        };
         reg.update();
       },
       (err) => {
@@ -22,7 +32,6 @@
   const deploymentCheck = () => {
     const DEPLOYMENT_PATH = "/deployment.json";
     const DEPLOYMENT_NOT_OK_RESPONSE = { deployment: false };
-    const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
 
     const jsonResponse = (response) => {
       if (response.status === 200) return response.json();
@@ -47,7 +56,7 @@
     };
 
     setInterval(deploymentSync, DEPLOYMENT_SYNC_PERIOD);
-    deploymentSync();
+    // deploymentSync();
   };
 
   const reloadResources = () => {
@@ -57,20 +66,14 @@
     });
   };
 
-  const startDeploymentCheck = () => {
-    setTimeout(deploymentCheck, 0);
-  };
-
   // only set up all related stuff together if SW are available
   if ("serviceWorker" in n) {
-    w.onload = () => {
+    w.onload = (_event) => {
       registerSW();
-      startDeploymentCheck();
     };
+
     n.serviceWorker.addEventListener("message", (event) => {
-      if (event.data.reloadStyles) {
-        reloadResources();
-      };
+      if (event.data.reloadStyles) { reloadResources();};
     });
   };
 
