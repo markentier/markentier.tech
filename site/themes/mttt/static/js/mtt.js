@@ -25,7 +25,7 @@
     const DEPLOYMENT_NOT_OK_RESPONSE = { deployment: false };
     const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
 
-    const responseTransformer = (response) => {
+    const jsonResponse = (response) => {
       if (response.status === 200) return response.json();
       return DEPLOYMENT_NOT_OK_RESPONSE;
     };
@@ -43,7 +43,7 @@
     const deploymentSync = () => {
       if (n.onLine === false) return;
       fetch(DEPLOYMENT_PATH, { cache: "no-store" })
-        .then(responseTransformer)
+        .then(jsonResponse)
         .catch((_err) => DEPLOYMENT_NOT_OK_RESPONSE)
         .then(syncHandler);
     };
