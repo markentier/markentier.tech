@@ -74,14 +74,14 @@ const purgeFn = (cacheName, version) => {
   };
 };
 
-const cacheableFetch = (e) => {
-  if (e.request.url.match(FORCE_UPDATE_PAH_RE)) return forceUpdate(e);
-  if (e.request.url.match(DEPLOYMENT_PATH_RE)) return addDeployment(e);
-  return serveOrFetch(e);
+const cacheableFetch = (event) => {
+  if (event.request.url.match(FORCE_UPDATE_PAH_RE)) return forceUpdate(event);
+  if (event.request.url.match(DEPLOYMENT_PATH_RE)) return addDeployment(event);
+  return serveOrFetch(event);
 };
 
-const forceUpdate = (e) => {
-  e.waitUntil(
+const forceUpdate = (event) => {
+  event.waitUntil(
     syncAndUpdate()
       .then(() => caches.keys())
       .then(cacheKeysPurgeFn)
@@ -95,10 +95,10 @@ const syncAndUpdate = () => {
     .finally(() => getVersionedCache().then(cacheFn));
 };
 
-const addDeployment = (e) => {
-  return fetch(e.request, { cache: 'no-store' })
+const addDeployment = (event) => {
+  return fetch(event.request, { cache: 'no-store' })
     .then((response) => {
-      e.waitUntil(new Promise((resolve) => resolve(() => {
+      event.waitUntil(new Promise((resolve) => resolve(() => {
         return response.clone().json()
           .then((payload) => updateShaWithDb(payload))
           .catch((_err) => updateShaWithDb(FALLBACK_PAYLOAD_FN()))
@@ -123,18 +123,18 @@ const updateSha = (payload, db) => {
     .put(payload.deployment);
 };
 
-const serveOrFetch = (e) => {
+const serveOrFetch = (event) => {
   return getVersionedCache()
     .then((cache) => {
       return cache
-        .match(e.request, { ignoreSearch: true })
+        .match(event.request, { ignoreSearch: true })
         .then((response) => response || Promise.reject(new Error("not-found")))
         .catch((_not_found) => {
-          return fetch(e.request).then((response) => {
+          return fetch(event.request).then((response) => {
             // cache only valid requests
             if(response.ok && response.url.startsWith('https')) {
-              e.waitUntil(cache.put(e.request, response.clone()));
-              // await cache.put(e.request, response.clone());
+              event.waitUntil(cache.put(event.request, response.clone()));
+              // await cache.put(event.request, response.clone());
             };
             // otherwise just return whatever it is
             return response;
@@ -152,19 +152,22 @@ const deploymentSync = () => {
     });
 };
 
-const reloadStylesInClients = async (event) => {
-  if (!event.clientId) return;
-  const client = await clients.get(event.clientId);
-  if (!client) return;
-  client.postMessage({ reloadStyles: true });
+const reloadStylesInClients = async (_result) => {
+  const allClients = await self.clients.matchAll({
+    includeUncontrolled: true,
+  });
+  for(const client of allClients) {
+    client.postMessage({ reloadStyles: true });
+  };
+  return true;
 }
 
-const installHandler = (e) => {
-  e.waitUntil(syncAndUpdate());
+const installHandler = (event) => {
+  event.waitUntil(syncAndUpdate());
 };
 
-const activateHandler = (e) => {
-  e.waitUntil(
+const activateHandler = (event) => {
+  event.waitUntil(
     deploymentSync().finally(() => {
       return caches.keys()
         .then(cacheKeysPurgeFn)
@@ -173,17 +176,15 @@ const activateHandler = (e) => {
   );
 };
 
-const fetchHandler = (e) => {
-  e.respondWith(cacheableFetch(e));
+const fetchHandler = (event) => {
+  event.respondWith(cacheableFetch(event));
 };
 
 self.addEventListener('install', installHandler)
 self.addEventListener('activate', activateHandler)
 self.addEventListener('fetch', fetchHandler)
 self.addEventListener('message', (event) => {
-  console.log("[SW] received message:", event.data);
   if(event.data.forceUpdate) {
-    console.log("---- would force update (not active yet)")
-    // forceUpdate(event);
+    forceUpdate(event);
   };
 });
