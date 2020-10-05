@@ -1,4 +1,7 @@
 {% extends "default.html" %}
+{% block before_head_end %}
+<meta name="robots" content="noindex">
+{% endblock before_head_end %}
 {% block content_header %}
 <article>
   <h2 class="header-tag">Tag: {{term.name}}</h2>

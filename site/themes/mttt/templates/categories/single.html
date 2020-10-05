@@ -17,6 +17,7 @@
 <meta property="og:url" content="{{config.base_url | safe}}">
 <meta property="og:image" content="{{config.base_url | safe}}/m.1024.txt.bg.png">
 {% endif %}
+<meta name="robots" content="noindex">
 {% endblock before_head_end %}
 {% block content_header %}
 {% set is_home = term.name == "default" %}
