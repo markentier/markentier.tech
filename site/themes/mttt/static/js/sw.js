@@ -182,4 +182,8 @@ self.addEventListener('activate', activateHandler)
 self.addEventListener('fetch', fetchHandler)
 self.addEventListener('message', (event) => {
   console.log("[SW] received message:", event.data);
+  if(event.data.forceUpdate) {
+    console.log("---- would force update (not active yet)")
+    // forceUpdate(event);
+  };
 });

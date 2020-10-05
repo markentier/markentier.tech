@@ -1,28 +1,27 @@
 /* global fetch */
 'use strict';
 
-(() => {
+((w, n, d, c) => {
   // SERVICE WORKER
-
-  const registerSwOnLoad = () => {
-    navigator.serviceWorker
-      .register('/js/sw.js', { scope: '/' })
-      .then((reg) => {
-        console.log('[ServiceWorker] Registration successful with scope: ', reg.scope);
+  const registerSW = () => {
+    n.serviceWorker.register("/js/sw.js", { scope: "/" }).then(
+      (reg) => {
+        c.log(
+          "[ServiceWorker] Registration successful with scope: ",
+          reg.scope
+        );
         reg.update();
-      }, (err) => {
-        console.log('[ServiceWorker] Registration failed: ', err);
-      });
+      },
+      (err) => {
+        c.log("[ServiceWorker] Registration failed: ", err);
+      }
+    );
   };
 
-  // start it:
-  if ('serviceWorker' in navigator) { window.addEventListener('load', registerSwOnLoad); }
-
   // DEPLOYMENT CHECKER
-
   const deploymentCheck = () => {
-    const FORCE_UPDATE_PATH = '/sw-force-update';
-    const DEPLOYMENT_PATH = '/deployment.json';
+    const FORCE_UPDATE_PATH = "/sw-force-update";
+    const DEPLOYMENT_PATH = "/deployment.json";
     const DEPLOYMENT_NOT_OK_RESPONSE = { deployment: false };
     const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
 
@@ -30,52 +29,58 @@
       if (response.status === 200) return response.json();
       return DEPLOYMENT_NOT_OK_RESPONSE;
     };
+
     const syncHandler = (payload) => {
       if (payload.deployment === false) return;
       const sha = payload.deployment.sha;
-      window.caches.keys().then((cacheKeys) => {
+      w.caches.keys().then((cacheKeys) => {
         if (cacheKeys.includes(sha)) return;
         fetch(FORCE_UPDATE_PATH);
-      })
+        n.serviceWorker.controller.postMessage({ forceUpdate: true });
+      });
     };
+
     const deploymentSync = () => {
-      if (navigator.onLine === false) return;
-      fetch(DEPLOYMENT_PATH, { cache: 'no-store' })
+      if (n.onLine === false) return;
+      fetch(DEPLOYMENT_PATH, { cache: "no-store" })
         .then(responseTransformer)
         .catch((_err) => DEPLOYMENT_NOT_OK_RESPONSE)
         .then(syncHandler);
     };
+
     setInterval(deploymentSync, DEPLOYMENT_SYNC_PERIOD);
     deploymentSync();
   };
 
   const reloadStyles = () => {
-    document.querySelectorAll("link[rel=stylesheet]").forEach((link) => {
+    d.querySelectorAll("link[rel=stylesheet]").forEach((link) => {
       link.href = link.href.replace(/\?.*|$/, "?" + Date.now());
+    });
+  };
+
+  const startDeploymentCheck = () => {
+    setTimeout(deploymentCheck, 0);
+  };
+
+  // only set up all related stuff together if SW are available
+  if ("serviceWorker" in n) {
+    w.onload = () => {
+      registerSW();
+      startDeploymentCheck();
+    };
+    n.serviceWorker.addEventListener("message", (event) => {
+      if (event.data.reloadStyles) {
+        c.log("[main] Got informed to reload the stylesheets.");
+        reloadStyles();
+      };
     });
   };
 
   // remove the background image styling, so transparent images won't have
   // strange SQIP artefacts shining through
-  document.querySelectorAll("img[loading=lazy]").forEach((img) => {
-    img.addEventListener("load", (_event) => {
-      // img.className = "loaded"
-      // img.classList = [];
-      img.attributes.removeNamedItem("class");
-    });
+  d.querySelectorAll("img[loading=lazy]").forEach((img) => {
+    img.onload = (_event) => img.attributes.removeNamedItem("class");
   });
 
-  // TRIGGER ON LOAD
-  window.onload = () => {
-    setTimeout(deploymentCheck, 0);
-  };
-
-  window.navigator.serviceWorker.addEventListener('message', (event) => {
-    if(event.data.reloadStyles) {
-      console.log("[main] Got informed to reload the stylesheets.");
-      reloadStyles();
-    }
-  });
-
-  window.markentier = { tech: '🦄' }; // ;-)
-})();
+  w.markentier = { tech: "🦄" }; // ;-)
+})(window, navigator, document, console);
