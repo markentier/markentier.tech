@@ -12,18 +12,24 @@
           "[ServiceWorker] Registration successful with scope: ",
           reg.scope
         );
-        if ("PeriodicSyncManager" in window) {
+        reg.update();
+
+        if ("periodicSync" in registration) {
           reg.periodicSync.register("deploymentCheck", {
             minInterval: DEPLOYMENT_SYNC_PERIOD,
+          }).then((result) => {
+            c.log("[periodicSync] deploymentCheck registered;", result);
+          }).catch((err) => {
+            c.log("[periodicSync] deploymentCheck registration failed;", err);
+            deploymentCheck();
           });
         } else {
-          // fallback to regular main thread check
+          c.log("No [periodicSync] available; fallback to check in main thread");
           deploymentCheck();
-        };
-        reg.update();
+        }
       },
       (err) => {
-        c.log("[ServiceWorker] Registration failed: ", err);
+        c.log("[ServiceWorker] Registration failed:", err);
       }
     );
   };
@@ -68,9 +74,7 @@
 
   // only set up all related stuff together if SW are available
   if ("serviceWorker" in n) {
-    w.onload = (_event) => {
-      registerSW();
-    };
+    w.onload = (_event) => registerSW();
 
     n.serviceWorker.addEventListener("message", (event) => {
       if (event.data.reloadStyles) { reloadResources();};

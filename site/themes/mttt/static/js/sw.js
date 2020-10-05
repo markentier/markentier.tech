@@ -69,7 +69,7 @@ const cacheKeysPurgeFn = (cacheNames) => {
 const purgeFn = (cacheName, version) => {
   if (cacheName !== version) {
     console.log('[SW] Deleting old cache:', cacheName);
-    return caches.delete(cacheName);
+    return caches.delete(cacheName) || false;
   };
 };
 
