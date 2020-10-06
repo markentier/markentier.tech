@@ -4,7 +4,15 @@
 ((w, n, d, c) => {
   const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
 
-  const bgWorkerSetup = () => {
+  // const sw = () => {
+  //   let s = n.serviceWorker.controller;
+  //   if (!s) {
+  //     n.serviceWorker.ready.then((r) => s = r.active)
+  //   }
+  //   return s;
+  // }
+
+  const bgWorkerSetup = (reg) => {
     const workerSetup = (script) => {
       if ("SharedWorker" in window) {
         const worker = new SharedWorker(script);
@@ -21,7 +29,7 @@
       worker.onmessage = (event) => {
         console.log("[main] Received message from worker:", event.data);
         if (event.data.forceUpdate) {
-          n.serviceWorker.controller.postMessage(event.data);
+          reg.active.postMessage(event.data);
         };
       };
     } else {
@@ -32,22 +40,8 @@
     }
   };
 
-  // SERVICE WORKER
-  const registerSW = () => {
-    n.serviceWorker.register("/js/sw.js", { scope: "/" }).then(
-      (reg) => {
-        c.log(
-          "[ServiceWorker] Registration successful with scope: ",
-          reg.scope
-        );
-        reg.update();
-      },
-      (err) => {
-        c.log("[ServiceWorker] Registration failed:", err);
-      }
-    );
-
-    n.serviceWorker.ready.then((reg) => {
+  const periodicSyncSetup = (reg) => {
+    try {
       if ("periodicSync" in reg) {
         reg.periodicSync
           .register("deploymentCheck", {
@@ -59,13 +53,32 @@
           .catch((err) => {
             c.log("[periodicSync] deploymentCheck registration failed;", err);
             c.log("No [periodicSync] available; fallback to worker setup");
-            bgWorkerSetup();
+            bgWorkerSetup(reg);
           });
       } else {
         c.log("No [periodicSync] available; fallback to worker setup");
-        bgWorkerSetup();
+        bgWorkerSetup(reg);
       }
-    });
+    } catch(err) {
+      c.log("Unrecoverable issue:", err);
+      bgWorkerSetup(reg);
+    }
+  }
+
+  // SERVICE WORKER
+  const registerSW = () => {
+    n.serviceWorker.register("/js/sw.js", { scope: "/" }).then(
+      (reg) => {
+        c.log("[ServiceWorker] Registration successful; scope: ", reg.scope);
+        reg
+          .update()
+          .then((r) => { periodicSyncSetup(r); })
+          .catch((_err) => { periodicSyncSetup(reg); })
+      },
+      (err) => {
+        c.log("[ServiceWorker] Registration failed:", err);
+      }
+    );
   };
 
   // DEPLOYMENT CHECKER
@@ -109,9 +122,9 @@
   if ("serviceWorker" in n) {
     w.onload = (_event) => registerSW();
 
-    n.serviceWorker.addEventListener("message", (event) => {
+    n.serviceWorker.onmesage = (event) => {
       if (event.data.reloadStyles) { reloadResources(); };
-    });
+    };
   };
 
   // remove the background image styling, so transparent images won't have
