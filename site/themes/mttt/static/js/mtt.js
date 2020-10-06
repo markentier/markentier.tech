@@ -122,8 +122,11 @@
   if ("serviceWorker" in n) {
     w.onload = (_event) => registerSW();
 
-    n.serviceWorker.onmesage = (event) => {
-      if (event.data.reloadStyles) { reloadResources(); };
+    n.serviceWorker.onmessage = (event) => {
+      if (event.data.reloadStyles) {
+        // reloadResources();
+        w.location.reload();
+      };
     };
   };
 
