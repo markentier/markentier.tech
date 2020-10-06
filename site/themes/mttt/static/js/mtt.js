@@ -13,25 +13,30 @@
           reg.scope
         );
         reg.update();
-
-        if ("periodicSync" in reg) {
-          reg.periodicSync.register("deploymentCheck", {
-            minInterval: DEPLOYMENT_SYNC_PERIOD,
-          }).then((result) => {
-            c.log("[periodicSync] deploymentCheck registered;", result);
-          }).catch((err) => {
-            c.log("[periodicSync] deploymentCheck registration failed;", err);
-            deploymentCheck();
-          });
-        } else {
-          c.log("No [periodicSync] available; fallback to check in main thread");
-          deploymentCheck();
-        }
       },
       (err) => {
         c.log("[ServiceWorker] Registration failed:", err);
       }
     );
+
+    n.serviceWorker.ready.then((reg) => {
+      if ("periodicSync" in reg) {
+        reg.periodicSync
+          .register("deploymentCheck", {
+            minInterval: DEPLOYMENT_SYNC_PERIOD,
+          })
+          .then((result) => {
+            c.log("[periodicSync] deploymentCheck registered;", result);
+          })
+          .catch((err) => {
+            c.log("[periodicSync] deploymentCheck registration failed;", err);
+            deploymentCheck();
+          });
+      } else {
+        c.log("No [periodicSync] available; fallback to check in main thread");
+        deploymentCheck();
+      }
+    });
   };
 
   // DEPLOYMENT CHECKER

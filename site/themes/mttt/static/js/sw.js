@@ -192,7 +192,12 @@ const periodSyncHandler = (event) => {
         .then(() => caches.keys())
         .then(cacheKeysPurgeFn)
         .then((deletes) => {
-          console.log("[SW] periodic update triggered, deletes:", deletes);
+          const updated = deletes.reduce((a,e) => a || e || false)
+          console.log("[SW] periodic update triggered");
+          if (updated) {
+            console.log("[SW] reloadStylesInClients");
+            reloadStylesInClients();
+          }
         })
     );
   }
