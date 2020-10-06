@@ -7,20 +7,28 @@
   const bgWorkerSetup = () => {
     const workerSetup = (script) => {
       if ("SharedWorker" in window) {
-        const w = new SharedWorker(script);
-        return w.port;
+        const worker = new SharedWorker(script);
+        return worker.port;
       }
-      const w = new Worker(script);
-      return w;
+      const worker = new Worker(script);
+      return worker;
     };
 
     if ("Worker" in window) {
-      console.log("[main] Worker is usable");
       const worker = workerSetup("/js/worker.js");
-      // worker.postMessage({ deploymentCheck: true });
+      worker.postMessage({ subscribe: true }); // no-op
+      // worker has no access to SW, so we need to handle that again:
       worker.onmessage = (event) => {
-        console.log("[main] Received message from worker:", event.data)
+        console.log("[main] Received message from worker:", event.data);
+        if (event.data.forceUpdate) {
+          n.serviceWorker.controller.postMessage(event.data);
+        };
       };
+    } else {
+      console.log(
+        "[main] No Worker API available; fallback to check in main thread"
+      );
+      deploymentCheck();
     }
   };
 
@@ -60,28 +68,6 @@
     });
   };
 
-  const bgWorkerSetup = () => {
-    const workerSetup = (script) => {
-      if ("SharedWorker" in window) {
-        const w = new SharedWorker(script);
-        return w.port;
-      }
-      const w = new Worker(script);
-      return w;
-    };
-
-    if ("Worker" in window) {
-      const worker = workerSetup("/js/worker.js");
-      // worker.postMessage({ deploymentCheck: true });
-      worker.onmessage = (event) => {
-        console.log("[main] Received message from worker:", event.data)
-      };
-    } else {
-      console.log("[main] No Worker API available; fallback to check in main thread")
-      deploymentCheck();
-    }
-  };
-
   // DEPLOYMENT CHECKER
   const deploymentCheck = () => {
     const DEPLOYMENT_PATH = "/deployment.json";
@@ -110,7 +96,6 @@
     };
 
     setInterval(deploymentSync, DEPLOYMENT_SYNC_PERIOD);
-    // deploymentSync();
   };
 
   const reloadResources = () => {
