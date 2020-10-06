@@ -4,6 +4,26 @@
 ((w, n, d, c) => {
   const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
 
+  const bgWorkerSetup = () => {
+    const workerSetup = (script) => {
+      if ("SharedWorker" in window) {
+        const w = new SharedWorker(script);
+        return w.port;
+      }
+      const w = new Worker(script);
+      return w;
+    };
+
+    if ("Worker" in window) {
+      console.log("[main] Worker is usable");
+      const worker = workerSetup("/js/worker.js");
+      // worker.postMessage({ deploymentCheck: true });
+      worker.onmessage = (event) => {
+        console.log("[main] Received message from worker:", event.data)
+      };
+    }
+  };
+
   // SERVICE WORKER
   const registerSW = () => {
     n.serviceWorker.register("/js/sw.js", { scope: "/" }).then(
@@ -30,13 +50,36 @@
           })
           .catch((err) => {
             c.log("[periodicSync] deploymentCheck registration failed;", err);
-            deploymentCheck();
+            c.log("No [periodicSync] available; fallback to worker setup");
+            bgWorkerSetup();
           });
       } else {
-        c.log("No [periodicSync] available; fallback to check in main thread");
-        deploymentCheck();
+        c.log("No [periodicSync] available; fallback to worker setup");
+        bgWorkerSetup();
       }
     });
+  };
+
+  const bgWorkerSetup = () => {
+    const workerSetup = (script) => {
+      if ("SharedWorker" in window) {
+        const w = new SharedWorker(script);
+        return w.port;
+      }
+      const w = new Worker(script);
+      return w;
+    };
+
+    if ("Worker" in window) {
+      const worker = workerSetup("/js/worker.js");
+      // worker.postMessage({ deploymentCheck: true });
+      worker.onmessage = (event) => {
+        console.log("[main] Received message from worker:", event.data)
+      };
+    } else {
+      console.log("[main] No Worker API available; fallback to check in main thread")
+      deploymentCheck();
+    }
   };
 
   // DEPLOYMENT CHECKER
@@ -82,7 +125,7 @@
     w.onload = (_event) => registerSW();
 
     n.serviceWorker.addEventListener("message", (event) => {
-      if (event.data.reloadStyles) { reloadResources();};
+      if (event.data.reloadStyles) { reloadResources(); };
     });
   };
 
