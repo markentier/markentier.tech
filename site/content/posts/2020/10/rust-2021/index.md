@@ -144,7 +144,7 @@ The initial announcement and call for blog posts:
 
 -----
 
-ℹ️ _This is a link heavy post. Anything broken or no pointing to the right place? [Send me a message via Twitter](https://twitter.com/asaaki) or [open an issue on GitHub](https://github.com/markentier/markentier.tech). Thank you!_
+ℹ️ _This is a link heavy post. Anything broken or not pointing to the right place? [Send me a message via Twitter](https://twitter.com/asaaki) or [open an issue on GitHub](https://github.com/markentier/markentier.tech). Thank you!_
 
 [embedded-rust]: https://rust-embedded.github.io/book/
 [arduino]: https://www.arduino.cc/
