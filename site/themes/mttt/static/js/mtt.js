@@ -132,8 +132,15 @@
 
   // remove the background image styling, so transparent images won't have
   // strange SQIP artefacts shining through
-  d.querySelectorAll("img[loading=lazy][class]").forEach((img) => {
-    img.onload = (_event) => img.removeAttribute("class");
+  d.querySelectorAll(
+    "img[loading=lazy][class]:not(.thumbnail):not(.loaded)"
+  ).forEach((img) => {
+    img.onload = (_event) => img.className = "loaded";
+  });
+  d.querySelectorAll(
+    "img[loading=lazy].thumbnail:not(.loaded)"
+  ).forEach((img) => {
+    img.onload = (_event) => img.className = "thumbnail loaded";
   });
 
   w.markentier = { tech: "🦄" }; // ;-)
