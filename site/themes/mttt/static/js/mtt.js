@@ -27,7 +27,7 @@
       worker.postMessage({ subscribe: true }); // no-op
       // worker has no access to SW, so we need to handle that again:
       worker.onmessage = (event) => {
-        console.log("[main] Received message from worker:", event.data);
+        // console.log("[main] Received message from worker:", event.data);
         if (event.data.forceUpdate) {
           reg.active.postMessage(event.data);
         };
