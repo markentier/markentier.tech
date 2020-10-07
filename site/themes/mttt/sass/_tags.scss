@@ -118,3 +118,7 @@ figcaption, pre, nav {
 s, del, strike {
   text-decoration: line-through var(--link-hl-color) wavy;
 }
+
+table {
+  width: 100%;
+}
