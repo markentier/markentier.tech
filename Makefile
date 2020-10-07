@@ -16,7 +16,7 @@ ifeq ($(UNAME), Darwin)
 endif
 
 ZOLA = zola
-ZOLA_VERSION ?= 0.12.0
+ZOLA_VERSION ?= 0.12.2
 ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-$(PLATFORM).tar.gz
 
 BUILD_BIN ?= $(ZOLA)
