@@ -126,7 +126,7 @@ Since we're masking the git command with our function, we need a way to call the
 
 -----
 
-So, my starship prompt is not fixed yet, on the other hand I can live without the git status info. Theoretically I could also live without this nifty shell function, since I moved most of my repo management into my [VS Code] workflows. But sometimes it is nice to do some tasks in a plain shell.
+So, my starship prompt is not fixed yet, on the other hand I can live without the git status info. Theoretically I could also live without this nifty shell function, since I moved most of my repo management into my [VS Code][vscode] workflows. But sometimes it is nice to do some tasks in a plain shell.
 
 _Also if you're interested in my current development environment on my PC, [ping me on twitter][twitter] and maybe I'll post about it here._
 
