@@ -120,7 +120,9 @@
 
   // only set up all related stuff together if SW are available
   if ("serviceWorker" in n) {
-    w.onload = (_event) => registerSW();
+    d.addEventListener("DOMContentLoaded", (_event) => {
+      registerSW();
+    });
 
     n.serviceWorker.onmessage = (event) => {
       if (event.data.reloadStyles) {
