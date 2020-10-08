@@ -1,18 +1,1 @@
-[
-  "/",
-  "/index.html",
-  "/js/mtt.js",
-  "/mtt.css",
-
-  "/assets/fonts/varela-round-regular.woff2",
-
-  "/m.128.png",
-  "/m.180.png",
-  "/m.512.icon.png",
-  "/m.1024.txt.bg.png",
-
-  "/resolution/",
-  "/about/",
-
-  "/manifest.json"
-]
+[]

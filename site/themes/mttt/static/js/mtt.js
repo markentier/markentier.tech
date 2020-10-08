@@ -1,149 +1,33 @@
-/* global fetch */
-'use strict';
+"use strict";
 
 ((w, n, d, c) => {
-  const DEPLOYMENT_SYNC_PERIOD = 60 * 1000;
-
-  // const sw = () => {
-  //   let s = n.serviceWorker.controller;
-  //   if (!s) {
-  //     n.serviceWorker.ready.then((r) => s = r.active)
-  //   }
-  //   return s;
-  // }
-
-  const bgWorkerSetup = (reg) => {
-    const workerSetup = (script) => {
-      if ("SharedWorker" in window) {
-        const worker = new SharedWorker(script);
-        return worker.port;
-      }
-      const worker = new Worker(script);
-      return worker;
-    };
-
-    if ("Worker" in window) {
-      const worker = workerSetup("/js/worker.js");
-      worker.postMessage({ subscribe: true }); // no-op
-      // worker has no access to SW, so we need to handle that again:
-      worker.onmessage = (event) => {
-        // console.log("[main] Received message from worker:", event.data);
-        if (event.data.forceUpdate) {
-          reg.active.postMessage(event.data);
-        };
-      };
-    } else {
-      console.log(
-        "[main] No Worker API available; fallback to check in main thread"
-      );
-      deploymentCheck();
-    }
-  };
-
-  const periodicSyncSetup = (reg) => {
-    try {
-      if ("periodicSync" in reg) {
-        reg.periodicSync
-          .register("deploymentCheck", {
-            minInterval: DEPLOYMENT_SYNC_PERIOD,
-          })
-          .then((result) => {
-            c.log("[periodicSync] deploymentCheck registered;", result);
-          })
-          .catch((err) => {
-            c.log("[periodicSync] deploymentCheck registration failed;", err);
-            c.log("No [periodicSync] available; fallback to worker setup");
-            bgWorkerSetup(reg);
-          });
-      } else {
-        c.log("No [periodicSync] available; fallback to worker setup");
-        bgWorkerSetup(reg);
-      }
-    } catch(err) {
-      c.log("Unrecoverable issue:", err);
-      bgWorkerSetup(reg);
-    }
-  }
-
+  // REMOVAL stage 1 - 2020-10-08
   // SERVICE WORKER
   const registerSW = () => {
     n.serviceWorker.register("/js/sw.js", { scope: "/" }).then(
       (reg) => {
-        c.log("[ServiceWorker] Registration successful; scope: ", reg.scope);
-        reg
-          .update()
-          .then((r) => { periodicSyncSetup(r); })
-          .catch((_err) => { periodicSyncSetup(reg); })
+        reg.update();
       },
-      (err) => {
-        c.log("[ServiceWorker] Registration failed:", err);
-      }
+      (_err) => {}
     );
   };
 
-  // DEPLOYMENT CHECKER
-  const deploymentCheck = () => {
-    const DEPLOYMENT_PATH = "/deployment.json";
-    const DEPLOYMENT_NOT_OK_RESPONSE = { deployment: false };
-
-    const jsonResponse = (response) => {
-      if (response.status === 200) return response.json();
-      return DEPLOYMENT_NOT_OK_RESPONSE;
-    };
-
-    const syncHandler = (payload) => {
-      if (payload.deployment === false) return;
-      const sha = payload.deployment.sha;
-      w.caches.keys().then((cacheKeys) => {
-        if (cacheKeys.includes(sha)) return;
-        n.serviceWorker.controller.postMessage({ forceUpdate: true });
-      });
-    };
-
-    const deploymentSync = () => {
-      if (n.onLine === false) return;
-      fetch(DEPLOYMENT_PATH, { cache: "no-store" })
-        .then(jsonResponse)
-        .catch((_err) => DEPLOYMENT_NOT_OK_RESPONSE)
-        .then(syncHandler);
-    };
-
-    setInterval(deploymentSync, DEPLOYMENT_SYNC_PERIOD);
-  };
-
-  const reloadResources = () => {
-    c.log("[main] Updating stylesheets ...");
-    d.querySelectorAll("link[rel=stylesheet]").forEach((link) => {
-      link.href = link.href.replace(/\?.*|$/, "?" + Date.now());
-    });
-  };
-
-  // only set up all related stuff together if SW are available
   if ("serviceWorker" in n) {
-    d.addEventListener("DOMContentLoaded", (_event) => {
-      registerSW();
-    });
-
-    n.serviceWorker.onmessage = (event) => {
-      if (event.data.reloadStyles) {
-        // reloadResources();
-        w.location.reload();
-      };
-    };
-  };
+    d.addEventListener("DOMContentLoaded", (_event) => { registerSW(); });
+  }
 
   // remove the background image styling, so transparent images won't have
   // strange SQIP artefacts shining through
   d.querySelectorAll(
     "img[loading=lazy][class]:not(.thumbnail):not(.loaded)"
   ).forEach((img) => {
-    img.onload = (_event) => img.className = "loaded";
+    img.onload = (_event) => (img.className = "loaded");
   });
-  d.querySelectorAll(
-    "img[loading=lazy].thumbnail:not(.loaded)"
-  ).forEach((img) => {
-    img.onload = (_event) => img.className = "thumbnail loaded";
-  });
+  d.querySelectorAll("img[loading=lazy].thumbnail:not(.loaded)").forEach(
+    (img) => {
+      img.onload = (_event) => (img.className = "thumbnail loaded");
+    }
+  );
 
   w.markentier = { tech: "🦄" }; // ;-)
 })(window, navigator, document, console);

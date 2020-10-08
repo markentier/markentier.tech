@@ -1,6 +1,5 @@
 {
   "name": "markentier.tech blog",
-  "description": "About code and people",
   "short_name": "mtt blog",
   "icons": [{
     "src": "m.512.icon.png",
@@ -8,9 +7,7 @@
     "sizes": "512x512",
     "purpose": "any maskable"
   }],
-  "start_url": "/?utm_source=homescreen",
   "background_color": "#efeeec",
   "theme_color": "#dfdddc",
-  "display": "standalone",
-  "orientation": "portrait"
+  "display": "fullscreen"
 }
