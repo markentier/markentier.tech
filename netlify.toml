@@ -32,6 +32,10 @@ command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
 ## 365d = 31536000
 ## 2y = 63072000
 
+## NOTE: Certain automatically injected headers need to be overwritten only
+#        by case sensitive header names: Content-Type, not content-type.
+#        This is sad, netlify, very sad!
+
 [[headers]]
 for = "/*"
 [headers.values]
@@ -60,7 +64,7 @@ Server = "markentier.tech"
 [[headers]]
 for = "/index.html"
 [headers.values]
-cache-control = "max-age=3600"
+Cache-Control = "max-age=3600"
 
 # special treatment for the JSON feed
 # be as open as possible (mostly for my personal testing)
@@ -79,92 +83,88 @@ access-control-allow-methods = "GET,OPTIONS"
 [[headers]]
 for = "/sw-force-update"
 [headers.values]
-cache-control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-cache, no-store, must-revalidate"
 
 [[headers]]
 for = "/deployment.json"
 [headers.values]
-cache-control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-cache, no-store, must-revalidate"
 
 [[headers]]
 for = "/js/sw.js"
 [headers.values]
-cache-control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-cache, no-store, must-revalidate"
 service-worker-allowed = "/"
 
 [[headers]]
 for = "/cache.json"
 [headers.values]
-cache-control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-cache, no-store, must-revalidate"
 
 [[headers]]
 for = "/js/mtt.js"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/mtt.css"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/fonts.css"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.svg"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.avif"
 [headers.values]
 Content-Type = "image/avif"
 content-disposition = "inline"
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.webp"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.png"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.jpg"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.ico"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.woff"
 [headers.values]
-content-type = "font/woff"
-content-disposition = "inline"
-cache-control = "max-age=15552000"
-access-control-allow-origin = "*"
+Content-Type = "font/woff"
+Cache-Control = "max-age=15552000"
 
 [[headers]]
 for = "/*.woff2"
 [headers.values]
-content-type = "font/woff2"
-content-disposition = "inline"
-cache-control = "max-age=15552000"
-access-control-allow-origin = "*"
+Content-Type = "font/woff2"
+Cache-Control = "max-age=15552000"
 
 # it may or may not work, but it's not too important for such extensions
 [[headers]]
 for = "/*.(ttf|otf|eot|ttc)"
 [headers.values]
-cache-control = "max-age=15552000"
+Cache-Control = "max-age=15552000"
 x-note = "cc header based on using a glob pattern"
 
 # REDIRECTS
