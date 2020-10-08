@@ -116,6 +116,14 @@
   // content: "· · ✿ · ·";
 }
 
+.post_hero {
+  picture {
+    display: block;
+    max-width: 38rem; // 760px;
+    max-height: 19rem; // 380px;
+  }
+}
+
 .post_content_info {
   display: flex;
   justify-content: space-between;
