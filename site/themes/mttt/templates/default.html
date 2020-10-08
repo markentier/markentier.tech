@@ -7,7 +7,7 @@
   <base href="{{config.base_url | safe}}">
 
   {# update with content of final fonts.css #}
-  <style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:'Varela Round';src:local("Varela Round"),local("Varela Round Regular"),local("VarelaRound-Regular"),url("/f/varela-round-regular.woff2") format("woff2");font-weight:normal;font-style:normal;font-display:swap}</style>
+  <style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:'Varela Round';src:local("Varela Round"),local("Varela Round Regular"),local("VarelaRound-Regular"),url("/f/varela-round-regular.woff2") format("woff2");unicode-range:U+0-FF,U+131,U+152,U+153,U+2BB,U+2BC,U+2C6,U+2DA,U+2DC,U+2000-206F,U+2074,U+20AC,U+2103,U+2109,U+2122,U+2191,U+2193,U+2212,U+2215,U+266A,U+FEFF,U+FFFD;font-weight:normal;font-style:normal;font-display:swap}</style>
   {# disable external fonts.css when using inline style for them
     <link rel="preload" as="font" crossorigin="anonymous" href="/f/varela-round-regular.woff2"> -->
     <link rel="stylesheet" href="/fonts.css">

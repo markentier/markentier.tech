@@ -6,12 +6,23 @@
        local('Noto Color Emoji');
 }
 
+/*
+https://github.com/filamentgroup/glyphhanger
+
+glyphhanger \
+  --formats=woff2 \
+  --US_ASCII --LATIN \
+  --whitelist="«»…—‘’‚‛“”„‟℃℉‽‰‱¶♪" \
+  --subset="*.otf" \
+  --css
+*/
 @font-face {
     font-family: 'Varela Round';
     src: local('Varela Round'),
          local('Varela Round Regular'),
          local('VarelaRound-Regular'),
-         url('/f/varela-round-regular.woff2') format('woff2');
+         url('/f/varela-subset.woff2') format('woff2');
+    unicode-range: U+0-FF,U+131,U+152,U+153,U+2BB,U+2BC,U+2C6,U+2DA,U+2DC,U+2000-206F,U+2074,U+20AC,U+2103,U+2109,U+2122,U+2191,U+2193,U+2212,U+2215,U+266A,U+FEFF,U+FFFD;
     font-weight: normal;
     font-style: normal;
     font-display: swap;
