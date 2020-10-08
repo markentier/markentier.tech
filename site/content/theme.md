@@ -6,7 +6,7 @@ date = 2018-04-11
 additional_scripts = ["/js/theme.js"]
 +++
 
-### colors
+## colors
 
 <div class="theme">
   <div style="background:var(--head-light-color)"><span style="color:var(--bg-color)">--head-light-color</span></div>
