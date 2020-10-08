@@ -80,13 +80,11 @@ access-control-allow-methods = "GET,OPTIONS"
 for = "/sw-force-update"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
-x-note = "crude way of controlling the cache invalidation from main"
 
 [[headers]]
 for = "/deployment.json"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
-x-note = "regularly checked to automatically update cache after deployments"
 
 [[headers]]
 for = "/js/sw.js"
@@ -98,7 +96,6 @@ service-worker-allowed = "/"
 for = "/cache.json"
 [headers.values]
 cache-control = "no-cache, no-store, must-revalidate"
-x-note = "standard cache manifest"
 
 [[headers]]
 for = "/js/mtt.js"
@@ -116,12 +113,19 @@ for = "/fonts.css"
 cache-control = "max-age=15552000"
 
 [[headers]]
-for = "/favicon.ico"
+for = "/*.svg"
 [headers.values]
 cache-control = "max-age=15552000"
 
 [[headers]]
-for = "/*.svg"
+for = "/*.avif"
+[headers.values]
+Content-Type = "image/avif"
+content-disposition = "inline"
+cache-control = "max-age=15552000"
+
+[[headers]]
+for = "/*.webp"
 [headers.values]
 cache-control = "max-age=15552000"
 
@@ -136,24 +140,32 @@ for = "/*.jpg"
 cache-control = "max-age=15552000"
 
 [[headers]]
-for = "/*.woff"
+for = "/*.ico"
 [headers.values]
 cache-control = "max-age=15552000"
-content-type = "application/font-woff"
+
+[[headers]]
+for = "/*.woff"
+[headers.values]
+content-type = "font/woff"
+content-disposition = "inline"
+cache-control = "max-age=15552000"
 access-control-allow-origin = "*"
 
 [[headers]]
 for = "/*.woff2"
 [headers.values]
-cache-control = "max-age=15552000"
 content-type = "font/woff2"
+content-disposition = "inline"
+cache-control = "max-age=15552000"
 access-control-allow-origin = "*"
 
+# it may or may not work, but it's not too important for such extensions
 [[headers]]
-for = "*.avif"
+for = "/*.(ttf|otf|eot|ttc)"
 [headers.values]
-Content-Type = "image/avif"
-content-disposition = "inline"
+cache-control = "max-age=15552000"
+x-note = "cc header based on using a glob pattern"
 
 # REDIRECTS
 ## https://docs.netlify.com/routing/redirects/
