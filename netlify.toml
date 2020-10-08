@@ -63,112 +63,123 @@ Server = "markentier.tech"
 [[headers]]
 for = "/"
 [headers.values]
-Cache-Control = "max-age=3600"
+Cache-Control = "public, max-age=3600"
 
 [[headers]]
 for = "/index.html"
 [headers.values]
-Cache-Control = "max-age=3600"
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/*.html"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+x-note = "glob html ext"
+
+[[headers]]
+for = "/*/"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+x-note = "glob trailing slash"
 
 # special treatment for the JSON feed
 # be as open as possible (mostly for my personal testing)
 [[headers]]
 for = "/feed.json"
 [headers.values]
-Content-Type = "application/feed+json" # casing matters to overwrite the original/automatic value
+Content-Type = "application/feed+json"
 content-security-policy = "default-src 'self'; script-src *; child-src *; worker-src *"
 access-control-max-age = "600"
 access-control-allow-origin = "*"
 access-control-allow-headers = "*"
 access-control-expose-headers = "*"
 access-control-allow-methods = "GET,OPTIONS"
-# access-control-allow-credentials = "true"
 
 [[headers]]
 for = "/sw-force-update"
 [headers.values]
-Cache-Control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-store"
 
 [[headers]]
 for = "/deployment.json"
 [headers.values]
-Cache-Control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-store"
 
 [[headers]]
 for = "/js/sw.js"
 [headers.values]
-Cache-Control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-store"
 service-worker-allowed = "/"
 
 [[headers]]
 for = "/cache.json"
 [headers.values]
-Cache-Control = "no-cache, no-store, must-revalidate"
+Cache-Control = "no-store"
 
 [[headers]]
 for = "/js/mtt.js"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=2592000"
 
 [[headers]]
-for = "/mtt.css"
+for = "/*.css"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=2592000"
 
 [[headers]]
-for = "/fonts.css"
+for = "/manifest.json"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=2592000, immutable"
 
 [[headers]]
 for = "/*.svg"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
 for = "/*.avif"
 [headers.values]
 Content-Type = "image/avif"
 content-disposition = "inline"
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
 for = "/*.webp"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
 for = "/*.png"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
 for = "/*.jpg"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
 for = "/*.ico"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
 for = "/*.woff"
 [headers.values]
 Content-Type = "font/woff"
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
 for = "/*.woff2"
 [headers.values]
 Content-Type = "font/woff2"
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 
 # it may or may not work, but it's not too important for such extensions
 [[headers]]
 for = "/*.(ttf|otf|eot|ttc)"
 [headers.values]
-Cache-Control = "max-age=15552000"
+Cache-Control = "public, max-age=15552000, immutable"
 x-note = "cc header based on using a glob pattern"
 
 # REDIRECTS
