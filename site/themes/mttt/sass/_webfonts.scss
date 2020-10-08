@@ -8,8 +8,10 @@
 
 @font-face {
     font-family: 'Varela Round';
-    src: local('Varela Round Regular'), local('VarelaRound-Regular'),
-         url('/assets/fonts/varela-round-regular.woff2') format('woff2');
+    src: local('Varela Round'),
+         local('Varela Round Regular'),
+         local('VarelaRound-Regular'),
+         url('/f/varela-round-regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

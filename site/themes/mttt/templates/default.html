@@ -4,18 +4,16 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{{config.title}}{% endblock title %}</title>
-
-  {# update with content of final fonts.css #}
-  <style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:'Varela Round';src:local("Varela Round Regular"),local("VarelaRound-Regular"),url("/assets/fonts/varela-round-regular.woff2") format("woff2");font-weight:normal;font-style:normal;font-display:swap}</style>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="{{config.base_url | safe}}">
 
+  {# update with content of final fonts.css #}
+  <style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:'Varela Round';src:local("Varela Round"),local("Varela Round Regular"),local("VarelaRound-Regular"),url("/f/varela-round-regular.woff2") format("woff2");font-weight:normal;font-style:normal;font-display:swap}</style>
   {# disable external fonts.css when using inline style for them
-    <link rel="preload" as="font" crossorigin="anonymous" href="/assets/fonts/varela-round-regular.woff2"> -->
+    <link rel="preload" as="font" crossorigin="anonymous" href="/f/varela-round-regular.woff2"> -->
     <link rel="stylesheet" href="/fonts.css">
   #}
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/mtt.css">
 
   {% if page.extra.custom_delimiter %}
