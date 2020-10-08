@@ -42,7 +42,7 @@ for = "/*"
 # Casing for STS is important to override value from Netlify:
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
-content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self' *.cloudfront.net; style-src 'self' 'unsafe-inline' *.cloudfront.net; img-src 'self' data: *.cloudfront.net *.gravatar.com; font-src 'self' *.cloudfront.net; connect-src 'self' *.cloudfront.net; media-src 'self' *.cloudfront.net; worker-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport"
+content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: *.gravatar.com; font-src 'self'; connect-src 'self'; media-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport"
 report-to = """{"group":"cspreport","max-age":2592000,"endpoints":[{"url":"https://markentiertech.report-uri.com/r/d/csp/enforce"}"""
 
 # https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/
@@ -60,7 +60,11 @@ x-xss-protection = "1; mode=block"
 # does not work :'-(
 Server = "markentier.tech"
 
-# entrypoint file
+[[headers]]
+for = "/"
+[headers.values]
+Cache-Control = "max-age=3600"
+
 [[headers]]
 for = "/index.html"
 [headers.values]
