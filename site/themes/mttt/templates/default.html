@@ -31,7 +31,10 @@
   <meta name="theme-color" content="#dfdddc">
   <link rel="manifest" href="/manifest.json">
 
-  <meta name="description" content="{{config.description}}">
+  {% if page.permalink %}
+  <link rel="canonical" href="{{page.permalink | safe}}">
+  {% endif %}
+
   {% if page.taxonomies.tags %}
   <meta name="keywords" content="{{page.taxonomies.tags | slice(end=10) | join(sep=",") }}">
   {% else %}
@@ -44,9 +47,9 @@
   <link rel="me" href="https://github.com/asaaki">
 
   {% if page %}
+
     {% set is_post = page.permalink is containing("/posts/") %}
     {% if is_post == true %}
-      <link rel="canonical" href="{{page.permalink | safe}}">
 
       {% if page.extra.has_hero %}
         {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
