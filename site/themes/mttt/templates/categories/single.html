@@ -26,7 +26,7 @@
 {% block content_header %}
   {% set is_home = term.name == "default" %}
   {% if is_home %}
-    <article><h1 class="header-home">Recent posts</h1></article>
+    {# <article><h1 class="header-home">Recent posts</h1></article> #}
   {% else %}
     <article><h1 class="header-category">Category: {{term.name}}</h1></article>
   {% endif %}
