@@ -1,6 +1,11 @@
 +++
 title = "about"
 date = 2018-03-11
+
+[extra]
+menu_items = """
+<a href="/theme">theme</a>
+"""
 +++
 
 ## author
