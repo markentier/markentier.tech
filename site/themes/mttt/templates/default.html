@@ -110,6 +110,30 @@
 
   <meta name="monetization" content="$ilp.uphold.com/zbWLUAUmExJ7">
 
+  {#
+    NOTES:
+    - type=module scripts are also always "defer" by default
+    - deferred scripts execute after parsing is done, but before DOMContentLoaded
+    - avoid using "async", they can interrupt parsing / happen before DOMContentLoaded
+
+    References:
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    https://hospodarets.com/native-ecmascript-modules-the-first-overview
+    https://calendar.perfplanet.com/2016/prefer-defer-over-async/
+  #}
+  <script type=module src="/js/mtt.js"></script>
+
+  {% if page and page.extra.additional_scripts %}
+    {% for script_path in page.extra.additional_scripts %}
+    <script type=module src="{{script_path | safe }}"></script>
+    {% endfor %}
+  {% endif %}
+  {% if page and page.extra.additional_scripts_async %}
+    {% for script_path in page.extra.additional_scripts_async %}
+    <script async type=module src="{{script_path | safe }}"></script>
+    {% endfor %}
+  {% endif %}
+
   {% block before_head_end %}{% endblock before_head_end %}
 </head>
 <body class="mtt">
@@ -155,14 +179,6 @@
     {% endblock footer %}</footer>
 
   </div>
-
-  <script async src="/js/mtt.js"></script>
-
-  {% if page and page.extra.additional_scripts %}
-    {% for script_path in page.extra.additional_scripts %}
-    <script async src="{{script_path | safe }}"></script>
-    {% endfor %}
-  {% endif %}
 
   {% block before_body_end %}{% endblock before_body_end %}
 
