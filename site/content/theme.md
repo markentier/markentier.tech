@@ -19,3 +19,12 @@ additional_scripts = ["/js/theme.js"]
   <div style="background:var(--accent-dark-color)"><span>--accent-dark-color</span></div>
   <div style="background:var(--accent-darker-color)"><span>--accent-darker-color</span></div>
 </div>
+
+### specials
+
+<div class="theme">
+  <div style="background:var(--rebecca)"><span style="color:var(--bg-color)">--rebecca</span></div>
+  <div style="background:var(--transparent)"><span>--transparent</span></div>
+  <div style="background:var(--green)"><span style="color:var(--bg-color)">--green</span></div>
+</div>
+<p></p>

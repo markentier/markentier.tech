@@ -1,22 +1,38 @@
-'use strict';
-// dynamically inject color information
-(() => {
-  const themeFn = () => {
-    // https://stackoverflow.com/a/41665515/653173
-    const rgb2hex = (rgb) => {
-      return '#' +
-        rgb.substr(4, rgb.indexOf(')') - 4)
-          .split(',')
-          .map((color) => String('0' + parseInt(color).toString(16)).slice(-2))
-          .join('');
-    };
-    const colorTiles = document.querySelectorAll('.theme>div');
-    colorTiles.forEach((child) => {
-      const bgColor = window.getComputedStyle(child, null).getPropertyValue('background-color');
-      const span = child.querySelector('span');
-      span.innerHTML = `${rgb2hex(bgColor)}<br>${bgColor}<br>${span.innerHTML}`;
-    });
-  };
+"use strict";
 
-  setTimeout(themeFn, 0);
-})();
+// dynamically inject color information
+
+const num2hex = (num) => {
+  const n = Number(num);
+  // is number an int or a float?
+  if (n % 1 == 0) {
+    return String("0" + n.toString(16)).slice(-2);
+  } else {
+    const scaled = Math.round(n * 100 * 255);
+    return String("0" + scaled.toString(16)).slice(-2);
+  }
+}
+
+const color2hex = (color) => {
+  const idx = color.startsWith("rgba") ? 5 : 4;
+  return (
+    "#" +
+    color
+      .substr(idx, color.indexOf(")") - idx)
+      .split(",")
+      .map(num2hex)
+      .join("")
+  );
+}
+
+const colorTiles = document.querySelectorAll(".theme>div");
+
+colorTiles.forEach((child) => {
+  const bgColor = window
+    .getComputedStyle(child, null)
+    .getPropertyValue("background-color");
+  const span = child.querySelector("span");
+  if (span) {
+    span.innerHTML = `${color2hex(bgColor)}<br>${bgColor}<br>${span.innerHTML}`;
+  }
+});
