@@ -70,25 +70,33 @@
 .index_listing_post {
   padding-bottom: .5rem;
   opacity: 0.8;
-}
-.index_listing_post .thumbnail {
-  max-width: 16rem; // 320px;
-  max-height: 8rem; // 160px;
-  width: 40%;
-  float: right;
-  margin: 0.25em 0 0 0.5em;
-  opacity: 0.666;
-}
-.index_listing_post:hover,
-.index_listing_post .thumbnail:hover {
-  opacity: 1;
-}
-.index_listing_post a {
-  text-decoration: none;
-}
-.index_listing_post a:link,
-.index_listing_post a:visited {
-  color: inherit;
+
+  .thumbnail {
+    max-width: 16rem; // 320px;
+    max-height: 8rem; // 160px;
+    width: 40%;
+    float: right;
+    margin: 0.25em 0 0 0.5em;
+    opacity: 0.75;
+  }
+
+  &:hover, .thumbnail:hover {
+    opacity: 1;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  // de-emphasize after the 10th post
+  &:nth-child(n+11) {
+    picture, p { display: none; }
+  }
 }
 
 .index_listing_post p,
