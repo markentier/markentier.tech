@@ -27,7 +27,7 @@
     height: 4.5rem;
   }
 
-  h1 {
+  h1, .h1 {
     margin: 1.333rem 0 0 -.3rem;
     color: var(--head-color);
     &::first-letter { font-size: 0; }

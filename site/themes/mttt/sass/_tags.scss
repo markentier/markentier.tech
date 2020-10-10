@@ -30,6 +30,7 @@ html, body {
 
 html {
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 a, a:link, a:visited {
@@ -40,18 +41,19 @@ a:hover, a:focus, svg:hover {
   stroke: var(--link-hl-color);
 }
 
-h1 { font-size: 2rem; }
+h1, .h1 { font-size: 2rem; }
 h2 { font-size: 1.75rem; }
 h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 h5 { font-size: 1.1rem; }
 h6 { font-size: 1rem; }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h1 {
   border: 0;
   padding: 0;
   margin: 1.75rem 0 0 0;
   font-family: var(--brand-font);
+  font-weight: bold;
   color: var(--head-color);
   scroll-margin-top: 5rem;
 }
