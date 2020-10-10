@@ -1,6 +1,7 @@
 +++
 title = "theme"
 date = 2018-04-11
+description = "markentier.tech theme information; color palette"
 
 [extra]
 additional_scripts = ["/js/theme.js"]

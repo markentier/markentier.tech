@@ -1,6 +1,7 @@
 +++
 title = "about"
 date = 2018-03-11
+description = "all information about markentier.tech; who's writing here?"
 
 [extra]
 menu_items = """

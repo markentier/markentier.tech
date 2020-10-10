@@ -1,6 +1,7 @@
 +++
 title = "What are my resolutions?"
 date = 2020-09-28
+description = "Tools page to gather information about the current resolution of the browser"
 
 [extra]
 additional_scripts = ["/js/resolution.js"]

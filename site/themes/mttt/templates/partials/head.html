@@ -96,12 +96,29 @@
     {% endfor %}{{ macros::categories() }}{% endif %}
 
   {% else %}
-    <meta name="description" content="{{config.description}}">
+
+    {% if page.description %}
+      {% set page_description = page.description %}
+    {% else %}
+      {% set page_description = config.description %}
+    {% endif %}
+    {% set page_description = page_description | striptags | split(pat=" ") | slice(end=31) | join(sep=" ") | safe %}
+    <meta name="description" content="{{page_description}}">
+
   {% endif %}
+
 {% elif term %}
-  <meta name="description" content="{{term.name}} ({{taxonomy.name}} » {{term.slug}}) on {{config.title}}">
+
+  {% if term.name == "default" %}
+    <meta name="description" content="{{config.description}}">
+  {% else %}
+    <meta name="description" content="{{term.name}} ({{taxonomy.name}} » {{term.slug}}) on {{config.title}}">
+  {% endif %}
+
 {% elif section %}
+
   <meta name="description" content="{{section.components | reverse | join(sep=' « ')}} « {{config.title}}">
+
 {% endif %}
 
 <link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml">
