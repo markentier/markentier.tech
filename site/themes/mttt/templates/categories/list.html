@@ -5,11 +5,19 @@
 {% endblock before_head_end %}
 {% block content %}
 <article class="section-page section-categories">
-  <h1 class="header-categories">Categories</h1>
-  <ul>
-  {% for cat in terms %}
-    <li><a href="{{cat.permalink}}">{{cat.name}}</a></li>
-  {% endfor %}
-  </ul>
+  <header><h1 class="header-categories post_title entry-title">Categories</h1></header>
+  <div class="article-body">
+    <p></p>
+    <ul>
+    {% for cat in terms %}
+      {% set count = cat.pages | length %}
+      {% if count > 1 %}{% set s = "s" %}{% else %}{% set s = "" %}{% endif %}
+      <li>
+        <h2><a href="{{cat.permalink}}">{{cat.name}}</a></h2>
+        <span>{{ count }} post{{s}}</span>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
 </article>
 {% endblock content %}
