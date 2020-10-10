@@ -26,6 +26,12 @@
 
 {% if page.permalink %}
 <link rel="canonical" href="{{page.permalink | safe}}">
+<link rel="alternate" hreflang="x-default" href="{{page.permalink | safe}}" />
+<link rel="alternate" hreflang="en" href="{{page.permalink | safe}}" />
+{% elif current_url %}
+<link rel="canonical" href="{{current_url | safe}}">
+<link rel="alternate" hreflang="x-default" href="{{current_url | safe}}" />
+<link rel="alternate" hreflang="en" href="{{current_url | safe}}" />
 {% endif %}
 
 {% if page.taxonomies.tags %}
