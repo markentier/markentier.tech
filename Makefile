@@ -49,7 +49,8 @@ netlify-local-deploy-draft: build
 
 rebuild-all: regenerate-thumbs images build
 
-build-site: build-html build-feeds build-index-page
+build-site: build-html build-feeds
+# build-index-page
 
 build-html:
 	cd site && $(BUILD_CMD)

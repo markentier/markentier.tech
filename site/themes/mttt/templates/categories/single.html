@@ -1,35 +1,15 @@
 {% extends "default.html" %}
 
 {% block title -%}
-  {%- set is_home = term.name == "default" -%}
-  {%- if is_home -%}
-     {{config.description}}: {{config.title}}
-  {%- else -%}
-    '{{term.name}}' category | {{config.title}}
-  {%- endif %}
+  '{{term.name}}' category | {{config.title}}
 {%- endblock title %}
 
 {% block before_head_end %}
-{% set is_home = term.name == "default" %}
-{% if is_home %}
-<meta property="og:site_name" content="{{config.title}}">
-<meta property="og:title" content="{{config.title}}">
-<meta property="og:description" content="{{config.description}}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{config.base_url | safe}}">
-<meta property="og:image" content="{{config.base_url | safe}}/m.1024.txt.bg.png">
-{% else %}
 {# <meta name="robots" content="noindex"> #}
-{% endif %}
 {% endblock before_head_end %}
 
 {% block content_header %}
-  {% set is_home = term.name == "default" %}
-  {% if is_home %}
-    {# <article><h1 class="header-home">Recent posts</h1></article> #}
-  {% else %}
-    <article><h1 class="header-category">Category: {{term.name}}</h1></article>
-  {% endif %}
+  <article><h1 class="header-category">Category: {{term.name}}</h1></article>
 {% endblock content_header %}
 
 {% block content %}

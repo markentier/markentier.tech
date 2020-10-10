@@ -2,6 +2,15 @@
 
 {% block title %}{{config.description}}: {{config.title}}{% endblock title %}
 
+{% block before_head_end %}
+<meta property="og:site_name" content="{{config.title}}">
+<meta property="og:title" content="{{config.title}}">
+<meta property="og:description" content="{{config.description}}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{config.base_url | safe}}">
+<meta property="og:image" content="{{config.base_url | safe}}/m.1024.txt.bg.png">
+{% endblock before_head_end %}
+
 {% block content %}
   {% if page.content %}
     {{page.content | safe }}
