@@ -5,9 +5,18 @@
 {% endblock before_head_end %}
 {% block content %}
 <article class="section-page section-tags">
-  <h1 class="header-tags">Tags</h1>
+  <header><h1 class="header-tags post_title entry-title">Tags</h1></header>
+  <div class="article-body">
+  <p></p>
+  <p class="taglist">
   {% for tag in terms %}
-  <span><a href="{{tag.permalink}}">{{tag.name}}</a></span>
+    {% set count = tag.pages | length %}
+    {% if count > 1 %}{% set s = "s" %}{% else %}{% set s = "" %}{% endif %}
+    <span {%if count > 1%}style="font-size: {{count*10 + 90}}%"{%endif%}>
+      <a href="{{tag.permalink}}"
+         title="{{count}} post{{s}} in {{tag.name}}">{{tag.name}}</a></span>
   {% endfor %}
+  </p>
+  </div>
 </article>
 {% endblock content %}
