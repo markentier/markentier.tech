@@ -96,27 +96,6 @@ access-control-expose-headers = "*"
 access-control-allow-methods = "GET,OPTIONS"
 
 [[headers]]
-for = "/sw-force-update"
-[headers.values]
-Cache-Control = "no-store"
-
-[[headers]]
-for = "/deployment.json"
-[headers.values]
-Cache-Control = "no-store"
-
-[[headers]]
-for = "/js/sw.js"
-[headers.values]
-Cache-Control = "no-store"
-service-worker-allowed = "/"
-
-[[headers]]
-for = "/cache.json"
-[headers.values]
-Cache-Control = "no-store"
-
-[[headers]]
 for = "/js/mtt.js"
 [headers.values]
 Cache-Control = "public, max-age=2592000"
