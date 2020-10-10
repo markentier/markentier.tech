@@ -50,7 +50,6 @@ netlify-local-deploy-draft: build
 rebuild-all: regenerate-thumbs images build
 
 build-site: build-html build-feeds
-# build-index-page
 
 build-html:
 	cd site && $(BUILD_CMD)
@@ -64,12 +63,6 @@ build-feeds:
 	command -v tidy >/dev/null 2>&1 && \
 		(find public -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} \;) || \
 		echo "No tidy installed."
-
-# Instead of using netlify redirects and avoiding force vs shadowing,
-# we just move the desired index file into the right location
-build-index-page:
-	mv public/index.html public/index.fallback.html
-	cp public/categories/default/index.html public/index.html
 
 postprogressing:
 	yarn && IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
