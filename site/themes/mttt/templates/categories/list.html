@@ -1,11 +1,11 @@
 {% extends "default.html" %}
 {% block title %}categories | {{config.title}}{% endblock title %}
 {% block before_head_end %}
-<meta name="robots" content="noindex">
+{# <meta name="robots" content="noindex"> #}
 {% endblock before_head_end %}
 {% block content %}
 <article class="section-page section-categories">
-  <h2 class="header-categories">Categories</h2>
+  <h1 class="header-categories">Categories</h1>
   <ul>
   {% for cat in terms %}
     <li><a href="{{cat.permalink}}">{{cat.name}}</a></li>

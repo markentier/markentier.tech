@@ -2,12 +2,14 @@
 {% macro pheader(page) %}
 {%- set is_post = page.permalink is containing("/posts/") -%}
 <header>
+
   {% if page.extra.has_image -%}
   {% if page.extra.has_hero %}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
   {% set page_image_webp_url = m::get_cover_image_webp_url(url=page.permalink) %}
   {% set page_image_avif_url = m::get_cover_image_avif_url(url=page.permalink) %}
   {% set page_image_alt = page.extra.image_alt | safe %}
+
   <figure class="post_hero">
     <picture>
       <source srcset="{{page_image_avif_url | safe}}" type="image/avif">
@@ -17,10 +19,12 @@
     <figcaption>{{page_image_alt | safe}}</figcaption>
   </figure>
   {% else %}
-  <!-- no hero image -->
+    <!-- no hero image -->
   {% endif %}
   {%- endif %}
-  <h2 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title | safe)}}</h2>
+
+  <h1 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title | safe)}}</h1>
+
   {% if is_post %}
   {% set pdate_iso = m::date_iso(date=page.date) %}
   {% set pdate_date = m::date_date(date=page.date) %}
@@ -35,11 +39,13 @@
     </div>
   </div>
   {% endif %}
+
 </header>
 {% endmacro pheader %}
 
 {% macro pfooter(page, config) %}
 <footer class="meta">
+
   <div class="info">
     <span class="permalink" title="Permalink">🔖</span> <a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br>
     {% if page.extra.origin_url %}
@@ -47,6 +53,7 @@
     <span class="origin" title="Originally published at">⎇</span> <a target="_blank" rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a>
     {% endif %}
   </div>
+
   <div class="data">
       <link itemprop="url" href="{{page.permalink | safe}}">
       <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
@@ -66,5 +73,6 @@
         </a>
       </div>
   </div>
+
 </footer>
 {% endmacro pfooter %}

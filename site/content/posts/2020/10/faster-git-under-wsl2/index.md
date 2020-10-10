@@ -4,7 +4,7 @@ date = 2020-10-07
 
 [taxonomies]
 tags = ["git", "status", "wsl", "wsl1", "wsl2", "windows", "subsystem", "linux", "speed", "slow", "/mnt/", "win10", "starship", "git_status"]
-categories = ["default"]
+categories = ["default", "notes"]
 
 [extra]
 #origin_url = ""

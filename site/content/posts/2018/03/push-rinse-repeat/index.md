@@ -2,9 +2,11 @@
 title = "Push, rinse, repeat, …"
 date = 2018-03-11T18:00:00Z
 draft = false
+
 [taxonomies]
 tags = ["new", "blog", "bootstrap", "fresh", "static site"]
 categories = ["default"]
+
 [extra]
 has_image = true
 has_hero = true

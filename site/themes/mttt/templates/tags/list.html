@@ -1,11 +1,11 @@
 {% extends "default.html" %}
 {% block title %}tags | {{config.title}}{% endblock title %}
 {% block before_head_end %}
-<meta name="robots" content="noindex">
+{# <meta name="robots" content="noindex"> #}
 {% endblock before_head_end %}
 {% block content %}
 <article class="section-page section-tags">
-  <h2 class="header-tags">Tags</h2>
+  <h1 class="header-tags">Tags</h1>
   {% for tag in terms %}
   <span><a href="{{tag.permalink}}">{{tag.name}}</a></span>
   {% endfor %}

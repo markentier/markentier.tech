@@ -1,10 +1,12 @@
 +++
 title = "Notes: Nokogiri installation errors on macos"
 date = 2018-12-30
+
 [taxonomies]
 tags = ["ruby","bundler","nokogiri","macos","osx","rubygems","gem","error","undefined","symbol",
         "iconv","libxml2","x86_64","clang","鋸","rails"]
 categories = ["default","notes"]
+
 [extra]
 #origin_url = ""
 #long_title = ""

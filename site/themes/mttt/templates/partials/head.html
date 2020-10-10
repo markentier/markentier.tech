@@ -1,0 +1,140 @@
+{% import "macros.html" as macros %}
+
+<meta charset="utf-8">
+<title>{% block title %}{{config.title}}{% endblock title %}</title>
+<base href="{{config.base_url | safe}}">
+
+{# update with content of final fonts.css #}
+<style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:'Varela Round';src:local("Varela Round"),local("Varela Round Regular"),local("VarelaRound-Regular"),url("/f/varela-round-regular.woff2") format("woff2");unicode-range:U+0-FF,U+131,U+152,U+153,U+2BB,U+2BC,U+2C6,U+2DA,U+2DC,U+2000-206F,U+2074,U+20AC,U+2103,U+2109,U+2122,U+2191,U+2193,U+2212,U+2215,U+266A,U+FEFF,U+FFFD;font-weight:normal;font-style:normal;font-display:swap}</style>
+{# disable external fonts.css when using inline style for them
+  <link rel="preload" as="font" crossorigin="anonymous" href="/f/varela-round-regular.woff2"> -->
+  <link rel="stylesheet" href="/fonts.css">
+#}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/mtt.css">
+
+{% if page.extra.custom_delimiter %}
+<style>.article-body > p:first-of-type::after, hr::after { content: "{{page.extra.custom_delimiter}}";opacity: .25;}</style>
+{% endif %}
+
+{% if page.extra.custom_css %}
+<style>{{page.extra.custom_css | safe}}</style>
+{% endif %}
+
+<!-- https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df -->
+<link rel="icon" href="/m.svg">
+<link rel="mask-icon" href="/m.svg" color="#063656">
+<link rel="apple-touch-icon" href="/m.180.png">
+<meta name="theme-color" content="#dfdddc">
+<link rel="manifest" href="/manifest.json">
+
+{% if page.permalink %}
+<link rel="canonical" href="{{page.permalink | safe}}">
+{% endif %}
+
+{% if page.taxonomies.tags %}
+<meta name="keywords" content="{{page.taxonomies.tags | slice(end=10) | join(sep=",") }}">
+{% else %}
+<meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}">
+{% endif %}
+
+<meta name="author" content="{{config.extra.author}} ({{config.extra.author_nick}})">
+<link rel="author" href="https://christoph.grabo.berlin/">
+<link rel="author" href="/humans.txt">
+<link rel="me" href="https://github.com/asaaki">
+
+{% if page %}
+
+  {% set is_post = page.permalink is containing("/posts/") %}
+  {% if is_post == true %}
+
+    {% if page.extra.has_hero %}
+      {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
+    {% else %}
+      {% set page_image_url = macros::get_default_cover_image_url(base=config.base_url, img=config.extra.image_url) %}
+    {% endif %}
+
+    {% set page_image_alt = page.extra.image_alt | default(value=config.extra.image_alt) %}
+
+    {% if page.description %}
+      {% set page_description = page.description %}
+    {% elif page.summary %}
+      {% set page_description = page.summary %}
+    {% else %}
+      {% set page_description = page.content %}
+    {% endif %}
+    {% set page_description = page_description | striptags | split(pat=" ") | slice(end=31) | join(sep=" ") | safe %}
+
+    <meta name="description" content="{{page_description}}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{page.permalink | safe}}">
+    <meta name="twitter:title" content="{{page.title}}">
+    <meta name="twitter:description" content="{{page_description}}">
+    <meta name="twitter:creator" content="{{config.extra.author_nick}}">
+    <meta name="twitter:site" content="{{config.extra.site_nick}}">
+    <meta name="twitter:image" content="{{page_image_url | safe}}">
+    <meta name="twitter:image:alt" content="{{page_image_alt}}">
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="{{config.extra.author}}" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="{{page.taxonomies.categories | join(sep=', ')}}" />
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{page.permalink | safe}}">
+    <meta property="og:title" content="{{page.title}}">
+    <meta property="og:description" content="{{page_description}}">
+    <meta property="article:published_time" content="{{page.date | date(format="%FT%T%z")}}">
+    <meta property="article:modified_time" content="{{page.date | date(format="%FT%T%z")}}">
+    <meta property="og:image" content="{{page_image_url | safe}}">
+    <meta property="og:site_name" content="{{config.title}}">
+    <meta property="og:see_also" content="{{config.base_url | safe}}">
+    <meta property="article:author" content="{{config.extra.author}}">
+
+    {% if page.taxonomies.tags %}{% for tag in page.taxonomies.tags %}
+      <meta property="article:tag" content="{{tag}}">
+    {% endfor %}{% endif %}
+
+    {% if page.taxonomies.categories %}{% for category in page.taxonomies.categories %}
+      <meta property="article:section" content="{{category}}">
+    {% endfor %}{{ macros::categories() }}{% endif %}
+
+  {% else %}
+    <meta name="description" content="{{config.description}}">
+  {% endif %}
+{% elif term %}
+  <meta name="description" content="{{term.name}} ({{taxonomy.name}} » {{term.slug}}) on {{config.title}}">
+{% elif section %}
+  <meta name="description" content="{{section.components | reverse | join(sep=' « ')}} « {{config.title}}">
+{% endif %}
+
+<link rel="alternate" type="application/atom+xml" title="Atom Feed for {{config.title}}" href="/feed.atom.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}" href="/feed.rss.xml">
+<link rel="alternate" type="application/json" title="JSON Feed for {{config.title}}" href="/feed.json">
+
+<meta name="monetization" content="$ilp.uphold.com/zbWLUAUmExJ7">
+
+{#
+  NOTES:
+  - type=module scripts are also always "defer" by default
+  - deferred scripts execute after parsing is done, but before DOMContentLoaded
+  - avoid using "async", they can interrupt parsing / happen before DOMContentLoaded
+
+  References:
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+  https://hospodarets.com/native-ecmascript-modules-the-first-overview
+  https://calendar.perfplanet.com/2016/prefer-defer-over-async/
+#}
+<script type=module src="/js/mtt.js"></script>
+
+{% if page and page.extra.additional_scripts %}
+  {% for script_path in page.extra.additional_scripts %}
+  <script type=module src="{{script_path | safe }}"></script>
+  {% endfor %}
+{% endif %}
+{% if page and page.extra.additional_scripts_async %}
+  {% for script_path in page.extra.additional_scripts_async %}
+  <script async type=module src="{{script_path | safe }}"></script>
+  {% endfor %}
+{% endif %}

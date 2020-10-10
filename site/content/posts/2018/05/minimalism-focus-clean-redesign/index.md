@@ -1,9 +1,11 @@
 +++
 title = "Minimalism, Focus, Clean"
 date = 2018-05-01
+
 [taxonomies]
 tags = ["minimalism","focus","clean","redesign","design","webdesign","svg","vector","graphics","simple"]
 categories = ["default"]
+
 [extra]
 #origin_url = ""
 long_title = "Minimalism, Focus, Clean - A Redesign"

@@ -1,7 +1,7 @@
 {% extends "default.html" %}
 {% block title %}{{section.title}} | {{config.title}}{% endblock title %}
 {% block before_head_end %}
-<meta name="robots" content="noindex">
+{# <meta name="robots" content="noindex"> #}
 {% endblock before_head_end %}
 {% block content %}
 {{ macros::sec_traverse(sec = section) }}

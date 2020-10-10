@@ -1,9 +1,11 @@
 +++
 title = "Hitchhiker's Guide To Structured Data"
 date = 2018-04-03
+
 [taxonomies]
 tags = ["structured data","wikidata","contentful","extension","douglas adams","hitchhiker","guide","galaxy","semantic web","rfc1118"]
 categories = ["default"]
+
 [extra]
 origin_url = "https://www.contentful.com/blog/2018/04/03/hitchhikers-guide-to-structured-data/"
 #long_title = ""

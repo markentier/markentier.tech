@@ -1,9 +1,11 @@
 +++
 title = "Hello, code!"
 date = 2018-03-10T23:42:00Z
+
 [taxonomies]
 tags = ["hello", "world", "new", "blog"]
 categories = ["default"]
+
 [extra]
 #origin_url = ""
 #long_title = ""

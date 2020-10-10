@@ -1,9 +1,11 @@
 +++
 title = "Progressive Web App"
 date = 2018-04-01
+
 [taxonomies]
 tags = ["progressive","web","application","pwa","service worker","offline","caching","performance","speed","optimization","fast","google lighthouse"]
 categories = ["default"]
+
 [extra]
 long_title = "Progressive Web App - even for a static site!"
 has_image = true

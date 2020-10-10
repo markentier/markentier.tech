@@ -1,9 +1,11 @@
 +++
 title = "Beginnings"
 date = 2020-09-09
+
 [taxonomies]
 tags = ["sabbatical", "burnout", "depression", "future", "career", "mental health", "work", "life", "beginnings", "restart", "plan", "personal", "care"]
 categories = ["default", "me"]
+
 [extra]
 #origin_url = ""
 #long_title = ""

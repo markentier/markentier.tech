@@ -1,10 +1,11 @@
 {% extends "default.html" %}
+{% block title %}'{{term.name}}' tag | {{config.title}}{%- endblock title %}
 {% block before_head_end %}
-<meta name="robots" content="noindex">
+{# <meta name="robots" content="noindex"> #}
 {% endblock before_head_end %}
 {% block content_header %}
 <article>
-  <h2 class="header-tag">Tag: {{term.name}}</h2>
+  <h1 class="header-tag">Tag: {{term.name}}</h1>
 </article>
 {% endblock content_header %}
 {% block content %}

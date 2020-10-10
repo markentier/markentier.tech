@@ -1,19 +1,26 @@
 {% extends "default.html" %}
 {% import "macros.html" as m %}
 {% import "page.macros.html" as pm %}
+
 {% block title %}{{page.extra.long_title | default(value=page.title | safe)}} | {{config.title}}{% endblock title %}
+
 {% block menu_items %}
   {% if page.extra.menu_items %}
     {{ page.extra.menu_items | safe }}
   {% endif %}
 {% endblock menu_items %}
 {% block content %}
+
 {% set is_post = page.permalink is containing("/posts/") %}
-      <article{%- if is_post == true %} class="hentry" itemscope itemtype="http://schema.org/Article"{% endif %}>
-        {{pm::pheader(page=page)}}
-        <div class="article-body">
-          {{m::absolutify(content=page.content, permalink=page.permalink) | trim | safe}}
-        </div>
-        {% if is_post %}{{pm::pfooter(page=page, config=config)}}{% endif %}
-      </article>
+  <article{%- if is_post == true %} class="hentry" itemscope itemtype="http://schema.org/Article"{% endif %}>
+
+    {{pm::pheader(page=page)}}
+
+    <div class="article-body">
+      {{m::absolutify(content=page.content, permalink=page.permalink) | trim | safe}}
+    </div>
+
+    {% if is_post %}{{pm::pfooter(page=page, config=config)}}{% endif %}
+
+  </article>
 {% endblock content %}
