@@ -115,6 +115,10 @@
     <meta name="description" content="{{term.name}} ({{taxonomy.name}} » {{term.slug}}) on {{config.title}}">
   {% endif %}
 
+{% elif taxonomy %}
+
+  <meta name="description" content="{{taxonomy.name}} on {{config.title}}">
+
 {% elif section %}
 
   <meta name="description" content="{{section.components | reverse | join(sep=' « ')}} « {{config.title}}">
