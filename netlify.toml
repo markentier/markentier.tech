@@ -39,6 +39,10 @@ command = "make netlify NETLIFY_DEPLOY_URL=$DEPLOY_PRIME_URL"
 [[headers]]
 for = "/*"
 [headers.values]
+# common cache control header for all resources;
+# override with further rules
+Cache-Control = "public, max-age=3600"
+
 # Casing for STS is important to override value from Netlify:
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
@@ -46,8 +50,8 @@ content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self
 report-to = """{"group":"cspreport","max-age":2592000,"endpoints":[{"url":"https://markentiertech.report-uri.com/r/d/csp/enforce"}"""
 
 # https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/
-feature-policy = "accelerometer 'none'; autoplay 'none'; camera 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; xr-spatial-tracking 'none';"
-permission-policy = "accelerometer=(); autoplay=(); camera=(); document-domain=(); encrypted-media=(); fullscreen=(); geolocation=(); gyroscope=(); magnetometer=(); microphone=(); midi=(); payment=(); picture-in-picture=(); sync-xhr=(); usb=(); xr-spatial-tracking=();"
+#feature-policy = "accelerometer 'none'; autoplay 'none'; camera 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; xr-spatial-tracking 'none';"
+permissions-policy = "accelerometer=(); autoplay=(); camera=(); document-domain=(); encrypted-media=(); fullscreen=(); geolocation=(); gyroscope=(); magnetometer=(); microphone=(); midi=(); payment=(); picture-in-picture=(); sync-xhr=(); usb=(); xr-spatial-tracking=();"
 referrer-policy = "strict-origin-when-cross-origin"
 expect-ct = "max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly"
 
@@ -63,24 +67,9 @@ Server = "markentier.tech"
 [[headers]]
 for = "/"
 [headers.values]
-Cache-Control = "public, max-age=3600"
-
-[[headers]]
-for = "/index.html"
-[headers.values]
-Cache-Control = "public, max-age=3600"
-
-[[headers]]
-for = "/*.html"
-[headers.values]
-Cache-Control = "public, max-age=3600"
-x-note = "glob html ext"
-
-[[headers]]
-for = "/*/"
-[headers.values]
-Cache-Control = "public, max-age=3600"
-x-note = "glob trailing slash"
+# if at all it changes only on a daily basis
+# (my tweak sprees not counting ;-)
+Cache-Control = "public, max-age=86400"
 
 # special treatment for the JSON feed
 # be as open as possible (mostly for my personal testing)
