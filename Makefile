@@ -49,18 +49,16 @@ TIDY_XML_SETTINGS = -q -m -w 0 -i -utf8 -xml \
 										--indent-spaces 2 \
 										--tab-size 2
 
-COVERS = $(shell find site -iname 'cover.png')
+COVERS = $(shell find $(SITE_ROOT) -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
+PNGS = $(shell find $(SITE_ROOT) -iname '*.png')
+JPGS = $(shell find $(SITE_ROOT) -iname '*.jpg')
+JPG2PNG = $(JPGS:.jpg=.png)
+AVIFS = $(PNGS:.png=.avif)
+WEBPS = $(PNGS:.png=.webp)
 
 THUMB_SIZE = 320x160
 PNG_COLORS = 32
-
-PNGS = $(shell find site -iname '*.png')
-JPGS = $(shell find site -iname '*.jpg')
-JPG2PNG = $(JPGS:.jpg=.png)
-WEBPS = $(PNGS:.png=.webp)
-AVIFS = $(PNGS:.png=.avif)
-
 
 
 # DEFAULT TARGET
@@ -77,6 +75,9 @@ serve:
 local:
 	$(MAKE) build NETLIFY_DEPLOY_URL=$(LOCAL_PROTO)://$(LOCAL_ADDR)
 
+local.prod:
+	time $(MAKE) local
+	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
 
 
 # DEPLOYMENT TO NETLIFY
@@ -96,11 +97,11 @@ build-html:
 	$(BUILD_CMD)
 
 build-feeds:
-	mv public/atom/index.html public/feed.atom.xml
-	mv public/rss/index.html public/feed.rss.xml
-	mv public/json/index.html public/feed.json
+	mv $(OUTPUT_DIR)/atom/index.html $(OUTPUT_DIR)/feed.atom.xml
+	mv $(OUTPUT_DIR)/rss/index.html $(OUTPUT_DIR)/feed.rss.xml
+	mv $(OUTPUT_DIR)/json/index.html $(OUTPUT_DIR)/feed.json
 	command -v tidy >/dev/null 2>&1 && \
-		(find public -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} \;) || \
+		(find $(OUTPUT_DIR) -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} \;) || \
 		echo "No tidy installed."
 
 post-processing:
@@ -226,7 +227,7 @@ clean-zola:
 	@rm -rf zola*
 
 install-tools:
-	cargo install watchexec
+	cargo install microserver
 	cargo install oxipng
 	cargo install cavif
 	cargo install svgcleaner
