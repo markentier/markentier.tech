@@ -16,7 +16,7 @@
   <div id="wrppr" class="wrppr">
     {% include "partials/siteheader.html" %}
 
-    <nav class="navbar" role=navigation>
+    <nav class="navbar">
       <div class="navbar-menu">
         <a href="/">home</a>
         <a href="/resolution/">resolution</a>
@@ -25,7 +25,7 @@
       </div>
     </nav>
 
-    <main id="content" class="content" role=main>
+    <main id="content" class="content">
       {% block content_header %}{% endblock content_header %}
       {% block content %}{% endblock content %}
       {% block content_footer %}{% endblock content_footer %}
