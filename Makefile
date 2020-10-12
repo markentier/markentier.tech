@@ -38,7 +38,7 @@ BUILD_CMD = $(ZOLA) --root $(SITE_ROOT) build \
 							--output-dir $(OUTPUT_DIR)
 
 SERVE_CMD = $(ZOLA) --root $(SITE_ROOT) serve \
-							--drafts --base-url %(LOCAL_HOST) \
+							--drafts --base-url $(LOCAL_HOST) \
 							--interface $(LOCAL_BIND) --port $(LOCAL_PORT) \
 							--output-dir $(OUTPUT_DIR)
 
