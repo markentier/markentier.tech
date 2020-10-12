@@ -151,7 +151,8 @@
   https://hospodarets.com/native-ecmascript-modules-the-first-overview
   https://calendar.perfplanet.com/2016/prefer-defer-over-async/
 #}
-<script type=module src="/js/mtt.js"></script>
+{# disable site wide JS as we do not have any meaningful code there #}
+{# <script type=module src="/js/mtt.js"></script> #}
 
 {% if page and page.extra.additional_scripts %}
   {% for script_path in page.extra.additional_scripts %}
