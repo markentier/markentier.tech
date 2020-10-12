@@ -46,11 +46,14 @@
 {% macro pfooter(page, config) %}
 <footer class="meta">
 
+  {# ⎇⌥⊶Ⓞⓞ≅≈⊜ 💭💬🔄♻⚓📜📑🔖✒🖋 #}
   <div class="info">
-    <span class="permalink" title="Permalink">🔖</span> <a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br>
+    <div class="icon permalink" title="Permalink">⚓</div>
+    <div class="link"><a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br></div>
     {% if page.extra.origin_url %}
     {% set rels = "external alternate nofollow noreferrer noopener" %}
-    <span class="origin" title="Originally published at">⎇</span>&nbsp;<a rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a>
+    <div class="icon origin" title="Originally published at">📜</div>
+    <div class="link"><a rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a></div>
     {% endif %}
   </div>
 
