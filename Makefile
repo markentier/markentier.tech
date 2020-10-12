@@ -157,20 +157,20 @@ optimize-pngs:
 
 SRC_IMAGES = $(shell find site/content -iname '*.png' -o -iname '*.jpg' -o -iname '*.gif')
 SQIP_IMAGES = $(SRC_IMAGES:%=%.svg)
-SQIP_IMAGES_B64 = $(SQIP_IMAGES:%=%.b64)
 
 SQIP = yarn run sqip
 # (m)ode, (n)umberOfPrimitives, (b)lur
-SQIP_SETTINGS = -m 0 -n 9 -b 12
+SQIP_SETTINGS = -p primitive -p blur -p svgo -m 0 -n 7 -b 36
+SVGO_SETTINGS = --multipass -p 2 --enable=cleanupListOfValues,sortAttrs,reusePaths
 
 create-sqip: $(SQIP_IMAGES)
 
-$(SQIP_IMAGES_B64): %.b64: %
-	base64 -i $< -o $@
+delete-sqip:
+	rm -rf $(SQIP_IMAGES)
 
 $(SQIP_IMAGES): %.svg: %
 	yarn run sqip $(SQIP_SETTINGS) -i $< -o $@
-	yarn run svgo --multipass -p 2 --enable=cleanupListOfValues,sortAttrs,reusePaths -i $@ -o $@
+	yarn run svgo $(SVGO_SETTINGS) -i $@ -o $@
 	sed -i 's|<defs/>||g' $@
 
 serve:
