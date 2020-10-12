@@ -35,9 +35,9 @@
 {% endif %}
 
 {% if page.taxonomies.tags %}
-<meta name="keywords" content="{{page.taxonomies.tags | slice(end=10) | join(sep=",") }}">
+<meta name="keywords" content="{{page.taxonomies.tags | slice(end=10) | join(sep=", ") }}">
 {% else %}
-<meta name="keywords" content="{{config.extra.keywords | join(sep=",") }}">
+<meta name="keywords" content="{{config.extra.keywords | join(sep=", ") }}">
 {% endif %}
 
 <meta name="author" content="{{config.extra.author}} ({{config.extra.author_nick}})">
@@ -65,9 +65,9 @@
     {% else %}
       {% set page_description = page.content %}
     {% endif %}
-    {% set page_description = page_description | striptags | split(pat=" ") | slice(end=31) | join(sep=" ") | safe %}
+    {% set page_description = page_description | striptags | split(pat=" ") | slice(end=50) | join(sep=" ")| truncate(length=120, end="…") | safe %}
 
-    <meta name="description" content="{{page_description}}">
+    <meta name="description" content="{{page_description}} ⓜ {{config.title}}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{page.permalink | safe}}">
@@ -108,25 +108,28 @@
     {% else %}
       {% set page_description = config.description %}
     {% endif %}
-    {% set page_description = page_description | striptags | split(pat=" ") | slice(end=31) | join(sep=" ") | safe %}
-    <meta name="description" content="{{page_description}}">
+    {% set page_description = page_description | striptags | split(pat=" ") | slice(end=50) | join(sep=" ") | safe %}
+    <meta name="description" content="{{page_description}} ⓜ {{config.title}}">
 
   {% endif %}
 
 {% elif term %}
 
-  <meta name="description" content="{{term.name}} ({{taxonomy.name}} » {{term.slug}}) on {{config.title}}">
+  <meta name="description" content="All blog posts tagged with {{term.name}} on {{config.title}}">
 
 {% elif taxonomy %}
 
-  <meta name="description" content="{{taxonomy.name}} on {{config.title}}">
+  {% set termlist1 = terms | map(attribute="name") | slice(end=5) | join(sep=", ") %}
+  {% set termlist2 = terms | reverse | map(attribute="name") | slice(end=5) | reverse | join(sep=", ") %}
+  <meta name="description" content="All {{taxonomy.name}} currently used on {{config.title}} | Selection: {{termlist1}}, …, {{termlist2}}">
 
 {% elif section %}
 
+  {# homepage #}
   {% if section.components | length == 0 %}
-    <meta name="description" content="{{config.description}}">
+    <meta name="description" content="{{config.description}} ⓜ {{config.title}} | Topics: {{config.extra.keywords | join(sep=", ") }}">
   {% else %}
-    <meta name="description" content="{{section.components | reverse | join(sep=' « ')}} « {{config.title}}">
+    <meta name="description" content="All blog posts available under: {{section.components | reverse | join(sep=' « ')}} « {{config.title}}">
   {% endif %}
 
 {% endif %}

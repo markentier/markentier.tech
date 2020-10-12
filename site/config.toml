@@ -29,7 +29,13 @@ author_nick = "@asaaki"
 site_nick = "@markentier_tech"
 feed_id = "markentier.tech"
 # default keywords
-keywords = ["code", "people", "humans", "software", "development", "diversity", "inclusion", "rust", "programming", "unicorn", "tech"]
+keywords = [
+  "code", "people", "humans", "software", "development",
+  "diversity", "inclusion",
+  "rust", "programming",
+  "unicorn", "tech",
+  "ⓜ"
+]
 has_image = false
 has_hero = false
 image_url = "m.card.1024x512.png"
