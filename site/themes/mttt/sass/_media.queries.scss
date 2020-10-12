@@ -1,19 +1,39 @@
-// @media only screen and (min-width: 768px) { … }
-@media only screen and (max-width: 767px) {
-  html, body { font-size: 18px; }
-  .navbar {
-    padding-left: .5rem;
-    .scrollprogress { margin-left: -.5rem; }
+// Viewing on 3/4 or more of your UHD/4K monitor?
+// Lean back, we make it big enough to read from a distance.
+@media only screen and (min-width: 2880px) {
+  :root {
+    --ref-size: 28px;
+    --content-width: 45rem
   }
 }
 
+// between 1920 (FHD) up to 3/4 of UHD/4K
+@media only screen and (max-width: 2879px) {
+  :root {
+    --ref-size: 24px;
+    --content-width: 42rem;
+  }
+}
+
+// our "just before Full HD" world (desktops)
+@media only screen and (max-width: 1919px) {
+  :root {
+    --ref-size: 20px;
+    --content-width: 38rem
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  :root { --ref-size: 18px; }
+  .navbar { padding-left: .75rem; }
+  .headlink { margin-left: -.75rem; }
+  .meta, .footer { font-size: .85rem; }
+}
+
 @media only screen and (max-width: 479px) {
-  html, body { font-size: 18px; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.35rem; }
-  pre { font-size: 1em; }
-  .meta, .footer { font-size: .89rem; }
-  .post_content_info { flex-direction: column; font-size: .78rem; }
+  pre { font-size: .9em; }
+  .headlink { margin-left: -.5rem; }
+  .post_content_info { flex-direction: column; font-size: .8rem; }
 }
 
 // only for video iframes

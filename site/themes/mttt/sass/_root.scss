@@ -1,5 +1,7 @@
 :root {
+  // reference size and width; overridden by media queriess
   --ref-size: 20px;
+  --content-width: 38rem;
 
   // https://css-tricks.com/snippets/css/system-font-stack/
   --system-fonts: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",

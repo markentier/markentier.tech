@@ -1,7 +1,7 @@
 .wrppr {
   margin: auto;
   padding: 0 1rem;
-  max-width: 38rem;
+  max-width: var(--content-width);
 }
 
 .siteheader {
@@ -72,8 +72,8 @@
   opacity: 0.8;
 
   .thumbnail {
-    max-width: 16rem; // 320px;
-    max-height: 8rem; // 160px;
+    max-width: 16rem;
+    max-height: 8rem;
     width: 40%;
     float: right;
     margin: 0.25em 0 0 0.5em;
@@ -118,18 +118,17 @@
   text-align: center;
   font-style: normal;
   opacity: .125;
-  // content: "· · ⓜ · ·";
   content: "· · ✽ · ·";
   // content: "· · • · ·";
   // content: "· · ● · ·";
   // content: "· · ✿ · ·";
+  // content: "· · ⓜ · ·";
 }
 
 .post_hero {
   picture {
     display: block;
-    max-width: 38rem; // 760px;
-    max-height: 19rem; // 380px;
+    max-width: var(--content-width);
   }
 }
 
