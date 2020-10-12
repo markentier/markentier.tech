@@ -2,7 +2,7 @@
   "name": "markentier.tech blog",
   "short_name": "mtt blog",
   "icons": [{
-    "src": "m.512.icon.png",
+    "src": "/i/m.512.icon.png",
     "type": "image/png",
     "sizes": "512x512",
     "purpose": "any maskable"

@@ -36,7 +36,7 @@ While an old design doesn't need to be bad at all, mine wasn't really finished a
 
 I also knew that I wanted to change the logo independently from a redesign, but now all things came together.
 
-[![m (reference logo file; SVG)](/m.svg)](/m.svg)
+[![m (reference logo file; SVG)](/i/m.svg)](/i/m.svg)
 
 ### Two: Anything is possible
 
