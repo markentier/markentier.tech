@@ -52,7 +52,7 @@ I went for [cobalt](https://cobalt-org.github.io/), because I want to learn and 
 Within your freshly cloned and probably still very empty repository you run something like `cobalt init` (or whatever your tool requires) and start the heavy work of creating a website from bits and pieces. You can spend already hours and days just building the site, since layout and design are a neverending story.
 But also pages and posts need to be written, and this will take some time as well.
 
-### `&lt;/head&gt;&lt;body&gt;`
+### `</head><body>`
 
 Of course, you can start easy. It doesn't have to be pixel perfect right from the start. Look at this one, it might seem a bit rough and edgy here and there (depending when you will discover this article).
 

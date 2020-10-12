@@ -52,7 +52,7 @@
       <picture>
         <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif">
         <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp">
-        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" loading="lazy">
+        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" loading="lazy" data-skip-transform>
       </picture>
       {% endif %}
 
@@ -85,7 +85,7 @@
         <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
           <meta itemprop="name" content="{{config.extra.publisher}}">
           <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <img itemprop="url" src="{{config.base_url | safe}}/m.amp.png" alt="logo">
+            <img itemprop="url" src="{{config.base_url | safe}}/m.amp.png" alt="logo" data-skip-transform>
             <meta itemprop="height" content="60">
             <meta itemprop="width" content="600">
           </span>
@@ -168,8 +168,8 @@
 {%- endmacro feed_items -%}
 
 {% macro absolutify(content, permalink) %}
-{% set rel_src = self::rel_src() %}
-{% set abs_src = self::abs_src(link=permalink) %}
+{% set rel_src = self::rel_src() | safe %}
+{% set abs_src = self::abs_src(link=permalink) | safe %}
 {{ content | replace(from=rel_src, to=abs_src) | safe }}
 {% endmacro absolutify %}
 

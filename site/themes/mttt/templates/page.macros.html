@@ -14,7 +14,7 @@
     <picture>
       <source srcset="{{page_image_avif_url | safe}}" type="image/avif">
       <source srcset="{{page_image_webp_url | safe}}" type="image/webp">
-      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe}}" loading="eager">
+      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe}}" loading="eager"  data-skip-transform>
     </picture>
     <figcaption>{{page_image_alt | safe}}</figcaption>
   </figure>
@@ -66,7 +66,7 @@
           <meta itemprop="name" content="{{config.extra.publisher}}">
           <meta itemprop="description" content="{{config.description}}">
           <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <img itemprop="url" src="{{config.base_url | safe}}/m.amp.png" alt="logo">
+            <img itemprop="url" src="{{config.base_url | safe}}/m.amp.png" alt="logo" data-skip-transform>
             <meta itemprop="height" content="60">
             <meta itemprop="width" content="600">
           </span>

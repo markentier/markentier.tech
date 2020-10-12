@@ -1,0 +1,9 @@
+{
+  "name": "posthtml-avif-webp",
+  "version": "1.0.0",
+  "description": "Transforms img tags to picture with AVIF and WEBP support",
+  "main": "lib/index.js",
+  "author": "Christoph Grabo",
+  "license": "MIT",
+  "private": true
+}

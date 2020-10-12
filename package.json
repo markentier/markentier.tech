@@ -26,6 +26,7 @@
     "gulp-minify": "*",
     "gulp-posthtml": "*",
     "posthtml-alt-always": "*",
+    "posthtml-avif-webp": "./vendor/posthtml-avif-webp",
     "posthtml-img-autosize": "./vendor/posthtml-img-autosize",
     "sqip": "^1.0.0-alpha.32",
     "sqip-cli": "^1.0.0-alpha.36",
@@ -35,5 +36,7 @@
     "sqip-plugin-svgo": "^1.0.0-alpha.33",
     "text-to-svg": "*"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "image-size": "*"
+  }
 }

@@ -18,7 +18,8 @@ const plugins = [
     root: DEST,
     processEmptySize: true
   }),
-  require('posthtml-alt-always')({})
+  require('posthtml-alt-always')({}),
+  require("posthtml-avif-webp")({ root: DEST }),
 ];
 
 const htmltidyConfig = {
@@ -37,14 +38,14 @@ const htmltidyConfig = {
   tidyMark: false
 };
 
-const htmlminOptions = { 
-  collapseBooleanAttributes: true, 
-  collapseWhitespace: true, 
-  conservativeCollapse: true, 
-  minifyCSS: true, 
-  minifyJS: true, 
-  removeComments: true, 
-  removeStyleLinkTypeAttributes: true 
+const htmlminOptions = {
+  collapseBooleanAttributes: true,
+  collapseWhitespace: true,
+  conservativeCollapse: false,
+  minifyCSS: true,
+  minifyJS: true,
+  removeComments: true,
+  removeStyleLinkTypeAttributes: true
 };
 
 const minifyConfig = {

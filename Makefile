@@ -29,7 +29,7 @@ SERVE_CMD = $(BUILD_BIN) serve --drafts --base-url localhost --interface 0.0.0.0
 
 NODE_VERSION ?= 14
 
-build: install-zola build-site postprogressing
+build: install-zola build-site postprocessing
 
 local:
 	$(MAKE) build local-deployment-json NETLIFY_DEPLOY_URL=http://localhost:3000
@@ -64,8 +64,12 @@ build-feeds:
 		(find public -type f -name '*.xml' -exec tidy $(TIDY_XML_SETTINGS) -o {} {} \;) || \
 		echo "No tidy installed."
 
-postprogressing:
-	yarn && IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
+postprocessing: # node_modules
+	yarn
+	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
+
+# node_modules:
+# 	ln -s $(shell mktemp -d -t node_modules.mtt.XXXXXXX) node_modules
 
 check-html-size:
 	@find public -type f -name '*.html' -exec du -h {} \; | sort -r -u -k 1
