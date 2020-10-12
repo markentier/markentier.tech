@@ -15,7 +15,7 @@ taxonomies = [
 generate_rss = true
 rss_limit = 10
 
-build_search_index = true
+build_search_index = false
 check_external_links = false
 ignored_content = []
 extra_syntaxes = []
