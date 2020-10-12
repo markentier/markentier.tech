@@ -1,8 +1,6 @@
 {% extends "default.html" %}
 
-{% block title -%}
-  '{{term.name}}' category | {{config.title}}
-{%- endblock title %}
+{% block title %}'{{term.name}}' category{% endblock title %}
 
 {% block before_head_end %}
 {# <meta name="robots" content="noindex"> #}

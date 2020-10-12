@@ -2,7 +2,7 @@
 {% import "macros.html" as m %}
 {% import "page.macros.html" as pm %}
 
-{% block title %}{{page.extra.long_title | default(value=page.title | safe)}} | {{config.title}}{% endblock title %}
+{% block title %}{{page.extra.long_title | default(value=page.title | safe)}}{% endblock title %}
 
 {% block menu_items %}
   {% if page.extra.menu_items %}
