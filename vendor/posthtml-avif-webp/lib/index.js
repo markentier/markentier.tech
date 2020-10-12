@@ -28,6 +28,8 @@ const posthtmlAvifWebp = (options) => {
         return node;
       }
 
+      // const hasDataSrc = !!node.attrs["data-src"];
+      // const nodeSrc = node.attrs["data-src"] || node.attrs.src;
       const nodeSrc = node.attrs.src;
 
       if (nodeSrc.endsWith(".svg")) return node;
@@ -37,7 +39,11 @@ const posthtmlAvifWebp = (options) => {
       const filePath = path.parse(imgUrl.pathname);
       const fileBase = path.join(filePath.dir, filePath.name);
 
-
+      // if (hasDataSrc) {
+      //   node.attrs["data-src"] = imgUrl.pathname;
+      // }else{
+      //   node.attrs.src = imgUrl.pathname;
+      // }
       node.attrs.src = imgUrl.pathname;
 
       const pictureNode = {
@@ -74,6 +80,9 @@ const posthtmlAvifWebp = (options) => {
     return tree;
   }
 };
+
+// const placeholderSrc = (width, height) =>
+//   `data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}"%3e%3c/svg%3e`;
 
 // does not work for site external images!
 const parseUrlLike = (input, baseHref) => {

@@ -5,6 +5,7 @@ const http = require('http');
 
 const imageSize = require('image-size');
 const ratio = require('./ratio.js');
+const miniSvg = require('./miniSvgDataUri');
 
 module.exports = {
     default: function (options) {
@@ -61,14 +62,17 @@ module.exports = {
                             if (!img.attrs.loading) {
                                 img.attrs.loading = 'lazy';
                             }
-                        })
-                        .then(() => {
-                            const svgPath = `${imagePath}.svg`;
-                            if (fs.existsSync(svgPath)) {
-                                const data = fs.readFileSync(svgPath, options);
-                                const b64 = encodeBase64(data);
-                                img.attrs.style = `background-size:cover;background-image:url(data:image/svg+xml;base64,${b64});`;
-                            }
+
+                            // DISABLED since SQIPs don't really have an effect in <picture> groups
+                            // const svgPath = `${imagePath}.svg`;
+                            // if (fs.existsSync(svgPath)) {
+                            //     const data = fs.readFileSync(svgPath, options);
+                            //     const encoded = miniSvg(data.toString());
+                            //     const orig = img.attrs.src;
+                            //     // img.attrs.style = `background-size:cover;background-image:url("${encoded}");`;
+                            //     img.attrs["data-src"] = `${orig}`;
+                            //     img.attrs.src = `${encoded}`;
+                            // }
                         })
                         .catch(e => Promise.reject(e.message))
                 );
