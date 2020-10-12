@@ -183,3 +183,8 @@
   word-break: keep-all;
   hyphens: none;
 }
+
+.center { text-align: center; }
+.left { text-align: left; text-align: start; }
+.right { text-align: right; text-align: end; }
+.justify { text-align: justify; }

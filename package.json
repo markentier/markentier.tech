@@ -25,6 +25,7 @@
     "gulp-jsonminify": "*",
     "gulp-minify": "*",
     "gulp-posthtml": "*",
+    "posthtml-align-style": "./tools/packages/posthtml-align-style",
     "posthtml-alt-always": "*",
     "posthtml-avif-webp": "./tools/packages/posthtml-avif-webp",
     "posthtml-img-autosize": "*",

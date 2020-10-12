@@ -1,0 +1,9 @@
+{
+  "name": "posthtml-align-style",
+  "version": "1.0.0",
+  "description": "Transforms (table) align attributes to styles",
+  "main": "lib/index.js",
+  "author": "Christoph Grabo",
+  "license": "MIT",
+  "private": true
+}

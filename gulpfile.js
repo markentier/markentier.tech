@@ -19,6 +19,7 @@ const plugins = [
     processEmptySize: true
   }),
   require('posthtml-alt-always')({}),
+  require("posthtml-align-style")({}),
   require("posthtml-avif-webp")({ root: DEST }),
 ];
 
