@@ -28,9 +28,12 @@ const posthtmlAvifWebp = (options) => {
         return node;
       }
 
-      // const hasDataSrc = !!node.attrs["data-src"];
-      // const nodeSrc = node.attrs["data-src"] || node.attrs.src;
       const nodeSrc = node.attrs.src;
+
+      // Add lazy loading to all images without a loading attr:
+      if (!node.attrs.loading) {
+        node.attrs.loading = "lazy";
+      }
 
       if (nodeSrc.endsWith(".svg")) return node;
       if (nodeSrc.endsWith(".gif")) return node;
@@ -39,11 +42,6 @@ const posthtmlAvifWebp = (options) => {
       const filePath = path.parse(imgUrl.pathname);
       const fileBase = path.join(filePath.dir, filePath.name);
 
-      // if (hasDataSrc) {
-      //   node.attrs["data-src"] = imgUrl.pathname;
-      // }else{
-      //   node.attrs.src = imgUrl.pathname;
-      // }
       node.attrs.src = imgUrl.pathname;
 
       const pictureNode = {
@@ -70,7 +68,7 @@ const posthtmlAvifWebp = (options) => {
           attrs: { srcset: webpSrc, type: "image/webp" },
         };
         pictureNode.content.push(webpNode);
-      };
+      }
 
       pictureNode.content.push(node);
 

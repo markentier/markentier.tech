@@ -57,22 +57,6 @@ module.exports = {
                             if (dimensions.height) {
                                 img.attrs.height = dimensions.height;
                             }
-
-                            // add lazy loading to all images without a loading attr:
-                            if (!img.attrs.loading) {
-                                img.attrs.loading = 'lazy';
-                            }
-
-                            // DISABLED since SQIPs don't really have an effect in <picture> groups
-                            // const svgPath = `${imagePath}.svg`;
-                            // if (fs.existsSync(svgPath)) {
-                            //     const data = fs.readFileSync(svgPath, options);
-                            //     const encoded = miniSvg(data.toString());
-                            //     const orig = img.attrs.src;
-                            //     // img.attrs.style = `background-size:cover;background-image:url("${encoded}");`;
-                            //     img.attrs["data-src"] = `${orig}`;
-                            //     img.attrs.src = `${encoded}`;
-                            // }
                         })
                         .catch(e => Promise.reject(e.message))
                 );
