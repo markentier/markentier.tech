@@ -37,10 +37,10 @@ BUILD_CMD = $(ZOLA) --root $(SITE_ROOT) build \
 							--base-url $(NETLIFY_DEPLOY_URL) \
 							--output-dir $(OUTPUT_DIR)
 
-SERVE_CMD = $(ZOLA) --root $(SITE_ROOT) serve \
+SERVE_CMD = $(ZOLA) serve \
 							--drafts --base-url $(LOCAL_HOST) \
 							--interface $(LOCAL_BIND) --port $(LOCAL_PORT) \
-							--output-dir $(OUTPUT_DIR)
+							--output-dir ../$(OUTPUT_DIR)
 
 NODE_VERSION ?= 14
 
@@ -72,10 +72,7 @@ build: install-zola build-site post-processing
 # LOCAL DEVELOPMENT
 
 serve:
-	$(SERVE_CMD)
-
-serve-with-theme-reload:
-	watchexec -w site/themes/mttt -r -s SIGHUP "$(SERVE_CMD)"
+	cd $(SITE_ROOT) && $(SERVE_CMD)
 
 local:
 	$(MAKE) build NETLIFY_DEPLOY_URL=$(LOCAL_PROTO)://$(LOCAL_ADDR)
