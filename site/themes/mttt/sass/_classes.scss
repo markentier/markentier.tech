@@ -155,11 +155,27 @@
   .info {
     display: grid;
     grid-template-columns: 1.5rem auto;
-    align-items: center;
+    align-items: top;
 
     .icon {
       text-align: center;
       padding-right: .25rem;
+    }
+
+    details {
+      summary {
+        &::-webkit-details-marker {
+          display: none
+        }
+
+        &:after {
+          content: "… \a➕";
+        }
+      }
+
+      &[open] summary:after {
+        content: "  \a➖"; // uses an EM SPACE (U+2003)
+      }
     }
   }
 }

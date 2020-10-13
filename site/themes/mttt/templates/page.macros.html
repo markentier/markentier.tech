@@ -55,6 +55,31 @@
     <div class="icon origin" title="Originally published at">📜</div>
     <div class="link"><a rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a></div>
     {% endif %}
+    {% if page.taxonomies and page.taxonomies.tags %}
+    <div class="icon tags" title="Tagged with">🏷</div>
+    <div class="items tag-items">
+    {% set tagcount = page.taxonomies.tags | length %}
+    {% if tagcount <= 10 %}
+      {% for tag in page.taxonomies.tags %}
+        {% set url = get_taxonomy_url(kind="tags", name=tag) %}
+        <a href="{{url}}">{{tag}}</a>
+      {% endfor %}
+    {% else %}
+      <details>
+        <summary>
+          {% for tag in page.taxonomies.tags | slice(end=10) %}
+            {% set url = get_taxonomy_url(kind="tags", name=tag) %}
+            <a href="{{url}}">{{tag}}</a>
+          {% endfor %}
+        </summary>
+          {% for tag in page.taxonomies.tags | slice(start=10) %}
+            {% set url = get_taxonomy_url(kind="tags", name=tag) %}
+            <a href="{{url}}">{{tag}}</a>
+          {% endfor %}
+      </details>
+    {% endif %}
+    </div>
+    {% endif %}
   </div>
 
   <div class="data">
