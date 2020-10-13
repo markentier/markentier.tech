@@ -169,12 +169,12 @@
         }
 
         &:after {
-          content: "… \a➕";
+          content: "… ➕"; // uses an EM SPACE (U+2003)
         }
       }
 
       &[open] summary:after {
-        content: "  \a➖"; // uses an EM SPACE (U+2003)
+        content: "  ➖"; // uses 2 EM SPACEs (U+2003)
       }
     }
   }
