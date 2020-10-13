@@ -10,3 +10,11 @@ name = "Christoph Grabo"
 homepage = "https://markentier.tech/"
 
 [extra]
+# •●✿✽∷≣≡⊛▢◍◆🜂፨⁕◊▲♣ℳⓂⓜ⁑⁂‖
+# 5: 𑇥⸭⁙𒐊𒑍𝄚🀔🀝🂥🂵🃅🃕 🞯🞰🞱🞲🞳🞴🟉🟊⛤⛥⛦⛧
+# 𑇥 https://www.compart.com/en/unicode/U+111E5
+
+# Alchemy: https://www.compart.com/en/unicode/search?q=alchemic#characters
+# 🜂🜄🜁🜃🜎🜏🜛
+# Misc Symbols: https://www.compart.com/en/unicode/block/U+2600
+title_sep = "🞳"

@@ -3,7 +3,7 @@
 {%- set is_post = page.permalink is containing("/posts/") -%}
 <header>
 
-  {% if page.extra.has_image -%}
+  {% if page.extra.has_image %}
   {% if page.extra.has_hero %}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
   {% set page_image_webp_url = m::get_cover_image_webp_url(url=page.permalink) %}
@@ -21,7 +21,7 @@
   {% else %}
     <!-- no hero image -->
   {% endif %}
-  {%- endif %}
+  {% endif %}
 
   <h1 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title | safe)}}</h1>
 
