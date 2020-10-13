@@ -56,6 +56,7 @@ JPGS = $(shell find $(SITE_ROOT) -iname '*.jpg')
 JPG2PNG = $(JPGS:.jpg=.png)
 AVIFS = $(PNGS:.png=.avif)
 WEBPS = $(PNGS:.png=.webp)
+OPNGS = $(PNGS:%=OPTIMIZE_%)
 
 THUMB_SIZE = 320x160
 PNG_COLORS = 32
@@ -132,12 +133,15 @@ list-pngs:
 	@find site -iname '*.png' -exec wc -c {} \;
 
 optimize-pngs:
-	@find site -iname '*.png' -exec sh -c "\
-		echo 'Optimizing file: {}' && \
-		echo ' -- before size: \c' && wc -c < {} && \
-		oxipng -q -o max -a -Z -s --fix --force --out {} {} && \
-		echo ' --- after size: \c' && wc -c < {} \
-	" \;
+	echo $(MAKE) optimize-pngs-x -j $(shell expr $(shell nproc) / 2 + 1)
+
+optimize-pngs-x: $(OPNGS)
+
+$(OPNGS): OPTIMIZE_%: %
+	@echo 'Optimizing file: $<' && \
+		echo ' -- before size: \c' && wc -c < $< && \
+		oxipng -q -o max -a -Z -s --fix --force --out $< $< && \
+		echo ' --- after size: \c' && wc -c < $<
 
 ### THUMBNAILs
 
