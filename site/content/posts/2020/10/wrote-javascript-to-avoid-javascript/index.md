@@ -132,7 +132,7 @@ Also in 2018 I played with [Progressive Web Apps (PWA)](/posts/2018/04/progressi
 
 Long story short: if you do not build a web **app**, you most likely do not need service workers. So yet another thing down from the <span class=js>JS</span> list.
 
-No _before - after_ comparison here, but several precious kilobytes of JavaScript shaved off by removing them.
+No _before/after_ comparison here, but several precious kilobytes of JavaScript shaved off by removing them.
 
 -----
 
@@ -142,9 +142,11 @@ _Woa, what are all these random acronyms here?_ Don't worry, the simple answer i
 
 If you have images and they are not very small in file size, you maybe want to provide a temporary placeholder with very low resolution and quality. This is pretty useful for slow internet connections; living here in Germany I know how difficult this situation can be. That thing called internet is still very Neuland to us. 🤦
 
-Anyway, `SQIP` can be translated with »`SVG`-based `LQIP`.« \
-SVG are Scalable Vector Graphics, an image format I really love a lot, my logo is done with it ([I wrote about it a while ago][logo]). \
-LQIP finally stands for _»Low Quality Image Placeholders«_ and is based on an algorithm to find primitive shapes to describe the source image. Basically try to find only a few triangles, rectangles, circles, ellipsis, and other low poly shapes. It is also an art form in its own, you can enjoy some [nice examples there][primitive]. The advantage of SVG is that it is made to encode such figures in very few characters of code, so a less complex image for a placeholder can be written in one kilobyte or less.
+Anyway, `SQIP` can be translated with »`SVG`-based `LQIP`.«
+
+`SVG` are Scalable Vector Graphics, an image format I really love a lot, my logo is done with it ([I wrote about it a while ago][logo]).
+
+LQIP finally stands for _»Low Quality Image Placeholders«_ and is based on an algorithm to find primitive shapes to describe the source image. Basically try to find only a few triangles, rectangles, circles, ellipsis, and other low poly shapes. It is also an art form in its own, you can enjoy some [nice examples there][primitive]. The advantage of SVG is that it is made to encode such figures in very few characters of human readable text, so a less complex image for a placeholder can be written in one kilobyte or less.
 
 Compared to the original high resolution image which can easily weigh half a megabyte and more this is great. You can reserve the space in your page and very early in the loading process display some visual hint that there will be a proper picture soon. Especially for types which do not support progessive loading (as JPEG can) using SQIP/LQIP placeholders makes a lot of sense.
 
@@ -156,7 +158,7 @@ But what happened that this beautiful technique fell out of favor with me?
 
 Enter another interesting HTML tag combo: [`<picture>`][picture] with `<source>`.
 
-So one reason to use small low quality placeholders is because before such tags became a thing we solely relied on a single `<img>` and some trickery with CSS (and sometimes aided by sprinkles of JavaScript). I tried to avoid <span class=js>JS</span> completely, but of course I had to use some styling hacks.
+So one reason to use small low quality placeholders is because before such tags became a thing we solely relied on a single `<img>` and some trickery with CSS (and sometimes aided by sprinkles of JavaScript). I tried to avoid <span class=js>JS</span> completely, but of course I had to use some styling hacks eventually.
 
 The essence of it was some style attached to the image in question:
 
@@ -188,7 +190,7 @@ document.querySelectorAll(
 
 Theoretically it would have been tolerable, but I noticed some strange behaviour once I started wrapping my images into `picture` tags.
 
-Let's shave the yak a bit further to understand why.
+Let's [shave the yak][yak] a bit further to understand why.
 
 #### WEBP and AVIF
 
@@ -243,14 +245,14 @@ In the beginning I mentioned, that there are exceptions to the JavaScript-free s
 
 The first page is actually for myself when I need to check screen and window sizes while tweaking my theme. It needs to dynamically (re)calculate those values when resizing and scaling, so there is not really a way around <span class=js>JS</span> here. And as said, I don't mind it at all.
 
-The second page could live without client side scripting if I'm honest, but back then I was lazy to automatically generate the data before or during deployment. Nowadays it serves as a reminder that you can get the computed style programmatically. Sometimes this can be very useful.
+The second page could live without client side scripting if I'm honest, but back then I was a bit too lazy to automate the data generation in a fully static fashion before or during deployment. Nowadays it serves as a reminder that you can get the computed style programmatically. Sometimes this can be very useful.
 
 By the way, this site is powered by 153 MB of `node_modules` during build, pre & post processing, and deployment times. I'm not immensily happy about it, but currently that's okay. Though I will probably work on replacing that with something else in the future.
 
 <!-- hacky way to sneak in attributes: v--------v -->
 ### 🙅🏻‍♀️🕵🏻‍♀️, 🙅🏻‍♀️🍪 {#no-tracking-no-cookies" title="No tracking, no cookies}
 
-Another side fact: since I do not track my visitors, not even any 3rd party scripts are lingering around anywhere. This also means you have to not only bring coffee or tea for your afternoon reading, but also your very own cookies, too. Because I don't <del>eat</del><ins>need</ins> them.
+Another side fact: since I do not track my visitors, not even any third party scripts are lingering around anywhere. This also means you have to not only bring coffee or tea for your afternoon reading, but also your very own cookies, too. Because I don't <del>eat</del><ins>need</ins> them.
 
 -----
 
@@ -283,6 +285,7 @@ And o hey, \
 [sqip]: https://github.com/axe312ger/sqip
 [primitive]: https://github.com/fogleman/primitive#static-animation
 [picture]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+[yak]: https://en.wiktionary.org/wiki/yak_shaving
 [webp]: https://caniuse.com/webp
 [avif]: https://caniuse.com/avif
 [gh-paw]: https://github.com/markentier/markentier.tech/blob/d5bfc30a586d532a1f4b990f1a5ba74339927d76/tools/packages/posthtml-avif-webp/lib/index.js "posthtml-avif-webp/lib/index.js @ markentier.tech repo"
