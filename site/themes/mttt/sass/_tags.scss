@@ -81,13 +81,12 @@ hr {
 hr::after { content: "·   ·   ·"; }
 
 
-img, figcaption, pre {
+img, video, figcaption, pre {
   margin: 0 -1rem;
 }
 
-img {
+img, video {
   max-width: calc(100% + 2rem);
-  // width: auto;
   width: var(--content-width);
   height: auto;
 }
@@ -96,7 +95,12 @@ figcaption {
   font-size: .6em;
   line-height: 1.75em;
   text-align: center;
+  visibility: hidden;
 }
+figure:hover figcaption {
+  visibility: visible;
+}
+
 pre {
   padding: 1rem;
   padding-right: .5em;
