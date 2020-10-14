@@ -9,7 +9,6 @@ categories = ["default", "me"]
 [extra]
 #origin_url = ""
 #long_title = ""
-has_image = true
 has_hero = true
 image_alt = "🌼"
 #custom_delimiter = "· · 🌼 · ·" # let's crunch everything into the custom CSS

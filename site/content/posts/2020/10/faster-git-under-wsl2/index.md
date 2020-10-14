@@ -9,7 +9,6 @@ categories = ["default", "notes"]
 [extra]
 #origin_url = ""
 #long_title = ""
-has_image = true
 has_hero = true
 image_alt = "Use git.exe when working in repositories under /mnt/…"
 +++

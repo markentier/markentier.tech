@@ -36,7 +36,6 @@ keywords = [
   "unicorn", "tech",
   "ⓜ"
 ]
-has_image = false
 has_hero = false
 image_url = "m.card.1024x512.png"
 image_alt = "markentier.tech"

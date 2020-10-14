@@ -8,7 +8,6 @@ categories = ["default"]
 
 [extra]
 long_title = "Progressive Web App - even for a static site!"
-has_image = true
 has_hero = true
 image_alt = "markentier.tech is a Progressive Web App (PWA) — Nope, not a joke!"
 +++

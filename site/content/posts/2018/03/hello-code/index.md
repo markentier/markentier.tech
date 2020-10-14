@@ -9,7 +9,6 @@ categories = ["default"]
 [extra]
 #origin_url = ""
 #long_title = ""
-has_image = false
 has_hero = false
 #image_alt = "alt text"
 +++

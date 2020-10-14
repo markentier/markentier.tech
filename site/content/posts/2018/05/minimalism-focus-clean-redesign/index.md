@@ -9,7 +9,6 @@ categories = ["default"]
 [extra]
 #origin_url = ""
 long_title = "Minimalism, Focus, Clean - A Redesign"
-has_image = true
 has_hero = true
 image_alt = "Some coffee, code, and creativity as well as bravery for cutting and chopping — redesign cycles"
 +++

@@ -3,11 +3,10 @@ title = "How to build a static site/blog"
 date = 2018-03-15T00:23:42Z
 
 [taxonomies]
-tags = ["ssg", "static site", "generator", "netlify", "cobalt.rs", "tls", "ssl", "github", "lets encrypt", "blog"]
+tags = ["SSG", "static site", "generator", "netlify", "cobalt.rs", "tls", "ssl", "github", "lets encrypt", "blog"]
 categories = ["default"]
 
 [extra]
-has_image = true
 has_hero = true
 image_alt = "About how to build a static site or blog"
 +++

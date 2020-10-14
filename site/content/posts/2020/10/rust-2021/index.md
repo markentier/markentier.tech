@@ -9,7 +9,6 @@ categories = ["default"]
 [extra]
 #origin_url = ""
 #long_title = ""
-has_image = true
 has_hero = true
 image_alt = "Thinking about the future and a potential new Rust 2021 edition"
 # custom_delimiter = "· · ⚙ · ·"

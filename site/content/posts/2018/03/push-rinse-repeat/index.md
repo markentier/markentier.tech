@@ -8,7 +8,6 @@ tags = ["new", "blog", "bootstrap", "fresh", "static site"]
 categories = ["default"]
 
 [extra]
-has_image = true
 has_hero = true
 image_alt = "Screenshot of my first Twitter card for the previous blog post »Hello, code!« (https://twitter.com/asaaki/status/972875567132528641)"
 +++

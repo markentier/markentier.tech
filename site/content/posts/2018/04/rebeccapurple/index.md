@@ -9,7 +9,6 @@ categories = ["default","til"]
 [extra]
 # origin_url = ""
 # long_title = ""
-has_image = true
 has_hero = true
 image_alt = "The color 'rebeccapurple' with the RGB hex code #663399."
 +++

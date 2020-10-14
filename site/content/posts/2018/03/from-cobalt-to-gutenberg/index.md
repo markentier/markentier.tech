@@ -3,11 +3,10 @@ title = "From cobalt.rs to gutenberg"
 date = 2018-03-28
 
 [taxonomies]
-tags = ["zola", "gutenberg", "cobalt", "cobalt.rs", "rust", "ssg", "static site", "generator", "migration", "conversion", "switch"]
+tags = ["zola", "gutenberg", "cobalt", "cobalt.rs", "rust", "SSG", "static site", "generator", "migration", "conversion", "switch"]
 categories = ["default"]
 
 [extra]
-has_image = true
 has_hero = true
 image_alt = "Why I moved to gutenberg, a static site generator written in Rust"
 +++

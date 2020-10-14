@@ -9,7 +9,6 @@ categories = ["default"]
 [extra]
 origin_url = "https://www.contentful.com/blog/2018/04/03/hitchhikers-guide-to-structured-data/"
 #long_title = ""
-has_image = true
 has_hero = true
 #image_alt = "Why am I here? What’s my purpose in life? — What do I mean by who am I? — — — Oh no, not again."
 image_alt = "What have a bowl of petunias and a whale to do with structured data? 🤔"
