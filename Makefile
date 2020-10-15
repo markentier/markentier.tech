@@ -133,7 +133,7 @@ list-pngs:
 	@find site -iname '*.png' -exec wc -c {} \;
 
 optimize-pngs:
-	echo $(MAKE) optimize-pngs-x -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) optimize-pngs-x -j $(shell expr $(shell nproc) / 2 + 1)
 
 optimize-pngs-x: $(OPNGS)
 
