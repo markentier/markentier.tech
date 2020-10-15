@@ -1,5 +1,7 @@
 {% import "macros.html" as macros %}
 
+{% set sep = config.extra.title_sep | default(value="🞳") %}
+
 {# update with content of final fonts.css #}
 <style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:'Varela Round';src:local("Varela Round"),local("Varela Round Regular"),local("VarelaRound-Regular"),url("/f/varela-round-regular.woff2") format("woff2");unicode-range:U+0-FF,U+131,U+152,U+153,U+2BB,U+2BC,U+2C6,U+2DA,U+2DC,U+2000-206F,U+2074,U+20AC,U+2103,U+2109,U+2122,U+2191,U+2193,U+2212,U+2215,U+266A,U+FEFF,U+FFFD;font-weight:normal;font-style:normal;font-display:swap}</style>
 <link rel="stylesheet" href="/s/m.css">
@@ -66,7 +68,7 @@
     {% endif %}
     {% set page_description = page_description | striptags | split(pat=" ") | slice(end=50) | join(sep=" ")| truncate(length=120, end="…") | safe %}
 
-    <meta name="description" content="{{page_description}} ⓜ {{config.title}}">
+    <meta name="description" content="{{page_description}} {{sep}} {{config.title}}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{page.permalink | safe}}">
@@ -108,7 +110,7 @@
       {% set page_description = config.description %}
     {% endif %}
     {% set page_description = page_description | striptags | split(pat=" ") | slice(end=50) | join(sep=" ") | safe %}
-    <meta name="description" content="{{page_description}} ⓜ {{config.title}}">
+    <meta name="description" content="{{page_description}} {{sep}} {{config.title}}">
 
   {% endif %}
 
@@ -126,7 +128,7 @@
 
   {# homepage #}
   {% if section.components | length == 0 %}
-    <meta name="description" content="{{config.description}} ⓜ {{config.title}} | Topics: {{config.extra.keywords | join(sep=", ") }}">
+    <meta name="description" content="{{config.description}} {{sep}} {{config.title}} | Topics: {{config.extra.keywords | join(sep=", ") }}">
   {% else %}
     <meta name="description" content="All blog posts available under: {{section.components | reverse | join(sep=' « ')}} « {{config.title}}">
   {% endif %}
