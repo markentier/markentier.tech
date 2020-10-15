@@ -130,7 +130,7 @@ Because in the end all you really want is: **getting things done.**
 <small>Note: The tool got renamed to `zola`. IIRC there was a naming conflict in the past.</small>
 
 [array-issue]: https://github.com/Keats/gutenberg/issues/270
-[cobalt-data]: http://cobalt-org.github.io/docs/data.html
+[cobalt-data]: https://cobalt-org.github.io/docs/data/
 [cobalt]: https://cobalt-org.github.io/
 [fd]: https://github.com/sharkdp/fd
 [gutenberg]: https://www.getzola.org/
