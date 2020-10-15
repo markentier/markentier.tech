@@ -1,6 +1,6 @@
 +++
 title = "Medium Icon SVG"
-date = 2020-10-14
+date = 2020-10-15
 
 [taxonomies]
 tags = ["svg", "symbol", "icon", "logo", "brand", "medium", "2020", "unfinished", "ellipses", "logomark", ]
