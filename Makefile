@@ -193,6 +193,13 @@ delete-webps:
 
 
 
+# NEW POST
+
+new:
+	@tools/new-post/run.sh
+
+
+
 # CLEANING
 
 clean:
