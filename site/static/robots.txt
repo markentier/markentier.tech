@@ -1,3 +1,4 @@
 user-agent: *
 allow: /
+
 sitemap: https://markentier.tech/sitemap.xml
