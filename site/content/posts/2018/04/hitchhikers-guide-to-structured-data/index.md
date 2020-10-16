@@ -18,8 +18,9 @@ image_alt = "What have a bowl of petunias and a whale to do with structured data
 
 <!-- more -->
 
-> _“There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory which states that this has already happened.”_ \
-> —Hitchhiker's Guide To The Galaxy
+{% quoted(source="Hitchhiker's Guide To The Galaxy") %}
+“There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory which states that this has already happened.”
+{% end %}
 
 ![Example of Structured Data for HTML; Person and Place: 'Douglas Adams was born in Cambridge'](./code-snippet.png)
 
@@ -118,5 +119,9 @@ With well maintained structured data the possibilities are unlimited. So, go out
 
 > _“Curiously enough, the only thing that went through the mind of the bowl of petunias as it fell was Oh no, not again. Many people have speculated that if we knew exactly why the bowl of petunias had thought that we would know a lot more about the nature of the Universe than we do now.”_ \
 > —Hitchhiker's Guide To The Galaxy
+
+{% quoted(source="Hitchhiker's Guide To The Galaxy") %}
+“Curiously enough, the only thing that went through the mind of the bowl of petunias as it fell was Oh no, not again. Many people have speculated that if we knew exactly why the bowl of petunias had thought that we would know a lot more about the nature of the Universe than we do now.”
+{% end %}
 
 _**So Long, and Thanks for All the Fish!**_ 🐟

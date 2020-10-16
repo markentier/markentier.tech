@@ -23,9 +23,9 @@ While I don't particularly like their redesign—I haven't really recognized tha
 
 My first impression in a tweet:
 
-> Not that I really care much about them anyway, but my first reaction was "is something broken?" I checked even the source code to see a simple SVG icon. (And why they went for a full path instead of 3 circles …? 🤷🏻‍♂️)
-
-— <https://twitter.com/asaaki/status/1316526183387889664>
+{% quoted(href="https://twitter.com/asaaki/status/1316526183387889664") %}
+Not that I really care much about them anyway, but my first reaction was "is something broken?" I checked even the source code to see a simple SVG icon. (And why they went for a full path instead of 3 circles …? 🤷🏻‍♂️)
+{% end %}
 
 So let's take a look at the beauty.
 
