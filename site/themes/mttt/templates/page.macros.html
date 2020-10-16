@@ -65,12 +65,12 @@
     {% else %}
       <details>
         <summary>
-          {% for tag in page.taxonomies.tags | slice(end=10) %}
+          {% for tag in page.taxonomies.tags | slice(end=9) %}
             {% set url = get_taxonomy_url(kind="tags", name=tag) %}
             <a href="{{url}}">{{tag}}</a>
           {% endfor %}
         </summary>
-          {% for tag in page.taxonomies.tags | slice(start=10) %}
+          {% for tag in page.taxonomies.tags | slice(start=9) %}
             {% set url = get_taxonomy_url(kind="tags", name=tag) %}
             <a href="{{url}}">{{tag}}</a>
           {% endfor %}
