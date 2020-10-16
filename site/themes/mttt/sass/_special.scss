@@ -8,15 +8,17 @@
   text-decoration: line-through;
 }
 
-.quoted blockquote {
-  font-style: italic;
+.quoted>blockquote {
+  // font-style: italic;
+
+  & footer.source {
+    margin-top: -.25em;
+    font-size: .9em;
+    text-align: right;
+
+    &::before { content: "— "; }
+  }
 }
-.quoted blockquote + .blockquote-source {
-  margin-top: -.25em;
-  font-size: .9em;
-  text-align: right;
-}
-.quoted blockquote + .blockquote-source::before { content: "— "; }
 
 // page: theme.md
 .theme {

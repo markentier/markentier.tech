@@ -116,10 +116,11 @@ pre {
 }
 
 blockquote {
-    margin: 0 0 0 -1rem;
-    padding-left: .7em;
-    border-left: .3em solid var(--accent-darker-color);
-    opacity: .8;
+    margin: 0;
+    padding-left: .8em;
+    border-left: .2em solid var(--accent-dark-color);
+    // opacity: .85;
+    color: var(--accent-darkest-color);
 
     blockquote { margin: 0; }
 }

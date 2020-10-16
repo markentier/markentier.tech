@@ -1,14 +1,22 @@
+{#
+    {% quoted(source="", href="") %}
+    ...
+    {% end %}
+
+    {{ quoted(body="", source="", href="") }}
+#}
 <div class="quoted">
   <blockquote{% if href is defined %} cite="{{href | safe}}"{% endif %}>
-    {{body}}
+    {{body | safe}}
+
+    {%- if href or source %}
+    <footer class="source">
+      {%- if href -%}
+      <cite><a href="{{href | safe}}">{% if source %}{{source}}{% else %}{{href}}{% endif %}</a></cite>
+      {%- else -%}
+      <cite>{{source}}</cite>
+      {%- endif -%}
+    </footer>
+    {%- endif %}
   </blockquote>
-  {%- if href or source %}
-  <div class="blockquote-source">
-    {%- if href -%}
-    <a href="{{href | safe}}">{% if source %}{{source}}{% else %}{{href}}{% endif %}</a>
-    {%- else -%}
-    {{source}}
-    {%- endif -%}
-  </div>
-  {%- endif %}
 </div>
