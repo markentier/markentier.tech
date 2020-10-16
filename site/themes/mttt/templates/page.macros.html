@@ -3,17 +3,17 @@
 {%- set is_post = page.permalink is containing("/posts/") -%}
 <header>
 
-  {% if page.extra.has_hero %}
+  {% if page.extra.has_hero is defined %}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
   {% set page_image_webp_url = m::get_cover_image_webp_url(url=page.permalink) %}
   {% set page_image_avif_url = m::get_cover_image_avif_url(url=page.permalink) %}
-  {% set page_image_alt = page.extra.image_alt | safe %}
+  {% set page_image_alt = page.extra.image_alt | default(value=config.extra.image_alt) | safe %}
 
   <figure class="post_hero">
     <picture>
       <source srcset="{{page_image_avif_url | safe}}" type="image/avif">
       <source srcset="{{page_image_webp_url | safe}}" type="image/webp">
-      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt | safe}}" loading="eager"  data-skip-transform>
+      <img itemprop="image" src="{{page_image_url | safe}}" alt="{{page_image_alt}}" loading="eager"  data-skip-transform>
     </picture>
     <figcaption>{{page_image_alt | safe}}</figcaption>
   </figure>
