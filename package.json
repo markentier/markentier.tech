@@ -28,13 +28,7 @@
     "posthtml-align-style": "./tools/packages/posthtml-align-style",
     "posthtml-alt-always": "*",
     "posthtml-avif-webp": "./tools/packages/posthtml-avif-webp",
-    "posthtml-img-autosize": "*",
-    "sqip": "^1.0.0-alpha.32",
-    "sqip-cli": "^1.0.0-alpha.36",
-    "sqip-plugin-blur": "^1.0.0-alpha.33",
-    "sqip-plugin-data-uri": "^1.0.0-alpha.33",
-    "sqip-plugin-primitive": "^1.0.0-alpha.34",
-    "sqip-plugin-svgo": "^1.0.0-alpha.33",
+    "posthtml-img-autosize": "./vendor/posthtml-img-autosize",
     "text-to-svg": "*"
   },
   "peerDependencies": {

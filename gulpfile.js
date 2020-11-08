@@ -14,11 +14,8 @@ const minify = require('gulp-minify');
 const jsonminify = require('gulp-jsonminify');
 
 const plugins = [
-  require('./vendor/posthtml-img-autosize')({
-    root: DEST,
-    processEmptySize: true
-  }),
-  require('posthtml-alt-always')({}),
+  require("posthtml-img-autosize")({ root: DEST, processEmptySize: true }),
+  require("posthtml-alt-always")({}),
   require("posthtml-align-style")({}),
   require("posthtml-avif-webp")({ root: DEST }),
 ];
