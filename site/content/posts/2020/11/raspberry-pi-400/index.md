@@ -8,7 +8,7 @@ categories = ["default"]
 
 [extra]
 has_hero = true
-image_alt = ""
+image_alt = "Raspberry Pi 400 was just released (11/2020)"
 #long_title = "Raspberry Pi 400 — The 🍒 on top of the 🍰"
 sub_title = "The <abbr title='cherry'>🍒</abbr> on top of the <abbr title='cake'>🍰</abbr>"
 +++
