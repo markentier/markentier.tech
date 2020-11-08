@@ -52,7 +52,7 @@
       <picture>
         <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif">
         <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp">
-        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | safe}}" loading="lazy" data-skip-transform>
+        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | default(value='') | safe}}" loading="lazy" data-skip-transform>
       </picture>
       {% endif %}
 

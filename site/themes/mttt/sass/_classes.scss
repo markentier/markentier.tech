@@ -129,6 +129,11 @@
   }
 }
 
+.subtitle {
+  font-family: var(--system-fonts);
+  font-size: 175%;
+}
+
 .post_content_info {
   display: flex;
   justify-content: space-between;

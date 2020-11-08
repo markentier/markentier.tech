@@ -22,6 +22,9 @@
   {% endif %}
 
   <h1 itemprop="headline" class="post_title entry-title">{{page.extra.long_title | default(value=page.title | safe)}}</h1>
+  {% if page.extra.sub_title %}
+  <p class="subtitle">{{page.extra.sub_title | safe}}</p>
+  {% endif %}
 
   {% if is_post %}
   {% set pdate_iso = m::date_iso(date=page.date) %}
