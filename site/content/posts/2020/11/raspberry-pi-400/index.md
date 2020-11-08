@@ -17,7 +17,7 @@ sub_title = "The <abbr title='cherry'>🍒</abbr> on top of the <abbr title='cak
 
 <!-- more -->
 
-On announcement day and afterwards my Twitter timeline was pretty dominated by the [announcement of the new device][r400-news], the Raspberry Pi 400. And first I felt even a bit annoyed by it, which might be more about the pandemic and isolation speaking than an actual dislike about the news. Because thinking about it a bit more I start to like the idea of the new computer quite a lot.
+On announcement day and afterwards my Twitter timeline was pretty dominated by the [announcement of the new device][r400-news], the Raspberry Pi 400. And first I felt even a bit annoyed by it, which might be more about the pandemic and isolation speaking than an actual dislike about the news. Because thinking about it a bit more I start to like the idea behind the new computer quite a lot.
 
 My first "real" computer (besides an kids edu device when I was eight years old) was an Amiga 500, which is quite similar to the Pi 400. And I have fond memories about that time. Of course, back then and now, both have their advantages and disadvantages.
 
@@ -59,6 +59,8 @@ If you want to buy one, head over to the [product page][r400] and select your de
 -----
 
 Also: Will the Raspberry Pi 400 make the _»Year of the Linux Desktop«_ finally happen?
+
+_And why don't we have a raspberry emoji yet?_
 
 <!-- links -->
 
