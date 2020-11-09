@@ -21,8 +21,10 @@
 
     <nav class="navbar">
 
-      {% if macros::is_devmode() %}
-      <div class=devmode><span class=note>DEVELOPMENT MODE! (drafts are visible)</span></div>
+      {% if macros::is_devmode() == "true" %}
+      <div class=devmode>
+        <span class=note>DEVELOPMENT MODE! (drafts are visible)</span>
+      </div>
       {% endif %}
 
       <div class="navbar-menu">

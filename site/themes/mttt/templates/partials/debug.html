@@ -1,5 +1,5 @@
 {% import "macros.html" as macros %}
-{% if macros::is_devmode() %}
+{% if macros::is_devmode() == "true" %}
 <details>
   <summary>DEBUG</summary>
   <pre id="__tera_context" class=devmode>{{ __tera_context | escape | safe }}</pre>
