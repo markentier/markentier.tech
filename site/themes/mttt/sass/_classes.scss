@@ -42,11 +42,24 @@
 }
 
 .navbar {
+  --nav-bg-color: var(--accent-color);
+
   position: sticky; top: 0; // non-JS stickyness; should work almost everywhere - yay!
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding-left: calc(50vw - var(--ref-size)*18.45); // relates to 50% wrppr width
   z-index: 999;
+  background: var(--nav-bg-color);
+
+  // full width background styling; prevents scrollbars
+  // https://css-tricks.com/full-browser-width-bars/#using-box-shadow
+  &::before {
+     content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -9999px;
+    right: 0;
+    border-left: 9999px solid var(--nav-bg-color);
+    box-shadow: 9999px 0 0 var(--nav-bg-color);
+  }
 
   a { font-family: var(--brand-font); }
 
@@ -102,14 +115,17 @@
 .index_listing_post p,
 .article-body > p {
   font-size: 105%;
-  text-align: justify;
-  text-justify: inter-character; // currently only working on FF
+
+  // text justification and the web are not friends :'-(
+  // text-align: justify;
+  // text-justify: inter-character; // currently only working on FF
+  // hyphens: auto;
 }
 
 .index_listing_post p,
 .article-body > p:first-of-type {
   font-style: italic;
-    filter: brightness(1.5);
+  filter: brightness(1.5);
 }
 .index_listing_post p::after,
 .article-body > p:first-of-type::after {

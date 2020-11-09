@@ -1,15 +1,15 @@
 html {
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
+  overflow-y: scroll;
 }
+
 
 *, *::before, *::after { box-sizing: inherit; }
 * {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent; /* prevent tap highlight color / shadow */
   -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
-  // -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
-  // user-select: none; /* why would we want to do that? */
 }
 
 html, body, figure {
@@ -36,11 +36,6 @@ html, body {
   -webkit-text-stroke: .45px rgba(0,0,0,.1);
 }
 
-html {
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
 a, a:link, a:visited {
   color: var(--link-color);
 }
@@ -65,8 +60,6 @@ h1, h2, h3, h4, h5, h6, .h1 {
   color: var(--head-color);
   scroll-margin-top: 5rem;
 }
-
-
 
 hr {
   padding: 0;
@@ -100,7 +93,6 @@ figure:hover figcaption {
 
 code, pre {
   font-family: var(--system-fonts-monospace);
-  // font-size: 109.5%;
 }
 
 pre {
@@ -121,8 +113,6 @@ pre {
   }
 }
 
-
-
 blockquote {
     margin: 0;
     padding-left: .8em;
@@ -137,7 +127,7 @@ nav {
   margin-bottom: 2rem;
 }
 
-figcaption, pre, nav {
+figcaption, pre {
   background: var(--accent-color);
 }
 
