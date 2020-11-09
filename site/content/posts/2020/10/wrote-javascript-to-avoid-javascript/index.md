@@ -59,7 +59,8 @@ But I want to give you some more practical examples and an experience report:
 
 This is something you can observe here on this blog:
 
-<video autoplay loop muted playsinline poster="./pos-sticky.webp">
+<!-- removed: poster="./pos-sticky.webp" - adds to much overhead for little to no value -->
+<video autoplay loop muted playsinline>
   <source src="./pos-sticky.hvec.mp4" type="video/mp4; codecs=hvc1">
   <source src="./pos-sticky.hvec.mp4" type="video/mp4; codecs=hevc">
   <source src="./pos-sticky.h264.mp4" type="video/mp4; codecs=avc1">
