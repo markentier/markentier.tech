@@ -115,10 +115,10 @@ rebuild-all: regenerate-thumbs images build
 ## IMAGE PROCESSING
 
 images:
-	$(MAKE) create-pngs
-	$(MAKE) create-thumbs
-	$(MAKE) create-avif
-	$(MAKE) create-webp
+	$(MAKE) create-pngs -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) create-thumbs -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) create-avif -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) create-webp -j $(shell expr $(shell nproc) / 2 + 1)
 
 images-with-recreate:
 	$(MAKE) delete-avifs delete-webps delete-thumbs
