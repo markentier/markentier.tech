@@ -66,10 +66,7 @@ h1, h2, h3, h4, h5, h6, .h1 {
   scroll-margin-top: 5rem;
 }
 
-code, pre {
-  font-family: var(--system-fonts-monospace);
-  font-size: 109.5%;
-}
+
 
 hr {
   padding: 0;
@@ -101,19 +98,30 @@ figure:hover figcaption {
   visibility: visible;
 }
 
+code, pre {
+  font-family: var(--system-fonts-monospace);
+  // font-size: 109.5%;
+}
+
 pre {
   padding: 1rem;
   padding-right: .5em;
   border-radius: .25em;
-  font-size: .75rem;
+  font-size: 1rem;
   line-height: 1.25rem;
   white-space: pre-wrap;
   overflow-x: auto;
 
+  &>code {
+    font-size: .8rem;
+  }
+
   & + pre {
-    margin-top: 0.125rem;
+    margin-top: .75rem;
   }
 }
+
+
 
 blockquote {
     margin: 0;

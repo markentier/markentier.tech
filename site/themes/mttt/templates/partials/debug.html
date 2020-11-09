@@ -1,7 +1,7 @@
-{# DEBUG (port=3000) #}
-{% if config.base_url is containing(":3000") %}
+{% import "macros.html" as macros %}
+{% if macros::is_devmode() %}
 <details>
   <summary>DEBUG</summary>
-  <pre id="__tera_context">{{ __tera_context | escape | safe }}</pre>
+  <pre id="__tera_context" class=devmode>{{ __tera_context | escape | safe }}</pre>
 </details>
 {% endif %}

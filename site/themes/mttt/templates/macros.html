@@ -1,3 +1,6 @@
+{# DEV/DEBUG MODE only when using port 3000! #}
+{% macro is_devmode() %}{{ config.base_url is containing(":3000") }}{% endmacro is_devmode %}
+
 {% macro date_iso(date) %}{{date | date(format="%FT%T%z")}}{% endmacro date_iso %}
 {% macro date_date(date) %}{{date | date}}{% endmacro date_date %}
 
@@ -37,7 +40,9 @@
 
 {% macro list_pages(pages, limit=999) %}
   {% for page in pages | slice(end=limit) %}
-  {% if page.draft == false %}
+  {% set is_published = page.draft == false %}
+  {% set is_devmode = config.base_url is containing(":3000") %}
+  {% if is_published or is_devmode %}
   <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
 
     <a href="{{page.permalink | safe}}" itemprop="url">
