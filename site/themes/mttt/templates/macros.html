@@ -47,7 +47,7 @@
   <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
 
     <a href="{{page.permalink | safe}}" itemprop="url">
-      {% if page.extra.has_hero %}
+      {% if page.extra.has_hero is defined and page.extra.has_hero %}
       {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
       {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
       {% set page_thumb_webp_url = self::get_thumb_image_webp_url(url=page.permalink) %}
