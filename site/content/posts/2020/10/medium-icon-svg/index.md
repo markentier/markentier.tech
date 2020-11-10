@@ -29,7 +29,7 @@ Not that I really care much about them anyway, but my first reaction was "is som
 
 So let's take a look at the beauty.
 
-<div class="w50 box-center">
+<div class="w50 box_center">
 
 ![Medium's new symbol icon](./medium.icon.sanitized.svg)
 
@@ -64,7 +64,7 @@ For example there happens to exist elements like [`<circle>`][circle] and [`<ell
 
 For comparison my very _quick & dirty_ optimized version of the Medium icon:
 
-<div class="w50 box-center">
+<div class="w50 box_center">
 
 ![Medium's new icon made out of primitive elements](./medium.icon.ellipses.svg)
 

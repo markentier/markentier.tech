@@ -91,7 +91,7 @@ checked program was:
 
 You can also check the logs for later reference, too.
 
-<div class="with-wrap">
+<div class="with_wrap">
 
 ```txt
 /Users/chris/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/extensions/x86_64-darwin-17/2.5.0-static/nokogiri-1.8.5/gem_make.out

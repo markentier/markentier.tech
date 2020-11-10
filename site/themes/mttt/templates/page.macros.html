@@ -58,7 +58,7 @@
     {% endif %}
     {% if page.taxonomies and page.taxonomies.tags %}
     <div class="icon tags" title="Tagged with">🏷</div>
-    <div class="items tag-items">
+    <div class="items tag_items">
     {% set tagcount = page.taxonomies.tags | length %}
     {% if tagcount <= 10 %}
       {% for tag in page.taxonomies.tags %}

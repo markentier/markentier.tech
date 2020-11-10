@@ -13,7 +13,7 @@ has_hero = true
 image_alt = "Thinking about the future and a potential new Rust 2021 edition"
 # custom_delimiter = "· · ⚙ · ·"
 custom_css = """
-  .article-body > p:first-of-type::after, hr::after { display: block; opacity: .25; margin: 1.5rem auto 0 auto; height: 2rem; width: 2rem; content: url('/i/rust.svg'); }
+  .article_body > p:first-of-type::after, hr::after { display: block; opacity: .25; margin: 1.5rem auto 0 auto; height: 2rem; width: 2rem; content: url('/i/rust.svg'); }
   .red { color: var(--link-hl-color); }
 """
 +++

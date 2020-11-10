@@ -8,7 +8,7 @@
   margin-bottom: 2rem;
 }
 
-.mtt-logo {
+.mtt_logo {
   color: var(--head-color);
   stroke: var(--head-color);
 }
@@ -22,7 +22,7 @@
   min-width: 17rem;
   margin-left: -1.15rem;
 
-  .header-logo {
+  .header_logo {
     width: 4.5rem;
     height: 4.5rem;
   }
@@ -64,7 +64,7 @@
 
   a { font-family: var(--brand-font); }
 
-  .navbar-menu {
+  .navbar_menu {
     padding: .5rem;
     display: flex;
     align-items: baseline;
@@ -132,7 +132,7 @@
 }
 
 .index_listing_post p,
-.article-body > p {
+.article_body > p {
   font-size: 110%;
   line-height: 1.75;
 
@@ -152,12 +152,12 @@
 }
 
 .index_listing_post p,
-.article-body > p:first-of-type {
+.article_body > p:first-of-type {
   font-style: italic;
   filter: brightness(1.5);
 }
 .index_listing_post p::after,
-.article-body > p:first-of-type::after {
+.article_body > p:first-of-type::after {
   display: block;
   margin-top: 1.5em;
   text-align: center;
@@ -241,12 +241,12 @@
   word-spacing: .5rem;
 }
 
-.tag-items {
+.tag_items {
   line-height: 3;
   word-spacing: .125rem;
 }
 
-.with-wrap pre {
+.with_wrap pre {
   white-space: pre-wrap;
   word-break: keep-all;
   hyphens: none;
@@ -261,4 +261,4 @@
 .w50 { width: 50% }
 .w25 { width: 25% }
 
-.box-center { margin: 0 auto; }
+.box_center { margin: 0 auto; }

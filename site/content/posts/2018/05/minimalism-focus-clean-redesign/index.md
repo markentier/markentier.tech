@@ -77,7 +77,7 @@ If you want to get more excited about SVGs:
 
 There are definitely more, but above videos should be a nice starting point. I might come back to this topic in the future.
 
-<div class='img-with-borders'>
+<div class='img_with_borders'>
 
 ![markentier.tech new design](./mtt-now.png)
 
@@ -91,7 +91,7 @@ I think this represents an interpretation of minimalism. At least one I like. Th
 
 But I do believe that my articles should be consumable without too much distraction or fatigue or strain. Since it is heavily color range reduced, color blind  people (or with partial deficiency) should be able to read and navigate the site without loosing anything or getting confused. I haven't tested screenreaders, but I hope I don't use design magic which would impact your experience here.
 
-<div class='img-with-borders'>
+<div class='img_with_borders'>
 
 ![markentier.tech new design, page scrolled down (shows tiny logo and sticky navbar)](./mtt-now-scrolled.png)
 

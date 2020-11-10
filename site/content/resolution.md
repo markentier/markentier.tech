@@ -7,7 +7,7 @@ description = "Tools page to gather information about the current resolution of 
 additional_scripts = ["/js/resolution.js"]
 custom_css = """
 #ppi { height: 1px; width: 1in; }
-.article-body > p:first-of-type::after, hr::after { content: '· · 🖥 · ·'; opacity: .5; }
+.article_body > p:first-of-type::after, hr::after { content: '· · 🖥 · ·'; opacity: .5; }
 """
 +++
 

@@ -1,4 +1,4 @@
-.img-with-borders img {
+.img_with_borders img {
   border: 1px solid var(--accent-dark-color);
 }
 
@@ -8,7 +8,7 @@
   text-decoration: line-through;
 }
 
-.quoted>blockquote {
+.quoted > blockquote {
   // font-style: italic;
 
   & footer.source {

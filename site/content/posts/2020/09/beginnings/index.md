@@ -13,7 +13,7 @@ has_hero = true
 image_alt = "🌼"
 #custom_delimiter = "· · 🌼 · ·" # let's crunch everything into the custom CSS
 custom_css = """
-  .article-body > p:first-of-type::after, hr::after { content: '· · 🌼 · ·'; opacity: .25; }
+  .article_body > p:first-of-type::after, hr::after { content: '· · 🌼 · ·'; opacity: .25; }
   .green { color: var(--green); }
   .red { color: var(--link-hl-color); }
   .purple { color: var(--rebecca); }
