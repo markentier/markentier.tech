@@ -3,7 +3,7 @@ title = "Faster git status under WSL2"
 date = 2020-10-07
 
 [taxonomies]
-tags = ["git", "status", "wsl", "wsl1", "wsl2", "windows", "subsystem", "linux", "speed", "slow", "/mnt/", "win10", "starship", "git_status"]
+tags = ["git", "status", "WSL", "WSL1", "WSL2", "Windows", "subsystem", "linux", "speed", "slow", "/mnt/", "Windows 10", "starship", "git_status", "Win10", "Microsoft"]
 categories = ["default", "notes"]
 
 [extra]
