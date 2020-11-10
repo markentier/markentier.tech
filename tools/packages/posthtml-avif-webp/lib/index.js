@@ -35,20 +35,30 @@ const posthtmlAvifWebp = (options) => {
         node.attrs.loading = "lazy";
       }
 
-      if (nodeSrc.endsWith(".svg")) return node;
-      if (nodeSrc.endsWith(".gif")) return node;
+      const pictureNode = {
+        tag: "picture",
+        attrs: {},
+        content: [],
+      };
+
+      if (nodeSrc.endsWith(".svg")) {
+        pictureNode.content.push(node);
+        return pictureNode;
+      }
+
+      const imgRatio = (node.attrs.height / node.attrs.width) * 100;
+      pictureNode.attrs.style = `padding-bottom: ${imgRatio}%;`;
+
+      if (nodeSrc.endsWith(".gif")) {
+        pictureNode.content.push(node);
+        return pictureNode;
+      }
 
       const imgUrl = parseUrlLike(nodeSrc, baseHref);
       const filePath = path.parse(imgUrl.pathname);
       const fileBase = path.join(filePath.dir, filePath.name);
 
       node.attrs.src = imgUrl.pathname;
-
-      const pictureNode = {
-        tag: "picture",
-        attrs: {},
-        content: [],
-      };
 
       const avifSrc = fileBase + ".avif";
       const avifLocal = path.join(process.cwd(), options.root, avifSrc);
