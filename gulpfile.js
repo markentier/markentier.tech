@@ -75,4 +75,5 @@ function json() {
 
 var build = gulp.parallel(html, javascript, json)
 
+exports.html = html;
 exports.default = build;

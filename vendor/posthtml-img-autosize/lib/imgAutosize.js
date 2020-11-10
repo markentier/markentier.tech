@@ -13,6 +13,7 @@ module.exports = {
         options.processEmptySize = options.processEmptySize || false;
 
         const projectRoot = path.resolve(options.root);
+        const imgBaseUrl = process.env.IMG_BASE_URL;
 
         return function(tree) {
             const htmlRelativePath = path.relative(process.cwd(), path.dirname(tree.options.to || ''));
@@ -23,6 +24,10 @@ module.exports = {
                 img.attrs = img.attrs || {};
 
                 if (!img.attrs.src) {
+                    return img;
+                }
+
+                if (img.attrs.hasOwnProperty("data-skip-transform")) {
                     return img;
                 }
 
@@ -38,7 +43,11 @@ module.exports = {
                 }
 
                 const imagePath = translatePath(
-                    projectRoot, htmlRelativePath, img.attrs.src, options.questionMarkAsVersion
+                    projectRoot,
+                    htmlRelativePath,
+                    imgBaseUrl,
+                    img.attrs.src,
+                    options.questionMarkAsVersion
                 );
 
                 const hasAuto =
@@ -84,14 +93,26 @@ module.exports = {
     }
 };
 
-function translatePath(projectRoot, htmlRelativePath, imgPath, isQuestionMarkAsVersion) {
+function translatePath(
+    projectRoot,
+    htmlRelativePath,
+    imgBaseUrl,
+    imgPath,
+    isQuestionMarkAsVersion
+) {
     const img = url.parse(imgPath);
+    const imgBase = imgBaseUrl && url.parse(imgBaseUrl);
 
     if (img.host) {
-        return imgPath;
+        if (imgBase && img.host === imgBase.host) {
+            const imgAbsolutePath = path.join(projectRoot, img.pathname);
+            return normalizePath(path.resolve(imgAbsolutePath));
+        } else {
+            return imgPath;
+        }
     }
 
-    const imgProjectPath = path.join(htmlRelativePath, imgPath);
+    const imgProjectPath = path.relative(htmlRelativePath, imgPath);
     let imgAbsolutePath = path.join(projectRoot, imgProjectPath);
 
     if (isQuestionMarkAsVersion) {
@@ -109,6 +130,7 @@ function getImageDimensions(imgPath) {
         return new Promise((resolve, reject) => {
             imageSize(imgPath, (err, dimensions) => {
                 if (err) {
+                    console.log("img:", imgPath, "err", err);
                     reject(err);
                 } else {
                     resolve(dimensions);
