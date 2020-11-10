@@ -85,7 +85,7 @@ After you get over the first hurdles of the language, it might become difficult 
 
 ## Pet peeve: Blockchainers
 
-This is a very personal point, but I wish not everyone would think of blockchain and cryptocurrency stuff the first time they hear about Rust and where it's used. Also the job market seems to be quite dominated by this topic; if I wanted to consider a career change (going professional with Rust development) I don't really see good alternatives yet (though IoT/embedded does seem to be a viable option). Can we focus our energy elsewhere and/or more broadly? There are plently of interesting topics, but I don't believe that "blockchaining" all of them is the right thing to do. To be honest I yet have to see a very good and reasonable project for blockchain technologies besides the hobby gambling with my Bitcoins and Ethereums.
+This is a very personal point, but I wish not everyone would think of blockchain and cryptocurrency stuff the first time they hear about Rust and where it's used. Also the job market seems to be quite dominated by this topic; if I wanted to consider a career change (going professional with Rust development) I don't really see good alternatives yet (though IoT/embedded does seem to be a viable option). Can we focus our energy elsewhere and/or more broadly? There are plenty of interesting topics, but I don't believe that "blockchaining" all of them is the right thing to do. To be honest I yet have to see a very good and reasonable project for blockchain technologies besides the hobby gambling with my Bitcoins and Ethereums.
 
 ## Anything else?
 
@@ -151,8 +151,8 @@ The initial announcement and call for blog posts:
 [knurling-rs]: https://ferrous-systems.com/blog/knurling-rs/
 [knurling-sessions]: https://ferrous-systems.com/blog/knurling-sessions-introduction/
 [knurling-sponsor]: https://github.com/sponsors/knurling-rs
-[cf]: https://crates.io/crates/cargo-flash
-[ce]: https://crates.io/crates/cargo-embed
+[cf]: https://github.com/probe-rs/cargo-flash
+[ce]: https://github.com/probe-rs/cargo-embed
 [nrf]: https://github.com/nrf-rs
 [stm32]: https://github.com/stm32-rs
 [lpc]: https://github.com/lpc-rs
