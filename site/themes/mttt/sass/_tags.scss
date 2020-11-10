@@ -38,6 +38,7 @@ html, body {
 a, a:link, a:visited {
   color: var(--link-color);
 }
+
 a:hover, a:focus, svg:hover {
   color: var(--link-hl-color);
   stroke: var(--link-hl-color);
@@ -79,6 +80,20 @@ img, video {
   width: var(--content-width);
   height: auto;
 }
+
+picture {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: var(--content-width);
+  height: 0;
+  margin-bottom: 3rem;
+
+  img {
+    position: absolute;
+  }
+}
+
 figcaption {
   padding: 0 .5em;
   font-size: .6em;
@@ -86,12 +101,17 @@ figcaption {
   text-align: center;
   visibility: hidden;
 }
+
 figure:hover figcaption {
   visibility: visible;
 }
 
 code, pre {
   font-family: var(--system-fonts-monospace);
+}
+
+figcaption, pre {
+  background: var(--accent-color);
 }
 
 pre {
@@ -123,10 +143,6 @@ blockquote {
 
 nav {
   margin-bottom: 2rem;
-}
-
-figcaption, pre {
-  background: var(--accent-color);
 }
 
 s, del, strike {

@@ -45,6 +45,17 @@
 <article class="index_listing_post{%if is_draft%} draft{%endif%}" itemscope itemtype="http://schema.org/Article">
 
   <a href="{{page.permalink | safe}}" itemprop="url">
+    <div class="title">
+      <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
+
+      {# TODO extract as macro: macros::published_at(date=date) #}
+      {% set pdate_iso = self::date_iso(date=page.date) %}
+      {% set pdate_date = self::date_date(date=page.date) %}
+      <small class="published_at_line">
+        <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
+      </small>
+    </div>
+
     {% if page.extra.has_hero is defined and page.extra.has_hero %}
     {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
     {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
@@ -56,22 +67,14 @@
     <picture>
       <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif">
       <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp">
-      <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | default(value='') | safe}}" loading="lazy" data-skip-transform>
+      <img itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | default(value='') | safe}}" loading="lazy" data-skip-transform>
     </picture>
     {% endif %}
 
-    <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
-
-    {# TODO extract as macro: macros::published_at(date=date) #}
-    {% set pdate_iso = self::date_iso(date=page.date) %}
-    {% set pdate_date = self::date_date(date=page.date) %}
-    <small class="published_at_line">
-      <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-    </small>
     {% if page.summary %}
-        <p>{{page.summary | striptags | safe}}</p>
+        <p class="teaser">{{page.summary | striptags | safe}}</p>
     {% elif page.description %}
-      <p>{{page.description | striptags | safe}}</p>
+      <p class="teaser">{{page.description | striptags | safe}}</p>
     {% endif %}
   </a>
 

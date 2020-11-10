@@ -82,21 +82,7 @@
 }
 
 .index_listing_post {
-  padding-bottom: .5rem;
-  opacity: 0.8;
-
-  .thumbnail {
-    max-width: 16rem;
-    max-height: 8rem;
-    width: 40%;
-    float: right;
-    margin: 0.25em 0 0 0.5em;
-    opacity: 0.75;
-  }
-
-  &:hover, .thumbnail:hover {
-    opacity: 1;
-  }
+  margin-bottom: 2.5rem;
 
   a {
     text-decoration: none;
@@ -105,11 +91,43 @@
     &:visited {
       color: inherit;
     }
+
+    display: grid;
+    grid-template-columns: 1fr 16rem;
+    grid-template-rows: max-content 1fr;
+    gap: .5rem .5rem;
+    grid-template-areas:
+      "title thumbnail"
+      "teaser teaser";
+
+    .title { grid-area: title; }
+    picture { grid-area: thumbnail; }
+    p { grid-area: teaser; }
+  }
+
+  &:hover *, &:focus * {
+    color: var(--link-hl-color);
+  }
+
+  .post_title {
+    margin: 0 0 1rem 0;
+  }
+
+  picture, img {
+    width: 16rem;
+    height: 8rem;
+    margin: 0;
   }
 
   // de-emphasize after the 10th post
   &:nth-child(n+11) {
-    picture, p { display: none; }
+    .title { grid-area: title / title / thumbnail / thumbnail; }
+    picture { display: none; }
+  }
+
+  &:nth-child(n+21) {
+    .title { grid-area: title / teaser; }
+    p { display: none; }
   }
 }
 
@@ -151,8 +169,9 @@
 
 .post_hero {
   picture {
-    display: block;
-    max-width: var(--content-width);
+    // hero images are always in 2:1 ratios
+    padding-bottom: 50%;
+    margin-bottom: .5rem;
   }
 }
 
