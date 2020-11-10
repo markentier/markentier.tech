@@ -9,10 +9,11 @@
     {{ page.extra.menu_items | safe }}
   {% endif %}
 {% endblock menu_items %}
-{% block content %}
 
+{% block content %}
 {% set is_post = page.permalink is containing("/posts/") %}
-  <article{%- if is_post == true %} class="hentry" itemscope itemtype="http://schema.org/Article"{% endif %}>
+{% set is_draft = page.draft %}
+  <article{%if is_post%} class="hentry{%if is_draft%} draft{%endif%}" itemscope itemtype="http://schema.org/Article"{%endif%}>
 
     {{pm::pheader(page=page)}}
 

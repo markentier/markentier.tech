@@ -40,62 +40,59 @@
 {% endmacro sec_pages %}
 
 {% macro list_pages(pages, limit=999) %}
-  {% for page in pages | slice(end=limit) %}
-  {% set is_published = page.draft == false %}
-  {% set is_devmode = self::is_devmode() == true %}
-  {% if is_published or is_devmode %}
-  <article class="index_listing_post" itemscope itemtype="http://schema.org/Article">
+{% for page in pages | slice(end=limit) %}
+{% set is_draft = page.draft %}
+<article class="index_listing_post{%if is_draft%} draft{%endif%}" itemscope itemtype="http://schema.org/Article">
 
-    <a href="{{page.permalink | safe}}" itemprop="url">
-      {% if page.extra.has_hero is defined and page.extra.has_hero %}
-      {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
-      {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
-      {% set page_thumb_webp_url = self::get_thumb_image_webp_url(url=page.permalink) %}
-      {% set page_cover_webp_url = self::get_cover_image_webp_url(url=page.permalink) %}
-      {% set page_thumb_avif_url = self::get_thumb_image_avif_url(url=page.permalink) %}
-      {% set page_cover_avif_url = self::get_cover_image_avif_url(url=page.permalink) %}
+  <a href="{{page.permalink | safe}}" itemprop="url">
+    {% if page.extra.has_hero is defined and page.extra.has_hero %}
+    {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
+    {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
+    {% set page_thumb_webp_url = self::get_thumb_image_webp_url(url=page.permalink) %}
+    {% set page_cover_webp_url = self::get_cover_image_webp_url(url=page.permalink) %}
+    {% set page_thumb_avif_url = self::get_thumb_image_avif_url(url=page.permalink) %}
+    {% set page_cover_avif_url = self::get_cover_image_avif_url(url=page.permalink) %}
 
-      <picture>
-        <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif">
-        <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp">
-        <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | default(value='') | safe}}" loading="lazy" data-skip-transform>
-      </picture>
-      {% endif %}
+    <picture>
+      <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif">
+      <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp">
+      <img class="thumbnail" itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | default(value='') | safe}}" loading="lazy" data-skip-transform>
+    </picture>
+    {% endif %}
 
-      <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
+    <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
 
-      {# TODO extract as macro: macros::published_at(date=date) #}
-      {% set pdate_iso = self::date_iso(date=page.date) %}
-      {% set pdate_date = self::date_date(date=page.date) %}
-      <small class="published_at_line">
-        <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-      </small>
-      {% if page.summary %}
-         <p>{{page.summary | striptags | safe}}</p>
-      {% elif page.description %}
-        <p>{{page.description | striptags | safe}}</p>
-      {% endif %}
-    </a>
+    {# TODO extract as macro: macros::published_at(date=date) #}
+    {% set pdate_iso = self::date_iso(date=page.date) %}
+    {% set pdate_date = self::date_date(date=page.date) %}
+    <small class="published_at_line">
+      <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
+    </small>
+    {% if page.summary %}
+        <p>{{page.summary | striptags | safe}}</p>
+    {% elif page.description %}
+      <p>{{page.description | striptags | safe}}</p>
+    {% endif %}
+  </a>
 
-    <footer class="list-meta">
+  <footer class="list-meta">
 
-      <div class="data">
-        <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
-        <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
-          datetime="{{pdate_iso}}">{{pdate_date}}</time>
-        <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <meta itemprop="name" content="{{config.extra.author}}">
-          <span class="fn">{{config.extra.author}}</span>
-        </div>
-
-        {% include "partials/microformat.publisher.html" %}
+    <div class="data">
+      <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
+      <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
+        datetime="{{pdate_iso}}">{{pdate_date}}</time>
+      <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="{{config.extra.author}}">
+        <span class="fn">{{config.extra.author}}</span>
       </div>
 
-    </footer>
+      {% include "partials/microformat.publisher.html" %}
+    </div>
 
-  </article>
-  {% endif %}
-  {% endfor %}
+  </footer>
+
+</article>
+{% endfor %}
 {% endmacro list_pages %}
 
 {%- macro naive_stringified_array(arr) -%}
