@@ -24,11 +24,8 @@
 .theme {
   display: flex;
   flex-wrap: wrap;
-  // align-items: center;
-  // justify-items: center;
   justify-content: center;
   padding: 1rem 0;
-  // border-bottom: 1px solid var(--rebecca);
 
   & > div {
     width: 11.5rem;

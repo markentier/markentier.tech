@@ -51,7 +51,7 @@
   // full width background styling; prevents scrollbars
   // https://css-tricks.com/full-browser-width-bars/#using-box-shadow
   &::before {
-     content: "";
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -59,6 +59,7 @@
     right: 0;
     border-left: 9999px solid var(--nav-bg-color);
     box-shadow: 9999px 0 0 var(--nav-bg-color);
+    z-index: -1;
   }
 
   a { font-family: var(--brand-font); }
@@ -114,13 +115,22 @@
 
 .index_listing_post p,
 .article-body > p {
-  font-size: 105%;
+  font-size: 110%;
+  line-height: 1.75;
 
   // text justification and the web are not friends :'-(
   // thread @ https://news.ycombinator.com/item?id=25033136
   // text-align: justify;
   // text-justify: inter-character; // currently only working on FF
   // hyphens: auto;
+
+  a {
+    text-shadow: 0 0 0 var(--link-color);
+
+    &:hover, &:focus {
+      text-shadow: 0 0 0 var(--link-hl-color);
+    }
+  }
 }
 
 .index_listing_post p,
@@ -210,6 +220,11 @@
 .taglist {
   line-height: 2;
   word-spacing: .5rem;
+}
+
+.tag-items {
+  line-height: 3;
+  word-spacing: .125rem;
 }
 
 .with-wrap pre {

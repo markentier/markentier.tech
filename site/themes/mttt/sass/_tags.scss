@@ -138,3 +138,8 @@ s, del, strike {
 table {
   width: 100%;
 }
+
+::selection {
+  background-color: var(--accent-dark-color);
+  text-shadow: 0 1px var(--accent-darker-color);
+}

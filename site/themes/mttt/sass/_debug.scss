@@ -12,3 +12,8 @@
 #__tera_context::before {
   content: "__tera_context = ";
 }
+
+.draft {
+  background-color: rgba(255, 225, 125, 0.25);
+  box-shadow: 0 0 1rem rgba(255, 225, 125, 0.5);
+}
