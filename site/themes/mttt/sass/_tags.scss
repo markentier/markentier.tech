@@ -4,7 +4,6 @@ html {
   overflow-y: scroll;
 }
 
-
 *, *::before, *::after { box-sizing: inherit; }
 * {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -117,7 +116,6 @@ blockquote {
     margin: 0;
     padding-left: .8em;
     border-left: .2em solid var(--accent-dark-color);
-    // opacity: .85;
     color: var(--accent-darkest-color);
 
     blockquote { margin: 0; }
