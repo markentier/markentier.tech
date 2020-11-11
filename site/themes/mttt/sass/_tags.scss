@@ -11,6 +11,12 @@ html {
   -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
 }
 
+
+::selection {
+  background-color: var(--accent-dark-color);
+  text-shadow: 0 1px var(--green);
+}
+
 html, body, figure {
   margin: 0; padding: 0; border: 0;
 }
@@ -151,9 +157,4 @@ s, del, strike {
 
 table {
   width: 100%;
-}
-
-::selection {
-  background-color: var(--accent-dark-color);
-  text-shadow: 0 1px var(--accent-darker-color);
 }
