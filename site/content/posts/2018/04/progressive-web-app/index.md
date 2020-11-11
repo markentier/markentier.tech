@@ -138,7 +138,7 @@ _PS: Sorry, no April Fools' Jokes or funny anything at all here._
 [optipng]: http://optipng.sourceforge.net/
 [pagespeed]: https://developers.google.com/speed/pagespeed/insights/
 [parcel]: https://parceljs.org/
-[pngcrush]: https://pmt.sourceforge.io/pngcrush/
+[pngcrush]: https://github.com/Kjuly/pngcrush
 [pngquant]: https://pngquant.org/
 [pwa-checklist]: https://developers.google.com/web/progressive-web-apps/checklist
 [service-worker]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
