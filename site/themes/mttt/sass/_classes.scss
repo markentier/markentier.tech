@@ -96,13 +96,17 @@
     display: grid;
     grid-template-columns: 1fr 16rem;
     grid-template-rows: max-content 1fr;
-    gap: .5rem .5rem;
+    gap: .5rem;
     grid-template-areas:
-      "title thumbnail"
-      "teaser teaser";
+      "title   thumbnail"
+      "teaser  teaser";
 
     .title { grid-area: title; }
-    picture { grid-area: thumbnail; }
+    picture {
+      grid-area: thumbnail;
+      box-shadow: 0 0 1px var(--accent-darkest-color),
+                  0 0 7px var(--accent-color);
+    }
     p { grid-area: teaser; }
   }
 
@@ -123,12 +127,12 @@
   // de-emphasize after the 10th post
   &:nth-child(n+11) {
     .title { grid-area: title / title / thumbnail / thumbnail; }
-    picture { display: none; }
+    picture { display: none; height: 0; }
   }
 
   &:nth-child(n+21) {
     .title { grid-area: title / teaser; }
-    p { display: none; }
+    p { display: none; height: 0; }
   }
 }
 
