@@ -25,8 +25,8 @@ ZOLA_PKG = $(ZOLA).$(SUFFIX)
 SITE_ROOT = site
 OUTPUT_DIR = public
 
-LOCAL_PROTO ?= http
-LOCAL_HOST  ?= localhost
+LOCAL_PROTO ?= https
+LOCAL_HOST  ?= markentier.test
 LOCAL_BIND  ?= 0.0.0.0
 LOCAL_PORT  ?= 3000
 LOCAL_ADDR   = $(LOCAL_HOST):$(LOCAL_PORT)
@@ -117,8 +117,7 @@ rebuild-all: regenerate-thumbs images build
 images:
 	$(MAKE) create-pngs -j $(shell expr $(shell nproc) / 2 + 1)
 	$(MAKE) create-thumbs -j $(shell expr $(shell nproc) / 2 + 1)
-	$(MAKE) create-avif -j $(shell expr $(shell nproc) / 2 + 1)
-	$(MAKE) create-webp -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) create-avif create-webp -j $(shell expr $(shell nproc) / 2 + 1)
 
 images-with-recreate:
 	$(MAKE) delete-avifs delete-webps delete-thumbs
