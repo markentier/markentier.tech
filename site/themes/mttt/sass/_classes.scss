@@ -28,6 +28,7 @@
   }
 
   h1, .h1 {
+    font-family: var(--brand-font);
     margin: 1.333rem 0 0 -.3rem;
     color: var(--head-color);
     &::first-letter { font-size: 0; }
@@ -167,6 +168,12 @@
   content: "· · ✽ · ·";
 }
 
+.hentry {
+  .post_title {
+    font-family: var(--system-fonts-serif); width: 105%;
+  }
+}
+
 .post_hero {
   picture {
     // hero images are always in 2:1 ratios
@@ -186,7 +193,7 @@
   font-size: .8rem;
   opacity: .7;
 
-  .wordcount { display: none }
+  .wordcount { display: none; }
 }
 
 .modified_at,
