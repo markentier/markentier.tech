@@ -4,10 +4,10 @@
 
 {# update with content of final fonts.css #}
 <style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:"Varela Round";src:local("Varela Round"),local("Varela Round Regular"),local("VarelaRound-Regular"),url("/f/vrrss.woff2") format("woff2");unicode-range:U+2E,U+61,U+63,U+65,U+68,U+69,U+6B,U+6D,U+6E,U+72,U+74;font-weight:normal;font-style:normal;font-display:swap;}</style>
-<link rel="stylesheet" href="/s/m.css">
+<link rel="stylesheet" href="/s/m.css?_={{macros::ts_now()}}">
 
 {% if macros::is_devmode() == "true" %}
-  <link rel="stylesheet" href="/s/d.css">
+  <link rel="stylesheet" href="/s/d.css?_={{macros::ts_now()}}">
 {% endif %}
 
 {% if page.extra.custom_delimiter %}
