@@ -16,6 +16,7 @@
     {{page.content | safe }}
   {% endif %}
 
+  {# NOTE: NEEDS FLAT PAGE LIST (use transparent = true in section's _index.md!) #}
   {% set section = get_section(path="posts/_index.md") %}
-  {{ macros::sec_traverse(sec = section) }}
+  {{ macros::sec_pages(sec = section) }}
 {% endblock content %}

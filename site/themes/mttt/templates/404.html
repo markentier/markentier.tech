@@ -6,5 +6,5 @@
 {% block content %}
 {% if page.content %}{{page.content | safe}}{% endif %}
 {% set section = get_section(path="posts/_index.md") %}
-{{ macros::sec_traverse(sec = section) }}
+{{ macros::sec_pages(sec = section) }}
 {% endblock content %}
