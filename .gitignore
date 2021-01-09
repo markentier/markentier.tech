@@ -4,6 +4,7 @@
 .vscode
 .yarn
 desktop.ini
+drafts
 local-stuff
 node_modules
 npm-debug.log*

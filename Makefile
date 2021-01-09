@@ -197,6 +197,9 @@ delete-webps:
 new:
 	@tools/new-post/run.sh
 
+draft:
+	@tools/new-post/draft.sh
+
 
 
 # CLEANING
