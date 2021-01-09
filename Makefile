@@ -18,7 +18,7 @@ ifeq ($(findstring NT-10,$(UNAME)),NT-10)
 endif
 
 ZOLA = zola
-ZOLA_VERSION ?= 0.12.2
+ZOLA_VERSION ?= 0.13.0
 ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-$(PLATFORM).$(SUFFIX)
 ZOLA_PKG = $(ZOLA).$(SUFFIX)
 
@@ -74,6 +74,7 @@ serve:
 	cd $(SITE_ROOT) && $(SERVE_CMD)
 
 local:
+	zola -V
 	$(MAKE) build NETLIFY_DEPLOY_URL=$(LOCAL_PROTO)://$(LOCAL_ADDR)
 
 local.prod:

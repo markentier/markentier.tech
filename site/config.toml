@@ -2,10 +2,8 @@ title = "markentier.tech"
 description = "About people, tech, and code"
 base_url = "https://markentier.tech"
 
-compile_sass = true
-highlight_code = true
-highlight_theme = "monokai"
 theme = "mttt"
+compile_sass = true
 
 taxonomies = [
   {name = "tags", rss = true},
@@ -17,8 +15,11 @@ rss_limit = 10
 
 build_search_index = false
 check_external_links = false
-ignored_content = []
-extra_syntaxes = []
+
+[markdown]
+highlight_code = true
+highlight_theme = "monokai"
+render_emoji = true
 
 [extra]
 answer = 42
