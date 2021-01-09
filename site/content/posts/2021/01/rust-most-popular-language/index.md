@@ -1,8 +1,6 @@
 +++
 title = "Most Popular Language: Rust"
-date = 2021-01-09T13:35:41Z
-
-draft = false
+date = 2021-01-09
 
 [taxonomies]
 tags = ["rust", "language", "programming", "popular", "most loved", "stack overflow", "survey", "R.E.S.F.", "evangelism", "strike force"]
