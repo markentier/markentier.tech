@@ -142,10 +142,10 @@ optimize-pngs:
 optimize-pngs-x: $(OPNGS)
 
 $(OPNGS): OPTIMIZE_%: %
-	@echo 'Optimizing file: $<' && \
-		echo ' -- before size: \c' && wc -c < $< && echo " [$(<F)]" \
-		oxipng -q -o max -a -Z -s --fix --force --out $< $< && \
-		echo ' --- after size: \c' && wc -c < $<  && echo " [$(<F)]"
+	@echo 'Optimizing file: $<'
+	@oxipng -q -o max -a -Z -s --fix --force --out $< $< 2>/dev/null
+	@optipng -o7 -zm1-9 -strip all -clobber -fix -nb -i0 -nc -np --out $< $< 2>/dev/null
+	@pngquant --speed 1 --strip --force --output $< $< 2>/dev/null
 
 ### THUMBNAILs
 
@@ -164,6 +164,10 @@ $(THUMBS): %thumb.png: %cover.png
 	pngquant --speed 1 --strip --force --output $@ $(PNG_COLORS) $@ 2>/dev/null
 	@echo "=== [2] Size: `wc -c < $@`"
 	oxipng -q -o max -a -Z -s --fix --force --out $@ $@
+	@echo "=== [3] Size: `wc -c < $@`"
+	optipng -o7 -zm1-9 -strip all -clobber -fix -i0 --out $@ $@ 2>/dev/null
+	@echo "=== [3] Size: `wc -c < $@`"
+	pngquant --speed 1 --strip --force --output $@ $@ 2>/dev/null
 	@echo "=== [F] Size: `wc -c < $@`"
 	@echo
 
@@ -226,7 +230,7 @@ install-mac: install-zola
 # NOTE: we ship a prebuilt tidy in the tools folder.
 install-debs: install-zola install-tools
 	sudo apt-get update
-	sudo apt-get install -y imagemagick pngquant webp
+	sudo apt-get install -y imagemagick optipng pngquant webp libjpeg-progs gifsicle
 
 install-zola: $(BUILD_PATH)
 
