@@ -120,9 +120,13 @@ images:
 	$(MAKE) create-thumbs -j $(shell expr $(shell nproc) / 2 + 1)
 	$(MAKE) create-avif create-webp -j $(shell expr $(shell nproc) / 2 + 1)
 
-images-with-recreate:
+images-from-scratch:
 	$(MAKE) delete-avifs delete-webps delete-thumbs
-	$(MAKE) images
+	$(MAKE) create-pngs     -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) optimize-pngs-x -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) create-thumbs   -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) create-avif     -j $(shell expr $(shell nproc) / 2 + 1)
+	$(MAKE) create-webp     -j $(shell expr $(shell nproc) / 2 + 1)
 
 create-pngs: $(JPG2PNG)
 
@@ -139,9 +143,9 @@ optimize-pngs-x: $(OPNGS)
 
 $(OPNGS): OPTIMIZE_%: %
 	@echo 'Optimizing file: $<' && \
-		echo ' -- before size: \c' && wc -c < $< && \
+		echo ' -- before size: \c' && wc -c < $< && echo " [$(<F)]" \
 		oxipng -q -o max -a -Z -s --fix --force --out $< $< && \
-		echo ' --- after size: \c' && wc -c < $<
+		echo ' --- after size: \c' && wc -c < $<  && echo " [$(<F)]"
 
 ### THUMBNAILs
 
@@ -169,7 +173,7 @@ create-avif: $(AVIFS)
 
 $(AVIFS): %.avif: %.png
 	@echo "from\n  $<\nto\n  $@"
-	@cavif --quality=42 --overwrite -o $@ $<
+	@cavif --quality=66 --overwrite -o $@ $<
 
 list-avifs:
 	@find site -iname '*.avif' -exec wc -c {} \;
