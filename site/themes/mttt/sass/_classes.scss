@@ -86,7 +86,7 @@
   a.line {
     display: grid;
     grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr auto;
     gap: 0 0.333em;
     grid-template-areas: "title dots date"
                          "title2 dots2 date2";
@@ -99,8 +99,9 @@
     }
 
     .title, .dots, .date { display: block; }
+
     .title {
-      grid-area: title / title2;
+      grid-area: title / title / title2  / title2;
 
       h2 {
         font-size: 1.25em;
@@ -108,17 +109,19 @@
         font-weight: normal;
       }
     }
+
+    .date {
+      grid-area: date / date / date2 / date2;
+    }
+
     .dots {
-      grid-area: dots / dots2;
+      grid-area: dots / dots / dots2 / dots2;
       min-height: 1em;
 
       // <svg viewBox="0 0 35 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="#cccccc"/></svg>
       background:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23cccccc'/%3E%3C/svg%3E")
         left 55% / 6px repeat-x;
-    }
-    .date {
-      grid-area: date / date2;
     }
   }
 
