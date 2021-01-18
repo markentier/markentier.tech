@@ -111,11 +111,10 @@
       grid-area: dots;
       min-height: 1em;
 
-      // <svg viewBox="0 0 25 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="#cccccc"/></svg>
-      // background: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjUgMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNSIgY3k9IjUiIHI9IjUiIGZpbGw9IiNjY2NjY2MiLz48L3N2Zz4=") left 70%;
+      // <svg viewBox="0 0 35 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="#cccccc"/></svg>
       background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23cccccc'/%3E%3C/svg%3E")
-        left 55% / 4px repeat-x;
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23cccccc'/%3E%3C/svg%3E")
+        left 55% / 6px repeat-x;
     }
     .date {
       grid-area: date;
