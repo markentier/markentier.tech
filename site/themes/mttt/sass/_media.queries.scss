@@ -28,15 +28,6 @@
   .navbar { padding-left: .75rem; }
   .headlink { margin-left: -.75rem; }
   .meta, .footer { font-size: .85rem; }
-
-  .index_listing_post a {
-    grid-template-columns: 1fr 12rem;
-    gap: 1rem;
-
-    .title { grid-area: title / title / thumbnail / thumbnail; }
-    picture, img { width: 100%; height: auto;opacity: .333; }
-    picture { filter: blur(5px);}
-  }
 }
 
 @media only screen and (max-width: 479px) {

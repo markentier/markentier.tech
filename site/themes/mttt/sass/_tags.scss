@@ -24,14 +24,6 @@ html, body, figure {
 html, body {
   color: var(--text-color);
   background-color: var(--bg-color);
-  // optical illusion effect:
-  // your eyes will see the gradient on the navbar
-  // not the background!
-  background: linear-gradient(90deg,
-    var(--accent-color), 35%,
-    var(--bg-color), 65%,
-    var(--accent-color)
-  );
 
   font-family: var(--system-fonts-serif), var(--system-fonts);
   font-size: var(--ref-size);

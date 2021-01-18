@@ -48,58 +48,28 @@
 {% macro list_pages(pages, limit=999) %}
 {% for page in pages | slice(end=limit) %}
 {% set is_draft = page.draft %}
-<article class="index_listing_post{%if is_draft%} draft{%endif%}" itemscope itemtype="http://schema.org/Article">
+<article class="index_toc_line{%if is_draft%} draft{%endif%}" itemscope itemtype="http://schema.org/Article">
+  <a href="{{page.permalink | safe}}" itemprop="url" class="line">
+    <div class="title"><h2 class="post_title" itemprop="headline">{{page.title}}</h2></div>
 
-  <a href="{{page.permalink | safe}}" itemprop="url">
-    <div class="title">
-      <h2 class="post_title" itemprop="headline">{{page.title}}</h2>
+    {# TODO extract as macro: macros::published_at(date=date) #}
+    {% set pdate_iso = self::date_iso(date=page.date) %}
+    {% set pdate_date = self::date_date(date=page.date) %}
+    <time class="date published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
 
-      {# TODO extract as macro: macros::published_at(date=date) #}
-      {% set pdate_iso = self::date_iso(date=page.date) %}
-      {% set pdate_date = self::date_date(date=page.date) %}
-      <small class="published_at_line">
-        <time class="published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-      </small>
-    </div>
-
-    {% if page.extra.has_hero is defined and page.extra.has_hero %}
-    {% set page_thumb_url = self::get_thumb_image_url(url=page.permalink) %}
-    {% set page_cover_url = self::get_cover_image_url(url=page.permalink) %}
-    {% set page_thumb_webp_url = self::get_thumb_image_webp_url(url=page.permalink) %}
-    {% set page_cover_webp_url = self::get_cover_image_webp_url(url=page.permalink) %}
-    {% set page_thumb_avif_url = self::get_thumb_image_avif_url(url=page.permalink) %}
-    {% set page_cover_avif_url = self::get_cover_image_avif_url(url=page.permalink) %}
-
-    <picture>
-      <source srcset="{{page_thumb_avif_url | safe}}" type="image/avif">
-      <source srcset="{{page_thumb_webp_url | safe}}" type="image/webp">
-      <img itemprop="image" src="{{page_thumb_url | safe}}" alt="{{page.extra.image_alt | default(value='') | safe}}" loading="lazy" data-skip-transform>
-    </picture>
-    {% endif %}
-
-    {% if page.summary %}
-        <p class="teaser">{{page.summary | striptags | safe}}</p>
-    {% elif page.description %}
-      <p class="teaser">{{page.description | striptags | safe}}</p>
-    {% endif %}
+    <div class="dots"></div>
   </a>
 
   <footer class="list-meta">
-
-    <div class="data">
-      <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
-      <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
-        datetime="{{pdate_iso}}">{{pdate_date}}</time>
-      <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="{{config.extra.author}}">
-        <span class="fn">{{config.extra.author}}</span>
-      </div>
-
-      {% include "partials/microformat.publisher.html" %}
+    <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
+    <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
+      datetime="{{pdate_iso}}">{{pdate_date}}</time>
+    <div class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="{{config.extra.author}}">
+      <span class="fn">{{config.extra.author}}</span>
     </div>
-
+    {% include "partials/microformat.publisher.html" %}
   </footer>
-
 </article>
 {% endfor %}
 {% endmacro list_pages %}
