@@ -169,9 +169,9 @@ There is one function (`start`) which is triggered when the Wasm module gets loa
 
 The other—probably way more interesting—function is `handler`, which takes the inputs from the JS side, does … a lot of nothing, and returns a request JSON blob for CloudFront to deal with.
 
-Currently the machinery reads the arbritray `JsValue` and tries to deserialize it into a struct, so we can deal with it in code. This is definitely not the most efficient way of doing it, but the conversions in and out really avoid some current existing pain points.
+Currently the machinery reads the arbitrary `JsValue` and tries to deserialize it into a struct, so we can deal with it in code. This is definitely not the most efficient way of doing it, but the conversions in and out really avoid some current existing pain points.
 
-For example wasm-bindgen has not a great story around Rust enums, for now only very simple C-style enums are allowed. Meaning: for our CloudFront (CF) event data, which can be more strictly typed into either a CF request or response event, this does not play well with Rust's richer enums, as we cannot convince wasm-bindgen to use them. There is an [open issue][wb-2407] around this topic, but it was created just recently and thus no work has been done yet. Similarly Rust's `Vec` is also not fully suppored yet (see [issue 111][wb-111]), which might be the even bigger issue for some of us.
+For example wasm-bindgen has not a great story around Rust enums, for now only very simple C-style enums are allowed. Meaning: for our CloudFront (CF) event data, which can be more strictly typed into either a CF request or response event, this does not play well with Rust's richer enums, as we cannot convince wasm-bindgen to use them. There is an [open issue][wb-2407] around this topic, but it was created just recently and thus no work has been done yet. Similarly Rust's `Vec` is also not fully supported yet (see [issue 111][wb-111]), which might be the even bigger issue for some of us.
 
 Workarounds can be a lot of Options and serialization skips, as I do internally anyway.
 
