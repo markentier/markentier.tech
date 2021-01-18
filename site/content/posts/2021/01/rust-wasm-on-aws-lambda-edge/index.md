@@ -286,9 +286,9 @@ Running 30s test @ https://<MY_DISTRIBUTION_DOMAIN>/
 
 So the baseline with Lambda@Edge being active for the **p99** is now **50ms**. On rainy days basically twice as slow as without any triggers. Again, account for some variance around ±5ms.
 
-The reported duration in the Cloudwatch logs for the function is between **0.84ms** and **1.53ms**. This begs the question, where the other overhead went. There are roughly 20ms unaccounted for and missing. A tribute to the performance gods? I don't know. 🤷
+The reported duration in the Cloudwatch logs for the function is between **0.84ms** and **1.53ms**, so on average around 1ms simplified. This begs the question, where the other overhead went. There are roughly 20ms unaccounted for and missing. A tribute to the performance gods? I don't know. 🤷
 
-Just keep that gap in mind. I guess this is the computational overhead between the Cloudfront request handling and call out to the L@E execution environment. It's just sad that I cannot find those timings anywhere. The pure CloudFront logs are also not conclusive.
+Just keep that gap in mind. I guess this is the overhead between the Cloudfront request handling and call out to the L@E execution environment, somehow all this stuff needs to be orchestrated behind the scenes. It's just sad that I cannot find those timings anywhere. The pure CloudFront logs are also not conclusive.
 
 The maximum memory used is 67 to 68 MB.
 
@@ -326,7 +326,7 @@ No, the Wasm function didn't get magically faster than the "no-op" node version.
 
 We can conclude from this, that the module has no significant performance hit.
 
-Reported duration is usually somewhere between **1.25ms** and **1.50ms.** I haven't seen it dropping further below, so let's say there is a 250µs on top of the node baseline.
+Reported duration is usually somewhere between **1.25ms** and **1.50ms.** I haven't seen it dropping further below, so let's say there is a 250µs on top of the average node baseline.
 
 The maximum memory used is between 75 to 77 MB. I guess this is the additional allocation for the WebAssembly module, yet I'm not too worried about that. I assume the overhead can be armotized by running more memory efficient code within the module instead of the node environment. I'm pretty sure that a plain old JavaScript object needs more memory than a Rust struct.
 
@@ -336,7 +336,7 @@ This is all great news: you can run WebAssembly on AWS Lambda@Edge without a not
 
 Of course I do hope that in the future this will become more native. There's a lot of development happening in the WebAssembly space.
 
-But maybe I've also conviced AWS to not move any faster, because we can solve the problem ourselves. And for a behemoth organization like them it can take many years to deliver even the smallest improvements which we consider to be no-brainers, … and then we wonder why it took them so long in the first place.
+But maybe I've also convinced AWS to not move any faster, because we can solve the problem ourselves. And for a behemoth organization like them it can take many years to deliver even the smallest improvements which we consider to be no-brainers, … and then we wonder why it took them so long in the first place.
 
 Yet I stay optimistic in general. I know that they know that Edge Computing is some hot stuff right now. They even launched a very specialized offering called [AWS Wavelength][awl]. I'm looking forward to test this once it's more widely available.
 
