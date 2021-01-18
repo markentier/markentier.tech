@@ -205,9 +205,9 @@ wrk -d 30 -c 5 -t 5 -R 5 -L https://<MY_DISTRIBUTION_DOMAIN>/
 
 The numbers are fairly low because I don't want to test the overall performance of CloudFront in my area, but want to get consistent and repeatable numbers for L@E in general. Under high load the performance is impacted by many other factors, which we cannot really control.
 
-To ignore the cache, all functions will be **deployed as Viewer Request triggers**, "Include body" enabled to give it a full round picture (no body payload will be send and used though).
+To ignore the cache, all functions will be **deployed as Viewer Request triggers**, "Include body" enabled to give it a full round picture (no body payload will be sent and used though).
 
-Furthermore after deployment I will run a warmup round to eliminate the coldstart period, I'm not interested in those bad numbers. I know they are horrible, but we cannot do anything about it really, eventually a function will tear down and a new one needs to be spawned. So each `wrk` will be run twice, but only the second run will be used here.
+Furthermore after deployment I will run a warmup round to eliminate the cold-start period, I'm not interested in those bad numbers. I know they are horrible, but we cannot do anything about it really; eventually a function will tear down and a new one needs to be spawned. So each `wrk` will be run twice, but only the second run will be used here.
 
 
 
@@ -258,7 +258,7 @@ exports.handler = async (event) => {
 };
 ```
 
-Yep, that's all: take the request object out of the event and pass it down. It's the smallest possible function you could write. It would also be the mose useless, too.
+Yep, that's all: take the request object out of the event and pass it down. It's the smallest possible function you could write. It would also be the most useless, too.
 
 #### Results
 
