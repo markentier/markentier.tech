@@ -3,7 +3,7 @@ title = "Rust/Wasm on AWS Lambda@Edge"
 date = 2021-01-18
 
 [taxonomies]
-tags = ["rust", "wasm", "webassembly", "aws", "lambda", "lambda@edge", "cloudfront", "amazon", "trigger", "edge computing", "CDN", "Node.js", "wavelength", "amazon web services", "wasm-bindgen", "wasm-pack"]
+tags = ["rust", "wasm", "webassembly", "aws", "lambda", "lambda@edge", "cloudfront", "serverless", "amazon", "trigger", "edge computing", "CDN", "Node.js", "wavelength", "amazon web services", "wasm-bindgen", "wasm-pack"]
 categories = ["default"]
 
 [extra]
@@ -21,7 +21,7 @@ At the last AWS re:Invent 2020 the company with a smile did announce quite some 
 
 I tinkered with a custom solution in the past and also got some experiments running, but it was a pretty handrolled approach and nothing I could give to others if they wanted to do the very same.
 
-I sat down yet again and took some of my learnings into a repository, so we have a starting point.
+I sat down yet again and took some of my learnings into a repository, so we have a starting point for some Wasm based serverless apps on the edge.
 
 As of today (January 2021) AWS only offers two languages for Lambda@Edge: `Python` and `Node.js`. Both are available in relatively decent versions, too.
 
