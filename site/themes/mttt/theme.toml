@@ -17,4 +17,4 @@ homepage = "https://markentier.tech/"
 # Alchemy: https://www.compart.com/en/unicode/search?q=alchemic#characters
 # 🜂🜄🜁🜃🜎🜏🜛
 # Misc Symbols: https://www.compart.com/en/unicode/block/U+2600
-title_sep = "🞳"
+title_sep = "|"

@@ -86,9 +86,10 @@
   a.line {
     display: grid;
     grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 0 0.333em;
-    grid-template-areas: "title dots date";
+    grid-template-areas: "title dots date"
+                         "title2 dots2 date2";
     align-items: end;
     text-decoration: none;
 
@@ -99,7 +100,7 @@
 
     .title, .dots, .date { display: block; }
     .title {
-      grid-area: title;
+      grid-area: title / title2;
 
       h2 {
         font-size: 1.25em;
@@ -108,7 +109,7 @@
       }
     }
     .dots {
-      grid-area: dots;
+      grid-area: dots / dots2;
       min-height: 1em;
 
       // <svg viewBox="0 0 35 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="#cccccc"/></svg>
@@ -117,7 +118,7 @@
         left 55% / 6px repeat-x;
     }
     .date {
-      grid-area: date;
+      grid-area: date / date2;
     }
   }
 
