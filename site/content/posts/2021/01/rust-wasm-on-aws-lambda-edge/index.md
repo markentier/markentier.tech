@@ -7,8 +7,9 @@ tags = ["rust", "wasm", "webassembly", "aws", "lambda", "lambda@edge", "cloudfro
 categories = ["default"]
 
 [extra]
+long_title = "Rust/WebAssembly on AWS Lambda@Edge (CloudFront)"
 has_hero = true
-image_alt = "Rust/Wasm {loves} AWS Lambda@Edge (CloudFront)"
+image_alt = "Rust/WebAssembly {loves} AWS Lambda@Edge (CloudFront)"
 +++
 
 Ever felt limited by the languages on AWS Lambda@Edge? Wanted to run Rust for your CloudFront triggers, but _re:Invent_ 2020 disappointed you in that matter? Let me show you one way of how you can still get it done.
