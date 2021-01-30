@@ -169,6 +169,11 @@ from = "/posts/2018/03/from-cobalt-to-gutenberg/"
 to = "/posts/2018/03/from-cobalt-to-zola/"
 status = 301
 
+[[redirects]]
+from = "/posts/2018/03/from-cobalt-to-gutenberg"
+to = "/posts/2018/03/from-cobalt-to-zola"
+status = 301
+
 [[plugins]]
 package = "netlify-plugin-image-optim"
 
