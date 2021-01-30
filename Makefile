@@ -58,6 +58,7 @@ JPG2PNG = $(JPGS:.jpg=.png)
 AVIFS = $(PNGS:.png=.avif)
 WEBPS = $(PNGS:.png=.webp)
 OPNGS = $(PNGS:%=OPTIMIZE_%)
+BOMABLES = $(shell find $(OUTPUT_DIR) -type f \( -iname \*.html -o -iname \*.css -o -iname \*.svg -o -iname \*.json -o -iname \*.js -o -iname \*.xml \))
 
 THUMB_SIZE = 320x160
 PNG_COLORS = 32
@@ -65,7 +66,7 @@ PNG_COLORS = 32
 
 # DEFAULT TARGET
 
-build: install-zola build-site post-processing
+build: install-zola build-site post-processing remove-bom
 
 
 
@@ -110,6 +111,13 @@ build-feeds:
 post-processing:
 	npm install
 	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) npx gulp
+
+remove-bom: $(BOMABLES)
+
+# https://unix.stackexchange.com/a/381263/7949
+$(BOMABLES): %:
+	@sed -i '1s/^\xEF\xBB\xBF//' $@
+.PHONY: $(BOMABLES)
 
 rebuild-all: regenerate-thumbs images build
 
