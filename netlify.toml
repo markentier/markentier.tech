@@ -46,7 +46,7 @@ Cache-Control = "public, max-age=3600"
 # Casing for STS is important to override value from Netlify:
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
-content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: *.gravatar.com; font-src 'self'; connect-src 'self'; media-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport"
+content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: *.gravatar.com; font-src 'self'; connect-src 'self'; media-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport"
 report-to = """{"group":"cspreport","max-age":2592000,"endpoints":[{"url":"https://markentiertech.report-uri.com/r/d/csp/enforce"}"""
 
 # https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/
@@ -97,11 +97,13 @@ Cache-Control = "public, max-age=2592000"
 [[headers]]
 for = "/manifest.json"
 [headers.values]
+Content-Type = "application/json; charset=utf8"
 Cache-Control = "public, max-age=2592000, immutable"
 
 [[headers]]
 for = "/*.svg"
 [headers.values]
+Content-Type = "image/xml+svg; charset=utf8"
 Cache-Control = "public, max-age=15552000, immutable"
 
 [[headers]]
@@ -149,6 +151,11 @@ for = "/*.(ttf|otf|eot|ttc)"
 [headers.values]
 Cache-Control = "public, max-age=15552000, immutable"
 x-note = "cc header based on using a glob pattern"
+
+[[headers]]
+for = "/*.webmanifest"
+[headers.values]
+Content-Type = "application/manifest+json; charset=utf8"
 
 # REDIRECTS
 ## https://docs.netlify.com/routing/redirects/
