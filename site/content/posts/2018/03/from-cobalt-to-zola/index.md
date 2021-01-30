@@ -1,32 +1,34 @@
 +++
-title = "From cobalt.rs to gutenberg"
+title = "From cobalt.rs to zola (née gutenberg)"
 date = 2018-03-28
 
 [taxonomies]
-tags = ["zola", "gutenberg", "cobalt", "cobalt.rs", "rust", "SSG", "static site", "generator", "migration", "conversion", "switch"]
+tags = ["zola", "cobalt", "cobalt.rs", "rust", "SSG", "static site", "generator", "migration", "conversion", "switch", "gutenberg"]
 categories = ["default"]
 
 [extra]
 has_hero = true
-image_alt = "Why I moved to gutenberg, a static site generator written in Rust"
+image_alt = "Why I moved to zola, a static site generator written in Rust"
 +++
 
-I wish I could have the features of both tools, but for now I will use gutenberg over cobalt. A tiny migration and feature comparison story.
+I wish I could have the features of both tools, but for now I will use zola over cobalt. A tiny migration and feature comparison story.
 
 <!-- more -->
 
-While [cobalt][cobalt] is a pretty nice and easy static site generator written in Rust (in the vein of [Jekyll][jekyll], the famous tool used for GitHub pages), I struggled a bit.
-Especially that the stylesheet compilation is not enabled by default yet, but also other tiny annoyances or missing features played into that. I still want to stick with [Rust][rust] and the only other active option here is [<del>gutenberg</del><ins>zola</ins>][gutenberg]. But to be honest, this one also comes with its complications.
+**Note: "gutenberg" got [renamed][rename] to "zola" in September 2018.**
 
-**Cobalt** is your tool for a quick blog-like setup, because it supports the usual two different article types of (static) pages and blog posts. **Gutenberg** doesn't really have such distinction, and therefore you need to be more elaborate if you want to achieve the same.
+While [cobalt][cobalt] is a pretty nice and easy static site generator written in Rust (in the vein of [Jekyll][jekyll], the famous tool used for GitHub pages), I struggled a bit.
+Especially that the stylesheet compilation is not enabled by default yet, but also other tiny annoyances or missing features played into that. I still want to stick with [Rust][rust] and the only other active option here is [<del>gutenberg</del><ins>zola</ins>][zola]. But to be honest, this one also comes with its complications.
+
+**Cobalt** is your tool for a quick blog-like setup, because it supports the usual two different article types of (static) pages and blog posts. **Zola** doesn't really have such distinction, and therefore you need to be more elaborate if you want to achieve the same.
 
 ### Not all perfect, but we're getting there
 
 Since both projects are pretty young, they share similar shortcomings: the template libraries are usually not feature complete yet or behave a slightly bit different than their spiritual role models. Mostly one can work around those issues, but it's a bit painful still.
 
-Gutenberg shines here a bit brighter, since it supports macros and shortcodes. Especially the latter is something nice, because I can quickly enrich my pages with snippets, which are usually weird or hard to be done purely in Markdown. Embedded HTML is not the nicest thing and if I can abstract them away, I'm all in for that.
+Zola shines here a bit brighter, since it supports macros and shortcodes. Especially the latter is something nice, because I can quickly enrich my pages with snippets, which are usually weird or hard to be done purely in Markdown. Embedded HTML is not the nicest thing and if I can abstract them away, I'm all in for that.
 
-Another tiny plus: Gutenberg is supported by [Netlify][netlify], therefore I do not need to install the binary somehow on their side. Now I can let it build the final site on deployment and skip committing a prebuilt project. Pretty sure I could have done it with cobalt as well, but this way it worked out of the box.
+Another tiny plus: Zola is supported by [Netlify][netlify], therefore I do not need to install the binary somehow on their side. Now I can let it build the final site on deployment and skip committing a prebuilt project. Pretty sure I could have done it with cobalt as well, but this way it worked out of the box.
 
 ### Tools, tools, tools
 
@@ -67,7 +69,7 @@ build-tidy-html:
 * find all files with extension `.html` in the `public` folder
 * apply command with `-x` option; \
   since I want to do multiple things I have to wrap it with `sh -c "…"`
-* `tidy` removes all superfluous whitespaces and empty lines, properly indents the tags, and cleans up the inline styles, which is quite handy for the code snippes, because gutenberg (and cobalt) do not use a global/external stylesheet for the syntax highlighting
+* `tidy` removes all superfluous whitespaces and empty lines, properly indents the tags, and cleans up the inline styles, which is quite handy for the code snippes, because zola (and cobalt) do not use a global/external stylesheet for the syntax highlighting
 
 If you want to learn more about all the possible flags and options, check out the [tidy reference][tidyref] for details and explanations.
 
@@ -75,13 +77,13 @@ This step helps me a lot getting a consistent output for my whole site, also I w
 
 ![books](./books.png)
 
-### More about `gutenberg`
+### More about `zola`
 
-In the [gutenberg repo][sitegen-comp] itself is a nice comparison between **gutenberg**, **cobalt**, **hugo**, and **pelican**. Since I'm not really interested in non-Rust generators I just keep rephrasing the differences between the first two.
+In the [zola repo][sitegen-comp] itself is a nice comparison between **zola**, **cobalt**, **hugo**, and **pelican**. Since I'm not really interested in non-Rust generators I just keep rephrasing the differences between the first two.
 
-The only thing gutenberg has not is the [data files][cobalt-data] feature of cobalt, which can be seen as flat file databases in YAML, JSON, or TOML format. You would maybe need this if you organize and use a lot of data while site generation step. While it sounds nice it is not something I really need yet.
+The only thing zola has not is the [data files][cobalt-data] feature of cobalt, which can be seen as flat file databases in YAML, JSON, or TOML format. You would maybe need this if you organize and use a lot of data while site generation step. While it sounds nice it is not something I really need yet.
 
-What I really appreciate in gutenberg is the wide support of tiny features complementing Markdown based editing. Similar to GitHub wikis you can internally link between documents. Furthermore you get automatically linkable headers and can autogenerate a table of contents (TOC). The template engine is pretty nice (I still need more definable types like [arrays][array-issue] and maps, something I could do with liquid based engines). Themes, Aliases, and Pagination are not my main concern yet, but at least the latter could come in handy pretty soon. What I really like are the (custom) shortcodes, I loved it already years ago as a WordPress plugin (or you remember them even from bulletin board/forum software). And the macro system is quite useful when you do base your design on a theme. As mentioned above the stylesheet compilation based on SASS is quite nice, just because splitting up the styles in logical chunks helps to better reason about them.
+What I really appreciate in zola is the wide support of tiny features complementing Markdown based editing. Similar to GitHub wikis you can internally link between documents. Furthermore you get automatically linkable headers and can autogenerate a table of contents (TOC). The template engine is pretty nice (I still need more definable types like [arrays][array-issue] and maps, something I could do with liquid based engines). Themes, Aliases, and Pagination are not my main concern yet, but at least the latter could come in handy pretty soon. What I really like are the (custom) shortcodes, I loved it already years ago as a WordPress plugin (or you remember them even from bulletin board/forum software). And the macro system is quite useful when you do base your design on a theme. As mentioned above the stylesheet compilation based on SASS is quite nice, just because splitting up the styles in logical chunks helps to better reason about them.
 
 Currently there is [a discussion about custom taxonomies][taxodisco] which is interesting.
 
@@ -91,14 +93,14 @@ Oh and I totally forgot a tiny but really convenient feature: the automatic page
 
 I have more items I'd like to see:
 
-* probably a plugin system, although I have not an idea yet, how it could look like; but since gutenberg itself seems to be a pretty modular codebase there might be an option to get this going (extension language does not have to be Rust though)
+* probably a plugin system, although I have not an idea yet, how it could look like; but since zola itself seems to be a pretty modular codebase there might be an option to get this going (extension language does not have to be Rust though)
 * more "native" blog support (a collection type of blog post based on a common parent directory)
 * better page collection access, globally (I have seen that this is done internally already for sitemap and feed generation, we just need to abstract and expose this nicely)
 * tera, the template engine could probably benefit from more types and related filters/builtin functions; even with the macro system some things still feel clumsy or nearly impossible
 
 ### Migrate all the things
 
-Although gutenberg is not cobalt or Jekyll, the move was not as painful as I initially thought it would be.
+Although zola is not cobalt or Jekyll, the move was not as painful as I initially thought it would be.
 The template languages are similar enough, syntactically and semantically, so that adjustments were sometimes just search-and-replace, both use curlies for their tags.
 
 Some of the shortcomings of [Tera][tera] made some changes slightly more difficult, but overall nothing was totally impossible, or I could just live with a similar but simpler solution for now.
@@ -129,19 +131,20 @@ Because in the end all you really want is: **getting things done.**
 
 <small>Note: The tool got renamed to `zola`. IIRC there was a naming conflict in the past.</small>
 
-[array-issue]: https://github.com/Keats/gutenberg/issues/270
+[rename]: https://github.com/getzola/zola/issues/377
+[array-issue]: https://github.com/getzola/zola/issues/270
 [cobalt-data]: https://cobalt-org.github.io/docs/data/
 [cobalt]: https://cobalt-org.github.io/
 [fd]: https://github.com/sharkdp/fd
-[gutenberg]: https://www.getzola.org/
+[zola]: https://www.getzola.org/
 [heroku]: https://www.heroku.com/
 [jekyll]: https://jekyllrb.com/
 [mtt-repo]: https://github.com/markentier/markentier.tech
 [netlify-blogpost]: https://www.netlify.com/blog/2018/03/20/netlifys-aws-lambda-functions-bring-the-backend-to-your-frontend-workflow/
 [netlify]: https://www.netlify.com/
 [rust]: https://www.rust-lang.org/
-[sitegen-comp]: https://github.com/Keats/gutenberg#comparisons-with-other-static-site-generators
-[taxodisco]: https://github.com/Keats/gutenberg/issues/246
+[sitegen-comp]: https://github.com/getzola/zola#comparisons-with-other-static-site-generators
+[taxodisco]: https://github.com/getzola/zola/issues/246
 [tera]: https://tera.netlify.com/
 [tidy]: http://www.html-tidy.org/
 [tidyref]: http://api.html-tidy.org/tidy/quickref_5.6.0.html
