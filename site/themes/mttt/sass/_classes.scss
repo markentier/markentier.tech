@@ -170,7 +170,10 @@
 
 .hentry {
   .post_title {
-    font-family: var(--system-fonts-serif); width: 105%;
+    font-family: var(--system-fonts-serif);
+    width: 105%;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
   }
 }
 
