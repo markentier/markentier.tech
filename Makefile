@@ -107,8 +107,8 @@ build-feeds:
 		echo "No tidy installed."
 
 post-processing:
-	yarn
-	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) yarn run gulp
+	npm install
+	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) npx gulp
 
 rebuild-all: regenerate-thumbs images build
 
@@ -216,8 +216,8 @@ draft:
 clean:
 	@rm -rf public
 
-clean-yarn:
-	@rm -rf node_modules yarn*
+clean-npm:
+	@rm -rf node_modules
 
 
 
@@ -253,7 +253,7 @@ install-tools:
 	cargo install oxipng
 	cargo install cavif
 	cargo install svgcleaner
-	yarn global add svgo
-	yarn global add netlify-cli
+	npm install --global svgo
+	npm install --global netlify-cli
 
 clean-installs: clean-zola

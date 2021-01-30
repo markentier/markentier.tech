@@ -2,7 +2,6 @@
 .envrc
 .netlify
 .vscode
-.yarn
 desktop.ini
 drafts
 local-stuff
@@ -10,6 +9,4 @@ node_modules
 npm-debug.log*
 public
 tools/certs
-yarn-debug.log*
-yarn-error.log*
 zola*
