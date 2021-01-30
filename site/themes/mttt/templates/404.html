@@ -1,10 +1,16 @@
 {% extends "default.html" %}
 {% block title %}{{config.title}}: {{config.description}}{% endblock title %}
+
 {% block before_head_end %}
 <meta name="robots" content="noindex">
 {% endblock before_head_end %}
+
 {% block content %}
-{% if page.content %}{{page.content | safe}}{% endif %}
-{% set section = get_section(path="posts/_index.md") %}
-{{ macros::sec_pages(sec = section) }}
+  {% if page.content %}
+    {{page.content | safe }}
+  {% endif %}
+
+  {# NOTE: NEEDS FLAT PAGE LIST (use transparent = true in section's _index.md!) #}
+  {% set section = get_section(path="posts/_index.md") %}
+  {{ macros::sec_pages(sec = section) }}
 {% endblock content %}

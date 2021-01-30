@@ -51,6 +51,7 @@ TIDY_XML_SETTINGS = -q -m -w 0 -i -utf8 -xml \
 
 COVERS = $(shell find $(SITE_ROOT) -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
+ALL_THUMBS = $(shell find $(SITE_ROOT) -iname 'thumb.*')
 PNGS = $(shell find $(SITE_ROOT) -iname '*.png')
 JPGS = $(shell find $(SITE_ROOT) -iname '*.jpg')
 JPG2PNG = $(JPGS:.jpg=.png)
@@ -117,14 +118,14 @@ rebuild-all: regenerate-thumbs images build
 
 images:
 	$(MAKE) create-pngs -j $(shell expr $(shell nproc) / 2 + 1)
-	$(MAKE) create-thumbs -j $(shell expr $(shell nproc) / 2 + 1)
+	# DISABLED: $(MAKE) create-thumbs -j $(shell expr $(shell nproc) / 2 + 1)
 	$(MAKE) create-avif create-webp -j $(shell expr $(shell nproc) / 2 + 1)
 
 images-from-scratch:
 	$(MAKE) delete-avifs delete-webps delete-thumbs
 	$(MAKE) create-pngs     -j $(shell expr $(shell nproc) / 2 + 1)
 	$(MAKE) optimize-pngs-x -j $(shell expr $(shell nproc) / 2 + 1)
-	$(MAKE) create-thumbs   -j $(shell expr $(shell nproc) / 2 + 1)
+	# DISABLED: $(MAKE) create-thumbs   -j $(shell expr $(shell nproc) / 2 + 1)
 	$(MAKE) create-avif     -j $(shell expr $(shell nproc) / 2 + 1)
 	$(MAKE) create-webp     -j $(shell expr $(shell nproc) / 2 + 1)
 
@@ -152,7 +153,7 @@ $(OPNGS): OPTIMIZE_%: %
 create-thumbs: $(THUMBS)
 
 delete-thumbs:
-	rm -rf $(THUMBS)
+	rm -rf $(ALL_THUMBS)
 
 regenerate-thumbs: delete-thumbs create-thumbs
 
