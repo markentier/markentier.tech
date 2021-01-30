@@ -83,6 +83,10 @@
 }
 
 .index_toc_line {
+  & + & {
+    margin-top: .25em;;
+  }
+
   a.line {
     display: grid;
     grid-template-columns: max-content 1fr max-content;
