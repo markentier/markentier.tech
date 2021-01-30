@@ -12,7 +12,7 @@ menu_items = """
 ## author
 
 * name: **christoph** (or **chris** for short)
-* webnick: **asaaki** (or if unavailabe also **markentier**)
+* webnick: **asaaki** (or if unavailable also **markentier**)
 * github: <https://github.com/asaaki>
 * twitter: <https://twitter.com/asaaki>
 * dev.to: <https://dev.to/asaaki>

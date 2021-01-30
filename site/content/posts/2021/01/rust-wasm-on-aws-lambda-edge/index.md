@@ -20,7 +20,7 @@ _`tl;dr:` Check out the [repo][repo] and give it a spin for yourself. You can al
 
 At the last AWS re:Invent 2020 the company with a smile did announce quite some changes, improvement, and new products/services. Notably also a lot of interesting stuff in the AWS Lambda space. Yet one area—one very dear to me—was left out completely, total radio silence, nothing, nada: no improvements or new features for Lambda@Edge (L@E). This made me very sad. 😢
 
-I tinkered with a custom solution in the past and also got some experiments running, but it was a pretty handrolled approach and nothing I could give to others if they wanted to do the very same.
+I tinkered with a custom solution in the past and also got some experiments running, but it was a pretty hand-rolled approach and nothing I could give to others if they wanted to do the very same.
 
 I sat down yet again and took some of my learnings into a repository, so we have a starting point for some Wasm based serverless apps on the edge.
 
@@ -66,7 +66,7 @@ For example let's say you want to build an image transformation function and wan
 
 Whatever your reasons are, I hear you.
 
-AWS is improving on one side, but also loosing it on another.
+AWS is improving on one side, but also losing it on another.
 When it comes to CDNs (Content Delivery Networks) and Edge Computing, the competition is now sprinting ahead of AWS.
 
 I cannot say a lot about Fastly's offering, it's mostly behind some beta doors, and mere mortals like myself are not allowed to peek. They have their fastlylabs, but that's for experimentation, not the final offering. So I don't even bother to check it out.
@@ -166,7 +166,7 @@ pub async fn handler(event: JsValue, _context: JsValue) -> JsValueResult {
 
 <small>_Note: The displayed code might not be up-to-date with the repository version._</small>
 
-There is one function (`start`) which is triggered when the Wasm module gets loaded. You can use it to set up some internal state if needed. We only used it here for configuring the panic handler; whenever an unrecoverable error happens, it gets logged via `console.error`, helps immensly with debugging. And as we do console logging anyway, there shouldn't be any significant overhead for that part. The compilation output will probably a bit bigger because it needs to store more information for the better panic output.
+There is one function (`start`) which is triggered when the Wasm module gets loaded. You can use it to set up some internal state if needed. We only used it here for configuring the panic handler; whenever an unrecoverable error happens, it gets logged via `console.error`, helps immensely with debugging. And as we do console logging anyway, there shouldn't be any significant overhead for that part. The compilation output will probably a bit bigger because it needs to store more information for the better panic output.
 
 The other—probably way more interesting—function is `handler`, which takes the inputs from the JS side, does … a lot of nothing, and returns a request JSON blob for CloudFront to deal with.
 
@@ -176,7 +176,7 @@ For example wasm-bindgen has not a great story around Rust enums, for now only v
 
 Workarounds can be a lot of Options and serialization skips, as I do internally anyway.
 
-Some transformation overhead can be addressed by using [serde-wasm-bindgen][swb], but in my example repo I'll use it only for the input side (deserialization). On serialization a collection like HashMap or BTreeMap gets turned into an ES2015 Map, which is unfortunated as well, because they cannot be JSON stringified.
+Some transformation overhead can be addressed by using [serde-wasm-bindgen][swb], but in my example repo I'll use it only for the input side (deserialization). On serialization a collection like HashMap or BTreeMap gets turned into an ES2015 Map, which is unfortunate as well, because they cannot be JSON stringified.
 
 As you can see, currently there are trade-offs to be made in all corners, but that shouldn't stop us to explore further.
 
@@ -201,14 +201,14 @@ wrk -d 30 -c 5 -t 5 -R 5 -L https://<MY_DISTRIBUTION_DOMAIN>/
 - `-d 30` - run it for 30 seconds
 - `-c 5` - only 5 connections, it's not supposed to be a heavy load test
 - `-t 5` - just aligning it to the connection count
-- `-R 5` - rate (throughput) of 5 (requests/s), also to avoid uncessary contention
+- `-R 5` - rate (throughput) of 5 (requests/s), also to avoid unnecessary contention
 - `-L` - latency statistics; I will only use the shorter summary
 
 The numbers are fairly low because I don't want to test the overall performance of CloudFront in my area, but want to get consistent and repeatable numbers for L@E in general. Under high load the performance is impacted by many other factors, which we cannot really control.
 
 To ignore the cache, all functions will be **deployed as Viewer Request triggers**, "Include body" enabled to give it a full round picture (no body payload will be sent and used though).
 
-Furthermore after deployment I will run a warmup round to eliminate the cold-start period, I'm not interested in those bad numbers. I know they are horrible, but we cannot do anything about it really; eventually a function will tear down and a new one needs to be spawned. So each `wrk` will be run twice, but only the second run will be used here.
+Furthermore after deployment I will run a warm-up round to eliminate the cold-start period, I'm not interested in those bad numbers. I know they are horrible, but we cannot do anything about it really; eventually a function will tear down and a new one needs to be spawned. So each `wrk` will be run twice, but only the second run will be used here.
 
 
 
@@ -329,11 +329,11 @@ We can conclude from this, that the module has no significant performance hit.
 
 Reported duration is usually somewhere between **1.25ms** and **1.50ms.** I haven't seen it dropping further below, so let's say there is a 250µs on top of the average node baseline.
 
-The maximum memory used is between 75 to 77 MB. I guess this is the additional allocation for the WebAssembly module, yet I'm not too worried about that. I assume the overhead can be armotized by running more memory efficient code within the module instead of the node environment. I'm pretty sure that a plain old JavaScript object needs more memory than a Rust struct.
+The maximum memory used is between 75 to 77 MB. I guess this is the additional allocation for the WebAssembly module, yet I'm not too worried about that. I assume the overhead can be amortized by running more memory efficient code within the module instead of the node environment. I'm pretty sure that a plain old JavaScript object needs more memory than a Rust struct.
 
 ## Conclusion
 
-This is all great news: you can run WebAssembly on AWS Lambda@Edge without a noticable performance penalty. Now write your Rust code and run it on the edge.
+This is all great news: you can run WebAssembly on AWS Lambda@Edge without a noticeable performance penalty. Now write your Rust code and run it on the edge.
 
 Of course I do hope that in the future this will become more native. There's a lot of development happening in the WebAssembly space.
 
