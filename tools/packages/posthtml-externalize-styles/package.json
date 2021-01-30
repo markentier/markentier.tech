@@ -1,0 +1,12 @@
+{
+  "name": "posthtml-externalize-styles",
+  "version": "1.0.0",
+  "description": "Collects <style> content and writes them into a .css file",
+  "main": "lib/index.js",
+  "author": "Christoph Grabo",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "normalize-path": "^3.0.0"
+  }
+}

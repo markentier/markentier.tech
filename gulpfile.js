@@ -2,22 +2,36 @@
 'use strict';
 
 const SRC_HTML = 'public/**/*.html';
+const SRC_CSS = 'public/**/*.css';
 const SRC_JS = 'public/**/*.js';
 const SRC_JSON = 'public/**/*.json';
 const DEST = 'public';
 
 const gulp = require('gulp');
+const postCSS = require("gulp-postcss");
 const postHTML = require('gulp-posthtml');
 const htmlmin = require('gulp-htmlmin');
 const htmltidy = require('gulp-htmltidy');
 const minify = require('gulp-minify');
 const jsonminify = require('gulp-jsonminify');
 
-const plugins = [
+const postHtmlPlugins = [
   require("posthtml-img-autosize")({ root: DEST, processEmptySize: true }),
   require("posthtml-alt-always")({}),
   require("posthtml-align-style")({}),
-  require("posthtml-avif-webp")({ root: DEST }),
+  require("posthtml-avif-webp")({ root: DEST })
+];
+
+const postHtmlPluginsSecondRun = [
+  require("htmlnano")({
+    mergeStyles: true,
+    // breaks my beautiful header image :'-(
+    minifySvg: false,
+    // does not work; also dangerous because it would truncate for
+    // some desired tags like <base>
+    // minifyUrls: process.env.IMG_BASE_URL,
+  }),
+  require("posthtml-externalize-styles")({ root: DEST }),
 ];
 
 const htmltidyConfig = {
@@ -55,9 +69,10 @@ const minifyConfig = {
 
 function html() {
   return gulp.src(SRC_HTML)
-    .pipe(postHTML(plugins))
+    .pipe(postHTML(postHtmlPlugins))
     .pipe(htmltidy(htmltidyConfig))
     .pipe(htmlmin(htmlminOptions))
+    .pipe(postHTML(postHtmlPluginsSecondRun))
     .pipe(gulp.dest(DEST));
 };
 
@@ -73,7 +88,18 @@ function json() {
     .pipe(gulp.dest(DEST));
 };
 
-var build = gulp.parallel(html, javascript, json)
+function css() {
+  return gulp
+    .src(SRC_CSS)
+    .pipe(
+      postCSS([
+        require("cssnano")({ preset: "default" }), // advanced
+      ])
+    )
+    .pipe(gulp.dest(DEST));
+}
+
+var build = gulp.series(gulp.parallel(html, javascript, json), css);
 
 exports.html = html;
 exports.default = build;

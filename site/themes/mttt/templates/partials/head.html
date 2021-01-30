@@ -2,28 +2,31 @@
 
 {% set sep = config.extra.title_sep | default(value="🞳") %}
 
-{# update with content of final fonts.css #}
-<style>@font-face{font-family:'color-emoji';src:local("Apple Color Emoji"),local("Segoe UI Emoji"),local("Segoe UI Symbol"),local("Noto Color Emoji")}@font-face{font-family:"Varela Round";src:local("Varela Round"),local("Varela Round Regular"),local("VarelaRound-Regular"),url("/f/vrrss.woff2") format("woff2");unicode-range:U+2E,U+61,U+63,U+65,U+68,U+69,U+6B,U+6D,U+6E,U+72,U+74;font-weight:normal;font-style:normal;font-display:swap;}</style>
 <link rel="stylesheet" href="/s/m.css?_={{macros::ts_now()}}">
 
 {% if macros::is_devmode() == "true" %}
   <link rel="stylesheet" href="/s/d.css?_={{macros::ts_now()}}">
 {% endif %}
 
+{% if page.extra.custom_delimiter or page.extra.custom_css %}
+<style>
 {% if page.extra.custom_delimiter %}
-<style>.article_body > p:first-of-type::after, hr::after { content: "{{page.extra.custom_delimiter}}";opacity: .25;}</style>
+/* custom delimiter */
+.article_body > p:first-of-type::after, hr::after { content: "{{page.extra.custom_delimiter}}";opacity: .25;}
 {% endif %}
-
 {% if page.extra.custom_css %}
-<style>{{page.extra.custom_css | safe}}</style>
+/* custom CSS */
+{{page.extra.custom_css | safe}}
+{% endif %}
+</style>
 {% endif %}
 
 <!-- https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df -->
 <link rel="icon" href="/i/m.svg">
 <link rel="mask-icon" href="/i/m.svg" color="#063656">
 <link rel="apple-touch-icon" href="/i/m.180.png">
-<meta name="theme-color" content="#dfdddc">
-<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#efedec">
+<link rel="manifest" href="/manifest.webmanifest">
 
 {% if page.permalink %}
 <link rel="canonical" href="{{page.permalink | safe}}">
