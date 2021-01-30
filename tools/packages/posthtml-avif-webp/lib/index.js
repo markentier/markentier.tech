@@ -30,6 +30,11 @@ const posthtmlAvifWebp = (options) => {
 
       const nodeSrc = node.attrs.src;
 
+      // skip SVGs; my current styling breaks the flow (height issue)
+      if (nodeSrc.endsWith(".svg")) {
+        return node;
+      }
+
       // Add lazy loading to all images without a loading attr:
       if (!node.attrs.loading) {
         node.attrs.loading = "lazy";
@@ -41,10 +46,11 @@ const posthtmlAvifWebp = (options) => {
         content: [],
       };
 
-      if (nodeSrc.endsWith(".svg")) {
-        pictureNode.content.push(node);
-        return pictureNode;
-      }
+      // If/when flow/height issue is fixed:
+      // if (nodeSrc.endsWith(".svg")) {
+      //   pictureNode.content.push(node);
+      //   return pictureNode;
+      // }
 
       const imgRatio = (node.attrs.height / node.attrs.width) * 100;
       pictureNode.attrs.style = `padding-bottom: ${imgRatio}%;`;
