@@ -1,9 +1,11 @@
+{% import "macros.html" as macros %}
+
 <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
   <a itemprop="url" href="{{config.base_url | safe}}">
     <meta itemprop="name" content="{{config.extra.publisher}}">
     <meta itemprop="description" content="{{config.description}}">
     <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-      <img itemprop="url" src="{{config.base_url | safe}}/i/m.amp.png" alt="logo" data-skip-transform>
+      <img itemprop="url" src="{{config.base_url | safe}}/i/m.amp.png{{macros::cache_bust()}}" alt="logo" data-skip-transform>
       <meta itemprop="height" content="60">
       <meta itemprop="width" content="600">
     </span>

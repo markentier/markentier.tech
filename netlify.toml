@@ -67,9 +67,8 @@ Server = "markentier.tech"
 [[headers]]
 for = "/"
 [headers.values]
-# if at all it changes only on a daily basis
-# (my tweak sprees not counting ;-)
-Cache-Control = "public, max-age=86400"
+# webhint.io suggest this very short time
+Cache-Control = "public, max-age=180"
 
 # special treatment for the JSON feed
 # be as open as possible (mostly for my personal testing)
@@ -104,52 +103,52 @@ Cache-Control = "public, max-age=2592000, immutable"
 for = "/*.svg"
 [headers.values]
 Content-Type = "image/xml+svg; charset=utf8"
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
 for = "/*.avif"
 [headers.values]
 Content-Type = "image/avif"
 content-disposition = "inline"
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
 for = "/*.webp"
 [headers.values]
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
 for = "/*.png"
 [headers.values]
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
 for = "/*.jpg"
 [headers.values]
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
 for = "/*.ico"
 [headers.values]
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
 for = "/*.woff"
 [headers.values]
 Content-Type = "font/woff"
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
 for = "/*.woff2"
 [headers.values]
 Content-Type = "font/woff2"
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 
 # it may or may not work, but it's not too important for such extensions
 [[headers]]
 for = "/*.(ttf|otf|eot|ttc)"
 [headers.values]
-Cache-Control = "public, max-age=15552000, immutable"
+Cache-Control = "public, max-age=31536000, immutable"
 x-note = "cc header based on using a glob pattern"
 
 [[headers]]
