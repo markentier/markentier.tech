@@ -3,7 +3,7 @@ title = "Minimalism, Focus, Clean"
 date = 2018-05-01
 
 [taxonomies]
-tags = ["minimalism","focus","clean","redesign","design","webdesign","svg","vector","graphics","simple"]
+tags = ["minimalism", "focus", "clean", "redesign", "design", "webdesign", "svg", "scalable vector graphics", "vector", "graphics", "simple"]
 categories = ["default"]
 
 [extra]

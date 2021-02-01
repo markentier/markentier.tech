@@ -3,7 +3,7 @@ title = "How I wrote JavaScript to avoid JavaScript"
 date = 2020-10-14
 
 [taxonomies]
-tags = ["javascript", "2021", "frontend", "backend", "website", "webapp", "web", "development", "fast", "speed", "slim", "minimalism", "react", "SSG", "static site", "generator", "SPA", "HTML", "HTML5", "CSS", "JS", "WEBP", "AVIF", "SQIP", "LQIP", ]
+tags = ["javascript", "2021", "frontend", "backend", "website", "webapp", "web", "development", "fast", "speed", "slim", "minimalism", "react", "SSG", "static site", "generator", "SPA", "HTML", "HTML5", "CSS", "JS", "WEBP", "AVIF", "SQIP", "LQIP", "svg", "scalable vector graphics", "vector", "graphics"]
 categories = ["default"]
 
 [extra]

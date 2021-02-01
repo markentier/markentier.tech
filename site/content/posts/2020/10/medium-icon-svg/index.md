@@ -3,7 +3,7 @@ title = "Medium Icon SVG"
 date = 2020-10-15
 
 [taxonomies]
-tags = ["svg", "symbol", "icon", "logo", "brand", "medium", "2020", "unfinished", "ellipses", "logomark", ]
+tags = ["svg", "scalable vector graphics", "vector", "graphics", "symbol", "icon", "logo", "brand", "medium", "2020", "unfinished", "ellipses", "logomark", ]
 # cannot use "…" or "..." as tag, slugs would be empty
 categories = ["default"]
 
@@ -11,11 +11,11 @@ categories = ["default"]
 #origin_url = ""
 long_title = "Medium Icon SVG … Not Small Enough!"
 has_hero = true
-image_alt = "Would you have guessed what this icon should represent?"
+image_alt = "Would you have guessed what this icon should represent? (Medium's new logo, a very »interesting« vector graphic …)"
 custom_delimiter = "•••"
 +++
 
-So, Medium [got a new logo.][m-new] I took a look at their icon's SVG source. It's pretty small, but you know, it can be shrunken further.
+Medium [got a new logo.][m-new] And vector graphics are kinda my thing. So I took a look at their icon's SVG source. It's pretty small, but you know, it can be shrunken further.
 
 <!-- more -->
 
@@ -31,7 +31,7 @@ So let's take a look at the beauty.
 
 <div class="w50 box_center">
 
-![Medium's new symbol icon](./medium.icon.sanitized.svg)
+![Medium's new symbol icon (vector graphic / SVG)](./medium.icon.sanitized.svg)
 
 </div>
 
@@ -58,7 +58,7 @@ I mean, what do you really see when you look at it?
 
 There are 3 (geometrical) ellipses there, right? Can we agree on it? Good.
 
-Guess what, within the SVG specs there are more ways to draw things on your screen than just complex paths.
+Guess what, within the Scalable Vector Graphics (SVG) specs there are more ways to draw things on your screen than just complex paths.
 
 For example there happens to exist elements like [`<circle>`][circle] and [`<ellipse>`][ellipse]. What a surprise! Such primitives are quite easy to use, and probably also easier to understand when you look at SVG source code.
 
@@ -132,7 +132,7 @@ _Hey, **Medium,** if you want to use it, you are invited to copy my shorter vers
 
 <!--  _Sincerely yours,\ -->
  _To your continued success,\
-  SVG Wrangler 🙵 Byte Counter_
+  SVG Wrangler & Byte Counter_
 
 [m-new]: https://blog.medium.com/a-more-expressive-medium-starting-with-medium-63b562206d8f
 [circle]: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle
