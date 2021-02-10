@@ -17,6 +17,7 @@ Repo for [markentier.tech](https://markentier.tech/) site.
 - <https://ahrefs.com/site-explorer/overview/v2/domain/live?target=markentier.tech>
 - <https://ahrefs.com/site-audit/1994178/>
 - <https://moz.com/domain-analysis?site=https://markentier.tech/>
+- <https://hstspreload.org/?domain=markentier.tech>
 
 </details>
 
