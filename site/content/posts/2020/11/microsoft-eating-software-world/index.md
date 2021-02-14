@@ -117,7 +117,7 @@ Do you remember the good old `cmd.exe` console? Yeah, PowerShell is nothing like
 I would have dreamed of such an environment back then in the late 90s/early 2000s!
 
 {% quoted(source="What is PowerShell?", href="https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7") %}
-PowerShell is a cross-platform task automation and configuration management framework, consisting of a command-line shell and scripting language. Unlike most shells, which accept and return text, PowerShell is built on top of the .NET Common Language Runtime (CLR), and accepts and returns .NET objects. This fundamental change brings entirely new tools and methods for automation.
+<p>PowerShell is a cross-platform task automation and configuration management framework, consisting of a command-line shell and scripting language. Unlike most shells, which accept and return text, PowerShell is built on top of the .NET Common Language Runtime (CLR), and accepts and returns .NET objects. This fundamental change brings entirely new tools and methods for automation.
 {% end %}
 
 That's a mouthful description. Since I haven't done anything with .NET, I cannot tell if that is a good thing to have.

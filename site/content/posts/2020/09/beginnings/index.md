@@ -123,7 +123,7 @@ So in June 2020 I talked to my Engineering Manager about a break. **A sabbatical
 This was my first day:
 
 {% quoted(href="https://twitter.com/asaaki/status/1300721302320410633") %}
-Starting today I have now 3 months to figure out, how to find more purpose in life again. Even before the pandemic everything revolved around work for way too long. No drive and motivation for anything else. I hope this long break will help me to realign myself.
+<p>Starting today I have now 3 months to figure out, how to find more purpose in life again. Even before the pandemic everything revolved around work for way too long. No drive and motivation for anything else. I hope this long break will help me to realign myself.
 {% end %}
 
 > I cannot fully describe the situation, it is parts burnout and parts my mental issues. And this year has amplified some of them, introduced new, shifted others.
@@ -138,7 +138,7 @@ Starting today I have now 3 months to figure out, how to find more purpose in li
 > And now I don't know how to get out of it. So I take a break. 3 months. Long enough to get bored, so my mind needs to escape its trap it has laid for itself. I need to break up the false routines. Don't let the depressive part take over. Never stop going. Face my demons.
 
 {% quoted(href="https://twitter.com/asaaki/status/1300721312583888897") %}
-I'm at day 1.<br>
+<p>I'm at day 1.<br>
 My fears are still: Will they miss me? Will I have a job when I come back? What do they think of me? Will this hurt my career?<br>
 <br>
 It's day one. I'm broken. I'm afraid.<br>

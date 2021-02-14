@@ -16,7 +16,7 @@ Someone regularly reminds me of this fact. So that I do not forget, I write it d
 
 <!-- more -->
 
-{{ quoted(body="Did you know that Rust is consistently voted the most popular language on Stack Overflow for 5 years?", source="Flo") }}
+{{ quoted(body="<p>Did you know that Rust is consistently voted the most popular language on Stack Overflow for 5 years?", source="Flo") }}
 
 Yes, Flo, I do know, thanks to you. 😉
 
