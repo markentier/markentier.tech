@@ -15,7 +15,7 @@ I work across 2 computers and 3 OS, all with nearly same development setup. For 
 
 <!-- more -->
 
-Recently I helped a coworker during onboarding with his machine setup and he asked me about this very same topic. I provided him with what I have and use. The following blog post is a slightly refined version of it.
+Recently I helped a coworker during onboarding with his machine setup and he asked me about this very same topic. I provided him with what I have and use. The following blog post is a refined version of it.
 
 The slightly more complex version control system configuration is due to the following requirements and expectations:
 
@@ -26,6 +26,7 @@ The slightly more complex version control system configuration is due to the fol
 - I want separate SSH keys for each context (work, personal; but also for each computer).
 - I want to use the individual SSH keys based on the project I work on.
 - I want all of it happening as automatically as possible.
+- I want to forget that it is there.
 
 I know, I know, this looks like a huge list of requirements. But not only is this my personal preference, partially also my workplace has some strictler rules, especially when it comes to security.
 
@@ -45,7 +46,7 @@ While `git` does support the HTTPS transport, in most cases you will use the mor
 
 ### SSH Keys
 
-If you working with GitHub you want to generated with keys with the latest and greatest recommended algorithms:
+If you working with GitHub you want to generate keys with the latest and greatest recommended algorithms:
 
 ```sh
 ssh-keygen -t ed25519 -C "your_email@example.com"
@@ -108,7 +109,7 @@ Host *
 <p>Since the first obtained value for each parameter is used, more host-specific declarations should be given near the beginning of the file, and general defaults at the end.
 {% end %}
 
-Since we will use two different hosts, we must repeat the `Hostname` line, but also want to specify `User` and `IdentifyFile` specifically. If you use your ssh config only for git and also have only a single user name, you could move that config line into the generic section in the bottom. Though I still prefer the explicit repetition for each specific Host block.
+Since we will use two different hosts, we must repeat the `Hostname` line, but also want to specify `User` and `IdentityFile` specifically. If you use your ssh config only for git and also have only a single user name, you could move that config line into the generic section in the bottom. Though I still prefer the explicit repetition for each specific Host block.
 
 At this point you might wonder »How is _github.com-work_ supposed to function?«
 Hold that thought, we will come back to it later.
@@ -116,9 +117,9 @@ Hold that thought, we will come back to it later.
 ## GPG key management
 
 You want to use GPG for signing commits.
-Your workplace might not require it, but if you have any level of trust issues, or just want to be sure that a commit was made by you and be able to prove it, use commit signing.
+Your workplace might not require it (yet), but if you have any level of trust issues, or just want to be sure that a commit was made by you and be able to prove it, use commit signing.
 
-Interestingly GitHub does not recommend you to use a more modern algorithm and [requires you to pick RSA.][gh-gpg]
+Interestingly GitHub does not recommend you to use a more modern algorithm and [requires you to pick RSA.][gh-gpg] A bit sad, but RSA with 4096 bits seems to be still fine for this purpose.
 
 After you have created your keys, you should grab the IDs for them:
 
@@ -140,8 +141,9 @@ uid         [ultimate] TEST KEY <test-key@example.com>
 ssb   rsa4096/57047776 2021-02-14 [E]
 ```
 
-The ID is the part after the `/` from the `sec` line: `D73D7242`
-_In the LONG variant it just used more characters from the whole fingerprint, which you can see in the line below it._
+The ID is the part after the `rsa4096/` from the `sec` line: `D73D7242`
+
+_In the LONG variant it just used more characters from the whole fingerprint (which you can completely see in the line between sec and uid)._
 
 ## git shenanigans
 
@@ -202,7 +204,7 @@ If you only work in specific directories like `~/Development/Personal/` and `~/D
 
 There's probably a better way to organize this, but the above has served me well for quite some time now.
 
-I recently added the global `[user]` section for setting `useConfigOnly = true` and the name, since I only have one. `useConfigOnly` prevents git from guessing name and email and forces it to read it from the configuration files. If the email would be missing, git will complain the next time you try to push. And you will know that something is broken in the configuration.
+I recently added the global `[user]` section for setting `useConfigOnly = true` and the name, since I only have one. `useConfigOnly` prevents git from guessing name and email and forces it to read it from the configuration files. If the email would be missing, git will complain the next time you try to commit or push. And you will know that something is broken in the configuration.
 
 **Important note:** The trailing slashes (`/`) on the `[includeIf …]` lines are very important. If you forget them, then git would try to match only this very specific folder and ignore it for any folder within it. More details about **conditional includes** in the [git documentation][git-docs]. _(I totally missed that you can use them even for branches, too.)_
 
@@ -234,7 +236,7 @@ Since Git 2.28 you can set a name for the default branch when creating a new rep
 
 You might want to use passwords for both the GPG and SSH keys, your employer might even have a rule for this. To avoid annoyances in your workflows make sure your system has some sort of keychain manager and can keep the passwords for a period of time.
 
-Since the setups vary for each operating system and is also out of scope for this post, I leave it to you to figure it out.
+Since the setups vary for each operating system and this part is also out of scope for this post, I leave it to you to figure it out.
 
 ## Who's pushing?
 
@@ -254,7 +256,7 @@ git remote -v
 
 The URL should provide you a quick hint if the correct profile is used.
 
-Alternatively you can also run this:
+Alternatively you can also run:
 
 ```sh
 git config --show-origin --get user.email
@@ -266,7 +268,7 @@ This will also print where the final value was retrieved from.
 
 Git came a long way and I'm very glad and happy that we can have such setup without a lot of manual tinkering and workarounds. Gone are all my custom scripts, snippets, and `.envrc`'s for that purpose, which were also not completely platform agnostic.
 
-_Have you tried it yourself? Or is something not working as expected? Let me know and [send me a message][tw] on Twitter._
+_Have you tried it yourself? Is something not working as expected? Let me know and [send me a message][tw] on Twitter._
 
 <!-- links -->
 
