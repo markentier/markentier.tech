@@ -20,6 +20,7 @@ has_hero = true
 
 My short abstract here. Something around 100 to 150 characters are ideal here.
 So, one or two sentences for a quick teaser and introduction.
+Twitter uses 120 for the card.
 
 <!-- more -->
 
