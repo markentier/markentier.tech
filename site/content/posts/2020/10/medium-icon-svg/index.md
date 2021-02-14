@@ -120,7 +120,7 @@ For learning more about SVG, especially the `path` element, I highly recommend t
 
 Why do I even care? Sure the current symbol data is already pretty small and will not significantly add to the total payload size of a common Medium page, no matter if the article is long or short. It's not so much about the specific amount here, though it will add up to several gigabytes on their bandwidth bill eventually. I argue here only on a very high level and out of principle.<a title="Also I have too much free time at hand right now. 😅">*</a>
 
-Of course, the icon will be used in different places, different formats, different presentations. Not all of them will be SVG by default. I can imagine that the master file is some Adobe Illustrator format or worse a Photoshop file. Probably I'm the very first who actually looked at the generated source code for the data in the HTML, as for many there is no real need to tamper with the bits and bytes besides running it through some kind of optimizer maybe. And for most parts in life that's okay.
+Of course, the icon will be used in different places, different formats, different presentations. Not all of them will be SVG by default. I can imagine that the origin file is some Adobe Illustrator format or worse a Photoshop file. Probably I'm the very first who actually looked at the generated source code for the data in the HTML, as for many there is no real need to tamper with the bits and bytes besides running it through some kind of optimizer maybe. And for most parts in life that's okay.
 
 There is no need for over-/micro-optimizations unless you work in a field where this is a hard requirement.
 
