@@ -123,7 +123,7 @@ Interestingly GitHub does not recommend you to use a more modern algorithm and [
 
 After you have created your keys, you should grab the IDs for them:
 
-```
+```sh
 gpg --list-secret-keys --keyid-format LONG
 
 # I use shorter IDs and git doesn't seem to struggle
