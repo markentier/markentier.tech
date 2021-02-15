@@ -134,7 +134,7 @@ Example output:
 
 ```
 /home/asaaki/.gnupg/pubring.kbx
--------------------------------
+-----------------------------​--
 sec   rsa4096/D73D7242 2021-02-14 [SC]
       AE93078BDC15BF6A84767DBBA3CBBB61D73D7242
 uid         [ultimate] TEST KEY <test-key@example.com>
