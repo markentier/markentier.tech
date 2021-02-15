@@ -180,7 +180,7 @@ The `git` command line interface (CLI) improved a lot over the years. I remember
 ```gitconfig
 [user]
   email = your.personal@email.here
-  signingkey = <PERSONAL GPG SIGNING KEY ID>
+  signingKey = <PERSONAL GPG SIGNING KEY ID>
 ```
 
 ### `~/.gitconfig.work`
@@ -188,7 +188,7 @@ The `git` command line interface (CLI) improved a lot over the years. I remember
 ```gitconfig
 [user]
   email = your.work@email.here
-  signingkey = <WORK GPG SIGNING KEY ID>
+  signingKey = <WORK GPG SIGNING KEY ID>
 
 [url "git@github.com-work"]
   insteadOf = git@github.com
@@ -208,7 +208,7 @@ I recently added the global `[user]` section for setting `useConfigOnly = true` 
 
 **Important note:** The trailing slashes (`/`) on the `[includeIf …]` lines are very important. If you forget them, then git would try to match only this very specific folder and ignore it for any folder within it. More details about **conditional includes** in the [git documentation][git-docs]. _(I totally missed that you can use them even for branches, too.)_
 
-The `signingkey` values should be set appropriately based on the IDs you have noted from the [previous section](#gpg-key-management) of this article. Now when you commit anything git will use the correct key based on where the repository directory lives.
+The `signingKey` values should be set appropriately based on the IDs you have noted from the [previous section](#gpg-key-management) of this article. Now when you commit anything git will use the correct key based on where the repository directory lives.
 
 To automatically enforce the commit signing, use `commit.gpgsign` set to `true`.
 
