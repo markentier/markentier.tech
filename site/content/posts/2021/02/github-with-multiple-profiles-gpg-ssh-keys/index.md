@@ -132,7 +132,7 @@ gpg --list-secret-keys --keyid-format SHORT
 
 Example output:
 
-```rust
+```
 /home/asaaki/.gnupg/pubring.kbx
 -------------------------------
 sec   rsa4096/D73D7242 2021-02-14 [SC]
