@@ -79,6 +79,9 @@ local:
 	zola -V
 	$(MAKE) build NETLIFY_DEPLOY_URL=$(LOCAL_PROTO)://$(LOCAL_ADDR)
 
+local.serve:
+	$(MAKE) serve LOCAL_HOST=localhost
+
 local.prod:
 	time $(MAKE) local
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)

@@ -144,7 +144,7 @@ _PS: Sorry, no April Fools' Jokes or funny anything at all here._
 [service-worker]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 [sw-js]: https://github.com/GoogleChromeLabs/airhorn/blob/master/app/sw.js
 [sw.rs]: https://serviceworke.rs/
-[tidy-post]: /posts/2018/03/from-cobalt-to-gutenberg/#tidy-html5
+[tidy-post]: /posts/2018/03/from-cobalt-to-zola/#tidy-html5
 [tidy]: http://www.html-tidy.org/
 [twitter-cards]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
 [web-app-manifest]: https://developer.mozilla.org/de/docs/Web/Manifest
