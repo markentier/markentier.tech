@@ -25,6 +25,13 @@ custom_css = """
   vertical-align: text-bottom;
 }
 """
+
+[[extra.suggestions]]
+text = "Medium's new logo is an odd vector graphic — and I made it smaller"
+link = "/posts/2020/10/medium-icon-svg/"
+[[extra.suggestions]]
+text = "My love for minimalistic web design and scalable vector graphics"
+link = "/posts/2018/05/minimalism-focus-clean-redesign/"
 +++
 
 Web technologies have come so far, that you realize: not everything needs to be done in JavaScript nowadays anymore.

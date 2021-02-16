@@ -13,6 +13,13 @@ long_title = "Medium Icon SVG … Not Small Enough!"
 has_hero = true
 image_alt = "Would you have guessed what this icon should represent? (Medium's new logo, a very »interesting« vector graphic …)"
 custom_delimiter = "•••"
+
+[[extra.suggestions]]
+text = "Refactoring JavaScript on this site also removed some SVGs"
+link = "/posts/2020/10/wrote-javascript-to-avoid-javascript/"
+[[extra.suggestions]]
+text = "My love for minimalistic web design and scalable vector graphics"
+link = "/posts/2018/05/minimalism-focus-clean-redesign/"
 +++
 
 Medium [got a new logo.][m-new] And vector graphics are kinda my thing. So I took a look at their icon's SVG source. It's pretty small, but you know, it can be shrunken further.

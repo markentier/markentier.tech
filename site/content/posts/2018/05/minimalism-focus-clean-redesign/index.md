@@ -11,6 +11,13 @@ categories = ["default"]
 long_title = "Minimalism, Focus, Clean - A Redesign"
 has_hero = true
 image_alt = "Some coffee, code, and creativity as well as bravery for cutting and chopping — redesign cycles"
+
+[[extra.suggestions]]
+text = "Refactoring JavaScript on this site also removed some SVGs"
+link = "/posts/2020/10/wrote-javascript-to-avoid-javascript/"
+[[extra.suggestions]]
+text = "Medium's new logo is an odd vector graphic — and I made it smaller"
+link = "/posts/2020/10/medium-icon-svg/"
 +++
 
 Start with whatever you have, but don't stop reaching for something better. Why I love minimalistic and simplistic web designs.
