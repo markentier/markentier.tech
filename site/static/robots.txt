@@ -1,4 +1,6 @@
 user-agent: *
 allow: /
+disallow: /categories
+disallow: /tags
 
 sitemap: https://markentier.tech/sitemap.xml

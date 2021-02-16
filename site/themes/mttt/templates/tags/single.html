@@ -1,13 +1,12 @@
 {% extends "default.html" %}
 {% block title %}'{{term.name}}' tag{% endblock title %}
-{% block before_head_end %}
-{# <meta name="robots" content="noindex"> #}
-{% endblock before_head_end %}
+
 {% block content_header %}
 <article>
   <h1 class="header-tag">Tag: {{term.name}}</h1>
 </article>
 {% endblock content_header %}
+
 {% block content %}
 {{ macros::sec_pages(sec = term) }}
 {% endblock content %}
