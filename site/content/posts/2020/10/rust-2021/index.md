@@ -16,6 +16,16 @@ custom_css = """
   .article_body > p:first-of-type::after, hr::after { display: block; opacity: .25; margin: 1.5rem auto 0 auto; height: 2rem; width: 2rem; content: url('/i/rust.svg'); }
   .red { color: var(--link-hl-color); }
 """
+
+[[extra.suggestions]]
+text = "Rust can run everywhere, even serverless with AWS Lambda, even far away on the edge"
+link = "/posts/2021/01/rust-wasm-on-aws-lambda-edge/"
+[[extra.suggestions]]
+text = "[Fun] Rust is the the most loved language for quite some time"
+link = "/posts/2021/01/rust-most-popular-language/"
+[[extra.suggestions]]
+text = "Static site generators written in Rust are cool"
+link = "/posts/2018/03/from-cobalt-to-zola/"
 +++
 
 Collecting my thoughts around what I would want from Rust in 2021.

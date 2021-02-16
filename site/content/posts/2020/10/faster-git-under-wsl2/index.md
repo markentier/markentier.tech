@@ -7,10 +7,12 @@ tags = ["git", "status", "WSL", "WSL1", "WSL2", "Windows", "subsystem", "linux",
 categories = ["default", "notes"]
 
 [extra]
-#origin_url = ""
-#long_title = ""
 has_hero = true
 image_alt = "Use git.exe when working in repositories under /mnt/…"
+
+[[extra.suggestions]]
+text = "How you can manage multiple GitHub accounts on a single computer"
+link = "/posts/2021/02/github-with-multiple-profiles-gpg-ssh-keys/"
 +++
 
 With WSL2 filesystem performance degraded for the mount points of the Windows host. Here's a tip to speed up `git status` again.

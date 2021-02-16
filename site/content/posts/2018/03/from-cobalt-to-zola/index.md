@@ -9,6 +9,16 @@ categories = ["default"]
 [extra]
 has_hero = true
 image_alt = "Why I moved to zola, a static site generator written in Rust"
+
+[[extra.suggestions]]
+text = "[Fun] Rust is the the most loved language for quite some time"
+link = "/posts/2021/01/rust-most-popular-language/"
+[[extra.suggestions]]
+text = "What I want to see from Rust in 2021"
+link = "/posts/2020/10/rust-2021/"
+[[extra.suggestions]]
+text = "Rust can run everywhere, even serverless with AWS Lambda, even far away on the edge"
+link = "/posts/2021/01/rust-wasm-on-aws-lambda-edge/"
 +++
 
 I wish I could have the features of both tools, but for now I will use zola over cobalt. A tiny migration and feature comparison story.

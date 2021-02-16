@@ -1,5 +1,5 @@
 +++
-title = "Using git with multiple profiles and GPG+SSH keys"
+title = "Using git with multiple profiles & GPG/SSH keys"
 date = 2021-02-14
 
 [taxonomies]
@@ -7,8 +7,13 @@ tags = ["git", ".gitconfig", "include", "includeIf", "GitHub", "account", "key",
 categories = ["default"]
 
 [extra]
+long_title = "Using git with multiple profiles and GPG+SSH keys"
 has_hero = true
 image_alt = "Select your git profile, lean back, and push your code. Don't forget your popcorn. 🍿"
+
+[[extra.suggestions]]
+text = "What to do when git status is too slow when working with WSL2 on Windows 10"
+link = "/posts/2020/10/faster-git-under-wsl2/"
 +++
 
 I work across 2 computers and 3 OS, all with nearly same development setup. For work I need some special care for my git config, since I want/need access to personal repositories.

@@ -10,6 +10,16 @@ categories = ["default"]
 # Do not forget to create a cover.png!
 has_hero = true
 image_alt = "Most Loved Languages of the 2020 Stack Overflow survey"
+
+[[extra.suggestions]]
+text = "What I want to see from Rust in 2021"
+link = "/posts/2020/10/rust-2021/"
+[[extra.suggestions]]
+text = "Rust can run everywhere, even serverless with AWS Lambda, even far away on the edge"
+link = "/posts/2021/01/rust-wasm-on-aws-lambda-edge/"
+[[extra.suggestions]]
+text = "Static site generators written in Rust are cool"
+link = "/posts/2018/03/from-cobalt-to-zola/"
 +++
 
 Someone regularly reminds me of this fact. So that I do not forget, I write it down.

@@ -10,6 +10,16 @@ categories = ["default"]
 long_title = "Rust/WebAssembly on AWS Lambda@Edge (CloudFront)"
 has_hero = true
 image_alt = "Rust/WebAssembly {loves} AWS Lambda@Edge (CloudFront)"
+
+[[extra.suggestions]]
+text = "What I want to see from Rust in 2021"
+link = "/posts/2020/10/rust-2021/"
+[[extra.suggestions]]
+text = "Static site generators written in Rust are cool"
+link = "/posts/2018/03/from-cobalt-to-zola/"
+[[extra.suggestions]]
+text = "[Fun] Rust is the the most loved language for quite some time"
+link = "/posts/2021/01/rust-most-popular-language/"
 +++
 
 Ever felt limited by the languages on AWS Lambda@Edge? Wanted to run Rust for your CloudFront triggers, but _re:Invent_ 2020 disappointed you in that matter? Let me show you one way of how you can still get it done.
