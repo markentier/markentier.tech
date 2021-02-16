@@ -5,11 +5,38 @@ description = "markentier.tech theme information; color palette"
 
 [extra]
 additional_scripts = ["/js/theme.js"]
+custom_css = """
+#theme {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem 0;
+
+  & > div {
+    width: 11.5rem;
+    height: 11.5rem;
+    line-height: 10rem;
+    flex: 0 0 auto;
+    padding: .25rem;
+    text-align: center;
+    border: 1px solid var(--accent-darker-color);
+    margin: 0 .25rem .25rem 0;
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+      font-size: .8rem;
+      font-family: var(--code-font);
+    }
+  }
+}
+"""
 +++
 
 ## colors
 
-<div class="theme">
+<div id="theme">
   <div style="background:var(--head-light-color)"><span style="color:var(--bg-color)">--head-light-color</span></div>
   <div style="background:var(--head-color)"><span style="color:var(--bg-color)">--head-color<br/>(--link-color)</span></div>
   <div style="background:var(--head-dark-color)"><span style="color:var(--bg-color)">--head-dark-color</span></div>

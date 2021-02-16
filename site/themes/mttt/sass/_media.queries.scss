@@ -55,3 +55,11 @@
     max-height: 137px;
   }
 }
+
+
+// features
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
