@@ -16,6 +16,10 @@ has_hero = true
 #long_title = "%%title%%"
 #custom_delimiter = "•••"
 #custom_css = ""
+
+# [[extra.suggestions]]
+# text = "Some link text"
+# link = "/posts/20YY/MM/POST_SLUG/"
 +++
 
 My short abstract here. Something around 100 to 150 characters are ideal here.

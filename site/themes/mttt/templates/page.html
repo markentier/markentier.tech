@@ -13,15 +13,33 @@
 {% block content %}
 {% set is_post = page.permalink is containing("/posts/") %}
 {% set is_draft = page.draft %}
-  <article{%if is_post%} class="hentry{%if is_draft%} draft{%endif%}" itemscope itemtype="http://schema.org/Article"{%endif%}>
+  <article{% if is_post %} class="hentry{% if is_draft %} draft{% endif %}" itemscope itemtype="http://schema.org/Article"{% endif %}>
 
     {{pm::pheader(page=page)}}
 
     <div class="article_body">
-      {{m::absolutify(content=page.content, permalink=page.permalink) | trim | safe}}
+      {{ m::absolutify(content=page.content, permalink=page.permalink) | trim | safe }}
     </div>
 
-    {% if is_post %}{{pm::pfooter(page=page, config=config)}}{% endif %}
+    {% if is_post %}
+    {% if page.extra.suggestions %}
+    <aside class="suggestions">
+      <!-- <hr> -->
+      <h4>You might also like</h4>
+
+      <ul>
+        {% for suggestion in page.extra.suggestions %}
+        <li>
+          <!-- {{loop.index}} -->
+          <p><a href="{{ suggestion.link }}">{{ suggestion.text }}</a></p>
+        </li>
+        {% endfor %}
+      </ul>
+    </aside>
+    {% endif %}
+
+    {{ pm::pfooter(page=page, config=config) }}
+    {% endif %}
 
   </article>
 {% endblock content %}

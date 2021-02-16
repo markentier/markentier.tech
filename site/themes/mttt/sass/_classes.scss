@@ -207,10 +207,7 @@
 }
 
 .meta {
-  margin: 3rem -1rem 0 -1rem;
-  padding: 1rem;
-  background: var(--accent-color);
-  border-radius: .5em;
+  margin-top: 1rem;
   font-size: .85rem;
   word-wrap: break-word;
 
@@ -239,6 +236,20 @@
         content: "  ➖"; // uses 2 EM SPACEs (U+2003)
       }
     }
+  }
+}
+
+.suggestions {
+  margin: 3rem -1rem 1rem -1rem;
+  padding: 1rem;
+  background: var(--accent-color);
+  border-radius: .5em;
+
+  h4 {
+    margin: 0;
+    font-variant: small-caps;
+    font-weight: lighter;
+    text-shadow: 0 0 0 var(--head-dark-color);
   }
 }
 
