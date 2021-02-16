@@ -18,6 +18,7 @@ Repo for [markentier.tech](https://markentier.tech/) site.
 - <https://ahrefs.com/site-audit/1994178/>
 - <https://moz.com/domain-analysis?site=https://markentier.tech/>
 - <https://hstspreload.org/?domain=markentier.tech>
+- <https://openlinkprofiler.org/r/markentier.tech>
 
 </details>
 
@@ -30,8 +31,8 @@ Repo for [markentier.tech](https://markentier.tech/) site.
 - <https://gtmetrix.com/>
 - <https://www.webpagetest.org/>
 - <https://tools.pingdom.com/>
+- <https://en.ryte.com/product/free/>
 - <https://en.ryte.com/free-tools/robots-txt-generator/>
-- <https://archive.org/web/>
 - <https://answerthepublic.com/>
 - <https://moz.com/free-seo-tools>
 - <https://moz.com/explorer>
@@ -39,4 +40,7 @@ Repo for [markentier.tech](https://markentier.tech/) site.
 - <https://pagewatch.dev/>
 - <https://webhint.io/>
 - <https://lighthouse-metrics.com/>
-- <https://web.archive.org/save/>
+- <https://archive.org/web/> / <https://web.archive.org/save/>
+- <https://www.semrush.com/>
+- <https://www.screamingfrog.co.uk/seo-spider/>
+- <https://seorch.de/>
