@@ -1,6 +1,10 @@
 {% extends "default.html" %}
 {% block title %}'{{term.name}}' category{% endblock title %}
 
+{% block before_head_end %}
+<meta name="robots" content="noindex, follow">
+{% endblock before_head_end %}
+
 {% block content_header %}
   <article><h1 class="header-category">Category: {{term.name}}</h1></article>
 {% endblock content_header %}
