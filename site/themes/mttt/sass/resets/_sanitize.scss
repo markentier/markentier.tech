@@ -33,9 +33,7 @@
  */
 
 html {
-  // disabled to allow appropriate cursor type per context
-  // cursor: default; /* 1 */
-
+  cursor: default; /* 1 */
   line-height: 1.5; /* 2 */
   -moz-tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
@@ -61,7 +59,7 @@ body {
  * `article` contexts in Chrome, Edge, Firefox, and Safari.
  */
 
-h1, .h1 {
+h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }

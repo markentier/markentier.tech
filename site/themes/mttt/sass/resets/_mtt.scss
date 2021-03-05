@@ -1,0 +1,47 @@
+// derived from _modern-normalize.scss and customized
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+html:focus-within { scroll-behavior: smooth; }
+
+body { margin: 0; }
+
+hr {
+  height: 0;
+  color: inherit;
+}
+
+abbr[title] { text-decoration: underline dotted; }
+
+b, strong { font-weight: bolder; }
+
+small { font-size: 80%; }
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub { bottom: -0.25em; }
+
+sup { top: -0.5em; }
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+}
+
+summary { display: list-item; }
