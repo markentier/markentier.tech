@@ -30,6 +30,7 @@ LOCAL_HOST  ?= markentier.test
 LOCAL_BIND  ?= 0.0.0.0
 LOCAL_PORT  ?= 3000
 LOCAL_ADDR   = $(LOCAL_HOST):$(LOCAL_PORT)
+LOCAL_ORIGIN = $(LOCAL_PROTO)://$(LOCAL_ADDR)
 
 BUILD_PATH = $(ZOLA)/$(ZOLA)
 
@@ -77,13 +78,17 @@ serve:
 
 local:
 	zola -V
-	$(MAKE) build NETLIFY_DEPLOY_URL=$(LOCAL_PROTO)://$(LOCAL_ADDR)
+	$(MAKE) build NETLIFY_DEPLOY_URL=$(LOCAL_ORIGIN)
 
 local.serve:
 	$(MAKE) serve LOCAL_HOST=localhost
 
 local.prod:
 	time $(MAKE) local
+	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
+
+local.dev:
+	time $(MAKE) local LOCAL_HOST=localhost LOCAL_PROTO=http
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
 
 
