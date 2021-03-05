@@ -1,0 +1,9 @@
+name: no-op
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - run: echo "Hi there!"
