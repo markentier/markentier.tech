@@ -4,15 +4,18 @@ date = 2020-10-15
 
 [taxonomies]
 tags = ["svg", "scalable vector graphics", "vector", "graphics", "symbol", "icon", "logo", "brand", "medium", "2020", "unfinished", "ellipses", "logomark", ]
-# cannot use "…" or "..." as tag, slugs would be empty
 categories = ["default"]
 
 [extra]
-#origin_url = ""
 long_title = "Medium Icon SVG … Not Small Enough!"
 has_hero = true
 image_alt = "Would you have guessed what this icon should represent? (Medium's new logo, a very »interesting« vector graphic …)"
 custom_delimiter = "•••"
+
+custom_css = """
+.w50 { width: 50% }
+.box_center { margin: 0 auto; }
+"""
 
 [[extra.suggestions]]
 text = "Refactoring JavaScript on this site also removed some SVGs"

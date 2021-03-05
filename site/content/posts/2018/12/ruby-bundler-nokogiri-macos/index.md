@@ -8,10 +8,16 @@ tags = ["ruby","bundler","nokogiri","macos","osx","rubygems","gem","error","unde
 categories = ["default","notes"]
 
 [extra]
-#origin_url = ""
-#long_title = ""
 has_hero = true
 image_alt = "Solves almost all of your problems: bundle config build.nokogiri --use-system-libraries && bundle install"
+
+custom_css = """
+.with_wrap pre {
+  white-space: pre-wrap;
+  word-break: keep-all;
+  hyphens: none;
+}
+"""
 +++
 
 Quick answer:<br/>`bundle config build.nokogiri --use-system-libraries && bundle install`

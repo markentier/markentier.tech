@@ -22,3 +22,8 @@
   color: var(--rebecca);
   text-shadow: 1px 1px 3px var(--head-light-color);
 }
+
+::selection {
+  background-color: var(--accent-dark-color);
+  text-shadow: 0 1px var(--green);
+}

@@ -43,25 +43,25 @@
 }
 
 .navbar {
-  --nav-bg-color: var(--accent-color);
+  // --nav-bg-color: var(--accent-color);
 
-  position: sticky; top: 0; // non-JS stickyness; should work almost everywhere - yay!
-  z-index: 999;
-  background: var(--nav-bg-color);
+  // position: sticky; top: 0; // non-JS stickyness; should work almost everywhere - yay!
+  // z-index: 999;
+  // background: var(--nav-bg-color);
 
-  // full width background styling; prevents scrollbars
-  // https://css-tricks.com/full-browser-width-bars/#using-box-shadow
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -9999px;
-    right: 0;
-    border-left: 9999px solid var(--nav-bg-color);
-    box-shadow: 9999px 0 0 var(--nav-bg-color);
-    z-index: -1;
-  }
+  // // full width background styling; prevents scrollbars
+  // // https://css-tricks.com/full-browser-width-bars/#using-box-shadow
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: -9999px;
+  //   right: 0;
+  //   border-left: 9999px solid var(--nav-bg-color);
+  //   box-shadow: 9999px 0 0 var(--nav-bg-color);
+  //   z-index: -1;
+  // }
 
   a { font-family: var(--system-fonts); }
 
@@ -268,19 +268,7 @@
   word-spacing: .125rem;
 }
 
-.with_wrap pre {
-  white-space: pre-wrap;
-  word-break: keep-all;
-  hyphens: none;
-}
-
-.center { text-align: center; }
-.left { text-align: left; text-align: start; }
+// .center { text-align: center; }
+// .left { text-align: left; text-align: start; }
 .right { text-align: right; text-align: end; }
-.justify { text-align: justify; }
-
-.w75 { width: 75% }
-.w50 { width: 50% }
-.w25 { width: 25% }
-
-.box_center { margin: 0 auto; }
+// .justify { text-align: justify; }

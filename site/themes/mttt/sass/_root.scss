@@ -1,4 +1,7 @@
 :root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+
   // reference size and width; overridden by media queriess
   --ref-size: 20px;
   --content-width: 38rem;

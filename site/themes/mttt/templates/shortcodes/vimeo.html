@@ -1,5 +1,5 @@
 {# USAGE: {{ vimeo(id="dQw4w9WgXcQ", class="vimeo class-override") }} #}
-<figure class="{% if class %}{{class}}{% else %}__sc_video __sc_vimeo{% endif %}">
+<figure class="{% if class %}{{class}}{% else %}sc-v sc-vm{% endif %}">
   <iframe src="//player.vimeo.com/video/{{id}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   <figcaption>
     <a rel="external" href="https://vimeo.com/{{id}}">https://vimeo.com/{{id}}</a>

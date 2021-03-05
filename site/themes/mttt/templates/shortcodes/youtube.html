@@ -1,5 +1,5 @@
 {# USAGE: {{ youtube(id="dQw4w9WgXcQ", autoplay=true, class="youtube class-override") }} #}
-<figure class="{% if class %}{{class}}{% else %}__sc_video __sc_youtube{% endif %}">
+<figure class="{% if class %}{{class}}{% else %}sc-v sc-yt{% endif %}">
   <iframe src="https://www.youtube-nocookie.com/embed/{{id}}?modestbranding=1&rel=0{% if autoplay %}&autoplay=1{% endif %}"
           type="text/html" allow="encrypted-media" frameborder="0"
           data-link="https://www.youtube.com/watch?v={{id}}"

@@ -1,6 +1,6 @@
-.__sc_video,
-.__sc_youtube,
-.__sc_vimeo {
+.sc-v,
+.sc-yt,
+.sc-vm {
     width: 100%;
     background: rgba(0, 0, 0, 0.1);
 
@@ -26,6 +26,6 @@
     }
 }
 
-.__sc_vimeo iframe {
+.sc-vm iframe {
     height: 13.7rem; // 274px;
 }

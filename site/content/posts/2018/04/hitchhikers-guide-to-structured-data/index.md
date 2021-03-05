@@ -14,7 +14,7 @@ has_hero = true
 image_alt = "What have a bowl of petunias and a whale to do with structured data? 🤔"
 +++
 
-<span class="correction">A tiny journey to the <del data-text="flower pots"></del><ins>building blocks</ins> of the semantic <del data-text="whale"></del><ins>web</ins> and how they make our lives much easier.</span>
+A tiny journey to the {% correction(old="flower pots") %}building blocks{% end %} of the semantic {% correction(old="whale") %}web{% end %} and how they make our lives much easier.
 
 <!-- more -->
 

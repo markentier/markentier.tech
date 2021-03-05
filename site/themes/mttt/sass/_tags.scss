@@ -1,36 +1,40 @@
+// global defaults, so do not move this around
 html {
   box-sizing: border-box;
-  text-rendering: optimizeLegibility;
   overflow-y: scroll;
+
+  line-height: 1.75rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 *, *::before, *::after { box-sizing: inherit; }
+
 * {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent; /* prevent tap highlight color / shadow */
   -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
 }
 
-
-::selection {
-  background-color: var(--accent-dark-color);
-  text-shadow: 0 1px var(--green);
-}
-
-html, body, figure {
-  margin: 0; padding: 0; border: 0;
-}
-
 html, body {
   color: var(--text-color);
-  background-color: var(--bg-color);
+  // background-color: var(--bg-color);
+  background-color: var(--accent-color);
 
   font-family: var(--system-fonts-serif), var(--system-fonts);
   font-size: var(--ref-size);
-  line-height: 1.75rem;
+
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke: .45px rgba(0,0,0,.1);
+}
+
+html, body, figure, blockquote, blockquote blockquote {
+  margin: 0;
+}
+// h5, h6,
+html, body, figure, h1, h2, h3, h4, .h1, hr {
+  padding: 0; border: 0;
 }
 
 a, a:link, a:visited {
@@ -42,55 +46,19 @@ a:hover, a:focus, svg:hover {
   stroke: var(--link-hl-color);
 }
 
-h1, .h1 { font-size: 2rem; }
-h2 { font-size: 1.75rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
-h5 { font-size: 1.1rem; }
-h6 { font-size: 1rem; }
+abbr[title] { text-decoration: underline dotted; }
 
-h1, h2, h3, h4, h5, h6, .h1 {
-  border: 0;
-  padding: 0;
-  margin: 1.75rem 0 0 0;
-  font-family: var(--system-fonts);
-  font-weight: bold;
-  color: var(--head-color);
-  scroll-margin-top: 5rem;
+b, strong { font-weight: bolder; }
+
+blockquote {
+  padding-left: .8em;
+  border-left: .2em solid var(--accent-dark-color);
+  color: var(--accent-darkest-color);
 }
 
-hr {
-  padding: 0;
-  margin-bottom: 1em;
-  border: none;
-  height: auto;
-  text-align: center;
-}
-hr::after { content: "·   ·   ·"; }
+code, pre, kbd, samp { font-family: var(--system-fonts-monospace); }
 
-
-img, video, figcaption, pre {
-  margin: 0 -1rem;
-}
-
-img, video {
-  max-width: calc(100% + 2rem);
-  width: var(--content-width);
-  height: auto;
-}
-
-picture {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  max-width: var(--content-width);
-  height: 0;
-  margin-bottom: 3rem;
-
-  img {
-    position: absolute;
-  }
-}
+del, s, strike { text-decoration: wavy line-through var(--link-hl-color); }
 
 figcaption {
   padding: 0 .5em;
@@ -100,17 +68,47 @@ figcaption {
   visibility: hidden;
 }
 
-figure:hover figcaption {
-  visibility: visible;
+figcaption, pre { background: var(--accent-color); }
+
+figure:hover figcaption { visibility: visible; }
+
+h1, .h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+// h5 { font-size: 1.1rem; }
+// h6 { font-size: 1rem; }
+
+// h5, h6,
+h1, h2, h3, h4, .h1 {
+  margin: 1.75rem 0 0 0;
+  font-family: var(--system-fonts);
+  font-weight: bold;
+  color: var(--head-color);
+  scroll-margin-top: 5rem;
 }
 
-code, pre, kbd, samp {
-  font-family: var(--system-fonts-monospace);
+hr {
+  height: 0;
+  color: inherit;
+
+  margin-bottom: 1em;
+  border: none;
+  height: auto;
+  text-align: center;
+
+  &::after { content: "·   ·   ·"; }
 }
 
-figcaption, pre {
-  background: var(--accent-color);
+img, video, figcaption, pre { margin: 0 -1rem; }
+
+img, video {
+  max-width: calc(100% + 2rem);
+  width: var(--content-width);
+  height: auto;
 }
+
+nav { margin-bottom: 2rem; }
 
 pre {
   padding: 1rem;
@@ -130,23 +128,36 @@ pre {
   }
 }
 
-blockquote {
-    margin: 0;
-    padding-left: .8em;
-    border-left: .2em solid var(--accent-dark-color);
-    color: var(--accent-darkest-color);
+picture {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: var(--content-width);
+  height: 0;
+  margin-bottom: 3rem;
 
-    blockquote { margin: 0; }
+  img {
+    position: absolute;
+  }
 }
 
-nav {
-  margin-bottom: 2rem;
+small { font-size: 80%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
-s, del, strike {
-  text-decoration: line-through var(--link-hl-color) wavy;
-}
+sub { bottom: -0.25em; }
+
+sup { top: -0.5em; }
+
+summary { display: list-item; }
 
 table {
+  text-indent: 0;
+  border-color: inherit;
   width: 100%;
 }

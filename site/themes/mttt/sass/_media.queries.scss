@@ -46,12 +46,12 @@
 
 // only for video iframes
 @media only screen and (max-width: 680px) {
-  .__sc_youtube iframe {
+  .sc-yt iframe {
     max-width: 320px;
     max-height: 180px;
   }
 
-  .__sc_vimeo iframe {
+  .sc-vm iframe {
     max-height: 137px;
   }
 }

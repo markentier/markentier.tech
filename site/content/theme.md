@@ -11,25 +11,23 @@ custom_css = """
   flex-wrap: wrap;
   justify-content: center;
   padding: 1rem 0;
-
-  & > div {
-    width: 11.5rem;
-    height: 11.5rem;
-    line-height: 10rem;
-    flex: 0 0 auto;
-    padding: .25rem;
-    text-align: center;
-    border: 1px solid var(--accent-darker-color);
-    margin: 0 .25rem .25rem 0;
-
-    span {
-      display: inline-block;
-      vertical-align: middle;
-      line-height: normal;
-      font-size: .8rem;
-      font-family: var(--code-font);
-    }
-  }
+}
+#theme > div {
+  width: 11.5rem;
+  height: 11.5rem;
+  line-height: 10rem;
+  flex: 0 0 auto;
+  padding: .25rem;
+  text-align: center;
+  border: 1px solid var(--accent-darker-color);
+  margin: 0 .25rem .25rem 0;
+}
+#theme > div span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  font-size: .8rem;
+  font-family: var(--code-font);
 }
 """
 +++
