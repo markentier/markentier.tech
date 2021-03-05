@@ -5,13 +5,18 @@ NETLIFY_DEPLOY_URL ?= https://markentier.tech
 export PATH := $(PWD)/zola:$(PATH)
 UNAME := $(shell uname -s)
 SUFFIX ?= tar.gz
+
 ifeq ($(UNAME), Linux)
 	export PATH := tools:$(PATH)
 	PLATFORM = x86_64-unknown-linux-gnu
 endif
+
+# https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 ifeq ($(UNAME), Darwin)
 	PLATFORM = x86_64-apple-darwin
+	export PATH := $(shell brew --prefix coreutils)/libexec/gnubin:$(shell brew --prefix findutils)/libexec/gnubin:$(shell brew --prefix gnu-sed)/libexec/gnubin:$(PATH)
 endif
+
 ifeq ($(findstring NT-10,$(UNAME)),NT-10)
 	PLATFORM = x86_64-pc-windows-msvc
 	SUFFIX = zip
@@ -241,7 +246,7 @@ clean-npm:
 # TOOLS AND DEPENDENCIES
 
 install-mac: install-zola
-	brew install -f tidy-html5 imagemagick pngquant webp
+	brew install -f tidy-html5 imagemagick pngquant webp coreutils findutils gnu-sed
 
 # debian/ubuntu based systems only for now.
 # NOTE: we ship a prebuilt tidy in the tools folder.
