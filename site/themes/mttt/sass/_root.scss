@@ -23,18 +23,21 @@
 
   --brand-font: 'Varela Round',
     Arial, sans-serif, color-emoji;
+  --code-font: var(--system-fonts-monospace);
 
   --text-color: #2c2d2f; //
-  --bg-color: #f0f3f6;
+  --bg-color: #e9eff3;
 
   --head-light-color: #336688;
   --head-color: #063656; // main brand color
   --head-dark-color: #031c2c;
 
-  --accent-color: #ebeeef; // <-- use it as theme color
-  --accent-dark-color: #cbcecf;
-  --accent-darker-color:  #8b8e8f;
-  --accent-darkest-color:  #5b5e5f;
+  // use it as theme color
+  --accent-color: var(--bg-color);
+
+  --accent-dark-color: #c9ced3;
+  --accent-darker-color:  #898e93;
+  --accent-darkest-color:  #595e63;
 
   --link-color: var(--head-color);
   --link-hl-color: #561606;
