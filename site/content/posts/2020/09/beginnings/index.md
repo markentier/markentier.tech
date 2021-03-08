@@ -17,7 +17,7 @@ custom_css = """
   .green { color: var(--green); }
   .red { color: var(--link-hl-color); }
   .purple { color: var(--rebecca); }
-  .green, .red, .purple { text-shadow: 0 0 2px var(--accent-dark-color); }
+  .green, .red, .purple { text-shadow: 0 0 2px var(--accent-darker-color); }
 """
 +++
 

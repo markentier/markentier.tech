@@ -1,5 +1,5 @@
 .img_with_borders img {
-  border: 1px solid var(--accent-dark-color);
+  border: 1px solid var(--accent-darker-color);
 }
 
 /* <span class="correction"><del data-text="removed"></del><ins>added</ins></span> */
@@ -24,6 +24,6 @@
 }
 
 ::selection {
-  background-color: var(--accent-dark-color);
+  background-color: var(--accent-darker-color);
   text-shadow: 0 1px var(--green);
 }

@@ -19,22 +19,19 @@
   {% block after_body_open %}{% endblock after_body_open %}
 
   <div id="wrppr" class="wrppr">
-    {% include "partials/siteheader.html" %}
-
-    <nav class="navbar">
-
-      {% if macros::is_devmode() == "true" %}
+    {% if macros::is_devmode() == "true" %}
       <div class=devmode>
         <span class=note>DEVELOPMENT MODE! (drafts are visible)</span>
       </div>
-      {% endif %}
+    {% endif %}
 
-      <div class="navbar_menu">
-        <a href="/">home</a>
-        <a href="/resolution/">resolution</a>
-        <a href="/about/">about</a>
-        {% block menu_items %}{% endblock menu_items %}
-      </div>
+    {% include "partials/siteheader.html" %}
+
+    <nav class="navbar">
+      <a href="/">home</a>
+      <a href="/resolution/">resolution</a>
+      <a href="/about/">about</a>
+      {% block menu_items %}{% endblock menu_items %}
     </nav>
 
     <main id="content" class="content">

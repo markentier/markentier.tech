@@ -1,12 +1,13 @@
 .devmode {
-  margin: 1em 0 0 0;
-  padding: 1em;
-  background: black;
+  position: fixed;
+  top: -7.75rem;
+  right: -3rem;
+  padding: 7rem 4rem 2rem 53rem;
+  transform: rotate3d(1.5,0,1, 15deg);
+  background: rgba(0, 0, 0, 0.666);
   color: white;
 
-  .note {
-    color: red;
-  }
+  .note { color: #c00; font-weight: bold; }
 }
 
 #__tera_context::before {
