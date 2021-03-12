@@ -9,12 +9,12 @@
 <article class="section-page section-tags">
   <header><h1 class="header-tags post_title entry-title">Tags</h1></header>
   <div class="article_body">
-  <p></p>
+  <p><!-- to show the nice divider --></p>
   <p class="taglist">
   {% for tag in terms %}
     {% set count = tag.pages | length %}
     {% if count > 1 %}{% set s = "s" %}{% else %}{% set s = "" %}{% endif %}
-    <span {%if count > 1%}style="font-size: {{count*10 + 90}}%"{%endif%}>
+    <span {%if count > 1%}style="font-size: {{count*25 + 75}}%"{%endif%}>
       <a href="{{tag.permalink}}"
          title="{{count}} post{{s}} in {{tag.name}}">{{tag.name}}</a></span>
   {% endfor %}
