@@ -1,4 +1,4 @@
-// PUBLIC PATH: /.netlify/functions/beacon.png
+// PUBLIC PATH: /.netlify/functions/beacon_png
 
 const BEACON_PNG_B64 =  "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklE" +
                         "QVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg";
