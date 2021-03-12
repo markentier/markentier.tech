@@ -67,6 +67,8 @@ JPG2PNG = $(JPGS:.jpg=.png)
 AVIFS = $(PNGS:.png=.avif)
 WEBPS = $(PNGS:.png=.webp)
 OPNGS = $(PNGS:%=OPTIMIZE_%)
+HTMLS = $(shell find $(OUTPUT_DIR) -type f -iname '*.html')
+TOREF = $(HTMLS:%=TOREF_%)
 BOMABLES = $(shell find $(OUTPUT_DIR) -type f \( -iname '*.html' -o -iname '*.css' -o -iname '*.svg' -o -iname '*.json' -o -iname '*.js' -o -iname '*.xml' \) 2>/dev/null)
 
 THUMB_SIZE = 320x160
@@ -112,7 +114,18 @@ netlify: install-zola build
 
 # BUILD STEPS
 
-build-site: build-html build-feeds
+build-site: build-ref-html build-feeds
+
+CURRENT_COMMIT := $(shell git log --format=format:%H | head -1 | cut -c1-7)
+
+build-ref-html: build-html
+	$(MAKE) ref-html -j $(shell expr $(shell nproc) / 2 + 1)
+
+ref-html: $(TOREF)
+
+$(TOREF): TOREF_%: %
+	sed -i 's/___GITREF___/$(CURRENT_COMMIT)/g' $<
+.PHONY: $(TOREF)
 
 build-html:
 	$(BUILD_CMD)
