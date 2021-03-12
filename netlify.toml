@@ -3,7 +3,7 @@
 base = ""
 publish = "public"
 command = "make netlify"
-# functions = ".functions"
+functions = "functions"
 
 [build.environment]
 ZOLA_VERSION = "0.13.0"
