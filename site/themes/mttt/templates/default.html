@@ -16,14 +16,15 @@
   {% block before_head_end %}{% endblock before_head_end %}
 </head>
 <body class="mtt">
+  {% if macros::is_devmode() == "true" %}
+    <div class=devmode>
+      <span class=note>DEVELOPMENT MODE! (drafts are visible)</span>
+    </div>
+  {% endif %}
+
   {% block after_body_open %}{% endblock after_body_open %}
 
   <div id="wrppr" class="wrppr">
-    {% if macros::is_devmode() == "true" %}
-      <div class=devmode>
-        <span class=note>DEVELOPMENT MODE! (drafts are visible)</span>
-      </div>
-    {% endif %}
 
     {% include "partials/siteheader.html" %}
 
