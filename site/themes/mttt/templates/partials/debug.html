@@ -2,6 +2,6 @@
 {% if macros::is_devmode() == "true" %}
 <details>
   <summary>DEBUG</summary>
-  <pre id="__tera_context" class=devmode>{{ __tera_context | escape | safe }}</pre>
+  <pre id="__tera_context" class=debug>{{ __tera_context | escape | safe }}</pre>
 </details>
 {% endif %}

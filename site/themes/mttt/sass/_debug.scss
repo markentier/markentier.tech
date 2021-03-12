@@ -10,6 +10,11 @@
   .note { color: #c00; font-weight: bold; }
 }
 
+.debug {
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+}
+
 #__tera_context::before {
   content: "__tera_context = ";
 }
