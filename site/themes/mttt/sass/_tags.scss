@@ -83,10 +83,12 @@ h1, h2, h3, h4, .h1 {
   margin: 1.75rem 0 .5em 0;
   font-family: var(--system-fonts);
   font-weight: bold;
-  line-height: 1.25;
   color: var(--head-color);
   scroll-margin-top: 1rem;
+
+  .article_body & { line-height: 1.25; }
 }
+
 
 hr {
   height: 0;

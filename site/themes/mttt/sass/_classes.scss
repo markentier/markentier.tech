@@ -67,9 +67,9 @@
   a.line {
     display: grid;
     grid-template-columns: auto max-content;
-    gap: 0 .25rem;
     grid-template-areas: "title date";
-    align-items: end;
+    align-items: first baseline;
+    gap: 0 .25rem;
     text-decoration: none;
 
     &:link, &:visited { color: inherit; }
@@ -96,7 +96,9 @@
       }
     }
 
-    .date { grid-area: date; }
+    .date {
+      grid-area: date;
+    }
   }
 
   footer { display: none; }
@@ -144,6 +146,7 @@
     width: 105%;
     margin-left: -0.75rem;
     margin-right: -0.75rem;
+    line-height: 1.25;
   }
 }
 
