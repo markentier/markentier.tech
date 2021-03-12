@@ -12,6 +12,9 @@ ifeq ($(UNAME), Linux)
 endif
 
 # https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+# to include/replace with uutils-coreutils:
+# brew install uutils-coreutils
+# $(shell brew --prefix uutils-coreutils)/libexec/uubin:
 ifeq ($(UNAME), Darwin)
 	PLATFORM = x86_64-apple-darwin
 	export PATH := $(shell brew --prefix coreutils)/libexec/gnubin:$(shell brew --prefix findutils)/libexec/gnubin:$(shell brew --prefix gnu-sed)/libexec/gnubin:$(PATH)
@@ -64,7 +67,7 @@ JPG2PNG = $(JPGS:.jpg=.png)
 AVIFS = $(PNGS:.png=.avif)
 WEBPS = $(PNGS:.png=.webp)
 OPNGS = $(PNGS:%=OPTIMIZE_%)
-BOMABLES = $(shell find $(OUTPUT_DIR) -type f \( -iname \*.html -o -iname \*.css -o -iname \*.svg -o -iname \*.json -o -iname \*.js -o -iname \*.xml \))
+BOMABLES = $(shell find $(OUTPUT_DIR) -type f \( -iname '*.html' -o -iname '*.css' -o -iname '*.svg' -o -iname '*.json' -o -iname '*.js' -o -iname '*.xml' \) 2>/dev/null)
 
 THUMB_SIZE = 320x160
 PNG_COLORS = 32
@@ -92,6 +95,7 @@ local.prod:
 	time $(MAKE) local
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
 
+# when I need no TLS
 local.dev:
 	time $(MAKE) local LOCAL_HOST=localhost LOCAL_PROTO=http
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
