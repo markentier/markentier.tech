@@ -22,9 +22,8 @@
     </div>
 
     {% if is_post %}
-    {% if page.extra.suggestions %}
     <aside class="suggestions">
-      <!-- <hr> -->
+      {% if page.extra.suggestions %}
       <h4>You might also like</h4>
 
       <ul>
@@ -35,8 +34,26 @@
         </li>
         {% endfor %}
       </ul>
+      {% endif %}
+
+      <!-- all 3 items here seem to be non-deterministic on my machine -->
+
+      {% set latest = get_section(path="posts/_index.md") | get(key="pages") | first %}
+      {% if page.permalink != latest.permalink %}
+      <h4>Newest article</h4>
+      <p class=li><a href="{{ latest.permalink }}">{{ latest.title }}</a></p>
+      {% endif %}
+
+      {% if page.later %}
+      <h4>Next article</h4>
+      <p class=li><a href="{{ page.later.permalink }}">{{ page.later.title }}</a></p>
+      {% endif %}
+
+      {% if page.earlier %}
+      <h4>Previous article</h4>
+      <p class=li><a href="{{ page.earlier.permalink }}">{{ page.earlier.title }}</a></p>
+      {% endif %}
     </aside>
-    {% endif %}
 
     {{ pm::pfooter(page=page, config=config) }}
     {% endif %}
