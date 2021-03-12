@@ -50,8 +50,7 @@ content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self
 report-to = """{"group":"cspreport","max-age":2592000,"endpoints":[{"url":"https://markentiertech.report-uri.com/r/d/csp/enforce"}"""
 
 # https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/
-#feature-policy = "accelerometer 'none'; autoplay 'none'; camera 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; xr-spatial-tracking 'none';"
-permissions-policy = "accelerometer=(); autoplay=(); camera=(); document-domain=(); encrypted-media=(); fullscreen=(); geolocation=(); gyroscope=(); magnetometer=(); microphone=(); midi=(); payment=(); picture-in-picture=(); sync-xhr=(); usb=(); xr-spatial-tracking=();"
+permissions-policy = "accelerometer=(), autoplay=(), camera=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(), usb=(), xr-spatial-tracking=()"
 referrer-policy = "strict-origin-when-cross-origin"
 expect-ct = "max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly"
 
