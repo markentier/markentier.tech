@@ -47,7 +47,7 @@ Cache-Control = "public, max-age=3600"
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
-content-security-policy = "base-uri 'self'; default-src 'self'; img-src 'self' data: *.gravatar.com; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests; report-to default; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce"
+content-security-policy = "base-uri 'self'; default-src 'self'; img-src 'self' data:; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests; report-to default; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce"
 
 # A bunch of new CO*P headers
 cross-origin-embedder-policy-report-only = "require-corp; report-to=\"default\""
