@@ -46,19 +46,29 @@ Cache-Control = "public, max-age=3600"
 # Casing for STS is important to override value from Netlify:
 Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
-content-security-policy = "base-uri 'self'; default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: *.gravatar.com; font-src 'self'; connect-src 'self'; media-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; upgrade-insecure-requests; block-all-mixed-content; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce; report-to cspreport"
-report-to = """{"group":"cspreport","max-age":2592000,"endpoints":[{"url":"https://markentiertech.report-uri.com/r/d/csp/enforce"}"""
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
+content-security-policy = "base-uri 'self'; default-src 'self'; img-src 'self' data: *.gravatar.com; object-src 'none'; frame-src 'self' www.youtube-nocookie.com www.youtube.com player.vimeo.com; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests; report-to default; report-uri https://markentiertech.report-uri.com/r/d/csp/enforce"
 
-# https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/
+# A bunch of new CO*P headers
+cross-origin-embedder-policy-report-only = "require-corp; report-to=\"default\""
+cross-origin-opener-policy-report-only = "same-origin; report-to=\"default\""
+cross-origin-resource-policy = "same-site"
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/NEL
+NEL = """{"report_to":"default","max_age":10886400}"""
+
+report-to = """{"group":"default","max_age":31536000,"endpoints":[{"url":"https://markentiertech.report-uri.com/a/d/g"}],"include_subdomains":true}"""
+
 permissions-policy = "accelerometer=(), autoplay=(), camera=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(), usb=(), xr-spatial-tracking=()"
 referrer-policy = "strict-origin-when-cross-origin"
-expect-ct = "max-age=0, report-uri=https://markentiertech.report-uri.com/r/d/ct/reportOnly"
+expect-ct = "max-age=0, report-uri=\"https://markentiertech.report-uri.com/r/d/ct/enforce\""
 
 x-content-type-options = "nosniff"
-x-frame-options = "SAMEORIGIN"
+# @deprecated: x-frame-options = "SAMEORIGIN"
 x-github-repo = "https://github.com/markentier/markentier.tech"
 x-github-user = "https://github.com/asaaki"
-x-xss-protection = "1; mode=block"
+x-xss-protection = "1; mode=block; report=https://markentiertech.report-uri.com/r/d/xss/enforce"
+x-xss-pwnage = "<script>alert('XSS!');</script>"
 
 # does not work :'-(
 Server = "markentier.tech"
