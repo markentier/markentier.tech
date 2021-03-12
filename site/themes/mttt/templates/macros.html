@@ -28,20 +28,9 @@
 {% endif %}
 {% endmacro preadtime %}
 
-{# deprecated; we can flatten trees, see note @ sec_pages #}
-{% macro sec_traverse(sec) %}
-    {{ self::sec_pages(sec=sec) }}
-    {% if sec.subsections %}
-    {% for sub in sec.subsections | reverse %}
-    {% set ss = get_section(path=sub) %}
-    {{ self::sec_traverse(sec = ss) }}
-    {% endfor %}
-    {% endif %}
-{% endmacro sec_traverse %}
-
 {#
-  Preferred over sec_traverse, but to have a flat list of a tree,
-  `transparent = true` is needed in section's _index.md
+  `transparent = true` is needed in section's _index.md,
+  to have a flat list of a tree
 #}
 {% macro sec_pages(sec) %}
 {{self::list_pages(pages=sec.pages)}}

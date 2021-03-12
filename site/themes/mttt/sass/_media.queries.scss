@@ -1,55 +1,47 @@
-// Viewing on 3/4 or more of your UHD/4K monitor?
-// Lean back, we make it big enough to read from a distance.
-@media only screen and (min-width: 2880px) {
+// Modern breakpoints
+// https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
+
+// @mixin for-phone-only
+@media only screen and (max-width: 599px) {
   :root {
-    --ref-size: 28px;
-    --content-width: 45rem
+    --content-width: 100vw; // full-width usage on small screens
+  }
+
+  .wrppr { padding: 0 3ch; }
+  .meta, .footer { font-size: 1rem; }
+  .headlink { margin-left: -.5rem; }
+  .meta .info .link { word-break: break-all; text-overflow: ellipsis; }
+}
+
+// @mixin for-tablet-portrait-up
+@media only screen and (min-width: 600px) {
+  :root {
+    --content-width: 27rem; // min-width / ref * 0.90
   }
 }
 
-// between 1920 (FHD) up to 3/4 of UHD/4K
-@media only screen and (max-width: 2879px) {
+// @mixin for-tablet-landscape-up
+@media only screen and (min-width: 900px) {
+  :root {
+    --content-width: 38rem; // (less than) min-width / ref * 0.85
+  }
+}
+
+// @mixin for-desktop-up
+@media only screen and (min-width: 1200px) {
   :root {
     --ref-size: 24px;
-    --content-width: 42rem;
+    --content-width: 40rem; // min-width / ref * 0.80
   }
 }
 
-// our "just before Full HD" world (desktops)
-@media only screen and (max-width: 1919px) {
+// @mixin for-big-desktop-up
+@media only screen and (min-width: 1800px) {
   :root {
-    --ref-size: 20px;
-    --content-width: 38rem
-  }
-
-  .wrppr { padding: 0 2rem; }
-}
-
-@media only screen and (max-width: 767px) {
-  :root { --ref-size: 18px; }
-  .navbar { padding-left: .75rem; }
-  .headlink { margin-left: -.75rem; }
-  .meta, .footer { font-size: .85rem; }
-}
-
-@media only screen and (max-width: 479px) {
-  pre { font-size: .9em; }
-  .headlink { margin-left: -.5rem; }
-  .post_content_info { flex-direction: column; font-size: .8rem; }
-}
-
-// only for video iframes
-@media only screen and (max-width: 680px) {
-  .sc-yt iframe {
-    max-width: 320px;
-    max-height: 180px;
-  }
-
-  .sc-vm iframe {
-    max-height: 137px;
+    --ref-size: 28px;
+    --content-width: 45rem; // min-width / ref * 0.70
   }
 }
-
 
 // features
 @media (prefers-reduced-motion: no-preference) {

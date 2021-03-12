@@ -62,7 +62,7 @@ del, s, strike { text-decoration: wavy line-through var(--link-hl-color); }
 figcaption {
   padding: 0 .5em;
   font-size: .6em;
-  line-height: 1.75em;
+  line-height: 1.75;
   text-align: center;
   visibility: hidden;
 }
@@ -80,11 +80,12 @@ h4 { font-size: 1.25rem; }
 
 // h5, h6,
 h1, h2, h3, h4, .h1 {
-  margin: 1.75rem 0 0 0;
+  margin: 1.75rem 0 .5em 0;
   font-family: var(--system-fonts);
   font-weight: bold;
+  line-height: 1.25;
   color: var(--head-color);
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 1rem;
 }
 
 hr {
@@ -114,7 +115,7 @@ pre {
   padding-right: .5em;
   border-radius: .25em;
   font-size: 1rem;
-  line-height: 1.25rem;
+  line-height: 1.25;
   white-space: pre-wrap;
   overflow-x: auto;
 
