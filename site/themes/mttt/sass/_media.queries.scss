@@ -4,6 +4,7 @@
 // @mixin for-phone-only
 @media only screen and (max-width: 599px) {
   :root {
+    --ref-size: 18px;
     --content-width: 100vw; // full-width usage on small screens
   }
 
