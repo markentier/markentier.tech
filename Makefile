@@ -124,7 +124,7 @@ build-ref-html: build-html
 ref-html: $(TOREF)
 
 $(TOREF): TOREF_%: %
-	sed -i 's/___GITREF___/$(CURRENT_COMMIT)/g' $<
+	@sed -i 's/___GITREF___/$(CURRENT_COMMIT)/g' $<
 .PHONY: $(TOREF)
 
 build-html:
