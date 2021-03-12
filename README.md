@@ -19,6 +19,8 @@ Repo for [markentier.tech](https://markentier.tech/) site.
 - <https://moz.com/domain-analysis?site=https://markentier.tech/>
 - <https://hstspreload.org/?domain=markentier.tech>
 - <https://openlinkprofiler.org/r/markentier.tech>
+- <https://report-uri.com/account/>
+- <https://www.websitecarbon.com/website/markentier-tech/>
 
 </details>
 
