@@ -1,31 +1,29 @@
-.sc-v,
-.sc-yt,
-.sc-vm {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.1);
+.sc-v {
+  width: 100%;
+
+  .video {
+    position: relative;
+    // 16:9 | also see https://support.google.com/youtube/answer/6375112
+    width: 100%; height: 0; padding-bottom: 56.25%;
+    // currently not widely adopted yet; https://caniuse.com/?search=aspect-ratio
+    aspect-ratio: 16 / 9;
 
     iframe {
-        display: block;
-        width:  36rem; // 720px;
-        height: 20.5rem; // 405px;
-        border: 0;
-        margin: auto;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
     }
+  }
 
-    figcaption {
-        width: 100%;
-        margin: 0 auto;
-        padding: 0.25em;
-        background: transparent;
-        text-align: center;
-        font-size: .6em;
-    }
+  figcaption {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.25em;
+    background: transparent;
+    text-align: center;
+    font-size: .8em;
+  }
 
-    & + & {
-        margin-top: .5rem;
-    }
-}
-
-.sc-vm iframe {
-    height: 13.7rem; // 274px;
+  & + & { margin-top: .5rem; }
 }

@@ -1,8 +1,10 @@
 {# USAGE: {{ youtube(id="dQw4w9WgXcQ", autoplay=true, class="youtube class-override") }} #}
 <figure class="{% if class %}{{class}}{% else %}sc-v sc-yt{% endif %}">
-  <iframe src="https://www.youtube-nocookie.com/embed/{{id}}?modestbranding=1&rel=0{% if autoplay %}&autoplay=1{% endif %}"
-          type="text/html" allow="encrypted-media" frameborder="0"
-          data-link="https://www.youtube.com/watch?v={{id}}"
-          webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <div class="video">
+    <iframe src="https://www.youtube-nocookie.com/embed/{{id}}?modestbranding=1&rel=0{% if autoplay %}&autoplay=1{% endif %}"
+            type="text/html" allow="encrypted-media" frameborder="0"
+            data-link="https://www.youtube.com/watch?v={{id}}"
+            webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
   <figcaption><a rel="external" href="https://www.youtube.com/watch?v={{id}}">https://www.youtube.com/watch?v={{id}}</a></figcaption>
 </figure>
