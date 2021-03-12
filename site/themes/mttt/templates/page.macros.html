@@ -50,35 +50,43 @@
   {# ⎇⌥⊶Ⓞⓞ≅≈⊜ 💭💬🔄♻⚓📜📑🔖✒🖋 #}
   <div class="info">
     <div class="icon permalink" title="Permalink">⚓</div>
-    <div class="link"><a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br></div>
+    <div class="data link"><a rel="bookmark" href="{{page.permalink}}">{{page.permalink}}</a><br></div>
     {% if page.extra.origin_url %}
     {% set rels = "external alternate nofollow noreferrer noopener" %}
     <div class="icon origin" title="Originally published at">📜</div>
-    <div class="link"><a rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a></div>
+    <div class="data link"><a rel="{{rels}}" href="{{page.extra.origin_url | safe}}">{{page.extra.origin_url}}</a></div>
     {% endif %}
     {% if page.taxonomies and page.taxonomies.tags %}
     <div class="icon tags" title="Tagged with">🏷</div>
-    <div class="items tag_items">
-    {% set tagcount = page.taxonomies.tags | length %}
-    {% if tagcount <= 10 %}
+    <div class="data items tag_items">
       {% for tag in page.taxonomies.tags %}
-        {% set url = get_taxonomy_url(kind="tags", name=tag) %}
+      {% set url = get_taxonomy_url(kind="tags", name=tag) %}
+        {# % if config.siteglobal is undefined %}
+        {% set_global config.siteglobal = "hello" %}
+        {% else %}
+        <!-- I AM THE FIRST TO DEFINE config.siteglobal -->
+        {% endif % #}
+        {% if false %}
+          {# currently too costly to compute / wish: one "hyper" global tag set #}
+          {% set_global tags = get_taxonomy(kind="tags") %}
+          {% set term = tags.items | filter(attribute="name", value=tag) | first %}
+          {% if term.pages %}
+            {% set count = term.pages | length %}
+            {% if count > 2 %}
+            <!--
+              term.pages > page > permalink
+
+              {% for tpage in term.pages %}
+              {% if page.permalink != tpage.permalink %}
+              {{ tpage.permalink | safe }}
+              {% endif %}
+              {% endfor %}
+            -->
+            {% endif %}
+          {% endif %}
+        {% endif %}
         <a href="{{url}}">{{tag}}</a>
       {% endfor %}
-    {% else %}
-      <details>
-        <summary>
-          {% for tag in page.taxonomies.tags | slice(end=9) %}
-            {% set url = get_taxonomy_url(kind="tags", name=tag) %}
-            <a href="{{url}}">{{tag}}</a>
-          {% endfor %}
-        </summary>
-          {% for tag in page.taxonomies.tags | slice(start=9) %}
-            {% set url = get_taxonomy_url(kind="tags", name=tag) %}
-            <a href="{{url}}">{{tag}}</a>
-          {% endfor %}
-      </details>
-    {% endif %}
     </div>
     {% endif %}
   </div>
