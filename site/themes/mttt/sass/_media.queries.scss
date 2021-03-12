@@ -30,12 +30,6 @@
   .navbar { padding-left: .75rem; }
   .headlink { margin-left: -.75rem; }
   .meta, .footer { font-size: .85rem; }
-
-  .index_toc_line a.line {
-    .title { grid-area: title / title / date / date; }
-    .date { grid-area: date2; }
-    .dots { grid-area: title2 / dots2; }
-  }
 }
 
 @media only screen and (max-width: 479px) {
@@ -59,7 +53,5 @@
 
 // features
 @media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 }

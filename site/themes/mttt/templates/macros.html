@@ -52,14 +52,11 @@
 {% set is_draft = page.draft %}
 <article class="index_toc_line{%if is_draft%} draft{%endif%}" itemscope itemtype="http://schema.org/Article">
   <a href="{{page.permalink | safe}}" itemprop="url" class="line">
-    <div class="title"><h2 class="post_title" itemprop="headline">{{page.title}}</h2></div>
-
+    <h2 class="title post_title" itemprop="headline">{{page.title}}</h2>
     {# TODO extract as macro: macros::published_at(date=date) #}
     {% set pdate_iso = self::date_iso(date=page.date) %}
     {% set pdate_date = self::date_date(date=page.date) %}
     <time class="date published_at" itemprop="datePublished" content="{{pdate_iso}}" datetime="{{pdate_iso}}">{{pdate_date}}</time>
-
-    <div class="dots"></div>
   </a>
 
   <footer class="list-meta">

@@ -66,44 +66,37 @@
 
   a.line {
     display: grid;
-    grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: 1fr auto;
-    gap: 0 0.333em;
-    grid-template-areas: "title dots date"
-                         "title2 dots2 date2";
+    grid-template-columns: auto max-content;
+    gap: 0 .25rem;
+    grid-template-areas: "title date";
     align-items: end;
     text-decoration: none;
 
-    &:link,
-    &:visited {
-      color: inherit;
-    }
-
-    .title, .dots, .date { display: block; }
+    &:link, &:visited { color: inherit; }
 
     .title {
-      grid-area: title / title / title2  / title2;
+      grid-area: title;
+      display: inline-block;
+      position:relative;
+      overflow: hidden;
+      font-size: 1.25rem;
+      font-family: var(--system-fonts-serif);
+      font-weight: normal;
 
-      h2 {
-        font-size: 1.25em;
-        font-family: var(--system-fonts-serif);
-        font-weight: normal;
+      &::after {
+        position: absolute;
+        padding-left: .25ch;
+        content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+        text-overflow: clip;
+        text-align: right;
+        font-size: 1rem;
+        opacity: .42;
       }
     }
 
-    .date {
-      grid-area: date / date / date2 / date2;
-    }
-
-    .dots {
-      grid-area: dots / dots / dots2 / dots2;
-      min-height: 1em;
-
-      // <svg viewBox="0 0 35 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="#cccccc"/></svg>
-      background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 35 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23cccccc'/%3E%3C/svg%3E")
-        left 55% / 6px repeat-x;
-    }
+    .date { grid-area: date; }
   }
 
   footer { display: none; }
