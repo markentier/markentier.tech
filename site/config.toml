@@ -6,8 +6,8 @@ theme = "mttt"
 compile_sass = true
 
 taxonomies = [
-  {name = "tags", rss = true},
-  {name = "categories", rss = true},
+  { name = "tags", feed = false },
+  { name = "categories", feed = false },
 ]
 
 generate_rss = true
