@@ -168,6 +168,12 @@ Content-Type = "application/manifest+json; charset=utf8"
 ## https://docs.netlify.com/routing/redirects/
 
 [[redirects]]
+from = "/beacon.png"
+to = "/.netlify/functions/beacon_png"
+status = 200
+force = true
+
+[[redirects]]
 from = "/posts/2018/03/from-cobalt-to-gutenberg/"
 to = "/posts/2018/03/from-cobalt-to-zola/"
 status = 301
