@@ -1,5 +1,7 @@
 # markentier.tech
 
+CURRENT_COMMIT := $(shell git log --format=format:%H -1 | cut -c1-7)
+
 NETLIFY_DEPLOY_URL ?= https://markentier.tech
 
 export PATH := $(PWD)/zola:$(PATH)
@@ -115,8 +117,6 @@ netlify: install-zola build
 # BUILD STEPS
 
 build-site: build-ref-html build-feeds
-
-CURRENT_COMMIT := $(shell git log --format=format:%H | head -1 | cut -c1-7)
 
 build-ref-html: build-html
 	$(MAKE) ref-html -j $(shell expr $(shell nproc) / 2 + 1)
