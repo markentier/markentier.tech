@@ -4,8 +4,9 @@
   <a itemprop="url" href="{{config.base_url | safe}}">
     <meta itemprop="name" content="{{config.extra.publisher}}">
     <meta itemprop="description" content="{{config.description}}">
+    <!-- AMP version of site logo for Google: -->
     <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-      <img itemprop="url" src="{{config.base_url | safe}}/i/m.amp.png{{macros::cache_bust()}}" alt="logo" data-skip-transform>
+      <meta itemprop="url" content="{{config.base_url | safe}}/i/m.amp.png{{macros::cache_bust()}}">
       <meta itemprop="height" content="60">
       <meta itemprop="width" content="600">
     </span>

@@ -49,6 +49,8 @@
   </a>
 
   <footer class="list-meta">
+    {% set page_image_url = self::get_cover_image_url(url=page.permalink) %}
+    <meta itemprop="image" content="{{page_image_url | safe}}">
     <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
     <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"
       datetime="{{pdate_iso}}">{{pdate_date}}</time>

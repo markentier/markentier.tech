@@ -33,7 +33,8 @@
     <picture>
       <source srcset="{{page_image_avif_url | safe}}" type="image/avif">
       <source srcset="{{page_image_webp_url | safe}}" type="image/webp">
-      <img itemprop="image" src="{{page_image_url | safe}}{{m::cache_bust()}}" alt="{{page_image_alt}}" loading="eager"  data-skip-transform>
+      <img itemprop="image" src="{{page_image_url | safe}}{{m::cache_bust()}}" alt="{{page_image_alt}}"
+           loading="eager" data-skip-transform>
     </picture>
     <figcaption>{{page_image_alt | safe}}</figcaption>
   </figure>
