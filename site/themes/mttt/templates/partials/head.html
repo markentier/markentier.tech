@@ -54,13 +54,8 @@
   {% set is_post = page.permalink is containing("/posts/") %}
   {% if is_post == true %}
 
-    {% if page.extra.has_hero %}
-      {% set page_image_url = macros::get_cover_image_url(url=page.permalink) %}
-    {% else %}
-      {% set page_image_url = macros::get_default_cover_image_url(base=config.base_url, img=config.extra.image_url) %}
-    {% endif %}
-
-    {% set page_image_alt = page.extra.image_alt | default(value=config.extra.image_alt) %}
+    {% set page_image_url = macros::get_final_cover_image_url() %}
+    {% set page_image_alt = macros::get_final_cover_image_alt() %}
 
     {% if page.description %}
       {% set page_description = page.description %}
@@ -90,11 +85,14 @@
     <meta property="og:url" content="{{page.permalink | safe}}">
     <meta property="og:title" content="{{page.title}}">
     <meta property="og:description" content="{{page_description}}">
-    <meta property="article:published_time" content="{{page.date | date(format="%FT%T%z")}}">
-    <meta property="article:modified_time" content="{{page.date | date(format="%FT%T%z")}}">
     <meta property="og:image" content="{{page_image_url | safe}}">
+    <meta property="og:image:alt" content="{{page_image_alt}}">
+    <meta property="og:publish_date" content="{{page.date | date(format="%FT%T%z")}}">
     <meta property="og:site_name" content="{{config.title}}">
     <meta property="og:see_also" content="{{config.base_url | safe}}">
+    <!-- Namespace URI: https://ogp.me/ns/article# -->
+    <meta property="article:published_time" content="{{page.date | date(format="%FT%T%z")}}">
+    <meta property="article:modified_time" content="{{page.date | date(format="%FT%T%z")}}">
     <meta property="article:author" content="{{config.extra.author}}">
 
     {% if page.taxonomies.tags %}{% for tag in page.taxonomies.tags %}

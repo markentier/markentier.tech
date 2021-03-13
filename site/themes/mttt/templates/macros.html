@@ -20,6 +20,18 @@
 {% macro get_thumb_image_avif_url(url) %}{{url}}thumb.avif{% endmacro get_thumb_image_avif_url %}
 {% macro get_default_cover_image_url(base,img) %}{{base}}/{{img}}{% endmacro get_default_cover_image_url %}
 
+{% macro get_final_cover_image_url() -%}
+{%- if page and page.extra.has_hero -%}
+  {{- page.permalink}}/cover.png
+{%- else -%}
+  {{- config.base_url }}/{{ config.extra.image_url -}}
+{%- endif -%}
+{%- endmacro %}
+
+{% macro get_final_cover_image_alt() -%}
+{{- page.extra.image_alt | default(value=config.extra.image_alt) | safe -}}
+{%- endmacro %}
+
 {% macro preadtime(reading_time) %}
 {% if reading_time <= 1 %}
   one minute read
@@ -49,7 +61,7 @@
   </a>
 
   <footer class="list-meta">
-    {% set page_image_url = self::get_cover_image_url(url=page.permalink) %}
+    {% set page_image_url = self::get_final_cover_image_url() %}
     <meta itemprop="image" content="{{page_image_url | safe}}">
     <link itemprop="mainEntityOfPage" href="{{page.permalink | safe}}">
     <time class="modified_at" itemprop="dateModified" content="{{pdate_iso}}"

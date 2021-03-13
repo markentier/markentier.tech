@@ -27,7 +27,7 @@
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
   {% set page_image_webp_url = m::get_cover_image_webp_url(url=page.permalink) %}
   {% set page_image_avif_url = m::get_cover_image_avif_url(url=page.permalink) %}
-  {% set page_image_alt = page.extra.image_alt | default(value=config.extra.image_alt) | safe %}
+  {% set page_image_alt = m::get_final_cover_image_alt() %}
 
   <figure class="post_hero">
     <picture>
