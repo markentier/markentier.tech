@@ -22,6 +22,9 @@
     </div>
   {% endif %}
 
+  {% if current_path is defined %}{% set u = current_path %}{% else %}{% set u = "/404" %}{% endif %}
+  <img class="beacon first-beacon" data-skip-transform loading="lazy" src="/beacon.svg?u={{u}}" alt="(beacon)">
+
   {% block after_body_open %}{% endblock after_body_open %}
 
   <div id="wrppr" class="wrppr">
