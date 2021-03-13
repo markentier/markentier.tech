@@ -163,25 +163,6 @@ cross-origin-opener-policy-report-only = "unsafe-none"
 cross-origin-resource-policy = "cross-origin"
 
 [[headers]]
-for = "/*.woff"
-[headers.values]
-Content-Type = "font/woff"
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "/*.woff2"
-[headers.values]
-Content-Type = "font/woff2"
-Cache-Control = "public, max-age=31536000, immutable"
-
-# it may or may not work, but it's not too important for such extensions
-[[headers]]
-for = "/*.(ttf|otf|eot|ttc)"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-x-note = "cc header based on using a glob pattern"
-
-[[headers]]
 for = "/*.webmanifest"
 [headers.values]
 Content-Type = "application/manifest+json; charset=utf8"

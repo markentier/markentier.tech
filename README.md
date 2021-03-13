@@ -46,3 +46,5 @@ Repo for [markentier.tech](https://markentier.tech/) site.
 - <https://www.semrush.com/>
 - <https://www.screamingfrog.co.uk/seo-spider/>
 - <https://seorch.de/>
+- <https://www.linkedin.com/post-inspector/>
+- <https://cards-dev.twitter.com/validator>
