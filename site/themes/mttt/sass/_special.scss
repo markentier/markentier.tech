@@ -21,6 +21,12 @@
 [data-ref="___GITREF___"] { display: none; }
 [data-ref]::before { content: " | " }
 
+.beacon {
+  margin: 0; padding: 0; border: 0;
+  width: 1px; height: 1px;
+  float: left;
+}
+
 :target {
   color: var(--rebecca);
   text-shadow: 1px 1px 3px var(--head-light-color);
