@@ -30,5 +30,7 @@
      <span class='copy'>© 2018—{{ now(utc=true) | date(format="%Y") }} Christoph Grabo (asaaki) 🦄</span>
      <span data-ref="___GITREF___"><a rel="external noopener nofollow" href="https://github.com/markentier/markentier.tech/commit/___GITREF___">___GITREF___</a></span>
   </div>
+  {% if current_url is defined %}{% set u = current_url %}{% else %}{% set u = "(404)" %}{% endif %}
+  <img data-skip-transform loading="lazy" src="/beacon.svg?u={{u}}" alt="(beacon)">
 
 </footer>

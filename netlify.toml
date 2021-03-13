@@ -168,8 +168,8 @@ Content-Type = "application/manifest+json; charset=utf8"
 ## https://docs.netlify.com/routing/redirects/
 
 [[redirects]]
-from = "/beacon.png"
-to = "/.netlify/functions/beacon_png"
+from = "/beacon.svg"
+to = "/.netlify/functions/beacon_img"
 status = 200
 force = true
 
