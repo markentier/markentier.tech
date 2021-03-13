@@ -2,7 +2,7 @@
 
 const BEACON_SVG = '<svg xmlns="http://www.w3.org/2000/svg"/>';
 
-exports.handler = async (event, context) => {
+exports.handler = async (event, _context) => {
   const qs = event.queryStringParameters || {};
   const headers = event.headers || {};
 
