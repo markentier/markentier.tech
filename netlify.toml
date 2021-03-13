@@ -119,26 +119,48 @@ for = "/*.avif"
 Content-Type = "image/avif"
 content-disposition = "inline"
 Cache-Control = "public, max-age=31536000, immutable"
+# since we needed to set security headers globally, we have to override on a per resource level;
+# sadly Netlify also has no "unset" logic for custom headers
+content-security-policy = "default-src *"
+cross-origin-embedder-policy-report-only = "unsafe-none"
+cross-origin-opener-policy-report-only = "unsafe-none"
+cross-origin-resource-policy = "cross-origin"
 
 [[headers]]
 for = "/*.webp"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
+content-security-policy = "default-src *"
+cross-origin-embedder-policy-report-only = "unsafe-none"
+cross-origin-opener-policy-report-only = "unsafe-none"
+cross-origin-resource-policy = "cross-origin"
 
 [[headers]]
 for = "/*.png"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
+content-security-policy = "default-src *"
+cross-origin-embedder-policy-report-only = "unsafe-none"
+cross-origin-opener-policy-report-only = "unsafe-none"
+cross-origin-resource-policy = "cross-origin"
 
 [[headers]]
 for = "/*.jpg"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
+content-security-policy = "default-src *"
+cross-origin-embedder-policy-report-only = "unsafe-none"
+cross-origin-opener-policy-report-only = "unsafe-none"
+cross-origin-resource-policy = "cross-origin"
 
 [[headers]]
 for = "/*.ico"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
+content-security-policy = "default-src *"
+cross-origin-embedder-policy-report-only = "unsafe-none"
+cross-origin-opener-policy-report-only = "unsafe-none"
+cross-origin-resource-policy = "cross-origin"
 
 [[headers]]
 for = "/*.woff"
