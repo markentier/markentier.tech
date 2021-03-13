@@ -1,12 +1,10 @@
 .wrppr {
   margin: auto;
-  padding: 0 1rem;
   max-width: var(--content-width);
+  padding: 0 1rem;
 }
 
-.siteheader {
-  margin-bottom: 2rem;
-}
+.siteheader { margin-bottom: 2rem; }
 
 .logo {
   color: var(--head-color);
@@ -14,40 +12,27 @@
 }
 
 .headlink {
-  margin-left: -1.5rem;
-  padding-top: 1rem;
+  margin: 1rem 0 0 -3rem;
 
-  display: grid;
-  grid-template-columns: max-content auto;
-  grid-template-rows: 4.5rem 0 auto;
-  grid-template-areas: "logo space"
-                       "h1 space"
-                       "description space";
+  display: block;
+  width: fit-content;
 
   text-decoration: none;
 
-  .logo {
-    grid-area: logo;
-    height: 4.5rem;
-  }
+  .logo { height: 7rem; }
 
-  h1, .h1 {
-    grid-area: h1;
-    font-size: 0;
-}
+  h1, .h1 { font-size: 0; margin: 0; }
 
   .site_description {
-    grid-area: description;
-    margin-top: -1rem;
+    margin-top: -3rem;
     text-align: right;
     font-size: .75rem;
     line-height: 1;
   }
 }
 
-
 .navbar {
-  padding: .5rem;
+  padding: .5rem 0;
   display: flex;
   align-items: baseline;
 
@@ -110,12 +95,6 @@
 .article_body p {
   font-size: 110%;
   line-height: 1.75;
-
-  // text justification and the web are not friends :'-(
-  // thread @ https://news.ycombinator.com/item?id=25033136
-  // text-align: justify;
-  // text-justify: inter-character; // currently only working on FF
-  // hyphens: auto;
 
   a {
     text-shadow: 0 0 0 var(--link-color);

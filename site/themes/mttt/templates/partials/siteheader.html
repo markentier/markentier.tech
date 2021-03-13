@@ -1,5 +1,6 @@
 <header class="siteheader">
-  <a href="/" rel="home" title="home" class="headlink">
+  {% set is_home = section and section.components | length == 0 %}
+  <a {% if is_home %}id="home"{% else %}href="/"{% endif %} rel="home" title="home" class="headlink">
     {#
       NOTE: ALWAYS KEEP IN SYNC WITH EXTERNAL FILE (markentier_tech.svg)
       + class="mtt_logo header_logo" on <svg>
