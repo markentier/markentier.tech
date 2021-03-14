@@ -22,20 +22,19 @@
 {% endif %}
 
 <!-- https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df -->
-<link rel="icon" href="/i/m.svg{{macros::cache_bust()}}" color="#063656">
-<link rel="mask-icon" href="/i/m.svg{{macros::cache_bust()}}" color="#063656">
-<link rel="apple-touch-icon" href="/i/m.180.png{{macros::cache_bust()}}">
-<meta name="theme-color" content="#efedec">
+{# [!] set color to stroke color of SVG; set theme color to the one specified by _root.scss #}
+<link rel="icon" href="{{config.extra.defaults.m_favicon_file}}{{macros::cache_bust()}}" color="#063656">
+<link rel="mask-icon" href="{{config.extra.defaults.m_mask_file}}{{macros::cache_bust()}}" color="#000000">
+<link rel="apple-touch-icon" href="{{config.extra.defaults.apple_image_file}}{{macros::cache_bust()}}">
+<meta name="theme-color" content="#c9ced3">
 <link rel="manifest" href="/manifest.webmanifest">
 
-{% if page.permalink %}
-<link rel="canonical" href="{{page.permalink | safe}}">
-<link rel="alternate" hreflang="x-default" href="{{page.permalink | safe}}" />
-<link rel="alternate" hreflang="en" href="{{page.permalink | safe}}" />
-{% elif current_url %}
-<link rel="canonical" href="{{current_url | safe}}">
-<link rel="alternate" hreflang="x-default" href="{{current_url | safe}}" />
-<link rel="alternate" hreflang="en" href="{{current_url | safe}}" />
+{% if current_url is defined or page.permalink is defined %}
+{% set url = page.permalink | default(value=current_url) | safe %}
+
+<link rel="canonical" href="{{url}}">
+<link rel="alternate" hreflang="x-default" href="{{url}}" />
+<link rel="alternate" hreflang="en" href="{{url}}" />
 {% endif %}
 
 {% if page.taxonomies.tags %}
@@ -69,7 +68,7 @@
     <meta name="description" content="{{page_description}} {{sep}} {{config.title}}">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="{{page.permalink | safe}}">
+    <meta name="twitter:url" content="{{url}}">
     <meta name="twitter:title" content="{{page.title}}">
     <meta name="twitter:description" content="{{page_description}}">
     <meta name="twitter:creator" content="{{config.extra.author_nick}}">
@@ -82,7 +81,7 @@
     <meta name="twitter:data2" content="{{page.taxonomies.categories | join(sep=', ')}}" />
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="{{page.permalink | safe}}">
+    <meta property="og:url" content="{{url}}">
     <meta property="og:title" content="{{page.title}}">
     <meta property="og:description" content="{{page_description}}">
     <meta property="og:image" content="{{page_image_url | safe}}">
@@ -140,7 +139,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{config.title}}" href="/feed.rss.xml">
 <link rel="alternate" type="application/feed+json" title="JSON Feed for {{config.title}}" href="/feed.json">
 
-<meta name="monetization" content="$ilp.uphold.com/zbWLUAUmExJ7">
+<meta name="monetization" content="{{config.extra.webmontetization_id}}">
 
 {#
   NOTES:
@@ -158,11 +157,11 @@
 
 {% if page and page.extra.additional_scripts %}
   {% for script_path in page.extra.additional_scripts %}
-  <script type=module src="{{script_path | safe }}"></script>
+  <script type=module src="{{ script_path | safe }}"></script>
   {% endfor %}
 {% endif %}
 {% if page and page.extra.additional_scripts_async %}
   {% for script_path in page.extra.additional_scripts_async %}
-  <script async type=module src="{{script_path | safe }}"></script>
+  <script async type=module src="{{ script_path | safe }}"></script>
   {% endfor %}
 {% endif %}

@@ -24,12 +24,12 @@
 {%- if page and page.extra.has_hero -%}
   {{- page.permalink}}/cover.png
 {%- else -%}
-  {{- config.base_url }}/{{ config.extra.image_url -}}
+  {{- config.base_url }}/{{ config.extra.defaults.cover_image_file -}}
 {%- endif -%}
 {%- endmacro %}
 
 {% macro get_final_cover_image_alt() -%}
-{{- page.extra.image_alt | default(value=config.extra.image_alt) | safe -}}
+{{- page.extra.image_alt | default(value=config.extra.defaults.image_alt_text) | safe -}}
 {%- endmacro %}
 
 {% macro preadtime(reading_time) %}

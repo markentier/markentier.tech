@@ -6,9 +6,9 @@
     <meta itemprop="description" content="{{config.description}}">
     <!-- AMP version of site logo for Google: -->
     <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-      <meta itemprop="url" content="{{config.base_url | safe}}/i/m.amp.png{{macros::cache_bust()}}">
+      <meta itemprop="url" content="{{config.base_url | safe}}{{config.extra.defaults.amp_image_file | safe}}{{macros::cache_bust()}}">
       <meta itemprop="height" content="60">
-      <meta itemprop="width" content="600">
+      <meta itemprop="width" content="234">
     </span>
   </a>
 </div>

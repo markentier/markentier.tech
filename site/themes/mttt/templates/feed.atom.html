@@ -6,9 +6,9 @@
   <link rel="self" type="application/atom+xml" href="{{config.base_url | safe}}/feed.atom.xml" />
   <link rel="alternate" type="text/html" href="{{config.base_url | safe}}" />
   <id>tag:{{config.extra.feed_id}},2005:{{config.extra.feed_id}}/feed.atom.xml</id>
-  <icon>{{config.base_url | safe}}/i/m.512.png{{macros::cache_bust()}}</icon>
-  <logo>{{config.base_url | safe}}/i/m.card.1024x512.png{{macros::cache_bust()}}</logo>
-  <rights>Copyright © 2018—2020, {{config.title}} / {{config.extra.author}}</rights>
+  <icon>{{config.base_url | safe}}{{config.extra.defaults.feed_icon_file | safe}}{{macros::cache_bust()}}</icon>
+  <logo>{{config.base_url | safe}}{{config.extra.defaults.feed_logo_file | safe}}{{macros::cache_bust()}}</logo>
+  <rights>Copyright © 2018—{{ now(utc=true) | date(format="%Y") }}, {{config.title}} / {{config.extra.author}}</rights>
   <author>
     <name>{{config.extra.author}}</name>
     {%- if config.extra.author_email %}

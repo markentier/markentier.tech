@@ -1,6 +1,7 @@
 title = "markentier.tech"
-description = "About people, tech, and code"
 base_url = "https://markentier.tech"
+
+description = "About people, tech, and code"
 
 theme = "mttt"
 compile_sass = true
@@ -23,12 +24,13 @@ render_emoji = true
 
 [extra]
 answer = 42
-site_base = "markentier.tech"
-publisher = "markentier.tech"
+
 author = "Christoph Grabo"
 author_nick = "@asaaki"
 site_nick = "@markentier_tech"
+
 feed_id = "markentier.tech"
+
 # default keywords
 keywords = [
   "code", "people", "humans", "software", "development",
@@ -36,6 +38,22 @@ keywords = [
   "rust", "programming",
   "unicorn", "tech",
 ]
+
 has_hero = false
-image_url = "m.card.1024x512.png"
 image_alt = "markentier.tech"
+
+webmontetization_id = "$ilp.uphold.com/zbWLUAUmExJ7"
+
+[extra.defaults]
+image_alt_text     = "markentier.tech"
+m_svg_file         = "/i/m.svg" # squared
+m_favicon_file     = "/i/m.favicon.svg" # squared
+m_mask_file        = "/i/m.svg" # squared
+cover_image_file   = "/i/mtt.cover.png" # 1200x600
+twitter_image_file = "/i/mtt.cover.png"
+og_image_file      = "/i/mtt.cover.png"
+feed_icon_file     = "/i/mtt.icon.png" # 512 squared
+feed_logo_file     = "/i/mtt.cover.png" # (1024x512 or) 1200x600
+amp_image_file     = "/i/mtt.amp.png" # 234x60
+apple_image_file   = "/i/mtt.apple.png" # 180 squared
+app_icon_file      = "/i/mtt.app.png" # 512 squared

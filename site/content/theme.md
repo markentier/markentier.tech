@@ -56,3 +56,19 @@ custom_css = """
   <div style="background:var(--transparent)"><span>--transparent</span></div>
 </div>
 <p></p>
+
+### logo
+
+#### standard
+
+[![m (reference logo file; SVG)](/i/m.svg)](/i/m.svg)
+
+#### favicon
+
+Should be able to adapt to dark mode.
+
+[![SVG favicon](/i/m.favicon.svg)](/i/m.favicon.svg)
+
+### site header
+
+[![SVG siteheader](/i/markentier_tech.svg)](/i/markentier_tech.svg)

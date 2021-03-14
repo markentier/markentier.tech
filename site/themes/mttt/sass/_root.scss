@@ -23,12 +23,14 @@
   --text-color: #2c2d2f; //
   --bg-color: #e9eff3;
 
+  --head-color: #063656; // main brand color; STROKE color
+  // check for tints for different use cases: https://coolors.co/063656
+  // dark mode stroke color: #c7e6fb
   --head-light-color: #336688;
-  --head-color: #063656; // main brand color
   --head-dark-color: #031c2c;
 
   // use it as theme color
-  --accent-color: #c9ced3;
+  --accent-color: #c9ced3; // THEME COLOR
   --accent-dark-color: #898e93;
   --accent-darker-color:  #595e63;
 

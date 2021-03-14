@@ -4,7 +4,7 @@
   "title": "{{config.title}}",
   "home_page_url": "{{config.base_url | safe}}",
   "feed_url": "{{config.base_url | safe}}/feed.json",
-  "icon": "{{config.base_url | safe}}/i/m.512.icon.png{{macros::cache_bust()}}",
+  "icon": "{{config.base_url | safe}}{{config.extra.defaults.feed_icon_file | safe}}{{macros::cache_bust()}}",
   "author": { "name": "{{config.extra.author}}" },
   "authors": [{ "name": "{{config.extra.author}}" }],
   "items": [{{ macros::feed_posts(sec = get_section(path="posts/_index.md"), feed="json", start=true) | replace(from=",END_MARKER", to="") | safe }}
