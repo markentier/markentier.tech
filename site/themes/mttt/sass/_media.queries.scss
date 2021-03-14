@@ -51,3 +51,18 @@
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 }
+
+// default: @media (prefers-color-scheme: light) { /* … */ }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #e9eff3;
+    --bg-color: #2c2d2f;
+    --head-color: #c7e6fb;
+    --head-dark-color: #336688;
+    --head-light-color: #031c2c;
+
+    --accent-color:  #595e63;
+    // same as light: --accent-dark-color: #898e93;
+    --accent-darker-color: #c9ced3; // THEME COLOR
+  }
+}

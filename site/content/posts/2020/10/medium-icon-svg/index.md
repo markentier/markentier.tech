@@ -15,6 +15,12 @@ custom_delimiter = "•••"
 custom_css = """
 .w50 { width: 50% }
 .box_center { margin: 0 auto; }
+
+@media (prefers-color-scheme: dark) {
+  main article svg circle,
+  main article svg ellipse,
+  main article svg path { fill: #fff; stroke: #fff; }
+}
 """
 
 [[extra.suggestions]]
