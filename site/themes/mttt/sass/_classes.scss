@@ -34,17 +34,18 @@
 .navbar {
   padding: .5rem 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
 
   a {
     display: block;
-    padding: 0 0 0 .5rem;
-    margin-left: .5rem;
-    border-left: 1px solid var(--accent-color);
+    margin: 0 1rem 1rem 0;
+    padding: .125rem 1rem .125rem 0;
+    border-right: 1px solid var(--accent-color);
     font-family: var(--system-fonts);
     text-decoration: none;
 
-    &:first-child { margin-left: 0; padding-left: 0; border: 0 }
+    &:last-child { border: 0 }
   }
 }
 
