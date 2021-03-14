@@ -32,8 +32,8 @@ ZOLA_VERSION ?= 0.13.0
 ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-$(PLATFORM).$(SUFFIX)
 ZOLA_PKG = $(ZOLA).$(SUFFIX)
 
-SITE_ROOT = site
-OUTPUT_DIR = public
+SITE_ROOT   ?= site
+OUTPUT_DIR  ?= public
 
 LOCAL_PROTO ?= https
 LOCAL_HOST  ?= markentier.test
@@ -69,9 +69,9 @@ JPG2PNG = $(JPGS:.jpg=.png)
 AVIFS = $(PNGS:.png=.avif)
 WEBPS = $(PNGS:.png=.webp)
 OPNGS = $(PNGS:%=OPTIMIZE_%)
-HTMLS = $(shell find $(OUTPUT_DIR) -type f -iname '*.html')
+HTMLS = $(shell [ -d "$(OUTPUT_DIR)" ] && find $(OUTPUT_DIR) -type f -iname '*.html')
 TOREF = $(HTMLS:%=TOREF_%)
-BOMABLES = $(shell find $(OUTPUT_DIR) -type f \( -iname '*.html' -o -iname '*.css' -o -iname '*.svg' -o -iname '*.json' -o -iname '*.js' -o -iname '*.xml' \) 2>/dev/null)
+BOMABLES = $(shell [ -d "$(OUTPUT_DIR)" ] && find $(OUTPUT_DIR) -type f \( -iname '*.html' -o -iname '*.css' -o -iname '*.svg' -o -iname '*.json' -o -iname '*.js' -o -iname '*.xml' \) 2>/dev/null)
 
 THUMB_SIZE = 320x160
 PNG_COLORS = 32
@@ -97,11 +97,13 @@ local.serve:
 
 local.prod:
 	time $(MAKE) local
+	@echo '<svg xmlns="http://www.w3.org/2000/svg"/>' >$(OUTPUT_DIR)/beacon.svg
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
 
 # when I need no TLS
 local.dev:
 	time $(MAKE) local LOCAL_HOST=localhost LOCAL_PROTO=http
+	@echo '<svg xmlns="http://www.w3.org/2000/svg"/>' >$(OUTPUT_DIR)/beacon.svg
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
 
 
@@ -139,7 +141,7 @@ build-feeds:
 		echo "No tidy installed."
 
 post-processing:
-	npm install
+	[ -d node_modules ] || npm install
 	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) npx gulp
 
 remove-bom: $(BOMABLES)
@@ -173,7 +175,7 @@ $(JPG2PNG): %.png: %.jpg
 	convert $< $@
 
 list-pngs:
-	@find site -iname '*.png' -exec wc -c {} \;
+	@find $(SITE_ROOT) -iname '*.png' -exec wc -c {} \;
 
 optimize-pngs:
 	$(MAKE) optimize-pngs-x -j $(shell expr $(shell nproc) / 2 + 1)
@@ -219,7 +221,7 @@ $(AVIFS): %.avif: %.png
 	@cavif --quality=66 --overwrite -o $@ $<
 
 list-avifs:
-	@find site -iname '*.avif' -exec wc -c {} \;
+	@find $(SITE_ROOT) -iname '*.avif' -exec wc -c {} \;
 
 delete-avifs:
 	rm -rf $(AVIFS)
@@ -233,7 +235,7 @@ $(WEBPS): %.webp: %.png
 	@cwebp -mt -pass 10 -z 9 -lossless -exact $< -o $@
 
 list-webps:
-	@find site -iname '*.webp' -exec wc -c {} \;
+	@find $(SITE_ROOT) -iname '*.webp' -exec wc -c {} \;
 
 delete-webps:
 	rm -rf $(WEBPS)
