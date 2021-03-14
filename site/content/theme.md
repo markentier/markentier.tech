@@ -29,6 +29,12 @@ custom_css = """
   font-size: .8rem;
   font-family: var(--code-font);
 }
+
+main article svg,
+main article img { fill: none; color: #063656; stroke: #063656; }
+@media (prefers-color-scheme: dark) {
+  main article svg,
+  main article img { color: #c7e6fb; stroke: #c7e6fb; } }
 """
 +++
 
