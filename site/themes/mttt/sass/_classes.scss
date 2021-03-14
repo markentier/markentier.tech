@@ -12,14 +12,14 @@
 }
 
 .headlink {
-  margin: 1rem 0 0 -2.2rem;
+  margin-top: 1rem;
 
   display: block;
   width: fit-content;
 
   text-decoration: none;
 
-  .logo { height: 7rem; }
+  .logo { width: calc(var(--content-width) / var(--golden-ratio)); }
 
   h1, .h1 { font-size: 0; margin: 0; }
 

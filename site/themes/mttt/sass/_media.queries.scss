@@ -11,9 +11,10 @@
   .wrppr { padding: 0 3ch; }
   .meta, .footer { font-size: 1rem; }
   .headlink {
-    margin-left: 0;
-    .logo { height: 5rem; }
+    margin-left: 0; width: 100%;
+    .logo { width: 100%; }
   }
+  .navbar { margin-left: 2.2rem; font-size: 1.5rem; }
   .meta .info .link { word-break: break-all; text-overflow: ellipsis; }
 }
 
@@ -22,7 +23,8 @@
   :root {
     --content-width: 27rem; // min-width / ref * 0.90
   }
-  .headlink { .logo { height: 5rem; } }
+
+  .headlink { margin-left: -1.5rem; }
 }
 
 // @mixin for-tablet-landscape-up
@@ -30,7 +32,7 @@
   :root {
     --content-width: 38rem; // (less than) min-width / ref * 0.85
   }
-  .headlink { .logo { height: 6rem; } }
+  .headlink { margin-left: -2.2rem; }
 }
 
 // @mixin for-desktop-up
@@ -39,6 +41,7 @@
     --ref-size: 24px;
     --content-width: 40rem; // min-width / ref * 0.80
   }
+  .headlink { margin-left: -2.3rem; }
 }
 
 // @mixin for-big-desktop-up
@@ -47,6 +50,7 @@
     --ref-size: 28px;
     --content-width: 45rem; // min-width / ref * 0.70
   }
+  .headlink { margin-left: -2.6rem; }
 }
 
 // features
