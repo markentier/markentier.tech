@@ -30,6 +30,7 @@
   :root {
     --content-width: 38rem; // (less than) min-width / ref * 0.85
   }
+  .headlink { .logo { height: 6rem; } }
 }
 
 // @mixin for-desktop-up
@@ -65,5 +66,7 @@
     --accent-color:  #595e63;
     // same as light: --accent-dark-color: #898e93;
     --accent-darker-color: #c9ced3; // THEME COLOR
+
+    --link-hl-color: #fbdcc7;
   }
 }
