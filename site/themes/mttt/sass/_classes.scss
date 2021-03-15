@@ -65,7 +65,7 @@
     .title {
       grid-area: title;
       display: inline-block;
-      position:relative;
+      position: relative;
       margin: 0;
       overflow: hidden;
       font-size: 1.25rem;
@@ -78,7 +78,7 @@
         content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
         ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
         ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
-        text-overflow: clip;
+        // text-overflow: clip;
         text-align: right;
         font-size: 1rem;
         opacity: .42;
