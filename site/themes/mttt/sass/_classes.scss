@@ -210,3 +210,41 @@
 // .left { text-align: left; text-align: start; }
 .right { text-align: right; text-align: end; }
 // .justify { text-align: justify; }
+
+.box {
+  margin: 0 -1rem 1rem -1rem;
+  padding: 1rem 4rem 1rem 1rem;
+  background: var(--accent-color);
+  border: 1px solid var(--accent-dark-color);
+  border-radius: .5em;
+  position: relative;
+
+  &.html::after {
+    display: block;
+    position: absolute;
+    top: 1ch; right: -3.5ch;
+    font-size: 1.5rem;
+    font-family: var(--system-fonts-monospace);
+    transform: rotate(90deg);
+    transform-origin: top left;
+    color: var(--accent-dark-color);
+    content: "HTML";
+  }
+}
+
+// .footnote-reference { a { } }
+.footnote-definition {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: baseline;
+  gap: .5rem;
+
+  border-top: 1px dotted var(--accent-dark-color);
+  margin-top: 3rem;
+
+  & ~ & { border-top: 0; margin: 0; }
+
+  & > * { grid-column: 2 / 3;}
+
+  .footnote-definition-label { grid-column: 1; font-weight: bold; }
+}
