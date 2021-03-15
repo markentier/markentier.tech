@@ -97,13 +97,11 @@ local.serve:
 
 local.prod:
 	time $(MAKE) local
-	@echo '<svg xmlns="http://www.w3.org/2000/svg"/>' >$(OUTPUT_DIR)/beacon.svg
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
 
 # when I need no TLS
 local.dev:
 	time $(MAKE) local LOCAL_HOST=localhost LOCAL_PROTO=http
-	@echo '<svg xmlns="http://www.w3.org/2000/svg"/>' >$(OUTPUT_DIR)/beacon.svg
 	microserver -p $(LOCAL_PORT) $(OUTPUT_DIR)
 
 
