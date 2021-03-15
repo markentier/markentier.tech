@@ -1,4 +1,3 @@
-const url = require('url');
 const path = require('path');
 const http = require('http');
 const https = require('https');
@@ -100,10 +99,10 @@ function translatePath(
     imgPath,
     isQuestionMarkAsVersion
 ) {
-    const img = url.parse(imgPath);
-    const imgBase = imgBaseUrl && url.parse(imgBaseUrl);
+    const img = new URL(imgPath, 'https://_');
+    const imgBase = imgBaseUrl && new URL(imgBaseUrl);
 
-    if (img.host) {
+    if (img.host !== '_') {
         if (imgBase && img.host === imgBase.host) {
             const imgAbsolutePath = path.join(projectRoot, img.pathname);
             return normalizePath(path.resolve(imgAbsolutePath));
@@ -116,7 +115,7 @@ function translatePath(
     let imgAbsolutePath = path.join(projectRoot, imgProjectPath);
 
     if (isQuestionMarkAsVersion) {
-        // Translat dir/file.jpg?v=.. → dir/file.jpg
+        // Translate dir/file.jpg?v=.. → dir/file.jpg
         imgAbsolutePath = imgAbsolutePath.replace(/\?[^/]*/, '');
     }
 
@@ -124,9 +123,9 @@ function translatePath(
 }
 
 function getImageDimensions(imgPath) {
-    const img = url.parse(imgPath);
+    const img = new URL(imgPath, "https://_");
 
-    if (!img.host) {
+    if (img.host === '_') {
         return new Promise((resolve, reject) => {
             imageSize(imgPath, (err, dimensions) => {
                 if (err) {

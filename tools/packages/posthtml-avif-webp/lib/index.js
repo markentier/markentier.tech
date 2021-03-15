@@ -2,21 +2,14 @@
 
 const fs = require("fs");
 const path = require("path");
-const url = require("url");
 
 const posthtmlAvifWebp = (options) => {
   options = options || {};
   options.root = options.root || ".";
 
+  const imgBaseUrl = process.env.IMG_BASE_URL;
+
   return (tree) => {
-    let baseHref;
-
-    // we always have a <base> tag
-    tree.match({ tag: "base" }, (node) => {
-      baseHref = node.attrs.href;
-      return node
-    })
-
     tree.match({ tag: "img" }, (node) => {
       // prevents infinite recursion
       if (node.skip) return node;
@@ -60,7 +53,7 @@ const posthtmlAvifWebp = (options) => {
         return pictureNode;
       }
 
-      const imgUrl = parseUrlLike(nodeSrc, baseHref);
+      const imgUrl = parseUrlLike(nodeSrc, imgBaseUrl);
       const filePath = path.parse(imgUrl.pathname);
       const fileBase = path.join(filePath.dir, filePath.name);
 
@@ -101,9 +94,9 @@ const posthtmlAvifWebp = (options) => {
 // does not work for site external images!
 const parseUrlLike = (input, baseHref) => {
   if (input.startsWith(baseHref)) {
-    return url.parse(input);
+    return new URL(input);
   } else {
-    return url.parse(path.join(baseHref), input);
+    return new URL(path.join(baseHref, input));
   }
 };
 

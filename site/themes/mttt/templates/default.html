@@ -7,9 +7,6 @@
   {% set sep = config.extra.title_sep | default(value="🞳") %}
   <title>{% block title %}{{config.title}}{% endblock title %} {{sep}} {{config.title}}</title>
 
-  {% set needs_slash = macros::is_devmode() == "true" %}
-  <base href="{{config.base_url | safe}}{%if needs_slash%}/{%endif%}">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   {% include "partials/head.html" %}
