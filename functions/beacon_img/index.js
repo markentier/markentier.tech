@@ -1,6 +1,7 @@
 // PUBLIC PATH: /.netlify/functions/beacon_img OR /beacon.svg
 
-const BEACON_SVG = '<svg xmlns="http://www.w3.org/2000/svg"/>';
+const BEACON_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" />';
 
 exports.handler = async (event, _context) => {
   const qs = event.queryStringParameters || {};

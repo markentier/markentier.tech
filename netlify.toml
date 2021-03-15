@@ -174,7 +174,7 @@ Content-Type = "application/manifest+json; charset=utf8"
 from = "/beacon.svg"
 to = "/.netlify/functions/beacon_img"
 status = 200
-force = true
+force = true # needed, since we do have a file there
 
 [[redirects]]
 from = "/posts/2018/03/from-cobalt-to-gutenberg/"
