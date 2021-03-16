@@ -308,23 +308,25 @@ The answer is to use `overflow` as well as some good portion of `position` usage
 _The rule `position: absolute` usually sounds scary and in most cases works the way that it will then position the element absolute to the page. But this is actually not the full truth.
 If you have an ancestor with a position of relative or absolute, then this closest container will become the reference for absolute positioning. This is a neat trick to move around a child in a parent div with the usual top/bottom and left/right properties instead of awkward padding and margin shuffling._
 
-For the left-to-right text scenario our positioning rules can be interpreted as »oh, look there is some room until the end of the container (right side of the last line of text) , so write the ::after content there, but cut off everything which does not fit« … exactly what we need here.
+For the left-to-right text scenario our positioning rules can be interpreted as »oh, look there is some room until the end of the container (right side of the last line of text) , so write the `::after` content there, but cut off everything which does not fit« … exactly what we need here.
 
-```yaml
- |<--               max available width                -->|
- ┌────────────────────────────────────────────────────────┐
- │ ┌───────────────────────────────────────────────────── │
- │ │ The first line of my very very verrrry long chapter  │
- │ └───────────────────────────────────────────────────── │
- │ ──────────────────┐ ┌────────────────────────────────┐ │
- │   title overflows │ │ free space for the dot leaders │ │
- │ ──────────────────┘ └────────────────────────────────┘ │
- └────────────────────────────────────────────────────────┘
+```asciiart
+  | <--               max available width              --> |   .page
+  ┌─[ .chapter ]────────────────────────────────────────────┐ ┌─────┐
+  │ ┌─[ text ]───────────────────────────────────────────── │ │     │
+  │ │ "The first line of my very very verrrrry long chapter │ │     │
+  │ └────────────────────────────────────────────────────── │ │     │
+  │ ──────────────────┐ ┌─[ .chapter::after ]───────────────┐ │     │
+  │  title overflows" │ │ free space for the dot leaders    │ │ 123 │
+  │ ──────────────────┘ │ (overflow limits to .chapter box) │ │     │
+  └─────────────────────┊───────────────────────────────────┊ └─────┘
+                        ┊       »invisible dots land«       ┊
+                        └┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┘
 ```
 
 Now we have all the pieces for a responsive leaders layout.
 
-Without further ado all the parts together in the …
+Without further ado everything together in the …
 
 ### Final result
 
