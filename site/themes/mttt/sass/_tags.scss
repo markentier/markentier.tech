@@ -40,7 +40,7 @@ a, a:link, a:visited {
   color: var(--link-color);
 }
 
-a:hover, a:focus, svg:hover {
+a:hover, a:focus, a:hover svg path {
   color: var(--link-hl-color);
   stroke: var(--link-hl-color);
 }

@@ -6,11 +6,6 @@
 
 .siteheader { margin-bottom: 2rem; }
 
-.logo {
-  color: var(--head-color);
-  stroke: var(--head-color);
-}
-
 .headlink {
   margin-top: 1rem;
 
@@ -19,7 +14,15 @@
 
   text-decoration: none;
 
-  .logo { width: calc(var(--content-width) / var(--golden-ratio)); }
+  svg {
+    width: calc(var(--content-width) / var(--golden-ratio));
+
+    path {
+      stroke: var(--head-color);
+      color: var(--head-color);
+      stroke-width: 600;
+    }
+  }
 
   :is(h1, .h1) { font-size: 0; margin: 0; }
 
