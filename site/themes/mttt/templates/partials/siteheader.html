@@ -1,6 +1,11 @@
 <header class="siteheader">
   {% set is_home = section and section.components | length == 0 %}
-  <a {% if is_home %}id="home"{% else %}href="/"{% endif %} rel="home" title="home" class="headlink">
+  {% if is_home %}
+    {% set elem = "div" %}
+  {% else %}
+    {% set elem = "a" %}
+  {% endif %}
+  <{{elem}} class="headlink"{% if not is_home %} href="/" rel="home" title="home"{% endif %}>
     {#
       NOTE: ALWAYS KEEP IN SYNC WITH EXTERNAL FILE (markentier_tech.svg)
       + class="mtt_logo header_logo" on <svg>
@@ -23,5 +28,5 @@
       <div class="h1">{{config.title}}</div>
     {% endif %}
     <p class="site_description">{{config.description}}</p>
-  </a>
+  </{{elem}}>
 </header>
