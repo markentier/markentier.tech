@@ -143,9 +143,9 @@ Maybe one day we get a specialized _table of contents_ layout into CSS as well â
 </div>
 ```
 
-But since we do not have that (yet), let's build our own contents page with a flexible layout.
+<small>[Update 2021-03-16]: There is a CSS3 draft spec including leaders[^leaders], but since March 2011 (so even 10 years later) no further development happened to get actual support into browsers. The draft proposes `content: leader(dotted)`, which would avoid the long and hardcoded string, but a lot of the following solution would be more or less identical, unless further proposals would also land. [(source)][w3-leaders]</small>
 
-_[Update 2021-03-16]: There is a CSS3 draft spec including leaders[^leaders], but since March 2011 (10 years later) no further development happened to get actual support into browsers. [(source)][w3-leaders]_
+But since we do not have that (yet â€¦ ever?), let's build our own contents page with a flexible layout.
 
 _Some more or less usable results can be found in this [StackOverflow question], but I believe the following solution is the most modern and condensed version. I'm stil very grateful for all the prior work done by the responders there and elsewhere in the internet._
 
@@ -384,6 +384,26 @@ A live example can be seen [here][page], and the code is also in [this repo][rep
 }
 .final-page {
   grid-area: page;
+}
+```
+
+##### Bonus: Sassy functions (scss)
+
+Don't want to type the long content string yourself and you use sass for your project?
+
+```scss
+@function repeat($char, $times) {
+  $content: "";
+
+  @for $i from 1 through $times {
+    $ccontent: $ccontent + $char;
+  }
+  @return $ccontent;
+}
+
+.chapter::after {
+  /* ... */
+  content: repeat(" .", 80);
 }
 ```
 
