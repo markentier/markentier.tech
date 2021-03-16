@@ -145,6 +145,8 @@ Maybe one day we get a specialized _table of contents_ layout into CSS as well �
 
 But since we do not have that (yet), let's build our own contents page with a flexible layout.
 
+_[Update 2021-03-16]: There is a CSS3 draft spec including leaders[^leaders], but since March 2011 (10 years later) no further development happened to get actual support into browsers. [(source)][w3-leaders]_
+
 _Some more or less usable results can be found in this [StackOverflow question], but I believe the following solution is the most modern and condensed version. I'm stil very grateful for all the prior work done by the responders there and elsewhere in the internet._
 
 
@@ -420,12 +422,16 @@ Happy table of contenting! 📖
 
 [^mcols]: [MDN: CSS Multi-column Layout][multi-columns]
 
+[^leaders]: [W3: CSS Generated Content for Paged Media Module / 4 Leaders][css3-leaders]
+
 [^old]: In fact I am so old that I do remember the time when even CSS was not a thing. `<table>`s where our main tool for layouts, `<font>` and `<center>` our design spice … let's `<marquee>` roll some text again, shall we? `</marquee>`
 
 <!-- links -->
 [flexbox]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout
 [grid]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 [multi-columns]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns
+[css3-leaders]: https://www.w3.org/TR/css-gcpm-3/#leaders
+[w3-leaders]: https://www.w3.org/Style/Examples/007/leaders.en.html#leaders3
 [StackOverflow question]: https://stackoverflow.com/questions/2508732/create-leading-dots-in-css
 [grid-area]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area
 [repo]: https://github.com/asaaki/responsive-toc-leaders-in-css

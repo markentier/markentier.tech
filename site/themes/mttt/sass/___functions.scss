@@ -1,0 +1,10 @@
+// @import "../__functions";
+
+@function repeat($char, $times){
+  $c: "";
+
+  @for $i from 1 through $times {
+    $c: $c + $char;
+  }
+  @return $c;
+}
