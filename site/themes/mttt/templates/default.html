@@ -20,7 +20,7 @@
   {% endif %}
 
   {% if current_path is defined %}{% set u = current_path %}{% else %}{% set u = "/404" %}{% endif %}
-  <img class="beacon first-beacon" data-skip-transform loading="lazy" src="/beacon.svg?u={{u}}" alt="(beacon)">
+  <img class="beacon first-beacon" data-skip-transform loading="lazy" src="/beacon.svg?u={{u}}" width="0" height="0" alt="(beacon)">
 
   {% block after_body_open %}{% endblock after_body_open %}
 
