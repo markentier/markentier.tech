@@ -166,6 +166,7 @@ cross-origin-resource-policy = "cross-origin"
 for = "/*.webmanifest"
 [headers.values]
 Content-Type = "application/manifest+json; charset=utf8"
+Cache-Control = "public, max-age=2592000"
 
 # REDIRECTS
 ## https://docs.netlify.com/routing/redirects/
