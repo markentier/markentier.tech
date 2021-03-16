@@ -311,7 +311,7 @@ If you have an ancestor with a position of relative or absolute, then this close
 For the left-to-right text scenario our positioning rules can be interpreted as »oh, look there is some room until the end of the container (right side of the last line of text) , so write the `::after` content there, but cut off everything which does not fit« … exactly what we need here.
 
 ```asciiart
-  | <--               max available width              --> |   .page
+  | <--                max available width              --> | .page ↴
   ┌─[ .chapter ]────────────────────────────────────────────┐ ┌─────┐
   │ ┌─[ text ]───────────────────────────────────────────── │ │     │
   │ │ "The first line of my very very verrrrry long chapter │ │     │
