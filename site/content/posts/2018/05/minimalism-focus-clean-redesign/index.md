@@ -13,6 +13,9 @@ has_hero = true
 image_alt = "Some coffee, code, and creativity as well as bravery for cutting and chopping — redesign cycles"
 
 [[extra.suggestions]]
+text = "Have a table of contents and want some responsive dot leaders?"
+link = "/posts/2021/03/responsive-toc-leader-lines-with-css/"
+[[extra.suggestions]]
 text = "Refactoring JavaScript on this site also removed some SVGs"
 link = "/posts/2020/10/wrote-javascript-to-avoid-javascript/"
 [[extra.suggestions]]

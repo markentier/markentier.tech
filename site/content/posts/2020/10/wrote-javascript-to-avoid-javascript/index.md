@@ -27,6 +27,9 @@ custom_css = """
 """
 
 [[extra.suggestions]]
+text = "Have a table of contents and want some responsive dot leaders?"
+link = "/posts/2021/03/responsive-toc-leader-lines-with-css/"
+[[extra.suggestions]]
 text = "Medium's new logo is an odd vector graphic — and I made it smaller"
 link = "/posts/2020/10/medium-icon-svg/"
 [[extra.suggestions]]

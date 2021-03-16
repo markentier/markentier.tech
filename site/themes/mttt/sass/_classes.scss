@@ -213,24 +213,36 @@
 
 .box {
   margin: 0 -1rem 1rem -1rem;
-  padding: 1rem 4rem 1rem 1rem;
+  padding: 1rem;
   background: var(--accent-color);
   border: 1px solid var(--accent-dark-color);
   border-radius: .5em;
   position: relative;
 
-  &.html::after {
-    display: block;
-    position: absolute;
-    top: 1ch; right: -3.5ch;
-    font-size: 1.5rem;
-    font-family: var(--system-fonts-monospace);
-    transform: rotate(90deg);
-    transform-origin: top left;
-    color: var(--accent-dark-color);
-    content: "HTML";
+  &.html{
+    padding-right: 4rem;
+
+    &::after {
+      display: block;
+      position: absolute;
+      top: 1ch; right: -10.5ch;
+      font-size: 1.5rem;
+      font-family: var(--system-fonts-monospace);
+      transform: rotate(90deg);
+      transform-origin: top left;
+      color: var(--accent-dark-color);
+      content: "HTML Output";
+    }
   }
 }
+
+.hresize {
+  overflow: auto;
+  resize: horizontal;
+
+  &.box { border-bottom-right-radius: 0; }
+}
+// .vresize { overflow: auto; resize: vertical; }
 
 // .footnote-reference { a { } }
 .footnote-definition {
