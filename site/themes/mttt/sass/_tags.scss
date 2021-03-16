@@ -85,10 +85,7 @@ h1, h2, h3, h4, .h1 {
   font-weight: bold;
   color: var(--head-color);
   scroll-margin-top: 1rem;
-
-  .article_body & { line-height: 1.25; }
 }
-
 
 hr {
   height: 0;
@@ -121,7 +118,7 @@ pre {
   white-space: pre-wrap;
   overflow-x: auto;
 
-  &>code {
+  & > code {
     font-size: .8rem;
   }
 
@@ -163,3 +160,8 @@ table {
   border-color: inherit;
   width: 100%;
 }
+
+// requires elements to have width and height defined:
+// img, input[type="image"], video, embed, iframe, marquee, object, table {
+//   aspect-ratio: attr(width) / attr(height);
+// }

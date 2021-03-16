@@ -21,7 +21,7 @@
 
   .logo { width: calc(var(--content-width) / var(--golden-ratio)); }
 
-  h1, .h1 { font-size: 0; margin: 0; }
+  :is(h1, .h1) { font-size: 0; margin: 0; }
 
   .site_description {
     margin-top: -3rem;
@@ -90,20 +90,24 @@
   footer { display: none; }
 }
 
-.article_body p {
-  font-size: 110%;
-  line-height: 1.75;
+.article_body {
+  :is(h1, h2, h3, h4, .h1) {
+    line-height: 1.25;
+  }
 
-  a {
-    text-shadow: 0 0 0 var(--link-color);
+  p {
+    font-size: 110%;
+    line-height: 1.75;
 
-    &:hover, &:focus {
-      text-shadow: 0 0 0 var(--link-hl-color);
+    a {
+      text-shadow: 0 0 0 var(--link-color);
+
+      &:hover, &:focus {
+        text-shadow: 0 0 0 var(--link-hl-color);
+      }
     }
   }
-}
 
-.article_body {
   & > p:first-of-type {
     font-style: italic;
     filter: brightness(1.5);
