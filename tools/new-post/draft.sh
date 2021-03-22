@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -eou pipefail
 
 POST_TEMPLATE="tools/new-post/post.template.md"
 
@@ -11,8 +11,8 @@ echo -n "Title: "; read NEW_TITLE
 NEW_TITLE_SLUG=$(
   echo "${NEW_TITLE}" | \
   iconv -t ascii//TRANSLIT | \
-  sed -r s/[^a-zA-Z0-9]+/-/g | \
-  sed -r s/^-+\|-+$//g | \
+  sed -r -e "s|[^a-zA-Z0-9]+|-|g" | \
+  sed -r -e "s|^-+\|-+$||g" | \
   tr A-Z a-z
 )
 
@@ -24,7 +24,7 @@ POST_PATH_MD="${POST_PATH_DIR}/index.md"
 mkdir -p ${POST_PATH_DIR}
 
 cat ${POST_TEMPLATE} | \
-  sed "s/\%\%title\%\%/${NEW_TITLE}/g" | \
-  sed "s/\%\%date\%\%/${DATE_TAG}/g" > ${POST_PATH_MD}
+  sed -r -e "s|\%\%title\%\%|${NEW_TITLE}|g" | \
+  sed -r -e "s|\%\%date\%\%|${DATE_TAG}|g" > ${POST_PATH_MD}
 
 echo "${POST_PATH_MD} created. Go ahead and write something awesome!"
