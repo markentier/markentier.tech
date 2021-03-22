@@ -3,7 +3,7 @@ title = "Responsive TOC leader lines with CSS"
 date = 2021-03-15
 
 [taxonomies]
-tags = ["table of contents", "leaders", "leader line", "dotted line", "dot leaders", "responsive", "CSS", "dots",  "TOC", "index", "page", "layout", "design", "style", "letterpress", "book", "guide"]
+tags = ["table of contents", "leaders", "leader line", "dotted line", "dot leaders", "responsive", "CSS", "dots",  "TOC", "index (page)", "page", "layout", "design", "style", "letterpress", "book", "guide"]
 categories = ["default"]
 
 [extra]
