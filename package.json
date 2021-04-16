@@ -2,23 +2,8 @@
   "name": "markentier.tech",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "start:lambda": "netlify-lambda serve ./functions",
-    "build:lambda": "netlify-lambda build ./functions"
-  },
-  "proxy": {
-    "/functions": {
-      "target": "http://localhost:9000",
-      "pathRewrite": {
-        "^/\\functions": ""
-      }
-    }
-  },
-  "dependencies": {
-    "netlify-lambda": "^2.0.3"
-  },
   "devDependencies": {
-    "cssnano": "*",
+    "cssnano": "^5.0.1",
     "gulp": "^4.0",
     "gulp-cli": "*",
     "gulp-htmlmin": "*",
@@ -27,8 +12,8 @@
     "gulp-minify": "*",
     "gulp-postcss": "*",
     "gulp-posthtml": "*",
-    "htmlnano": "*",
-    "postcss": "*",
+    "htmlnano": "^0.2.9",
+    "postcss": "^8.2.10",
     "posthtml-align-style": "file:./tools/packages/posthtml-align-style",
     "posthtml-alt-always": "*",
     "posthtml-avif-webp": "file:./tools/packages/posthtml-avif-webp",
