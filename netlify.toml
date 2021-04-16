@@ -59,7 +59,8 @@ NEL = """{"report_to":"default","max_age":10886400}"""
 
 report-to = """{"group":"default","max_age":31536000,"endpoints":[{"url":"https://markentiertech.report-uri.com/a/d/g"}],"include_subdomains":true}"""
 
-permissions-policy = "accelerometer=(), autoplay=(), camera=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(), usb=(), xr-spatial-tracking=()"
+# opt out of »Federated Learning of Cohorts (aka "FLoC")« - https://amifloced.org/
+permissions-policy = "interest-cohort=(), accelerometer=(), autoplay=(), camera=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(), usb=(), xr-spatial-tracking=()"
 referrer-policy = "strict-origin-when-cross-origin"
 expect-ct = "max-age=0, report-uri=\"https://markentiertech.report-uri.com/r/d/ct/enforce\""
 
