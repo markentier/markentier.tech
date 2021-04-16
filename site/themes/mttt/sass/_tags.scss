@@ -55,7 +55,11 @@ blockquote {
   // color: var(--accent-darker-color);
 }
 
-code, pre, kbd, samp { font-family: var(--system-fonts-monospace); }
+code, pre, kbd, samp {
+  font-family: var(--system-fonts-monospace);
+  font-style: normal;
+  text-decoration: none;
+}
 
 del, s, strike { text-decoration: wavy line-through var(--link-hl-color); }
 
@@ -67,7 +71,7 @@ figcaption {
   visibility: hidden;
 }
 
-figcaption, pre { background: var(--accent-color); }
+figcaption, pre, kbd, samp { background: var(--accent-color); }
 
 figure:hover figcaption { visibility: visible; }
 
@@ -105,6 +109,14 @@ img, video {
   max-width: calc(100% + 2rem);
   width: var(--content-width);
   height: auto;
+}
+
+kbd, samp {
+  margin: -.15rem 0;
+  padding: .15rem;
+  border-radius: .25em;
+  border: 1px solid var(--accent-dark-color);
+  // background: var(--accent-color);
 }
 
 nav { margin-bottom: 2rem; }
@@ -157,8 +169,17 @@ summary { display: list-item; }
 
 table {
   text-indent: 0;
-  border-color: inherit;
   width: 100%;
+
+  &, th, td {
+    border: 1px solid var(--accent-color);
+    border-collapse: collapse;
+  }
+
+  th, td {
+    vertical-align: top;
+    padding: 0 .25rem;
+  }
 }
 
 // requires elements to have width and height defined:

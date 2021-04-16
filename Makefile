@@ -33,6 +33,7 @@ ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VER
 ZOLA_PKG = $(ZOLA).$(SUFFIX)
 
 SITE_ROOT   ?= site
+CONTENT_ROOT = $(SITE_ROOT)/content
 OUTPUT_DIR  ?= public
 
 LOCAL_PROTO ?= https
@@ -60,11 +61,11 @@ TIDY_XML_SETTINGS = -q -m -w 0 -i -utf8 -xml \
 										--indent-spaces 2 \
 										--tab-size 2
 
-COVERS = $(shell find $(SITE_ROOT) -iname 'cover.png')
+COVERS = $(shell find $(CONTENT_ROOT) -iname 'cover.png')
 THUMBS = $(COVERS:cover.png=thumb.png)
 ALL_THUMBS = $(shell find $(SITE_ROOT) -iname 'thumb.*')
-PNGS = $(shell find $(SITE_ROOT) -iname '*.png')
-JPGS = $(shell find $(SITE_ROOT) -iname '*.jpg')
+PNGS = $(shell find $(CONTENT_ROOT) -iname '*.png')
+JPGS = $(shell find $(CONTENT_ROOT) -iname '*.jpg')
 JPG2PNG = $(JPGS:.jpg=.png)
 AVIFS = $(PNGS:.png=.avif)
 WEBPS = $(PNGS:.png=.webp)
