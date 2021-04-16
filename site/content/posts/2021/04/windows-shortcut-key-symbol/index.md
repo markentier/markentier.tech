@@ -1,5 +1,5 @@
 +++
-title = "[Tiny Bits] Windows shortcut key symbol"
+title = "[Tiny Bits] Windows shortcut key symbol ⊞"
 date = 2021-04-16
 
 [taxonomies]
