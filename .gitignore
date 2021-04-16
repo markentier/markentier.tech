@@ -10,3 +10,6 @@ npm-debug.log*
 public
 tools/certs
 zola*
+
+# temporary not checked in yet
+.assets
