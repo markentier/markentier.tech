@@ -128,6 +128,10 @@
 }
 
 .hentry {
+  word-wrap: break-word; // dunno, if that even has an effect :shrug:
+  overflow-wrap: break-word; // dunno, if that even has an effect :shrug:
+  word-break: break-word;
+
   .post_title {
     font-family: var(--system-fonts-serif);
     width: 105%;
@@ -169,7 +173,7 @@
 .meta {
   margin-top: 2rem;
   font-size: .85rem;
-  word-wrap: break-word;
+  // word-wrap: break-word;
 
   .info {
     display: grid;
