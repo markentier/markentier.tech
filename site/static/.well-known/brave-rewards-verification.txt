@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: markentier.tech
+Token: eb561cf65ab43804b12f8c72f7f674a7d93a9edecade7bdf4f9f91e9025cc8f0
