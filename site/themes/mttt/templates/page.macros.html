@@ -24,7 +24,11 @@
   {% endif %}
 
   {% if page.extra.has_hero is defined and page.extra.has_hero %}
+  {% if page.extra.hero_jpg is defined and page.extra.hero_jpg %}
+  {% set page_image_url = m::get_cover_image_jpg_url(url=page.permalink) %}
+  {% else %}
   {% set page_image_url = m::get_cover_image_url(url=page.permalink) %}
+  {% endif %}
   {% set page_image_webp_url = m::get_cover_image_webp_url(url=page.permalink) %}
   {% set page_image_avif_url = m::get_cover_image_avif_url(url=page.permalink) %}
   {% set page_image_alt = m::get_final_cover_image_alt() %}
