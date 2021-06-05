@@ -12,6 +12,7 @@ menu_items = """
 ## author
 
 * name: **christoph** (or **chris** for short)
+* pronouns: he/him/his or they/them/theirs
 * webnick: **asaaki** (or if unavailable also **markentier**)
 * github: <https://github.com/asaaki>
 * twitter: <https://twitter.com/asaaki>
