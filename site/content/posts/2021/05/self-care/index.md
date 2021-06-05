@@ -8,6 +8,7 @@ categories = ["default"]
 
 [extra]
 has_hero = true
+hero_jpg = true
 image_alt = "Always take care of yourself first! #selfcare"
 custom_delimiter = "· · 💙 · ·"
 +++

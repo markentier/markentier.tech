@@ -8,6 +8,7 @@ categories = ["default"]
 
 [extra]
 has_hero = true
+hero_jpg = true
 image_alt = "Do you also enjoy working with that incredible tool called whiteboard?"
 +++
 
