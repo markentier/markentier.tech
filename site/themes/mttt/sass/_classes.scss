@@ -253,9 +253,13 @@
 // .vresize { overflow: auto; resize: vertical; }
 
 // .footnote-reference { a { } }
+.footnote-reference + .footnote-reference {
+  padding-left: 0.25ch;
+}
+
 .footnote-definition {
   display: grid;
-  grid-template-columns: min-content auto;
+  grid-template-columns: 3ch auto;
   align-items: baseline;
   gap: .5rem;
 
@@ -266,5 +270,9 @@
 
   & > * { grid-column: 2 / 3;}
 
-  .footnote-definition-label { grid-column: 1; font-weight: bold; }
+  .footnote-definition-label {
+    grid-column: 1;
+    font-weight: bold;
+    text-align: right;
+  }
 }
