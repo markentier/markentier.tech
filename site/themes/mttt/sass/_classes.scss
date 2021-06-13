@@ -252,9 +252,9 @@
 }
 // .vresize { overflow: auto; resize: vertical; }
 
-// .footnote-reference { a { } }
-.footnote-reference + .footnote-reference {
-  padding-left: 0.25ch;
+.footnote-reference {
+  & + & { padding-left: 0.25ch; }
+  // a { }
 }
 
 .footnote-definition {
