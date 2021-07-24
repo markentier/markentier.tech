@@ -21,7 +21,7 @@ custom_css = """
 text = "Rust can run everywhere, even serverless with AWS Lambda, even far away on the edge"
 link = "/posts/2021/01/rust-wasm-on-aws-lambda-edge/"
 [[extra.suggestions]]
-text = "[Fun] Rust is the the most loved language for quite some time"
+text = "[Fun] Rust is the most loved language for quite some time"
 link = "/posts/2021/01/rust-most-popular-language/"
 [[extra.suggestions]]
 text = "Static site generators written in Rust are cool"

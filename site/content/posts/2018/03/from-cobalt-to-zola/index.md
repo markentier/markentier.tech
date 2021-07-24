@@ -11,7 +11,7 @@ has_hero = true
 image_alt = "Why I moved to zola, a static site generator written in Rust"
 
 [[extra.suggestions]]
-text = "[Fun] Rust is the the most loved language for quite some time"
+text = "[Fun] Rust is the most loved language for quite some time"
 link = "/posts/2021/01/rust-most-popular-language/"
 [[extra.suggestions]]
 text = "What I want to see from Rust in 2021"

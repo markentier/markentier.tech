@@ -18,7 +18,7 @@ link = "/posts/2020/10/rust-2021/"
 text = "Static site generators written in Rust are cool"
 link = "/posts/2018/03/from-cobalt-to-zola/"
 [[extra.suggestions]]
-text = "[Fun] Rust is the the most loved language for quite some time"
+text = "[Fun] Rust is the most loved language for quite some time"
 link = "/posts/2021/01/rust-most-popular-language/"
 +++
 
