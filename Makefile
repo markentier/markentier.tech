@@ -54,7 +54,7 @@ SERVE_CMD = $(ZOLA) serve \
 							--interface $(LOCAL_BIND) --port $(LOCAL_PORT) \
 							--output-dir ../$(OUTPUT_DIR)
 
-NODE_VERSION ?= 14
+NODE_VERSION ?= 16
 
 TIDY_XML_SETTINGS = -q -m -w 0 -i -utf8 -xml \
 										--indent-with-tabs yes \
