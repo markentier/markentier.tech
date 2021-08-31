@@ -16,7 +16,7 @@ Now it's August, and I'm tired. Not only physically, but also mentally.
 
 <!-- more -->
 
-I even tried to start a newsletter as an alternative communication channel, but I haven't written anything for two months now.
+I even tried to start a [newsletter] as an alternative communication channel, but I haven't written anything for two months now.
 
 It's not the lack of topics, quite the opposite. I have an ever growing list of ideas and drafts. Some of them I wish to finish into something presentable. But I cannot find the energy and motivation right now.
 
@@ -60,5 +60,6 @@ But I'm just too tired.
 
 <!-- links -->
 
+[newsletter]: https://tinyletter.com/asaaki
 [glue]: https://noidea.dog/glue
 [whiteboards]: /posts/2021/06/whiteboards/
