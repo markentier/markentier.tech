@@ -297,3 +297,16 @@ install-tools:
 	npm install --global netlify-cli
 
 clean-installs: clean-zola
+
+### Utilities
+
+# find ... -exec dos2unix {} \;
+lf:
+	find . -type f \
+		-not -path '*/\.git/*' \
+		-not -path '*/\node_modules/*' \
+		-print0 | \
+	xargs -0 dos2unix
+
+renormalize:
+	git add --renormalize .
