@@ -152,7 +152,7 @@ _Sorry for this clickbaity title by the way._ 😬[^notsorry]
 <!-- footnotes -->
 [^so]: Full answer: <https://stackoverflow.com/a/2361321/653173>
 
-[^enter]: also known and labeled as <kbd>↵ Enter</kbd>, <kbd>↵ Return</kbd>, or something similar; you find more keyboard shortcut versions at [here](@/posts/2021/04/windows-shortcut-key-symbol/index.md).
+[^enter]: also known and labeled as <kbd>↵ Enter</kbd>, <kbd>↵ Return</kbd>, or something similar; you find more keyboard shortcut versions at [⊞](@/posts/2021/04/windows-shortcut-key-symbol/index.md).
 
 [^bell]: Guess what, we still have a control byte for the bell (<kbd>BEL</kbd>) in our ASCII/Unicode tables. It has the byte value 7 (0x07). Some terminal emulators (the software you use to interact with your shell) support that and can make a sound. Sometimes this is used to alert the user about errors.
 
