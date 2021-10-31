@@ -26,7 +26,7 @@ Ever felt limited by the languages on AWS Lambda@Edge? Wanted to run Rust for yo
 
 <!-- more -->
 
-_`tl;dr:` Check out the [repo][repo] and give it a spin for yourself. You can also [jump ahead to the code part](#code-part) and skip the story section._
+_`tl;dr:` Check out the [repo] and give it a spin for yourself. You can also [jump ahead to the code part](#code-part) and skip the story section._
 
 At the last AWS re:Invent 2020 the company with a smile did announce quite some changes, improvement, and new products/services. Notably also a lot of interesting stuff in the AWS Lambda space. Yet one area—one very dear to me—was left out completely, total radio silence, nothing, nada: no improvements or new features for Lambda@Edge (L@E). This made me very sad. 😢
 

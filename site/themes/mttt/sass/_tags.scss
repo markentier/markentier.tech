@@ -52,13 +52,16 @@ b, strong { font-weight: bolder; }
 blockquote {
   padding-left: .5em;
   border-left: .5em solid var(--accent-color);
-  // color: var(--accent-darker-color);
 }
 
 code, pre, kbd, samp {
   font-family: var(--system-fonts-monospace);
   font-style: normal;
   text-decoration: none;
+}
+
+p > code {
+  text-shadow: 0 0 0 var(--head-dark-color);
 }
 
 del, s, strike { text-decoration: wavy line-through var(--link-hl-color); }
@@ -116,7 +119,6 @@ kbd, samp {
   padding: .15rem;
   border-radius: .25em;
   border: 1px solid var(--accent-dark-color);
-  // background: var(--accent-color);
 }
 
 nav { margin-bottom: 2rem; }

@@ -242,6 +242,19 @@
       content: "HTML Output";
     }
   }
+
+  &.tldr {
+    padding-left: 2rem;
+
+    &::before {
+      display: block;
+      margin-left: -1rem;
+      font-size: 1.125rem;
+      font-family: var(--system-fonts-monospace);
+      color: var(--accent-darker-color);
+      content: "tl;dr";
+    }
+  }
 }
 
 .hresize {
