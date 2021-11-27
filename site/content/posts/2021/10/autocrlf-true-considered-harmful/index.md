@@ -1,5 +1,5 @@
 +++
-title = "autocrlf=true considered harmful"
+title = "git's autocrlf=true considered harmful"
 date = 2021-10-31
 
 [taxonomies]
