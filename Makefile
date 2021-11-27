@@ -28,7 +28,7 @@ ifeq ($(findstring NT-10,$(UNAME)),NT-10)
 endif
 
 ZOLA = zola
-ZOLA_VERSION ?= 0.13.0
+ZOLA_VERSION ?= 0.14.1
 ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-$(PLATFORM).$(SUFFIX)
 ZOLA_PKG = $(ZOLA).$(SUFFIX)
 
