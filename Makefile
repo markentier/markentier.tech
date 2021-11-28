@@ -141,6 +141,7 @@ build-feeds:
 
 post-processing:
 	[ -d node_modules ] || npm install
+	npx browserslist@latest --update-db
 	IMG_BASE_URL=$(NETLIFY_DEPLOY_URL) npx gulp
 
 remove-bom: $(BOMABLES)
