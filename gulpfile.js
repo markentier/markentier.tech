@@ -27,8 +27,7 @@ const postHtmlPluginsSecondRun = [
     mergeStyles: true,
     // breaks my beautiful header image :'-(
     minifySvg: false,
-    // does not work; also dangerous because it would truncate for
-    // some desired tags like <base>
+    // does not work as expected
     // minifyUrls: process.env.IMG_BASE_URL,
   }),
   require("posthtml-externalize-styles")({ root: DEST }),
@@ -99,7 +98,7 @@ function css() {
     .pipe(gulp.dest(DEST));
 }
 
-var build = gulp.series(gulp.parallel(html, javascript, json), css);
+const build = gulp.series(gulp.parallel(html, javascript, json), css);
 
 exports.html = html;
 exports.default = build;
