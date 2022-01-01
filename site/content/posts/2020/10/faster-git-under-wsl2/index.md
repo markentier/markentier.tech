@@ -13,6 +13,9 @@ image_alt = "Use git.exe when working in repositories under /mnt/…"
 [[extra.suggestions]]
 text = "How you can manage multiple GitHub accounts on a single computer"
 link = "/posts/2021/02/github-with-multiple-profiles-gpg-ssh-keys/"
+[[extra.suggestions]]
+text = "How you can speed up your Rust build times under WSL2"
+link = "/posts/2022/01/speedy-rust-builds-under-wsl2/"
 +++
 
 With WSL2 filesystem performance degraded for the mount points of the Windows host. Here's a tip to speed up `git status` again.
