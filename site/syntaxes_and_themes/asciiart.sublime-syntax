@@ -1,0 +1,14 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: asciiart
+file_extensions:
+  - asciiart
+scope: source.asciiart
+variables:
+contexts:
+  main:
+  - match: \w+
+    # https://www.sublimetext.com/docs/scope_naming.html
+    # variable: all plain; string: words are highlighted, anything else stays plain
+    scope: string

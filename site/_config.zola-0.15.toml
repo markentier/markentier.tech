@@ -1,5 +1,3 @@
-# https://www.getzola.org/documentation/getting-started/configuration/
-
 # The base URL of the site; the only required configuration variable.
 base_url = "mywebsite.com"
 
@@ -13,44 +11,8 @@ default_language = "en"
 # The site theme to use.
 theme = ""
 
-# When set to "true", a feed is automatically generated.
-generate_feed = false
-
-# The filename to use for the feed. Used as the template filename, too.
-# Defaults to "atom.xml", which has a built-in template that renders an Atom 1.0 feed.
-# There is also a built-in template "rss.xml" that renders an RSS 2.0 feed.
-# feed_filename = "atom.xml"
-
-# The number of articles to include in the feed. All items are included if
-# this limit is not set (the default).
-# feed_limit = 20
-
-# When set to "true", files in the `static` directory are hard-linked. Useful for large
-# static files. Note that for this to work, both `static` and the
-# output directory need to be on the same filesystem. Note that the theme's `static`
-# files are always copied, regardless of this setting.
-# hard_link_static = false
-
-# The taxonomies to be rendered for the site and their configuration.
-# Example:
-#     taxonomies = [
-#       {name = "tags", feed = true}, # each tag will have its own feed
-#       {name = "tags", lang = "fr"}, # you can have taxonomies with the same name in multiple languages
-#       {name = "categories", paginate_by = 5},  # 5 items per page for a term
-#       {name = "authors"}, # Basic definition: no feed or pagination
-#     ]
-#
-taxonomies = []
-
-# The additional languages for the site.
-# Example:
-#     languages = [
-#       {code = "fr", feed = true}, # there will be a feed for French content
-#       {code = "fr", search = true}, # there will be a Search Index for French content
-#       {code = "it"}, # there won't be a feed for Italian content
-#     ]
-#
-languages = []
+# For overriding the default output directory `public`, set it to another value (e.g.: "docs")
+output_dir = "public"
 
 # When set to "true", the Sass files in the `sass` directory in the site root are compiled.
 # Sass files in theme directories are always compiled.
@@ -66,16 +28,46 @@ minify_html = false
 #     ignored_content = ["*.{graphml,xlsx}", "temp.*"]
 ignored_content = []
 
-# A list of directories used to search for additional `.sublime-syntax` files.
-extra_syntaxes = []
+# When set to "true", a feed is automatically generated.
+generate_feed = false
 
-# You can override the default output directory `public` by setting an another value.
-# output_dir = "docs"
+# The filename to use for the feed. Used as the template filename, too.
+# Defaults to "atom.xml", which has a built-in template that renders an Atom 1.0 feed.
+# There is also a built-in template "rss.xml" that renders an RSS 2.0 feed.
+feed_filename = "atom.xml"
+
+# The number of articles to include in the feed. All items are included if
+# this limit is not set (the default).
+# feed_limit = 20
+
+# When set to "true", files in the `static` directory are hard-linked. Useful for large
+# static files. Note that for this to work, both `static` and the
+# output directory need to be on the same filesystem. Note that the theme's `static`
+# files are always copied, regardless of this setting.
+hard_link_static = false
+
+# The taxonomies to be rendered for the site and their configuration of the default languages
+# Example:
+#     taxonomies = [
+#       {name = "tags", feed = true}, # each tag will have its own feed
+#       {name = "tags"}, # you can have taxonomies with the same name in multiple languages
+#       {name = "categories", paginate_by = 5},  # 5 items per page for a term
+#       {name = "authors"}, # Basic definition: no feed or pagination
+#     ]
+#
+taxonomies = []
+
+# When set to "true", a search index is built from the pages and section
+# content for `default_language`.
+build_search_index = false
 
 # Configuration of the Markdown rendering
 [markdown]
 # When set to "true", all code blocks are highlighted.
 highlight_code = false
+
+# A list of directories used to search for additional `.sublime-syntax` files.
+extra_syntaxes_and_themes = []
 
 # The theme to use for code highlighting.
 # See below for list of allowed values.
@@ -118,34 +110,42 @@ paths = "on"
 taxonomies = "on"
 anchors = "on"
 
-# When set to "true", a search index is built from the pages and section
-# content for `default_language`.
-build_search_index = false
-
 [search]
 # Whether to include the title of the page/section in the index
 include_title = true
 # Whether to include the description of the page/section in the index
 include_description = false
+# Whether to include the path of the page/section in the index
+include_path = false
 # Whether to include the rendered content of the page/section in the index
 include_content = true
 # At which character to truncate the content to. Useful if you have a lot of pages and the index would
 # become too big to load on the site. Defaults to not being set.
 # truncate_content_length = 100
 
-# Optional translation object. Keys should be language codes.
-# Optional translation object. The key if present should be a language code.
+# Optional translation object for the default language
 # Example:
 #     default_language = "fr"
 #
 #     [translations]
-#     [translations.fr]
 #     title = "Un titre"
 #
-#     [translations.en]
-#     title = "A title"
-#
 [translations]
+
+# Additional languages definition
+# You can define language specific config values and translations:
+# title, description, generate_feed, feed_filename, taxonomies, build_search_index
+# as well as its own search configuration and translations (see above for details on those)
+[languages]
+# For example
+# [languages.fr]
+# title = "Mon blog"
+# generate_feed = true
+# taxonomies = [
+#    {name = "auteurs"},
+#    {name = "tags"},
+# ]
+# build_search_index = false
 
 # You can put any kind of data here. The data
 # will be accessible in all templates

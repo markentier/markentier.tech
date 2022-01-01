@@ -7,21 +7,20 @@ theme = "mttt"
 compile_sass = true
 
 taxonomies = [
-  { name = "tags", feed = false },
-  { name = "categories", feed = false },
+  { name = "tags", feed = true },
+  { name = "categories", feed = true },
 ]
 
 generate_rss = true
-rss_limit = 10
-
 build_search_index = false
-check_external_links = false
 
 [markdown]
-extra_syntaxes = ["syntaxes"]
+extra_syntaxes_and_themes = ["syntaxes_and_themes"]
 highlight_code = true
 highlight_theme = "monokai"
 render_emoji = true
+
+external_links_no_referrer = true
 
 [extra]
 answer = 42
