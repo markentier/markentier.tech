@@ -83,9 +83,7 @@ I cannot say a lot about Fastly's offering, it's mostly behind some beta doors, 
 
 I can tell a bit more about **Cloudflare** though, because their edge computing offering is available and affordable to small businesses and individuals (even free in most cases). Check out [Workers][cfworkers], really do! I have already played around with Workers and KV storage, it's a quite pleasant experience. I might write about a setup for them in the future as well.
 
-<a id="code-part"></a>
-
-## Let's get started
+## Let's get started {#code-part}
 
 GitHub repository to follow along:
 
