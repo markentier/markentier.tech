@@ -114,18 +114,23 @@ But you can adapt the following snippets for your build environment as well (may
 ```Makefile
 # very minimal setup
 
-STATIC_TMP_DIR  = ~/tmp/my_speedy_build_project
+SOURCE_DIR = $(PWD)
+# `notdir` returns the part after the last `/`
+# so if the source was "/some/nested/project", only "project" remains
+BUILD_DIR  = ~/tmp/$(notdir $(SOURCE_DIR))
 
 build.wsl: wsl.sync
-	cd $(STATIC_TMP_DIR) && cargo build
+	cd $(BUILD_DIR) && cargo build
 
 run.wsl: wsl.sync
-	cd $(STATIC_TMP_DIR) && cargo run
+	cd $(BUILD_DIR) && cargo run
 
 wsl.sync:
-	mkdir -p $(STATIC_TMP_DIR)
-	rsync -av $(SOURCE_DIR)/ $(STATIC_TMP_DIR)/ --exclude .git --exclude target
+	mkdir -p $(BUILD_DIR)
+	rsync -av $(SOURCE_DIR)/ $(BUILD_DIR)/ --exclude .git --exclude target
 ```
+
+<small>Yes, the trailing slashes in the `rsync` command are necessary.</small>
 
 When triggering a `make run.wsl` the project gets copied, compiled, and executed, all in a quick breeze.
 
