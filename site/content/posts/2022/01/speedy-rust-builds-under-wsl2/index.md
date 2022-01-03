@@ -3,7 +3,7 @@ title = "Speedy Rust builds under WSL2"
 date = 2022-01-01
 
 [taxonomies]
-tags = ["rust", "cargo", "WSL2", "WSL", "windows", "subsystem", "linux", "compile", "build", "time", "slow", "run", "speed", "Windows 10"]
+tags = ["rust", "cargo", "WSL2", "WSL", "windows", "subsystem", "linux", "compile", "build", "time", "slow", "long", "run", "speed", "Windows 10"]
 categories = ["default"]
 
 [extra]
