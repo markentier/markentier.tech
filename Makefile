@@ -28,7 +28,7 @@ ifeq ($(findstring NT-10,$(UNAME)),NT-10)
 endif
 
 ZOLA = zola
-ZOLA_VERSION ?= 0.15.2
+ZOLA_VERSION ?= 0.15.3
 ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-$(PLATFORM).$(SUFFIX)
 ZOLA_PKG = $(ZOLA).$(SUFFIX)
 
@@ -274,6 +274,9 @@ install-debs: install-zola install-tools
 	sudo apt-get install -y imagemagick optipng pngquant webp libjpeg-progs gifsicle
 
 install-zola: $(BUILD_PATH)
+
+info-zola:
+	$(ZOLA) --version
 
 $(BUILD_PATH):
 ifeq ($(SUFFIX),tar.gz)
