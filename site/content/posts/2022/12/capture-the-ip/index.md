@@ -69,7 +69,7 @@ The stack I've chosen is the following:
 - [fly.io] as the web service hoster — they also have a free allowance/tier
 - a fancy domain — sadly not free, but cool: **[ipv4.quest]**
 
-In the early days everything was a single crate with a single binary even. The majority of the time got sunk into figuring out the right SQL incantations for Postgres to calculate the right views for the
+In the early days everything was a single crate with a single binary even. The majority of the time got sunk into figuring out the right SQL incantations for Postgres to calculate the right views for the rankings.
 
 Coincidentally [ChatGPT] got very famous now and I gave it a try. Oh boy was that useful! Asking a chat bot to provide some queries and also explain them was so helpful, I saved so much time. I have never tried GitHub Copilot, but the internet assures me that ChatGPT is already so much better (it's also more generic[^chatgpt]).
 
