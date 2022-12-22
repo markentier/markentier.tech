@@ -211,7 +211,7 @@ The usual response time for a single user from Germany with a decent DSL connect
 
 With some parallel calls this is done in 3 batches taking not more than 120 ms to fetch, then a bit for the processing and rendering which also shouldn' take too long. In less than a second the business is done.
 
-The static assets are also have some cache-control headers, so repeated calls don't incure costs beyond the uncached API calls.
+The static assets also have some cache-control headers, so repeated calls don't incure costs beyond the uncached API calls.
 
 I wonder if AWS can even beat that, but [the last time I tested CloudFront](@/posts/2021/01/rust-wasm-on-aws-lambda-edge/index.md) there were some inherent latencies due to their infrastructure design, and that was for Lambda@Edge, where you couldn't go below 20 ms at all. I believe the performance is even worse for apps served directly from a region (like via API Gateway for example).
 
