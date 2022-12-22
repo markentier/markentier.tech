@@ -67,7 +67,7 @@ The stack I've chosen is the following:
 - [Postgres] as the particular database flavour
 - [neon.tech] as the database hoster — it's a serverless offering currently in a tech preview, so it's free
 - [fly.io] as the web service hoster — they also have a free allowance/tier
-- a fancy domain — sadly not free, but cool: [ipv4.quest]
+- a fancy domain — sadly not free, but cool: **[ipv4.quest]**
 
 In the early days everything was a single crate with a single binary even. The majority of the time got sunk into figuring out the right SQL incantations for Postgres to calculate the right views for the
 
@@ -243,6 +243,8 @@ If you want to dive into the codebase and check out how I did some things and so
 Feel free to open an issue with questions and suggestions, and don't shy away from opening a pull request if you know something I should improve or change.
 
 Use it as an inspiration for your next project if you like.
+
+And dont' forget to give **[ipv4.quest]** a try!
 
 🙇[^final]
 
