@@ -13,7 +13,7 @@
     "gulp-postcss": "*",
     "gulp-posthtml": "*",
     "htmlnano": "^1.1.1",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.31",
     "posthtml-align-style": "file:./tools/packages/posthtml-align-style",
     "posthtml-alt-always": "*",
     "posthtml-avif-webp": "file:./tools/packages/posthtml-avif-webp",
