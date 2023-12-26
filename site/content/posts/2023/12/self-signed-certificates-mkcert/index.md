@@ -120,7 +120,7 @@ Have fun with your custom testing domains. Now you can build apps expecting TLS,
 
 <!-- links -->
 
-[previous sticky]: @/posts/2023/12/sticky-notes-self-signed-certificate/
+[previous sticky]: @/posts/2023/12/sticky-notes-self-signed-certificate/index.md
 [mkcert.dev]: https://mkcert.dev/
 [mkcert install]: https://github.com/FiloSottile/mkcert?tab=readme-ov-file#installation
 [test]: https://en.wikipedia.org/wiki/.test
