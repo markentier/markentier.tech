@@ -56,7 +56,7 @@ Notes:
 * The PEM files (certificate and key) will be created in the location where you executed this command.
 * Remove `-ecdsa` option if you have troubles with this algorithm.
 * The certificate will be usable for some fake domains, both with and without a subdomain (only a single level[^many]).
-* Those domains shouldn't be public internet stuff, thus `.test` is a nice top-level domain to pick, as it's reserved for—you guessed it—testing.
+* Those domains shouldn't be public internet stuff, thus [`.test`][test] is a nice top-level domain to pick, as it's reserved for—you guessed it—testing.
 * The certificate will expire in 2 years and 3 months. Apparently also not configurable at all.
 * Yes, you can add many different domains into a single certificate; that's how some interwebz providers do as well.
 * Adding `localhost` for good measure …
@@ -102,9 +102,9 @@ Using some of the domain names from above:
 
 Notes:
 
-* if you have [PowerToys] installed, it ships with a hosts file editor; this way it's less likely to mess it up
-* Interestingly it also notes that you can only add up to 9 hosts per address (per line I guess). I never tried, but I also chunk my definitions up into multiple address mappings anyway
-* As you might have noticed, no wildcards allowed
+* If you have [PowerToys] installed, it ships with a hosts file editor; this way it's less likely to mess it up.
+* Interestingly it also notes that you can only add up to 9 hosts per address (per line I guess). I never tried, but I also chunk my definitions up into multiple address mappings anyway.
+* As you might have noticed, no wildcards allowed.
 
 -----
 
@@ -123,4 +123,5 @@ Have fun with your custom testing domains. Now you can build apps expecting TLS,
 [previous sticky]: @/posts/2023/12/sticky-notes-self-signed-certificate/
 [mkcert.dev]: https://mkcert.dev/
 [mkcert install]: https://github.com/FiloSottile/mkcert?tab=readme-ov-file#installation
+[test]: https://en.wikipedia.org/wiki/.test
 [PowerToys]: https://github.com/microsoft/PowerToys
