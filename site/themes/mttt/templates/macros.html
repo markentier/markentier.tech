@@ -82,11 +82,7 @@
 {%- endmacro stringify_array -%}
 
 {%- macro feed_posts(sec, feed, start=false) -%}
-{{ self::feed_items(sec=sec, feed=feed) }}
-{%- for sub in sec.subsections | reverse -%}
-{%- set ss = get_section(path=sub) -%}
-{{ self::feed_posts(sec=ss, feed=feed, start=false) -}}
-{%- endfor -%}
+{{ self::feed_items(sec=sec, feed=feed) -}}
 {%- if start == true and feed == "json" -%}END_MARKER{%- endif %}
 {%- endmacro feed_posts %}
 
