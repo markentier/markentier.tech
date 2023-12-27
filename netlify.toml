@@ -6,7 +6,7 @@ command = "make netlify"
 functions = "functions"
 
 [build.environment]
-ZOLA_VERSION = "0.16.1"
+ZOLA_VERSION = "0.18.0"
 # in case the netlify provided zola cannot be used:
 # zola binary needs to be called from the sites/ directory
 # BUILD_BIN = "../zola/zola"
