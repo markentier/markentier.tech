@@ -28,7 +28,7 @@ ifeq ($(findstring NT-10,$(UNAME)),NT-10)
 endif
 
 ZOLA = zola
-ZOLA_VERSION ?= 0.18.0
+ZOLA_VERSION ?= 0.19.2
 ZOLA_RELEASE_URL = https://github.com/getzola/zola/releases/download/v$(ZOLA_VERSION)/zola-v$(ZOLA_VERSION)-$(PLATFORM).$(SUFFIX)
 ZOLA_PKG = $(ZOLA).$(SUFFIX)
 
@@ -47,7 +47,7 @@ BUILD_PATH = $(ZOLA)/$(ZOLA)
 
 BUILD_CMD = $(ZOLA) --root $(SITE_ROOT) build \
 							--base-url $(NETLIFY_DEPLOY_URL) \
-							--output-dir $(OUTPUT_DIR) --force
+							--output-dir $(OUTPUT_DIR)
 
 SERVE_CMD = $(ZOLA) serve \
 							--drafts --base-url $(LOCAL_HOST) \

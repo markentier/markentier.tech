@@ -11,7 +11,9 @@ taxonomies = [
   { name = "categories", feed = true },
 ]
 
-generate_rss = true
+generate_feeds = true
+feed_filename = "atom.xml"
+
 build_search_index = false
 
 [markdown]
